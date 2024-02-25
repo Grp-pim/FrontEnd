@@ -1,0 +1,23 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Coding language
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">JavaScript</a></li>
+    <li><a class="dropdown-item" href="#">Java</a></li>
+    <li><a class="dropdown-item" href="#">Python</a></li>
+  </ul>
+</div>
+<br>
+<ngx-monaco-editor
+  [options]="editorOptions"
+  [(ngModel)]="code"
+></ngx-monaco-editor>
+<div class="output">
+<button class="btn btn-primary" type="button" (click)="executeUserCode()">
+  Execute Code
+<i class="bi bi-chevron-double-right"></i>
+</button>
+<H3>Console output</H3>
+<pre>{{ executionResult }}</pre>
+</div>
