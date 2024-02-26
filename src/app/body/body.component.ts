@@ -22,13 +22,17 @@ public class Main {
   executeUserCode() {
     this.apiService.executeCode(this.code).subscribe({
       next: (response) => {
-        console.log(`response: ${JSON.stringify(response)}`);
-        this.executionResult = response.output;
-        console.log(`zab ${this.executionResult}`);
+        // Check if the response indicates success
+        if (response.success) {
+          this.executionResult = response.output;
+        } else {
+          // If success is false, display the error message
+          this.executionResult = `Error: ${response.error}`;
+        }
       },
-      error: (error) => {
-        console.error(error);
-        this.executionResult = `Error: ${error.message}`;
+      error: (httpErrorResponse) => {
+        // Handle any errors that occur during the HTTP request
+        this.executionResult = `Error: ${httpErrorResponse.error.error}`;
       },
     });
   }
