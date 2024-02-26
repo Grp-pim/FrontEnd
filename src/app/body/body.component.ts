@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { ApiService } from '../services/api.service'; // Adjust the path as needed
 @Component({
   selector: 'app-body',
@@ -8,8 +7,7 @@ import { ApiService } from '../services/api.service'; // Adjust the path as need
 })
 export class BodyComponent {
   editorOptions = { theme: 'vs-dark', language: 'java' };
-  code: string = `
-public class Main {
+  code: string = `public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, World!");
     }

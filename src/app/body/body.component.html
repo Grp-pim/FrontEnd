@@ -1,4 +1,4 @@
-<div class="dropdown">
+<!-- <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
     Coding language
   </button>
@@ -20,4 +20,60 @@
 </button>
 <H3>Console output</H3>
   <pre [class.error-message]="executionResult.startsWith('Error:')">{{ executionResult }}</pre>
+</div> -->
+
+<div class="row m-3">
+  <div class="col">
+    <div class="d-flex justify-content-between mb-2 bg-dark rounded p-2">
+      <div class="col-12 w-25">
+        <label class="visually-hidden" for="inlineFormSelectPref"
+          >Preference</label
+        >
+        <select class="form-select" id="inlineFormSelectPref">
+          <option selected>Choose...</option>
+          <option value="Java">Java</option>
+          <option value="Cpp">C++</option>
+          <option value="Python">Python</option>
+        </select>
+      </div>
+      <div>
+        <button
+          type="button"
+          id="run"
+          class="btn btn-success"
+          (click)="executeUserCode()"
+        >
+          <i class="bi bi-play-fill"> Run</i>
+        </button>
+      </div>
+    </div>
+    <ngx-monaco-editor
+      [options]="editorOptions"
+      [(ngModel)]="code"
+    ></ngx-monaco-editor>
+  </div>
+  <div class="col d-flex flex-column rounded bg-dark px-4">
+    <div class="h-50">
+      <label for="Input" class="text-light mt-4 mb-2">Input</label>
+      <textarea
+        type="text"
+        id="input"
+        class="form-control h-75"
+        aria-label="Last name"
+      ></textarea>
+    </div>
+    <br /><br />
+    <div class="h-50">
+      <label for="Output" class="text-light mb-2">Output</label>
+      <textarea
+        rows="8"
+        [class.error-message]="executionResult.startsWith('Error:')"
+        type="text"
+        id="output"
+        class="form-control h-75"
+        aria-label="Last name"
+        >{{ executionResult }}</textarea
+      >
+    </div>
+  </div>
 </div>

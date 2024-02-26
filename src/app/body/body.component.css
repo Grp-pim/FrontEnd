@@ -1,10 +1,13 @@
-.output {
+/* .output {
     margin: 10px;
 }
 .dropdown {
     margin: 10px;
-}
+} */
 
 .error-message {
     color: red;
+}
+.editor-container{
+    height: auto;
 }
