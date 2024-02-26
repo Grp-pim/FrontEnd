@@ -30,10 +30,10 @@
           >Preference</label
         >
         <select class="form-select" id="inlineFormSelectPref">
-          <option selected>Choose...</option>
-          <option value="Java">Java</option>
+          <option selected>Java</option>
+          <!-- <option value="Java">Java</option>
           <option value="Cpp">C++</option>
-          <option value="Python">Python</option>
+          <option value="Python">Python</option> -->
         </select>
       </div>
       <div>
@@ -41,7 +41,7 @@
           type="button"
           id="run"
           class="btn btn-success"
-          (click)="executeUserCode()"
+          (click)="executeUserCode();"
         >
           <i class="bi bi-play-fill"> Run</i>
         </button>
@@ -51,18 +51,6 @@
       [options]="editorOptions"
       [(ngModel)]="code"
     ></ngx-monaco-editor>
-  </div>
-  <div class="col d-flex flex-column rounded bg-dark px-4">
-    <div class="h-50">
-      <label for="Input" class="text-light mt-4 mb-2">Input</label>
-      <textarea
-        type="text"
-        id="input"
-        class="form-control h-75"
-        aria-label="Last name"
-      ></textarea>
-    </div>
-    <br /><br />
     <div class="h-50">
       <label for="Output" class="text-light mb-2">Output</label>
       <textarea
@@ -76,4 +64,35 @@
       >
     </div>
   </div>
-</div>
+  <div class="col d-flex flex-column rounded bg-dark px-4">
+    <section id="gameSection">
+      <div class="jeu">
+        <div class="perso">
+          <img src="assets/img.png" alt="" />
+        </div>
+        <div class="obstacles"></div>
+      </div>
+    </section>
+
+    <div class="control">
+      <button (click)="sauter()">SAUTER</button>
+      <button (click)="startGame()">start game</button>
+
+    </div>
+  </div>
+    <!-- <div>
+      <section>
+        <div class="jeu">
+          <div class="perso">
+            <img src="img.png" alt="" />
+          </div>
+          <div class="obstacles"></div>
+        </div>
+      </section>
+
+      <div class="control">
+        <button onclick="sauter()">SAUTER</button>
+      </div>  
+    </div> -->
+    <br /><br />
+  </div>
