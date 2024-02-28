@@ -8,8 +8,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { BodyComponent } from './body/body.component';
 import { HttpClientModule} from '@angular/common/http';
-import { PhaserGameComponent } from './phaser-game/phaser-game.component';
-import { GodotGameComponent } from './godot-game/godot-game.component';
+import { GameComponent } from './game/game.component';
 
 
 @NgModule({
@@ -22,6 +21,6 @@ import { GodotGameComponent } from './godot-game/godot-game.component';
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
-  declarations: [AppComponent, HeaderComponent, FooterComponent, BodyComponent, PhaserGameComponent, GodotGameComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, BodyComponent, GameComponent],
 })
 export class AppModule {}

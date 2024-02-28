@@ -31,9 +31,6 @@
         >
         <select class="form-select" id="inlineFormSelectPref">
           <option selected>Java</option>
-          <!-- <option value="Java">Java</option>
-          <option value="Cpp">C++</option>
-          <option value="Python">Python</option> -->
         </select>
       </div>
       <div>
@@ -41,7 +38,7 @@
           type="button"
           id="run"
           class="btn btn-success"
-          (click)="executeUserCode();"
+          (click)="executeUserCode()"
         >
           <i class="bi bi-play-fill"> Run</i>
         </button>
@@ -65,22 +62,9 @@
     </div>
   </div>
   <div class="col d-flex flex-column rounded bg-dark px-4">
-    <section id="gameSection">
-      <div class="jeu">
-        <div class="perso">
-          <img src="assets/img.png" alt="" />
-        </div>
-        <div class="obstacles"></div>
-      </div>
-    </section>
-
-    <div class="control">
-      <button (click)="sauter()">SAUTER</button>
-      <button (click)="startGame()">start game</button>
-
-    </div>
+    <app-game></app-game>
   </div>
-    <!-- <div>
+  <!-- <div>
       <section>
         <div class="jeu">
           <div class="perso">
@@ -94,5 +78,5 @@
         <button onclick="sauter()">SAUTER</button>
       </div>  
     </div> -->
-    <br /><br />
-  </div>
+  <br /><br />
+</div>
