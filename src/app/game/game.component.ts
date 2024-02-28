@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
 
   @ViewChild('character') characterRef!: ElementRef;
   @ViewChild('block') blockRef!: ElementRef;
-  score: number = 0;
+  score: number = 0; 
   counter: number = 0;
 
   constructor(

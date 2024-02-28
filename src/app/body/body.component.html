@@ -1,28 +1,4 @@
-<!-- <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Coding language
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">JavaScript</a></li>
-    <li><a class="dropdown-item" href="#">Java</a></li>
-    <li><a class="dropdown-item" href="#">Python</a></li>
-  </ul>
-</div>
-<br>
-<ngx-monaco-editor
-  [options]="editorOptions"
-  [(ngModel)]="code"
-></ngx-monaco-editor>
-<div class="output">
-<button class="btn btn-primary" type="button" (click)="executeUserCode()">
-  Execute Code
-<i class="bi bi-chevron-double-right"></i>
-</button>
-<H3>Console output</H3>
-  <pre [class.error-message]="executionResult.startsWith('Error:')">{{ executionResult }}</pre>
-</div> -->
-
-<div class="row m-3">
+<!-- <div class="row m-3">
   <div class="col">
     <div class="d-flex justify-content-between mb-2 bg-dark rounded p-2">
       <div class="col-12 w-25">
@@ -64,19 +40,61 @@
   <div class="col d-flex flex-column rounded bg-dark px-4">
     <app-game></app-game>
   </div>
-  <!-- <div>
-      <section>
-        <div class="jeu">
-          <div class="perso">
-            <img src="img.png" alt="" />
-          </div>
-          <div class="obstacles"></div>
-        </div>
-      </section>
+</div> -->
 
-      <div class="control">
-        <button onclick="sauter()">SAUTER</button>
-      </div>  
-    </div> -->
-  <br /><br />
+<div class="container-fluid">
+  <!-- Top section with two columns, where the first column has two nested rows -->
+  <div class="row">
+    <!-- First column which is subdivided into two rows -->
+    <div class="col-md-6" id="ideOutputContainer">
+      <!-- First nested row in the first column -->
+      <div class="row">
+        <div class="row">
+          <div class="col-12">
+            <button
+              type="button"
+              id="run"
+              class="btn btn-success"
+              (click)="executeUserCode()"
+            >
+              <i class="bi bi-play-fill"> Run</i>
+            </button>
+          </div>
+          <div class="col-12">
+            <ngx-monaco-editor
+              [options]="editorOptions"
+              [(ngModel)]="code"
+            ></ngx-monaco-editor>
+          </div>
+        </div>
+      </div>
+      <!-- Second nested row in the first column -->
+      <div class="row">
+        <div class="col-12" id="outputcontainer">
+          <label for="Output" class="text-light mb-2">Output</label>
+          <textarea
+            rows="8"
+            [class.error-message]="executionResult.startsWith('Error:')"
+            type="text"
+            id="output"
+            class="form-control h-75"
+            aria-label="Last name"
+            >{{ executionResult }}</textarea
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Second column -->
+    <div class="col-md-5" id="gameContainer">
+      <app-game></app-game>
+    </div>
+  </div>
+
+  <!-- Full-width row below the top section -->
+  <div class="row">
+    <div class="col-12">
+      <textarea name="" readonly id="" cols="184" rows="8"></textarea>
+    </div>
+  </div>
 </div>

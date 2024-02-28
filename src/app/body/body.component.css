@@ -1,11 +1,22 @@
 /* Body Component CSS */
-.error-message {
+/* .error-message {
   color: red;
 }
 
 .h-50{
   background-color: #1E1E1E;
+  padding: 0 10px ;
+} */
+#ideOutputContainer{
+  background-color: #1E1E1E;
 }
-#output{
-  margin  : 0 30px;
+*{
+    padding: 0;
+    margin: 3px;
+    overflow-x: hidden;
+}
+
+
+#gameContainer{
+  background-color: #1E1E1E;
 }
