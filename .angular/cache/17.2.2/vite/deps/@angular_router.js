@@ -1,7 +1,7 @@
 import {
   Title
-} from "./chunk-332K23RV.js";
-import "./chunk-PRNLISLM.js";
+} from "./chunk-FWAIZ6OZ.js";
+import "./chunk-7VBC2G22.js";
 import {
   DOCUMENT,
   HashLocationStrategy,
@@ -10,7 +10,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
   ViewportScroller
-} from "./chunk-5X7LUNTU.js";
+} from "./chunk-RZFYNZMC.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_INITIALIZER,
@@ -78,7 +78,7 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-M43NMAIA.js";
+} from "./chunk-CUCTVBR6.js";
 import "./chunk-UKEHM6V6.js";
 import {
   defer,
@@ -3657,8 +3657,9 @@ var _NavigationTransitions = class _NavigationTransitions {
               const cancelationReason = typeof ngDevMode === "undefined" || ngDevMode ? `Navigation ID ${overallTransitionState.id} is not equal to the current navigation id ${this.navigationId}` : "";
               this.cancelNavigationTransition(overallTransitionState, cancelationReason, NavigationCancellationCode.SupersededByNewNavigation);
             }
-            if (this.currentNavigation?.id === overallTransitionState.id) {
+            if (this.currentTransition?.id === overallTransitionState.id) {
               this.currentNavigation = null;
+              this.currentTransition = null;
             }
           }),
           catchError((e) => {
@@ -5500,7 +5501,7 @@ function mapToCanDeactivate(providers) {
 function mapToResolve(provider) {
   return (...params) => inject(provider).resolve(...params);
 }
-var VERSION = new Version("17.1.3");
+var VERSION = new Version("17.2.3");
 export {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -5583,7 +5584,7 @@ export {
 
 @angular/router/fesm2022/router.mjs:
   (**
-   * @license Angular v17.1.3
+   * @license Angular v17.2.3
    * (c) 2010-2022 Google LLC. https://angular.io/
    * License: MIT
    *)

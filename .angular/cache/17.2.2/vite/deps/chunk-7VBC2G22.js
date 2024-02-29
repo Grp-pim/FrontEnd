@@ -3,7 +3,7 @@ import {
   XhrFactory,
   isPlatformServer,
   parseCookieValue
-} from "./chunk-5X7LUNTU.js";
+} from "./chunk-RZFYNZMC.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
@@ -31,7 +31,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-M43NMAIA.js";
+} from "./chunk-CUCTVBR6.js";
 import {
   Observable,
   __async,
@@ -2169,10 +2169,12 @@ function makeCacheKey(request) {
     params,
     method,
     responseType,
-    url
+    url,
+    body
   } = request;
   const encodedParams = params.keys().sort().map((k) => `${k}=${params.getAll(k)}`).join("&");
-  const key = method + "." + responseType + "." + url + "?" + encodedParams;
+  const strBody = typeof body === "string" ? body : "";
+  const key = [method, responseType, url, strBody, encodedParams].join("|");
   const hash = generateHash(key);
   return makeStateKey(hash);
 }
@@ -2277,9 +2279,9 @@ export {
 
 @angular/common/fesm2022/http.mjs:
   (**
-   * @license Angular v17.1.3
+   * @license Angular v17.2.3
    * (c) 2010-2022 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-PRNLISLM.js.map
+//# sourceMappingURL=chunk-7VBC2G22.js.map
