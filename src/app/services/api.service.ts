@@ -12,12 +12,33 @@ export class ApiService {
   private url = 'http://localhost:9090';
 
   // post method
- executeCode(code: string): Observable<any> {
-  const ideUrl = `${this.url}/compile`; 
-  return this.http.post(ideUrl, { code }).pipe(
-    catchError(error => {
-      // Process error and return a user-friendly message or rethrow
-      console.error('An error occurred', error);
-      return throwError('An error occurred; please try again later.');
-    })
-  )}}
+  executeCode(code: string): Observable<any> {
+    const ideUrl = `${this.url}/compile`;
+    return this.http.post(ideUrl, { code }).pipe(
+      catchError((error) => {
+        // Process error and return a user-friendly message or rethrow
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+  // get method
+  getAllChapters(): Observable<any> {
+    return this.http.get(`${this.url}/api/chapter`).pipe(
+      catchError((error) => {
+        console.error('An error occurred while fetching chapters', error);
+        return throwError('Failed to fetch chapters; please try again later.');
+      })
+    );
+  }
+
+  getRandomTask(): Observable<any> {
+    return this.http.get(`${this.url}/api/chapter/random`).pipe(
+      catchError((error) => {
+        console.error('An error occurred while fetching chapters', error);
+        return throwError('Failed to fetch chapters; please try again later.');
+      })
+    );
+  }
+
+}

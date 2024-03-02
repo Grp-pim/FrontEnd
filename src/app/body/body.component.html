@@ -92,9 +92,22 @@
   </div>
 
   <!-- Full-width row below the top section -->
-  <div class="row">
-    <div class="col-12">
-      <textarea name="" readonly id="" cols="184" rows="8"></textarea>
+
+  <!-- <div *ngFor="let chapter of chapters" class="col-12">
+    <textarea name="" readonly id="" cols="184" rows="8">{{
+      chapter.name
+    }}</textarea>
+    <div *ngFor="let task of chapter?.tasks" class="task">
+      <textarea name="" readonly id="" cols="184" rows="1">{{
+        task.name
+      }}</textarea>
     </div>
-  </div>
+  </div> -->
+
+<div *ngIf="randomTask">
+  <textarea name="" id="" cols="184" rows="5">{{ randomTask.description }}</textarea>
+  <!-- Display other properties as needed -->
+</div>
+
+
 </div>
