@@ -32,13 +32,16 @@ export class ApiService {
     );
   }
 
-  getRandomTask(): Observable<any> {
-    return this.http.get(`${this.url}/api/chapter/random`).pipe(
-      catchError((error) => {
-        console.error('An error occurred while fetching chapters', error);
-        return throwError('Failed to fetch chapters; please try again later.');
-      })
-    );
+  getRandomTask(currentChapter: number): Observable<any> {
+    return this.http
+      .get(`${this.url}/api/chapter/${currentChapter}/random`)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred while fetching chapters', error);
+          return throwError(
+            'Failed to fetch chapters; please try again later.'
+          );
+        })
+      );
   }
-
 }

@@ -10,7 +10,7 @@
         </select>
       </div>
       <div>
-        <button
+        <button 
           type="button"
           id="run"
           class="btn btn-success"
@@ -71,7 +71,12 @@
       <!-- Second nested row in the first column -->
       <div class="row">
         <div class="col-12" id="outputcontainer">
-          <label for="Output" class="text-light mb-2">Output</label>
+          <div class="col">
+            <label for="Output" class="text-light ">Output</label>
+          </div>
+           <div class="col">
+            <button (click)="refreshRoute()" class="text-light mb">Hint</button>
+          </div>
           <textarea
             rows="8"
             [class.error-message]="executionResult.startsWith('Error:')"
@@ -103,11 +108,11 @@
       }}</textarea>
     </div>
   </div> -->
-
-<div *ngIf="randomTask">
-  <textarea name="" id="" cols="184" rows="5">{{ randomTask.description }}</textarea>
-  <!-- Display other properties as needed -->
-</div>
-
-
+  <ng-container *ngIf="randomTask">{{ randomTask.name }}</ng-container>
+  <div *ngIf="randomTask">
+    <textarea name="" id="" cols="184" rows="5">{{
+      randomTask.description
+    }}</textarea>
+    <!-- Display other properties as needed -->
+  </div>
 </div>
