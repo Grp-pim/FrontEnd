@@ -12,6 +12,9 @@ import { HttpClientModule} from '@angular/common/http';
 import { GameComponent } from './game/game.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from './hint-modal/hint-modal.component';
+import { SidebarComponent } from './body/sidebar/sidebar.component';
+import { SidebarModule } from 'primeng/sidebar'; // 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -22,6 +25,8 @@ import { HintModalComponent } from './hint-modal/hint-modal.component';
     MonacoEditorModule.forRoot(),
     HttpClientModule,
     NgbModalModule,
+    SidebarModule,
+    BrowserAnimationsModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
@@ -32,6 +37,7 @@ import { HintModalComponent } from './hint-modal/hint-modal.component';
     BodyComponent,
     GameComponent,
     HintModalComponent,
+    SidebarComponent,
   ],
 })
 export class AppModule {}

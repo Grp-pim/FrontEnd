@@ -1,0 +1,12 @@
+<p-sidebar [(visible)]="sidebarVisible">
+  <ng-template pTemplate="content">
+    <p *ngFor="let chapter of chapters; let i = index" [ngStyle]="{ 'color': i <= currentChapter ? 'black' : 'red' }">{{ chapter.name }}</p>
+  </ng-template></p-sidebar
+>
+<button
+  (click)="sidebarVisible = true"
+  class="btn btn-primary"
+  icon="pi pi-arrow-right"
+>
+  Show/hide
+</button>

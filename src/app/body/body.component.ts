@@ -30,7 +30,7 @@ export class BodyComponent implements OnInit {
     private modalService: NgbModal
   ) {}
   ngOnInit(): void {
-    // this.getAllChapters();
+    this.getAllChapters();
     this.getRandomTask(this.currentChapter);
   }
 
@@ -76,7 +76,7 @@ export class BodyComponent implements OnInit {
   openModal() {
     const modalRef = this.modalService.open(HintModalComponent);
     // Optionally, pass data to the modal component
-  modalRef.componentInstance.hintContent = this.randomTask.hint;
+    modalRef.componentInstance.hintContent = this.randomTask.hint;
   }
   refreshRoute() {
     // Navigate to the current route with the option to skip the location change
@@ -94,15 +94,17 @@ export class BodyComponent implements OnInit {
       this.getRandomTask(this.currentChapter);
     }
   }
-  // getAllChapters() {
-  //   this.apiService.getAllChapters().subscribe(
-  //     (data) => {
-  //       console.log(data); // Check the retrieved data
-  //       this.chapters = data; // Adjust based on the actual structure
-  //     },
-  //     (error) => {
-  //       console.log('error fetching', error);
-  //     }
-  //   );
-  // }
+  // for sidebar
+  getAllChapters() {
+    this.apiService.getAllChapters().subscribe(
+      (data) => {
+        // console.log(data); // Check the retrieved data
+        this.chapters = data; // Adjust based on the actual structure
+      },
+      (error) => {
+        console.log('error fetching', error);
+      }
+    );
+  }
+  //end for sidebar
 }

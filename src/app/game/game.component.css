@@ -4,10 +4,10 @@
     overflow-x: hidden;
 }
 .game{
-    width: 500px;
-    height: 300px;
+    width: 700px;
+    height: 400px;
     border: 1px solid black;
-    margin-top: 90px; 
+    margin-top: 60px; 
 }
 #character{
     width: 20px;
