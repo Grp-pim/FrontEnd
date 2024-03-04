@@ -42,7 +42,7 @@
   </div>
 </div> -->
 
-<div class="container-fluid">
+<div class="container">
   <!-- Top section with two columns, where the first column has two nested rows -->
   <div class="row">
     <!-- First column which is subdivided into two rows -->
@@ -72,10 +72,23 @@
       <div class="row">
         <div class="col-12" id="outputcontainer">
           <div class="col">
-            <label for="Output" class="text-light ">Output</label>
+            <label for="Output" class="text-light">Output</label>
           </div>
-           <div class="col">
-            <button (click)="refreshRoute()" class="text-light mb">Hint</button>
+          <div class="col">
+            <button
+              [disabled]="nextChapterButtonClicked"
+              (click)="fetchNextChapterTask()"
+              class="btn btn-primary"
+            >
+              <p>NextTask</p>
+            </button>
+            <button type="button" class="btn btn-success" (click)="openModal()">Get Hint</button>
+          </div>
+          <div class="col" *ngIf="showHintButton">
+            <app-hint-modal
+              [hintContent]="hintContent"
+              (closeModalEvent)="closeModal()"
+            ></app-hint-modal>
           </div>
           <textarea
             rows="8"
