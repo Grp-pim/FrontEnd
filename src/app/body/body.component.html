@@ -3,7 +3,7 @@
     <div class="col-md-6" id="ideOutputContainer">
       <div class="d-flex flex-column h-100">
         <div class="d-flex justify-content-between mb-3">
-<app-sidebar [chapters]="chapters"></app-sidebar>
+          <app-sidebar [chapters]="chapters" [currentChapter]="currentChapter"></app-sidebar>
           <button
             type="button"
             id="run"
@@ -26,7 +26,10 @@
           </div>
         </div>
 
-        <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code"></ngx-monaco-editor>
+        <ngx-monaco-editor
+          [options]="editorOptions"
+          [(ngModel)]="code"
+        ></ngx-monaco-editor>
 
         <div class="mt-3">
           <label class="text-light mr-2">Output:</label>
@@ -37,8 +40,13 @@
             type="text"
             id="output"
             aria-label="Output"
-          >{{ executionResult }}</textarea>
-          <app-hint-modal *ngIf="showHintButton" [hintContent]="hintContent" (closeModalEvent)="closeModal()"></app-hint-modal>
+            >{{ executionResult }}</textarea
+          >
+          <app-hint-modal
+            *ngIf="showHintButton"
+            [hintContent]="hintContent"
+            (closeModalEvent)="closeModal()"
+          ></app-hint-modal>
         </div>
       </div>
     </div>
@@ -50,6 +58,11 @@
 
   <ng-container *ngIf="randomTask">{{ randomTask.name }}</ng-container>
   <div *ngIf="randomTask">
-    <textarea name="" id="" cols="184" rows="5" class="text-light bg-dark">{{ randomTask.description }}</textarea>
+    <textarea name="" id="" cols="184" rows="5" class="text-light bg-dark">{{
+      randomTask.description
+    }}</textarea>
+    <textarea name="" id="" cols="184" rows="5" class="text-light bg-dark">{{
+      randomTask.toDo
+    }}</textarea>
   </div>
 </div>

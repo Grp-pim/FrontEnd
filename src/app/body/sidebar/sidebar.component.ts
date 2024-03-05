@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -7,7 +7,7 @@ import { Component, Input} from '@angular/core';
 export class SidebarComponent {
   sidebarVisible: boolean = false;
   @Input() chapters: any[] = [];
-  @Input() currentChapter :number = 0;
+  @Input() currentChapter: number = 0;
 
   constructor() {}
 
