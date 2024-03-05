@@ -2,7 +2,7 @@
   <ng-template pTemplate="content">
     <p
       *ngFor="let chapter of chapters; let i = index"
-      [ngStyle]="{ color: i <= currentChapter ? '#000000' : '#C0C0C0' }"
+      [ngStyle]="{ color: i < currentChapter ? '#000000' : '#C0C0C0' }"
     >
       {{ chapter.name }}
     </p>
