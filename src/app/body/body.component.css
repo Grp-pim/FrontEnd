@@ -4,10 +4,7 @@
 }
 
 /* Adjust container padding and margin */
-.container {
-  padding: 1rem;
-  margin: 0 auto;
-}
+
 
 .bg-dark {
   background-color: #212529;
@@ -46,7 +43,7 @@
   color: white;
 }
 textarea{
-  background-color: rgb(206, 206, 206);
+  background-color: rgb(235, 235, 235);
   resize: none;
   margin: 3px 0px;
  font-size: 0.9rem;
@@ -58,7 +55,7 @@ textarea{
   .bottomBar{
     background-color: black;
     width: 100%;
-    height: 50px;
+    padding: 10px;
   }
   .bottomBar p{
     color: white;
@@ -68,3 +65,23 @@ textarea{
   button {
     border-radius: 0%;
   }
+
+  #topBar {
+  height: auto; /* Adjust the height as needed */
+}
+
+.navbar {
+  margin-bottom: 0; /* Eliminate the margin */
+}
+
+.learnBanner{
+  width: 100%;
+  background-color: white;
+  padding: 7px 13px ;
+
+}
+.learnBanner h6{
+  margin: 0 8px;
+  display: inline-block;  
+
+}
