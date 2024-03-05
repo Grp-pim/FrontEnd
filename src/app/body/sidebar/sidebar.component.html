@@ -1,5 +1,8 @@
 <p-sidebar [(visible)]="sidebarVisible">
   <ng-template pTemplate="content">
+    <h4>{{ chapters[currentChapter - 1]?.name }}</h4>
+    <!-- Display current chapter name -->
+    <br />
     <p
       *ngFor="let chapter of chapters; let i = index"
       [ngStyle]="{ color: i < currentChapter ? '#000000' : '#C0C0C0' }"
@@ -13,5 +16,5 @@
   class="btn btn-primary"
   icon="pi pi-arrow-right"
 >
-  Show/hide
+  <i class="bi bi-list-nested"></i> Syllabus
 </button>

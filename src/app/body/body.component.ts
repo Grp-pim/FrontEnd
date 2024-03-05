@@ -12,6 +12,7 @@ import { HintModalComponent } from '../hint-modal/hint-modal.component';
 })
 export class BodyComponent implements OnInit {
   chapters: any[] = [];
+  totalChapter:number = this.chapters.length;
   randomTask: any;
   currentChapter: number = 1;
   editorOptions = { theme: 'vs-dark', language: 'java' };

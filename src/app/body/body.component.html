@@ -1,40 +1,65 @@
 <div class="container-fluid dark-theme">
   <div class="row">
-    <div class="col-md-6" id="ideOutputContainer">
+    <ng-container *ngIf="randomTask"
+      ><h4 id="chapterName">{{ randomTask.name }}</h4></ng-container
+    >
+  </div>
+  <div class="row" id="topBar">
+  <div class="col d-flex justify-content-start align-items-start">
+      <app-sidebar
+        [chapters]="chapters"
+        [currentChapter]="currentChapter"
+      ></app-sidebar>
+      <button
+        type="button"
+        id="run"
+        class="btn btn-primary"
+        (click)="executeUserCode()"
+      >
+        <i class="bi bi-play-fill"></i> Run
+      </button>
+      <button
+        [disabled]="nextChapterButtonClicked"
+        (click)="fetchNextChapterTask()"
+        class="btn btn-secondary"
+      >
+        <i class="bi bi-arrow-right"></i> Next Task
+      </button>
+      <button type="button" class="btn btn-info" (click)="openModal()">
+        <i class="bi bi-info-circle"></i> Get Hint
+      </button>
+    </div>
+  </div>
+  <div class="row gx-1 justify-content-center">
+    <div *ngIf="randomTask" class="col-lg-4 col-md-12" id="taskInfo">
+      <textarea
+        class="form-control task-textarea"
+        rows="8"
+        id="textAreaTask"
+        readonly
+        >{{ randomTask.description }}</textarea
+      >
+      <textarea
+        class="form-control task-textarea"
+        rows="8"
+        id="textAreaTask"
+        readonly
+        >{{ randomTask.toDo }}</textarea
+      >
+    </div>
+    <div class="col-lg-4 col-md-6" id="ideOutputContainer">
       <div class="d-flex flex-column h-100">
-        <div class="d-flex justify-content-between mb-3">
-          <app-sidebar [chapters]="chapters" [currentChapter]="currentChapter"></app-sidebar>
-          <button
-            type="button"
-            id="run"
-            class="btn btn-primary"
-            (click)="executeUserCode()"
-          >
-            <i class="bi bi-play-fill"></i> Run
-          </button>
-          <div class="d-flex gap-1">
-            <button
-              [disabled]="nextChapterButtonClicked"
-              (click)="fetchNextChapterTask()"
-              class="btn btn-secondary"
-            >
-              <i class="bi bi-arrow-right"></i> Next Task
-            </button>
-            <button type="button" class="btn btn-info" (click)="openModal()">
-              <i class="bi bi-info-circle"></i> Get Hint
-            </button>
-          </div>
-        </div>
-
         <ngx-monaco-editor
           [options]="editorOptions"
           [(ngModel)]="code"
+          class="editor"
         ></ngx-monaco-editor>
 
-        <div class="mt-3">
+        <div class="output-container">
           <label class="text-light mr-2">Output:</label>
           <textarea
             rows="8"
+            readonly
             class="form-control overflow-auto text-light bg-dark"
             [class.error]="executionResult.startsWith('Error:')"
             type="text"
@@ -51,18 +76,11 @@
       </div>
     </div>
 
-    <div class="col-md-6" id="gameContainer">
+    <div class="col-lg-4 col-md-6" id="gameContainer">
       <app-game></app-game>
     </div>
   </div>
-
-  <ng-container *ngIf="randomTask">{{ randomTask.name }}</ng-container>
-  <div *ngIf="randomTask">
-    <textarea name="" id="" cols="184" rows="5" class="text-light bg-dark">{{
-      randomTask.description
-    }}</textarea>
-    <textarea name="" id="" cols="184" rows="5" class="text-light bg-dark">{{
-      randomTask.toDo
-    }}</textarea>
+  <div class="bottomBar">
+    <p>{{ currentChapter }}/{{ chapters.length }}</p>
   </div>
 </div>
