@@ -5,8 +5,8 @@
 }
 .game{
     width: 550;
-    height: 400px;
-    border: 1px solid black;
+    height: 455px;
+    border: 1px solid #838891;
     margin-top: 60px; 
 }
 #character{

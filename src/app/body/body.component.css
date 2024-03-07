@@ -1,10 +1,12 @@
 /* Body Component CSS */
 .dark-theme {
-  background-color: #212529;
+  background-color: #252E38;
 }
 
 /* Adjust container padding and margin */
-
+.navbar{
+  background-color: #131C25;
+}
 
 .bg-dark {
   background-color: #212529;
@@ -12,6 +14,7 @@
 
 #output {
   resize: none;
+  
   /* Set appropriate height or rows */
 }
 
@@ -30,7 +33,8 @@
 }
 
 #topBar{
-  background-color: #191c1f;
+  background-color: #212529;  
+
 }
 
 #taskInfo{
@@ -84,4 +88,22 @@ textarea{
   margin: 0 8px;
   display: inline-block;  
 
+}
+/* Style for the footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #252E38; /* Red background */
+}
+
+/* Center the text within the footer */
+.footer-content {
+  text-align: center;
+  color: white; /* Text color */
+  padding: 30px 0; /* Add padding for spacing */
+}
+navbar navbar-expand-sm navbar-dark bg-dark{
+  margin: 30px 0;
 }
