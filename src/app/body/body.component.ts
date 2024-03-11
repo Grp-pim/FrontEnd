@@ -4,6 +4,7 @@ import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from '../hint-modal/hint-modal.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-body',
@@ -12,7 +13,7 @@ import { HintModalComponent } from '../hint-modal/hint-modal.component';
 })
 export class BodyComponent implements OnInit {
   chapters: any[] = [];
-  totalChapter:number = this.chapters.length;
+  totalChapter: number = this.chapters.length;
   randomTask: any;
   currentChapter: number = 1;
   editorOptions = { theme: 'vs-dark', language: 'java' };
@@ -24,19 +25,23 @@ export class BodyComponent implements OnInit {
   nextChapterButtonClicked: boolean = false; // Flag to track if the next chapter button has been clicked
   hintContent: string = 'aaaa';
   closeModal: any; // Define the type according to your requirement
+  loading: boolean = false;
   constructor(
     private apiService: ApiService,
     private sharedService: SharedService,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService
   ) {}
   ngOnInit(): void {
     this.getAllChapters();
     this.getRandomTask(this.currentChapter);
+    this.spinner.show();
   }
 
   // Method to execute code
   executeUserCode() {
+    this.loading = true;
     this.apiService.executeCode(this.code).subscribe({
       next: (response) => {
         this.executionResult = response.success
@@ -47,6 +52,7 @@ export class BodyComponent implements OnInit {
         if (response.success) {
           this.codeExecutionSuccess = true;
           this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
+          this.loading = false;
         }
       },
       error: (httpErrorResponse) => {
@@ -54,6 +60,7 @@ export class BodyComponent implements OnInit {
         // Trigger game start without autoPlay in case of HTTP error
         this.sharedService.triggerStartGame(false);
         this.errorTry++;
+        this.loading = false;
         if (this.errorTry >= 2) {
           this.showHintButton = true;
         }
@@ -62,6 +69,7 @@ export class BodyComponent implements OnInit {
   }
 
   getRandomTask(currentChapter: number): void {
+    this.executionResult = '';
     this.nextChapterButtonClicked = false; // Reset the flag
     this.apiService.getRandomTask(currentChapter).subscribe(
       (task: any) => {

@@ -1,18 +1,18 @@
 import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-KQZ766RO.js";
-import {
   ObjectUtils,
   PrimeNGConfig,
   PrimeTemplate,
   SharedModule,
   zindexutils
 } from "./chunk-VCYPHGJ7.js";
+import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-QTXLHNFN.js";
 import {
   CommonModule,
   DOCUMENT,

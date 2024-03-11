@@ -15,6 +15,9 @@ import { HintModalComponent } from './hint-modal/hint-modal.component';
 import { SidebarComponent } from './body/sidebar/sidebar.component';
 import { SidebarModule } from 'primeng/sidebar'; // 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CreateTestComponent } from './create-test/create-test.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 @NgModule({
@@ -27,6 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgbModalModule,
     SidebarModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
+    RadioButtonModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
@@ -38,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GameComponent,
     HintModalComponent,
     SidebarComponent,
+    CreateTestComponent,
   ],
 })
 export class AppModule {}

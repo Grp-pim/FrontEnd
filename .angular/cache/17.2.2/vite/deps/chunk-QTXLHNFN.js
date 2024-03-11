@@ -61,6 +61,14 @@ function style(tokens) {
     offset: null
   };
 }
+function state(name, styles, options) {
+  return {
+    type: AnimationMetadataType.State,
+    name,
+    styles,
+    options
+  };
+}
 function transition(stateChangeExpr, steps, options = null) {
   return {
     type: AnimationMetadataType.Transition,
@@ -470,6 +478,7 @@ export {
   animate,
   sequence,
   style,
+  state,
   transition,
   animation,
   useAnimation,
@@ -486,4 +495,4 @@ export {
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-KQZ766RO.js.map
+//# sourceMappingURL=chunk-QTXLHNFN.js.map

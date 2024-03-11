@@ -1,4 +1,14 @@
 <div class="container-fluid dark-theme">
+  <ng-container *ngIf="loading">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="default"
+      color="#fff"
+      type="pacman"
+      [fullScreen]="true"
+      ><p style="color: #fff">Executing...</p></ngx-spinner
+    >
+  </ng-container>
   <div class="row">
     <nav
       class="navbar navbar-expand-sm navbar-dark"
