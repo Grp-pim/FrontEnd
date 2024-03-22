@@ -27,10 +27,10 @@ import {
   ɵɵqueryRefresh,
   ɵɵviewQuery
 } from "./chunk-CUCTVBR6.js";
+import "./chunk-UKEHM6V6.js";
 import {
   fromEvent
 } from "./chunk-V2DXGMIT.js";
-import "./chunk-UKEHM6V6.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/ngx-monaco-editor-v2/fesm2022/ngx-monaco-editor-v2.mjs

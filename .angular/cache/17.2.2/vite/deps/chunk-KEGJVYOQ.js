@@ -273,6 +273,11 @@ var ObjectUtils = class _ObjectUtils {
     return a !== a && b !== b;
   }
 };
+var lastId = 0;
+function UniqueComponentId(prefix = "pn_id_") {
+  lastId++;
+  return `${prefix}${lastId}`;
+}
 function ZIndexUtils() {
   let zIndexes = [];
   const generateZIndex = (key, baseZIndex) => {
@@ -1324,6 +1329,7 @@ var TreeDragDropService = class _TreeDragDropService {
 
 export {
   ObjectUtils,
+  UniqueComponentId,
   zindexutils,
   ConfirmEventType,
   ConfirmationService,
@@ -1342,4 +1348,4 @@ export {
   TranslationKeys,
   TreeDragDropService
 };
-//# sourceMappingURL=chunk-VCYPHGJ7.js.map
+//# sourceMappingURL=chunk-KEGJVYOQ.js.map

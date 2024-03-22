@@ -44,4 +44,12 @@ export class ApiService {
         })
       );
   }
+  createTest(test: any): Observable<any> {
+    return this.http.post(`${this.url}/api/test`, test).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
 }

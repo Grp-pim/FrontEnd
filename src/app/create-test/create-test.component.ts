@@ -1,27 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ApiService } from '../services/api.service';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-create-test',
   templateUrl: './create-test.component.html',
   styleUrls: ['./create-test.component.css'],
+  providers: [MessageService], // Add MessageService to providers array
 })
 export class CreateTestComponent implements OnInit {
-  ingredient!: string;
   currentStep: number = 1;
-  constructor(private router: Router) {}
+
+  Test = {
+    name: '',
+    difficulty: '',
+  };
+
+  constructor(
+    private router: Router,
+    private apiService: ApiService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {}
 
   nextStep() {
     this.currentStep++;
   }
+
   previousStep() {
     this.currentStep--;
   }
 
   createTest() {
-    const testId = '123'; // Replace with actual test ID
-    this.router.navigateByUrl(`compilator`);
+    return this.apiService.createTest(this.Test).subscribe(
+      (data) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Test Created',
+        });
+         setTimeout(() => {
+           this.router.navigate(['/compilator']);
+         }, 3000); 
+
+        console.log(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }

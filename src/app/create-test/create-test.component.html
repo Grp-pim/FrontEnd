@@ -12,39 +12,22 @@
       class="form-control"
       id="formGroupExampleInput"
       placeholder="type the name of the test"
+      [(ngModel)]="Test.name"
     />
   </div>
 
   <p>2-What is the difficulty :</p>
   <div class="diffForm">
     <div class="flex align-items-center">
-      <p-radioButton
-        name="pizza"
-        value="Cheese"
-        [(ngModel)]="ingredient"
-        inputId="ingredient1"
-      ></p-radioButton>
-      <label for="ingredient1" class="ml-2">Easy</label>
+      <input type="radio" [value]="'Easy'" [(ngModel)]="Test.difficulty"/> Easy
     </div>
 
     <div class="flex align-items-center">
-      <p-radioButton
-        name="pizza"
-        value="Mushroom"
-        [(ngModel)]="ingredient"
-        inputId="ingredient2"
-      ></p-radioButton>
-      <label for="ingredient2" class="ml-2">Medium</label>
+      <input type="radio" [value]="'Medium'" [(ngModel)]="Test.difficulty"/> Medium
     </div>
 
     <div class="flex align-items-center">
-      <p-radioButton
-        name="pizza"
-        value="Pepper"
-        [(ngModel)]="ingredient"
-        inputId="ingredient3"
-      ></p-radioButton>
-      <label for="ingredient3" class="ml-2">Hard</label>
+      <input type="radio" [value]="'Hard'" [(ngModel)]="Test.difficulty"/> Hard
     </div>
   </div>
   <br />
@@ -68,31 +51,14 @@
   <p>3. Which skills do you want to test?</p>
   <div class="languageCheckBox">
     <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="inlineCheckbox1"
-        value="option1"
-      />
-      <label class="form-check-label" for="inlineCheckbox1">Java</label>
+      <input type="checkbox" /> Java
     </div>
     <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="inlineCheckbox2"
-        value="option2"
-      />
-      <label class="form-check-label" for="inlineCheckbox2">Python</label>
+      <input type="checkbox"  />
+      Python
     </div>
     <div class="form-check form-check-inline">
-      <input
-        class="form-check-input"
-        type="checkbox"
-        id="inlineCheckbox2"
-        value="option2"
-      />
-      <label class="form-check-label" for="inlineCheckbox2">C</label>
+      <input type="checkbox" /> C
     </div>
   </div>
   <br />
@@ -106,8 +72,10 @@
     </button>
     <button type="button" class="btn btn-primary btn-block col-sm-10" (click)="createTest()">
       Create my test
-      
+
       <i class="bi bi-arrow-right"></i>
     </button>
   </div>
 </div>
+<p-toast></p-toast>
+

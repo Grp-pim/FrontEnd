@@ -18,6 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ToastModule } from 'primeng/toast';
+import { NotfoundComponent } from './notfound/notfound.component';
+
 
 
 @NgModule({
@@ -32,6 +35,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     RadioButtonModule,
+    ToastModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
@@ -44,6 +48,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     HintModalComponent,
     SidebarComponent,
     CreateTestComponent,
+    NotfoundComponent,
   ],
 })
 export class AppModule {}
