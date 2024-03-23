@@ -20,9 +20,9 @@ import { CreateTestComponent } from './create-test/create-test.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { NotfoundComponent } from './notfound/notfound.component';
-
-
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,6 +36,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
     NgxSpinnerModule,
     RadioButtonModule,
     ToastModule,
+    TableModule,
+    PaginatorModule,
+    ButtonModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

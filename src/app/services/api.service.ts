@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { error } from 'console';
 @Injectable({
   providedIn: 'root',
 })
@@ -48,6 +49,16 @@ export class ApiService {
     return this.http.post(`${this.url}/api/test`, test).pipe(
       catchError((error) => {
         console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+
+  // fetch Test List
+  getAllTests(): Observable<any> {
+    return this.http.get(`${this.url}/api/test`).pipe(
+      catchError((error) => {
+        console.error('error fetching Tests', error);
         return throwError('An error occurred; please try again later.');
       })
     );

@@ -1,9 +1,11 @@
 import {
+  TimesIcon
+} from "./chunk-ESYBBNXT.js";
+import {
   DomHandler,
   Ripple,
-  RippleModule,
-  TimesIcon
-} from "./chunk-5BNEMWII.js";
+  RippleModule
+} from "./chunk-5OJTZSK2.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,

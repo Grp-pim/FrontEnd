@@ -19,15 +19,16 @@
   <p>2-What is the difficulty :</p>
   <div class="diffForm">
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Easy'" [(ngModel)]="Test.difficulty"/> Easy
+      <input type="radio" [value]="'Easy'" [(ngModel)]="Test.difficulty" /> Easy
     </div>
 
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Medium'" [(ngModel)]="Test.difficulty"/> Medium
+      <input type="radio" [value]="'Medium'" [(ngModel)]="Test.difficulty" />
+      Medium
     </div>
 
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Hard'" [(ngModel)]="Test.difficulty"/> Hard
+      <input type="radio" [value]="'Hard'" [(ngModel)]="Test.difficulty" /> Hard
     </div>
   </div>
   <br />
@@ -40,6 +41,14 @@
       Next step: choose skills
       <i class="bi bi-arrow-right"></i>
     </button>
+    <button
+      type="button"
+      class="btn btn-warning btn-block"
+      (click)="listTestPage()"
+    >
+      List tests
+      <i class="bi bi-arrow-right"></i>
+    </button>
   </div>
 </div>
 
@@ -48,18 +57,28 @@
     <i class="bi bi-file-text"></i> <span class="ml-2">Create a new test</span>
   </div>
   <br />
-  <p>3. Which skills do you want to test?</p>
+    <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label"
+      >3-Description of the test</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="type the description of the test"
+      [(ngModel)]="Test.description"
+    />
+  </div>
+  <p>4. Which skills do you want to test?</p>
   <div class="languageCheckBox">
     <div class="form-check form-check-inline">
       <input type="checkbox" /> Java
     </div>
     <div class="form-check form-check-inline">
-      <input type="checkbox"  />
+      <input type="checkbox" />
       Python
     </div>
-    <div class="form-check form-check-inline">
-      <input type="checkbox" /> C
-    </div>
+    <div class="form-check form-check-inline"><input type="checkbox" /> C</div>
   </div>
   <br />
   <div class="btnContainer">
@@ -70,12 +89,58 @@
     >
       Back
     </button>
-    <button type="button" class="btn btn-primary btn-block col-sm-10" (click)="createTest()">
+    <button
+      type="button"
+      class="btn btn-primary btn-block col-sm-10"
+      (click)="createTest()"
+    >
       Create my test
 
       <i class="bi bi-arrow-right"></i>
     </button>
+     <button
+      type="button"
+      class="btn btn-warning btn-block"
+      (click)="listTestPage()"
+    >
+      List tests
+      <i class="bi bi-arrow-right"></i>
+    </button>
   </div>
 </div>
-<p-toast></p-toast>
 
+<div class="container-fluid" *ngIf="currentStep === 3">
+  <div class="flex align-items-center">
+    <i class="bi bi-file-text"></i> <span class="ml-2">List tests</span>
+  </div>
+  <br />
+  <div class="card">
+    <p-table
+        [value]="tests"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '30rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 20]"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">Name</th>
+                <th style="width:25%">description</th>
+                <th style="width:25%">difficulty</th>
+                <th style="width:25%">id</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-test>
+            <tr>
+                <td>{{ test.name }}</td>
+                <td>{{ test.description }}</td>
+                <td>{{ test.difficulty }}</td>
+                <td>{{ test._id }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>
+<p-toast></p-toast>

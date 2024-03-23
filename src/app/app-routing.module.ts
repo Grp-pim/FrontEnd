@@ -6,7 +6,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
-  { path: 'compilator', title: 'Comp', component: BodyComponent },
+  { path: 'compilator/:_id', title: 'Comp', component: BodyComponent },
   { path: 'test', title: 'Test', component: CreateTestComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
