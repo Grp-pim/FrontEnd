@@ -24,6 +24,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
 import { TestPageComponent } from './test-page/test-page.component';
+import { SideBarComponent } from './test-page/side-bar/sidebar.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -54,6 +55,7 @@ import { TestPageComponent } from './test-page/test-page.component';
     CreateTestComponent,
     NotfoundComponent,
     TestPageComponent,
+    SideBarComponent,
   ],
 })
 export class AppModule {}

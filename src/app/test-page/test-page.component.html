@@ -19,7 +19,7 @@
       aria-label="Offcanvas navbar large"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{ randomTask.name }}</a>
+        <a class="navbar-brand" href="#">{{ test.name }}</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -93,10 +93,10 @@
   </div>
   <div class="row" id="topBar">
     <div class="col d-flex justify-content-start align-items-start">
-      <app-sidebar
-        [chapters]="chapters"
-        [currentChapter]="currentChapter"
-      ></app-sidebar>
+      <app-sideBar
+        [test]="test"
+        [currentTaskIndex]="currentTaskIndex"
+      ></app-sideBar>
       <button
         type="button"
         id="run"
@@ -107,19 +107,26 @@
       </button>
       <button
         [disabled]="nextChapterButtonClicked"
-        (click)="fetchNextChapterTask()"
+        (click)="goToPreviousTask()"
+        class="btn btn-secondary"
+      >
+        <i class="bi bi-arrow-left"></i> Previous Task
+      </button>
+            <button
+        [disabled]="nextChapterButtonClicked"
+        (click)="goToNextTask()"
         class="btn btn-secondary"
       >
         <i class="bi bi-arrow-right"></i> Next Task
       </button>
-      <button type="button" class="btn btn-info" (click)="openModal()">
+      <button type="button" class="btn btn-info">
         <i class="bi bi-info-circle"></i> Get Hint
       </button>
     </div>
   </div>
   <div class="row gx-1 justify-content-center">
     <div *ngIf="randomTask" class="col-lg-4 col-md-12" id="taskInfo">
-      <div class="learnBanner">
+      <!-- <div class="learnBanner">
         <i class="bi bi-book"></i>
         <h6>Learn</h6>
       </div>
@@ -129,7 +136,7 @@
         id="textAreaTask"
         readonly
         >{{ randomTask.description }}</textarea
-      >
+      > -->
       <div class="learnBanner">
         <i class="bi bi-check2-square"></i>
         <h6>Task</h6>
@@ -139,7 +146,7 @@
         rows="7"
         id="textAreaTask"
         readonly
-        >{{ randomTask.toDo }}</textarea
+        >{{ test.tasks[currentTaskIndex].name }}</textarea
       >
     </div>
     <div class="col-lg-4 col-md-6" id="ideOutputContainer">
@@ -181,6 +188,6 @@
   </div>
 
   <footer>
-    <div class="footer-content">{{ currentChapter }}/{{ chapters.length }}</div>
+    <div class="footer-content">{{ currentTaskIndex }}/{{this.test.tasks.length}}</div>
   </footer>
 </div>

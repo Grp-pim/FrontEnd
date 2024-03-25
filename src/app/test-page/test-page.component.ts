@@ -13,21 +13,22 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class TestPageComponent implements OnInit {
   // test page dec
-test : any;
-id : any
+  test: any;
+  id: any;
+  currentTaskIndex: number = 0;
+  code: string = '';
   //
   chapters: any[] = [];
   totalChapter: number = this.chapters.length;
   randomTask: any;
   currentChapter: number = 1;
   editorOptions = { theme: 'vs-dark', language: 'java' };
-  code: string = '';
   errorTry: number = 0;
   showHintButton: boolean = false;
   executionResult: string = '';
   codeExecutionSuccess: boolean = false; // Flag to track code execution success
   nextChapterButtonClicked: boolean = false; // Flag to track if the next chapter button has been clicked
-  hintContent: string = 'aaaa';
+  hintContent: string = '';
   closeModal: any; // Define the type according to your requirement
   loading: boolean = false;
   constructor(
@@ -39,13 +40,13 @@ id : any
     private act: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.getAllChapters();
+    // this.getAllChapters();
     this.getRandomTask(this.currentChapter);
     this.spinner.show();
-    // read the id in the link 
+    // read the id in the link
     this.id = this.act.snapshot.paramMap.get('id');
-    console.log(this.id);
     this.getAllbyId();
+    this.code = this.test.tasks[this.currentTaskIndex].initialCode;
   }
 
   // Method to execute code
@@ -83,7 +84,7 @@ id : any
     this.apiService.getRandomTask(currentChapter).subscribe(
       (task: any) => {
         this.randomTask = task; // Assign the received task object to the randomTask property
-        this.code = task.initialCode;
+        // this.code = task.initialCode;
       },
       (error: any) => {
         console.error('Error fetching random task:', error);
@@ -104,36 +105,46 @@ id : any
       console.log('refreshing');
     });
   }
-  fetchNextChapterTask() {
-    if (!this.nextChapterButtonClicked && this.codeExecutionSuccess) {
-      this.nextChapterButtonClicked = true; // Set flag to true to prevent multiple clicks
-      this.currentChapter++;
-      this.codeExecutionSuccess = false; // Reset code execution success flag
-      this.getRandomTask(this.currentChapter);
-    }
-  }
+  // fetchNextChapterTask() {
+  //   if (!this.nextChapterButtonClicked && this.codeExecutionSuccess) {
+  //     this.nextChapterButtonClicked = true; // Set flag to true to prevent multiple clicks
+  //     this.currentChapter++;
+  //     this.codeExecutionSuccess = false; // Reset code execution success flag
+  //     this.getRandomTask(this.currentChapter);
+  //   }
+  // }
   // for sidebar
-  getAllChapters() {
-    this.apiService.getAllChapters().subscribe(
+  // getAllChapters() {
+  //   this.apiService.getAllChapters().subscribe(
+  //     (data) => {
+  //       // console.log(data); // Check the retrieved data
+  //       this.chapters = data; // Adjust based on the actual structure
+  //     },
+  //     (error) => {
+  //       console.log('error fetching', error);
+  //     }
+  //   );
+  // }
+  //end for sidebar
+  getAllbyId() {
+    this.apiService.getTestById(this.id).subscribe(
       (data) => {
-        // console.log(data); // Check the retrieved data
-        this.chapters = data; // Adjust based on the actual structure
+        this.test = data;
+        console.log(this.test);
       },
       (error) => {
-        console.log('error fetching', error);
+        console.log(error);
       }
     );
   }
-  //end for sidebar
-getAllbyId(){
-  this.apiService.getTestById(this.id).subscribe(
-    (data) => {
-      this.test = data;
-      console.log(this.test);
-    },
-    (error) =>{
-      console.log(error);
+  goToNextTask(){
+    if (this.currentTaskIndex < this.test.tasks.length - 1) {
+      this.currentTaskIndex++;
     }
-  )
-}
+  }
+  goToPreviousTask(){
+ if (this.currentTaskIndex > 0) {
+   this.currentTaskIndex--;
+ }
+  }
 }
