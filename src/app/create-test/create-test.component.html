@@ -57,7 +57,7 @@
     <i class="bi bi-file-text"></i> <span class="ml-2">Create a new test</span>
   </div>
   <br />
-    <div class="mb-3">
+  <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label"
       >3-Description of the test</label
     >
@@ -98,7 +98,7 @@
 
       <i class="bi bi-arrow-right"></i>
     </button>
-     <button
+    <button
       type="button"
       class="btn btn-warning btn-block"
       (click)="listTestPage()"
@@ -110,37 +110,44 @@
 </div>
 
 <div class="container-fluid" *ngIf="currentStep === 3">
-  <div class="flex align-items-center">
-    <i class="bi bi-file-text"></i> <span class="ml-2">List tests</span>
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="h3 align-item-center">
+    <i class="bi bi-file-text"></i> <span class="ml-2">Create a new test</span>
+    </div>
+    <button type="button" class="btn btn-warning" (click)="goToCreateTest()">
+      Create new test
+      <i class="bi bi-arrow-right"></i>
+    </button>
   </div>
+
   <br />
   <div class="card">
     <p-table
-        [value]="tests"
-        [paginator]="true"
-        [rows]="5"
-        [showCurrentPageReport]="true"
-        [tableStyle]="{ 'min-width': '30rem' }"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [rowsPerPageOptions]="[5, 10, 20]"
+      [value]="tests"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '30rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 20]"
     >
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width:25%">Name</th>
-                <th style="width:25%">description</th>
-                <th style="width:25%">difficulty</th>
-                <th style="width:25%">id</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-test>
-            <tr>
-                <td>{{ test.name }}</td>
-                <td>{{ test.description }}</td>
-                <td>{{ test.difficulty }}</td>
-                <td>{{ test._id }}</td>
-            </tr>
-        </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 25%">Name</th>
+          <th style="width: 25%">description</th>
+          <th style="width: 25%">difficulty</th>
+          <th style="width: 25%">id</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-test>
+        <tr>
+          <td>{{ test.name }}</td>
+          <td>{{ test.description }}</td>
+          <td>{{ test.difficulty }}</td>
+          <td>{{ test._id }}</td>
+        </tr>
+      </ng-template>
     </p-table>
-</div>
+  </div>
 </div>
 <p-toast></p-toast>

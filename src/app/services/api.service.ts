@@ -53,10 +53,19 @@ export class ApiService {
       })
     );
   }
-
   // fetch Test List
   getAllTests(): Observable<any> {
     return this.http.get(`${this.url}/api/test`).pipe(
+      catchError((error) => {
+        console.error('error fetching Tests', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+
+  // fetch Test List
+  getTestById(id: string): Observable<any> {
+    return this.http.get(`${this.url}/api/test/${id}`).pipe(
       catchError((error) => {
         console.error('error fetching Tests', error);
         return throwError('An error occurred; please try again later.');

@@ -45,6 +45,9 @@ this.getAllTest();
   previousStep() {
     this.currentStep--;
   }
+  goToCreateTest(){
+    this.currentStep=1;
+  }
 
   createTest() {
     return this.apiService.createTest(this.Test).subscribe(
