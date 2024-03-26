@@ -25,6 +25,8 @@ import { ButtonModule } from 'primeng/button';
 import { PaginatorModule } from 'primeng/paginator';
 import { TestPageComponent } from './test-page/test-page.component';
 import { SideBarComponent } from './test-page/side-bar/sidebar.component';
+import { CountdownModule } from 'ngx-countdown';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { SideBarComponent } from './test-page/side-bar/sidebar.component';
     TableModule,
     PaginatorModule,
     ButtonModule,
+    CountdownModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

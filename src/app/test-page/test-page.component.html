@@ -1,7 +1,3 @@
-<div *ngIf="test">
-<p>{{test.name}}</p>
-</div>
-
 <div class="container-fluid dark-theme">
   <ng-container *ngIf="loading">
     <ngx-spinner
@@ -13,84 +9,28 @@
       ><p style="color: #fff">Executing...</p></ngx-spinner
     >
   </ng-container>
-  <div class="row">
-    <nav
-      class="navbar navbar-expand-sm navbar-dark"
-      aria-label="Offcanvas navbar large"
-    >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{ test.name }}</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar2"
-          aria-controls="offcanvasNavbar2"
-          aria-label="Toggle navigation"
-        >
-          <!-- <span class="navbar-toggler-icon"></span> -->
-        </button>
-        <div
-          class="offcanvas offcanvas-end text-bg-dark"
-          tabindex="-1"
-          id="offcanvasNavbar2"
-          aria-labelledby="offcanvasNavbar2Label"
-        >
-          <div class="offcanvas-header">
-            <!-- <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5> -->
-            <button
-              type="button"
-              class="btn-close btn-close-white"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex mt-3 mt-lg-0" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
-          </div>
-        </div>
+
+  <div class="headerContainer">
+    <div class="d-flex align-items-center py-2">
+      <!-- Add py-2 for vertical padding -->
+      <h3 class="taskHeader">
+        Question {{ currentTaskIndex + 1 }}/{{ this.test.tasks.length }}
+      </h3>
+      <span class="taskHeader">-</span>
+      <h3 class="taskHeader">{{ test.tasks[currentTaskIndex].name }}</h3>
+      <div class="timerContainer">
+        <countdown [config]="{ leftTime: test.duration * 1 }"> </countdown>
+  <span style="display: inline;margin: 0 2px;">/</span>
+        <p style="margin: 0;padding: 0;">{{ test.duration }}</p>
       </div>
-    </nav>
+      <!-- Icon goes here -->
+      <div class="ms-auto iconHeader" style="color: white">
+        <i class="bi bi-gear-wide-connected"></i>
+        <!-- Replace bi-icon-name with the appropriate Bootstrap Icons class -->
+      </div>
+    </div>
   </div>
+
   <div class="row" id="topBar">
     <div class="col d-flex justify-content-start align-items-start">
       <app-sideBar
@@ -112,15 +52,13 @@
       >
         <i class="bi bi-arrow-left"></i> Previous Task
       </button>
-            <button
+      <button
         [disabled]="nextChapterButtonClicked"
         (click)="goToNextTask()"
         class="btn btn-secondary"
       >
-        <i class="bi bi-arrow-right"></i> Next Task
-      </button>
-      <button type="button" class="btn btn-info">
-        <i class="bi bi-info-circle"></i> Get Hint
+        Next Task
+        <i class="bi bi-arrow-right"></i>
       </button>
     </div>
   </div>
@@ -188,6 +126,8 @@
   </div>
 
   <footer>
-    <div class="footer-content">{{ currentTaskIndex }}/{{this.test.tasks.length}}</div>
+    <div class="footer-content">
+      {{ currentTaskIndex + 1 }}/{{ this.test.tasks.length }}
+    </div>
   </footer>
 </div>

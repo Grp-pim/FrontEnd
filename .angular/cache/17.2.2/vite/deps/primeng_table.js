@@ -1,7 +1,4 @@
 import {
-  CheckIcon
-} from "./chunk-6R5KBH5V.js";
-import {
   ChevronDownIcon,
   Dropdown,
   DropdownModule,
@@ -14,6 +11,9 @@ import {
   Scroller,
   ScrollerModule
 } from "./chunk-E5KKNJFD.js";
+import {
+  CheckIcon
+} from "./chunk-6R5KBH5V.js";
 import {
   TimesIcon
 } from "./chunk-ESYBBNXT.js";

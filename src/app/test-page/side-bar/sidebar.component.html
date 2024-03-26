@@ -1,11 +1,11 @@
 <p-sidebar [(visible)]="sidebarVisible">
-  <ng-template pTemplate="content">
+  <ng-template pTemplate="content" >
     <h4>{{ test?.tasks[currentTaskIndex - 1]?.name }}</h4>
     <!-- Display current task name -->
     <br />
     <p
       *ngFor="let task of test?.tasks; let i = index" 
-      [ngStyle]="{ color: i < currentTaskIndex ? '#000000' : '#C0C0C0' }"
+      [ngStyle]="{ color: i <= currentTaskIndex ? '#000000' : '#C0C0C0' }"
     >
       {{ task.name }}
     </p>

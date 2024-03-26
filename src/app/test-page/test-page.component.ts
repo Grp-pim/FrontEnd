@@ -47,6 +47,7 @@ export class TestPageComponent implements OnInit {
     this.id = this.act.snapshot.paramMap.get('id');
     this.getAllbyId();
     this.code = this.test.tasks[this.currentTaskIndex].initialCode;
+
   }
 
   // Method to execute code
@@ -137,14 +138,16 @@ export class TestPageComponent implements OnInit {
       }
     );
   }
-  goToNextTask(){
+  goToNextTask() {
     if (this.currentTaskIndex < this.test.tasks.length - 1) {
       this.currentTaskIndex++;
+      this.executionResult = '';
     }
   }
-  goToPreviousTask(){
- if (this.currentTaskIndex > 0) {
-   this.currentTaskIndex--;
- }
+  goToPreviousTask() {
+    if (this.currentTaskIndex > 0) {
+      this.currentTaskIndex--;
+      this.executionResult = '';
+    }
   }
 }
