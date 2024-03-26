@@ -20,8 +20,8 @@
       <h3 class="taskHeader">{{ test.tasks[currentTaskIndex].name }}</h3>
       <div class="timerContainer">
         <countdown [config]="{ leftTime: test.duration * 1 }"> </countdown>
-  <span style="display: inline;margin: 0 2px;">/</span>
-        <p style="margin: 0;padding: 0;">{{ test.duration }}</p>
+        <span style="display: inline; margin: 0 2px">/</span>
+        <p style="margin: 0; padding: 0">{{ test.duration }}</p>
       </div>
       <!-- Icon goes here -->
       <div class="ms-auto iconHeader" style="color: white">
@@ -32,7 +32,7 @@
   </div>
 
   <div class="row" id="topBar">
-    <div class="col d-flex justify-content-start align-items-start">
+    <div class="col">
       <app-sideBar
         [test]="test"
         [currentTaskIndex]="currentTaskIndex"
@@ -62,66 +62,47 @@
       </button>
     </div>
   </div>
-  <div class="row gx-1 justify-content-center">
-    <div *ngIf="randomTask" class="col-lg-4 col-md-12" id="taskInfo">
-      <!-- <div class="learnBanner">
-        <i class="bi bi-book"></i>
-        <h6>Learn</h6>
-      </div>
-      <textarea
-        class="form-control task-textarea"
-        rows="7"
-        id="textAreaTask"
-        readonly
-        >{{ randomTask.description }}</textarea
-      > -->
-      <div class="learnBanner">
-        <i class="bi bi-check2-square"></i>
-        <h6>Task</h6>
-      </div>
-      <textarea
-        class="form-control task-textarea"
-        rows="7"
-        id="textAreaTask"
-        readonly
-        >{{ test.tasks[currentTaskIndex].name }}</textarea
-      >
-    </div>
-    <div class="col-lg-4 col-md-6" id="ideOutputContainer">
-      <div class="row">
-        <!-- First Row: #ide -->
-        <div class="col">
-          <div id="ide">
-            <ngx-monaco-editor
-              [options]="editorOptions"
-              [(ngModel)]="code"
-              class="editor"
-            ></ngx-monaco-editor>
-          </div>
+  <div class="row rowColContainer">
+    <div *ngIf="randomTask" class="col-md-6 firstCol">
+      <div class="row allRow">
+        <div class="learnBanner">
+          <i class="bi bi-check2-square"></i>
+          <h6>Task</h6>
         </div>
-      </div>
-      <div class="row">
-        <!-- Second Row: .output-container -->
-        <div class="col">
-          <div class="output-container flex-grow-1">
-            <label class="text-light mr-2">Output:</label>
-            <textarea
-              rows="8"
-              readonly
-              class="form-control overflow-auto text-light bg-dark"
-              [class.error]="executionResult.startsWith('Error:')"
-              type="text"
-              id="output"
-              aria-label="Output"
-              >{{ executionResult }}</textarea
-            >
-          </div>
-        </div>
+        <textarea
+          class="form-control"
+          rows="10"
+          id="textAreaTask"
+          readonly
+          >{{ test.tasks[currentTaskIndex].description }}</textarea
+        >
       </div>
     </div>
-
-    <div class="col-lg-4 col-md-6" id="gameContainer">
-      <app-game></app-game>
+    <div class="col-md-6 secondCol">
+      <div class="row allRow">
+        <div id="ide">
+          <ngx-monaco-editor
+            [options]="editorOptions"
+            [(ngModel)]="code"
+            class="editor"
+          ></ngx-monaco-editor>
+        </div>
+      </div>
+      <div class="row allRow">
+        <div class="output-container flex-grow-1">
+          <label class="text-light mr-2">Output:</label>
+          <textarea
+            rows="8"
+            readonly
+            class="form-control overflow-auto text-light bg-dark"
+            [class.error]="executionResult.startsWith('Error:')"
+            type="text"
+            id="textAreaOutput"
+            aria-label="Output"
+            >{{ executionResult }}</textarea
+          >
+        </div>
+      </div>
     </div>
   </div>
 

@@ -49,9 +49,15 @@ textarea {
   margin: 3px 0px;
   font-size: 0.9rem;
   letter-spacing: 1px;
-  line-height: 30px;
   border: none;
   font-family: Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas, monospace;
+}
+#textAreaTask{
+  line-height: 35px;
+
+}
+#textAreaOutput{
+  line-height: 20px;
 }
 
 .bottomBar {
@@ -77,9 +83,7 @@ button {
 }
 
 .learnBanner {
-  width: 100%;
   background-color: white;
-  padding: 7px 13px;
 }
 .learnBanner h6 {
   margin: 0 8px;
@@ -128,4 +132,19 @@ countdown{
   position: relative;
   align-items: center;
   background-color: white;
+}
+
+.firstCol , .secondCol {
+    flex: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.rowColContainer{
+  display: flex;
+  bottom: -30%;
+}
+.allRow{
+  flex:1;
 }
