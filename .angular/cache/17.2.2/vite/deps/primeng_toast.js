@@ -87,8 +87,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-CUCTVBR6.js";
-import "./chunk-UKEHM6V6.js";
 import "./chunk-V2DXGMIT.js";
+import "./chunk-UKEHM6V6.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-icons-exclamationtriangle.mjs

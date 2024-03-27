@@ -80,7 +80,17 @@
     </div>
     <div class="form-check form-check-inline"><input type="checkbox" /> C</div>
   </div>
-  <br />
+  <br/>
+   <p>5. Choose the duration (in minutes)</p>
+<mat-chip-listbox aria-label="Duration selection">
+  <mat-chip-option  (click)="selectDuration(5)">5</mat-chip-option>
+  <mat-chip-option (click)="selectDuration(10)">10</mat-chip-option>
+  <mat-chip-option (click)="selectDuration(15)">15</mat-chip-option>
+  <mat-chip-option (click)="selectDuration(20)">20</mat-chip-option>
+</mat-chip-listbox>
+
+
+  <br>
   <div class="btnContainer">
     <button
       type="button"
@@ -134,9 +144,10 @@
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 25%">Name</th>
-          <th style="width: 25%">description</th>
-          <th style="width: 25%">difficulty</th>
-          <th style="width: 25%">id</th>
+          <th style="width: 25%">Description</th>
+          <th style="width: 25%">Difficulty</th>
+          <th style="width: 25%">Duration</th>
+          <th style="width: 25%">Id</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-test>
@@ -144,6 +155,7 @@
           <td>{{ test.name }}</td>
           <td>{{ test.description }}</td>
           <td>{{ test.difficulty }}</td>
+          <td>{{ test.duration }}</td>
           <td>{{ test._id }}</td>
         </tr>
       </ng-template>

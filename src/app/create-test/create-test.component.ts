@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
-import { error } from 'console';
-import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-create-test',
@@ -18,9 +16,9 @@ export class CreateTestComponent implements OnInit {
 
   Test = {
     name: '',
-    description:'',
+    description: '',
     difficulty: '',
-    uui: '',
+    duration: 0,
   };
 
   constructor(
@@ -35,7 +33,7 @@ export class CreateTestComponent implements OnInit {
       const id = params['_id']; // Access the value of _id parameter
       // Now you can use the ID to fetch the corresponding test data from MongoDB
     });
-this.getAllTest();
+    this.getAllTest();
   }
 
   nextStep() {
@@ -45,11 +43,12 @@ this.getAllTest();
   previousStep() {
     this.currentStep--;
   }
-  goToCreateTest(){
-    this.currentStep=1;
+  goToCreateTest() {
+    this.currentStep = 1;
   }
 
   createTest() {
+    console.log(this.Test);
     return this.apiService.createTest(this.Test).subscribe(
       (data) => {
         this.messageService.add({
@@ -77,7 +76,11 @@ this.getAllTest();
     );
   }
 
-listTestPage(){
-  this.currentStep=3;
-}
+  listTestPage() {
+    this.currentStep = 3;
+  }
+  selectDuration(selectedDuration: number): void {
+    this.Test.duration = selectedDuration;
+    console.log('Selected duration:', this.Test);
+  }
 }
