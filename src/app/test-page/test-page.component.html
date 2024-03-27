@@ -32,7 +32,7 @@
   </div>
 
   <div class="row" id="topBar">
-    <div class="col">
+    <div class="col" style="padding: 0;">
       <app-sideBar
         [test]="test"
         [currentTaskIndex]="currentTaskIndex"
@@ -65,13 +65,13 @@
   <div class="row rowColContainer">
     <div *ngIf="randomTask" class="col-md-6 firstCol">
       <div class="row allRow">
-        <div class="learnBanner">
-          <i class="bi bi-check2-square"></i>
+        <div class="learnBanner" style="display: flex;flex-direction: row; flex: 1;align-items: center;padding-block: 8px;">
+          <i class="bi bi-check2-square" style="margin-right: 5px;"></i>
           <h6>Task</h6>
         </div>
         <textarea
           class="form-control"
-          rows="10"
+          rows="21"
           id="textAreaTask"
           readonly
           >{{ test.tasks[currentTaskIndex].description }}</textarea
@@ -92,7 +92,7 @@
         <div class="output-container flex-grow-1">
           <label class="text-light mr-2">Output:</label>
           <textarea
-            rows="8"
+            rows="12"
             readonly
             class="form-control overflow-auto text-light bg-dark"
             [class.error]="executionResult.startsWith('Error:')"

@@ -23,7 +23,6 @@
 #ideOutputContainer {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .output-container {
@@ -52,18 +51,9 @@ textarea {
   border: none;
   font-family: Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas, monospace;
 }
-#textAreaTask{
-  line-height: 35px;
-
-}
-#textAreaOutput{
-  line-height: 20px;
-}
 
 .bottomBar {
   background-color: black;
-  width: 100%;
-  padding: 10px;
 }
 .bottomBar p {
   color: white;
@@ -73,28 +63,12 @@ textarea {
 button {
   border-radius: 0%;
 }
-
-#topBar {
-  height: auto; /* Adjust the height as needed */
-}
-
-.navbar {
-  margin-bottom: 0; /* Eliminate the margin */
-}
-
 .learnBanner {
   background-color: white;
 }
-.learnBanner h6 {
-  margin: 0 8px;
-  display: inline-block;
-}
-/* Style for the footer */
+
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  margin-top: auto;
   background-color: #252e38; /* Red background */
 }
 
@@ -104,28 +78,24 @@ footer {
   color: white; /* Text color */
   padding: 30px 0; /* Add padding for spacing */
 }
-navbar navbar-expand-sm navbar-dark bg-dark {
-  margin: 30px 0;
-}
-
 .taskHeader {
   color: rgb(238, 238, 238);
   font-size: 18px;
 }
-.headerContainer h3{
+.headerContainer h3 {
   margin: 10px 3px;
 }
-.iconHeader{
-  font-size:  24px;
-  color : rgb(238, 238, 238);
+.iconHeader {
+  font-size: 24px;
+  color: rgb(238, 238, 238);
 }
-countdown{
+countdown {
   color: rgb(240, 73, 73);
 }
 .timerContainer {
-  display : flex; 
+  display: flex;
   flex-direction: row;
-  margin : 0 10px;
+  margin: 0 10px;
   padding: 0 8px;
   border-radius: 100px;
 
@@ -134,17 +104,25 @@ countdown{
   background-color: white;
 }
 
-.firstCol , .secondCol {
-    flex: 1;
+.firstCol,
+.secondCol {
+  display: flex; /* Use flexbox for the second column */
+  flex-direction: column; /* Arrange items vertically */
+  padding: 0;
+}
+
+.rowColContainer {
+  flex: 1;
+}
+
+html,
+body,
+* {
+  height: 100%;
+  margin: 0;
+}
+.container-fluid.dark-theme {
   display: flex;
   flex-direction: column;
-
-}
-
-.rowColContainer{
-  display: flex;
-  bottom: -30%;
-}
-.allRow{
-  flex:1;
+  min-height: 100vh;
 }
