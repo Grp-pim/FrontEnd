@@ -1,11 +1,12 @@
 import {
   TimesIcon
-} from "./chunk-ESYBBNXT.js";
+} from "./chunk-HMDV45M7.js";
+import "./chunk-UTQDGVZX.js";
 import {
   DomHandler,
   Ripple,
   RippleModule
-} from "./chunk-5OJTZSK2.js";
+} from "./chunk-25ETOE2O.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
@@ -73,8 +74,8 @@ import {
   ɵɵtemplate,
   ɵɵtemplateRefExtractor
 } from "./chunk-CUCTVBR6.js";
-import "./chunk-V2DXGMIT.js";
 import "./chunk-UKEHM6V6.js";
+import "./chunk-V2DXGMIT.js";
 import "./chunk-ZDOIMVJD.js";
 
 // node_modules/primeng/fesm2022/primeng-sidebar.mjs

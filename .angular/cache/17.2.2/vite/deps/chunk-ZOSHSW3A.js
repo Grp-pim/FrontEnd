@@ -1,9 +1,11 @@
 import {
-  BaseIcon,
+  BaseIcon
+} from "./chunk-UTQDGVZX.js";
+import {
   DomHandler,
   Ripple,
   RippleModule
-} from "./chunk-5OJTZSK2.js";
+} from "./chunk-25ETOE2O.js";
 import {
   ObjectUtils,
   PrimeTemplate,
@@ -947,4 +949,4 @@ export {
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-IWENZJ2J.js.map
+//# sourceMappingURL=chunk-ZOSHSW3A.js.map

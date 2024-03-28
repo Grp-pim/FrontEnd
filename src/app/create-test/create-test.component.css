@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 .container-fluid{
-width: 45%;
+width: 60%;
 }
 .flex.align-items-center span{
     font-size: 25px;
@@ -18,4 +18,8 @@ width: 45%;
 }
 btn.btn-primary.btn-block{
     width: 100%;
+}
+td{
+    margin: 0;
+    padding: 5px;
 }

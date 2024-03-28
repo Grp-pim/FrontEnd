@@ -17,7 +17,6 @@ import { SidebarModule } from 'primeng/sidebar'; //
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateTestComponent } from './create-test/create-test.component';
-import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TableModule } from 'primeng/table';
@@ -27,7 +26,9 @@ import { TestPageComponent } from './test-page/test-page.component';
 import { SideBarComponent } from './test-page/side-bar/sidebar.component';
 import { CountdownModule } from 'ngx-countdown';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { MenuModule } from 'primeng/menu';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 @NgModule({
   imports: [
@@ -47,6 +48,9 @@ import { MatChipsModule } from '@angular/material/chips';
     ButtonModule,
     CountdownModule,
     MatChipsModule,
+    RadioButtonModule,
+    MenuModule,
+    ContextMenuModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

@@ -19,16 +19,21 @@
   <p>2-What is the difficulty :</p>
   <div class="diffForm">
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Easy'" [(ngModel)]="Test.difficulty" /> Easy
+      <p-radioButton value="Easy" [(ngModel)]="Test.difficulty"></p-radioButton>
+      Easy
     </div>
 
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Medium'" [(ngModel)]="Test.difficulty" />
+      <p-radioButton
+        value="Medium"
+        [(ngModel)]="Test.difficulty"
+      ></p-radioButton>
       Medium
     </div>
 
     <div class="flex align-items-center">
-      <input type="radio" [value]="'Hard'" [(ngModel)]="Test.difficulty" /> Hard
+      <p-radioButton value="Hard" [(ngModel)]="Test.difficulty"></p-radioButton>
+      Hard
     </div>
   </div>
   <br />
@@ -80,17 +85,16 @@
     </div>
     <div class="form-check form-check-inline"><input type="checkbox" /> C</div>
   </div>
-  <br/>
-   <p>5. Choose the duration (in minutes)</p>
-<mat-chip-listbox aria-label="Duration selection">
-  <mat-chip-option  (click)="selectDuration(5)">5</mat-chip-option>
-  <mat-chip-option (click)="selectDuration(10)">10</mat-chip-option>
-  <mat-chip-option (click)="selectDuration(15)">15</mat-chip-option>
-  <mat-chip-option (click)="selectDuration(20)">20</mat-chip-option>
-</mat-chip-listbox>
+  <br />
+  <p>5. Choose the duration (in minutes)</p>
+  <mat-chip-listbox aria-label="Duration selection">
+    <mat-chip highlighted (click)="selectDuration(5)">5</mat-chip>
+    <mat-chip highlighted (click)="selectDuration(10)">10</mat-chip>
+    <mat-chip (click)="selectDuration(15)">15</mat-chip>
+    <mat-chip (click)="selectDuration(20)">20</mat-chip>
+  </mat-chip-listbox>
 
-
-  <br>
+  <br />
   <div class="btnContainer">
     <button
       type="button"
@@ -122,11 +126,11 @@
 <div class="container-fluid" *ngIf="currentStep === 3">
   <div class="d-flex align-items-center justify-content-between">
     <div class="h3 align-item-center">
-    <i class="bi bi-file-text"></i> <span class="ml-2">Test list</span>
+      <i class="bi bi-file-text"></i> <span class="ml-2">Test list</span>
     </div>
     <button type="button" class="btn btn-warning" (click)="goToCreateTest()">
       Create new test
-      <i class="bi bi-arrow-right"></i>
+      <i class="bi bi-plus-circle"></i>
     </button>
   </div>
 
@@ -143,11 +147,13 @@
     >
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 25%">Name</th>
-          <th style="width: 25%">Description</th>
-          <th style="width: 25%">Difficulty</th>
-          <th style="width: 25%">Duration</th>
-          <th style="width: 25%">Id</th>
+          <th style="width: 30%">Name</th>
+          <th style="width: 30%">Description</th>
+          <th style="width: 8%">Difficulty</th>
+          <th style="width: 8%">Duration</th>
+          <!-- <th style="width: 25%">Id</th> -->
+          <th style="width: 15%">Created at</th>
+          <th style="width: 8%"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-test>
@@ -156,7 +162,19 @@
           <td>{{ test.description }}</td>
           <td>{{ test.difficulty }}</td>
           <td>{{ test.duration }}</td>
-          <td>{{ test._id }}</td>
+          <!-- <td>{{ test._id }}</td> -->
+          <td>{{ test.createdAt | date }}</td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-success mr-2"
+                (click)="visitTest(test._id)"
+              >
+                Visit
+              </button>
+            </div>
+          </td>
         </tr>
       </ng-template>
     </p-table>

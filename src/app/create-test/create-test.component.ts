@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { MessageService } from 'primeng/api';
+import {  MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [MessageService], // Add MessageService to providers array
 })
 export class CreateTestComponent implements OnInit {
+
   currentStep: number = 1;
   tests: any[] = [];
 
@@ -57,6 +58,7 @@ export class CreateTestComponent implements OnInit {
           detail: 'Test Created',
         });
         console.log(data);
+        this.getAllTest();
       },
       (error) => {
         console.error(error);
@@ -82,5 +84,10 @@ export class CreateTestComponent implements OnInit {
   selectDuration(selectedDuration: number): void {
     this.Test.duration = selectedDuration;
     console.log('Selected duration:', this.Test);
+  }
+
+  visitTest(testId: string) {
+    const url = `/test/${testId}`;
+    window.open(url, '_blank'); // Opens the URL in a new tab
   }
 }
