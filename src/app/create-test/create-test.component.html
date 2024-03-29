@@ -19,21 +19,18 @@
   <p>2-What is the difficulty :</p>
   <div class="diffForm">
     <div class="flex align-items-center">
-      <p-radioButton value="Easy" [(ngModel)]="Test.difficulty"></p-radioButton>
-      Easy
+  <p-radioButton name="difficulty" value="Easy" [(ngModel)]="selectedDifficulty"></p-radioButton>
+  <label for="easy">Easy</label><br>
     </div>
 
     <div class="flex align-items-center">
-      <p-radioButton
-        value="Medium"
-        [(ngModel)]="Test.difficulty"
-      ></p-radioButton>
-      Medium
+  <p-radioButton name="difficulty" value="Medium" [(ngModel)]="selectedDifficulty"></p-radioButton>
+  <label for="medium">Medium</label>
     </div>
 
     <div class="flex align-items-center">
-      <p-radioButton value="Hard" [(ngModel)]="Test.difficulty"></p-radioButton>
-      Hard
+  <p-radioButton name="difficulty" value="Hard" [(ngModel)]="selectedDifficulty"></p-radioButton>
+  <label for="hard">Hard</label>
     </div>
   </div>
   <br />
@@ -95,7 +92,7 @@
   </mat-chip-listbox>
 
   <br />
-  <div class="btnContainer">
+  <div class="btnContainer row">
     <button
       type="button"
       class="btn btn-default btn-block col-sm-2"

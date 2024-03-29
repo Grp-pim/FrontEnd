@@ -31,6 +31,7 @@ export class TestPageComponent implements OnInit {
   hintContent: string = '';
   closeModal: any; // Define the type according to your requirement
   loading: boolean = false;
+  loadingMessage: string = 'Executing...';
   constructor(
     private apiService: ApiService,
     private sharedService: SharedService,
@@ -47,7 +48,6 @@ export class TestPageComponent implements OnInit {
     this.id = this.act.snapshot.paramMap.get('id');
     this.getAllbyId();
     this.code = this.test.tasks[this.currentTaskIndex].initialCode;
-
   }
 
   // Method to execute code
@@ -63,18 +63,14 @@ export class TestPageComponent implements OnInit {
         if (response.success) {
           this.codeExecutionSuccess = true;
           this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
-          this.loading = false;
         }
+        this.loading = false;
       },
       error: (httpErrorResponse) => {
         this.executionResult = `Error: ${httpErrorResponse.error.error}`;
         // Trigger game start without autoPlay in case of HTTP error
         this.sharedService.triggerStartGame(false);
-        this.errorTry++;
         this.loading = false;
-        if (this.errorTry >= 2) {
-          this.showHintButton = true;
-        }
       },
     });
   }
@@ -139,15 +135,26 @@ export class TestPageComponent implements OnInit {
     );
   }
   goToNextTask() {
+    this.loadingMessage = 'Next task...';
     if (this.currentTaskIndex < this.test.tasks.length - 1) {
-      this.currentTaskIndex++;
+      this.loading = true; // Set loading to true
       this.executionResult = '';
+      this.currentTaskIndex++;
+      setTimeout(() => {
+        this.loading = false; // Set loading to false after 5 seconds
+      }, 1000);
     }
   }
   goToPreviousTask() {
+    this.loadingMessage = 'Previous task...';
     if (this.currentTaskIndex > 0) {
+      this.loading = true; // Set loading to true
+
       this.currentTaskIndex--;
       this.executionResult = '';
+      setTimeout(() => {
+        this.loading = false; // Set loading to false after 5 seconds
+      }, 1000);
     }
   }
 }

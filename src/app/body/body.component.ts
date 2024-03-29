@@ -40,7 +40,8 @@ export class BodyComponent implements OnInit {
   }
 
   // Method to execute code
-  executeUserCode() {
+
+   executeUserCode() {
     this.loading = true;
     this.apiService.executeCode(this.code).subscribe({
       next: (response) => {
@@ -52,21 +53,19 @@ export class BodyComponent implements OnInit {
         if (response.success) {
           this.codeExecutionSuccess = true;
           this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
-          this.loading = false;
         }
+        this.loading = false;
       },
       error: (httpErrorResponse) => {
         this.executionResult = `Error: ${httpErrorResponse.error.error}`;
         // Trigger game start without autoPlay in case of HTTP error
         this.sharedService.triggerStartGame(false);
-        this.errorTry++;
         this.loading = false;
-        if (this.errorTry >= 2) {
-          this.showHintButton = true;
-        }
       },
     });
   }
+
+  
 
   getRandomTask(currentChapter: number): void {
     this.executionResult = '';

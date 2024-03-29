@@ -11,7 +11,6 @@ import { ActivatedRoute } from '@angular/router';
   providers: [MessageService], // Add MessageService to providers array
 })
 export class CreateTestComponent implements OnInit {
-
   currentStep: number = 1;
   tests: any[] = [];
 
@@ -21,6 +20,7 @@ export class CreateTestComponent implements OnInit {
     difficulty: '',
     duration: 0,
   };
+  selectedDifficulty: string = ''; // Variable to store the selected difficulty
 
   constructor(
     private router: Router,
@@ -50,7 +50,7 @@ export class CreateTestComponent implements OnInit {
 
   createTest() {
     console.log(this.Test);
-    return this.apiService.createTest(this.Test).subscribe(
+    return this.apiService.createTest({...this.Test,difficulty:this.selectedDifficulty}).subscribe(
       (data) => {
         this.messageService.add({
           severity: 'success',
