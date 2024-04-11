@@ -5,6 +5,7 @@ import { CreateTestComponent } from './create-test/create-test.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { TestExistsGuard } from './test-exists.guard';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,9 @@ const routes: Routes = [
     component: TestPageComponent,
     canActivate: [TestExistsGuard],
   },
-  // { path: 'compilator/:_id', title: 'Comp', component: BodyComponent },
-  { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
+  { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
+  { path: 'compilator', title: 'Comp', component: BodyComponent },
+  // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
   { path: 'test', title: 'Test', component: CreateTestComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];

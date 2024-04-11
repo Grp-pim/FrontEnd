@@ -16,23 +16,49 @@
     />
   </div>
 
+  <p>2-What is the type :</p>
+  <div class="diffForm">
+    <div class="flex align-items-center">
+      <p-radioButton value="Code" [(ngModel)]="testType"></p-radioButton>
+      <label for="Code">Code</label><br />
+    </div>
+
+    <div class="flex align-items-center">
+      <p-radioButton value="Quiz" [(ngModel)]="testType"></p-radioButton>
+      <label for="Quiz">Quiz</label>
+    </div>
+  </div>
+
   <p>2-What is the difficulty :</p>
   <div class="diffForm">
     <div class="flex align-items-center">
-  <p-radioButton name="difficulty" value="Easy" [(ngModel)]="selectedDifficulty"></p-radioButton>
-  <label for="easy">Easy</label><br>
+      <p-radioButton
+        name="difficulty"
+        value="Easy"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="easy">Easy</label><br />
     </div>
 
     <div class="flex align-items-center">
-  <p-radioButton name="difficulty" value="Medium" [(ngModel)]="selectedDifficulty"></p-radioButton>
-  <label for="medium">Medium</label>
+      <p-radioButton
+        name="difficulty"
+        value="Medium"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="medium">Medium</label>
     </div>
 
     <div class="flex align-items-center">
-  <p-radioButton name="difficulty" value="Hard" [(ngModel)]="selectedDifficulty"></p-radioButton>
-  <label for="hard">Hard</label>
+      <p-radioButton
+        name="difficulty"
+        value="Hard"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="hard">Hard</label>
     </div>
   </div>
+
   <br />
   <div class="btnContainer1">
     <button
@@ -147,6 +173,7 @@
           <th style="width: 30%">Name</th>
           <th style="width: 30%">Description</th>
           <th style="width: 8%">Difficulty</th>
+          <th style="width: 8%">type</th>
           <th style="width: 8%">Duration</th>
           <!-- <th style="width: 25%">Id</th> -->
           <th style="width: 15%">Created at</th>
@@ -158,6 +185,7 @@
           <td>{{ test.name }}</td>
           <td>{{ test.description }}</td>
           <td>{{ test.difficulty }}</td>
+          <td>{{ test.type }}</td>
           <td>{{ test.duration }}</td>
           <!-- <td>{{ test._id }}</td> -->
           <td>{{ test.createdAt | date }}</td>

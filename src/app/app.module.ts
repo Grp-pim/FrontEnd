@@ -1,4 +1,3 @@
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MenuModule } from 'primeng/menu';
 import { ContextMenuModule } from 'primeng/contextmenu';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
 
 @NgModule({
   imports: [
@@ -66,6 +66,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
     NotfoundComponent,
     TestPageComponent,
     SideBarComponent,
+    QuizPageComponent,
   ],
 })
 export class AppModule {}

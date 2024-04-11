@@ -14,7 +14,7 @@ export class ApiService {
 
   // post method
   executeCode(code: string): Observable<any> {
-    const ideUrl = `${this.url}/compile`;
+    const ideUrl = `${this.url}/api/chapter/compile`;
     return this.http.post(ideUrl, { code }).pipe(
       catchError((error) => {
         // Process error and return a user-friendly message or rethrow

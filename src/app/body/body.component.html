@@ -15,7 +15,11 @@
       aria-label="Offcanvas navbar large"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">{{ randomTask.name }}</a>
+        <h3 class="chapterHeader">
+          Question {{ currentChapter }}
+        </h3>
+        <span class="chapterHeader">-</span>
+        <h3 class="chapterHeader">{{ randomTask.name }} </h3>
         <button
           class="navbar-toggler"
           type="button"

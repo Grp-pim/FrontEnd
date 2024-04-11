@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import {  MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,10 +17,12 @@ export class CreateTestComponent implements OnInit {
   Test = {
     name: '',
     description: '',
+    type: '',
     difficulty: '',
     duration: 0,
   };
-  selectedDifficulty: string = ''; // Variable to store the selected difficulty
+  selectedDifficulty: string = '';
+  testType: string = '';
 
   constructor(
     private router: Router,
@@ -49,28 +51,34 @@ export class CreateTestComponent implements OnInit {
   }
 
   createTest() {
-    console.log(this.Test);
-    return this.apiService.createTest({...this.Test,difficulty:this.selectedDifficulty}).subscribe(
-      (data) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Test Created',
-        });
-        console.log(data);
-        this.getAllTest();
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+    // this.Test.type = this.testType; 
+
+    return this.apiService
+      .createTest({
+        ...this.Test,
+        difficulty: this.selectedDifficulty,
+        type: this.testType,
+      })
+      .subscribe(
+        (data) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Test Created',
+          });
+          this.getAllTest();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
   getAllTest() {
     return this.apiService.getAllTests().subscribe(
       (data) => {
         this.tests = data;
-        console.log(this.tests);
+        // console.log(this.tests);
       },
       (error) => {
         console.log('error fetching', error);
@@ -83,7 +91,6 @@ export class CreateTestComponent implements OnInit {
   }
   selectDuration(selectedDuration: number): void {
     this.Test.duration = selectedDuration;
-    console.log('Selected duration:', this.Test);
   }
 
   visitTest(testId: string) {
