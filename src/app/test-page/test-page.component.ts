@@ -126,7 +126,7 @@ export class TestPageComponent implements OnInit {
   getAllbyId() {
     this.apiService.getTestById(this.id).subscribe(
       (data) => {
-        this.test = data;
+        this.test = data; 
         console.log(this.test);
       },
       (error) => {

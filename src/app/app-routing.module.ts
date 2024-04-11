@@ -14,6 +14,12 @@ const routes: Routes = [
     component: TestPageComponent,
     canActivate: [TestExistsGuard],
   },
+  {
+    path: 'quizTest/:id',
+    title: 'exam',
+    component: QuizPageComponent,
+    canActivate: [TestExistsGuard],
+  },
   { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
   { path: 'compilator', title: 'Comp', component: BodyComponent },
   // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default

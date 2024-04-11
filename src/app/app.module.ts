@@ -29,6 +29,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { MenuModule } from 'primeng/menu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
     RadioButtonModule,
     MenuModule,
     ContextMenuModule,
+    TagModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
