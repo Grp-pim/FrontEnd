@@ -1,23 +1,72 @@
-<div *ngIf="test">
-  <h3>{{ test.name }}</h3>
-  <p>{{ test.description }}</p>
-  <div *ngFor="let quiz of test.quiz">
-    <h4>{{ quiz.name }}</h4>
-    <p>{{ quiz.description }}</p>
-    <div *ngFor="let option of quiz.options; let i = index">
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="quizOption{{ quiz.name }}"
-          [id]="'option' + i"
-          [value]="option"
-          [checked]="quiz.solutionQuiz[i]"
-        />
-        <label class="form-check-label" [for]="'option' + i">{{
-          option
-        }}</label>
+<div class="container-fluid dark-theme">
+  <ng-container *ngIf="loading">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="default"
+      color="#fff"
+      type="pacman"
+      [fullScreen]="true"
+      ><p style="color: #fff">{{ this.loadingMessage }}</p></ngx-spinner
+    >
+  </ng-container>
+  <div class="headerContainer">
+    <div class="d-flex align-items-center py-2">
+      <!-- Add py-2 for vertical padding -->
+      <h3 class="taskHeader">
+        Question {{ currentTaskIndex + 1 }}/{{ this.test.quiz.length }}
+      </h3>
+      <span class="taskHeader">-</span>
+      <h3 class="taskHeader">{{ test.quiz[currentTaskIndex].name }}</h3>
+      <div class="timerContainer">
+        <countdown [config]="{ leftTime: test.duration * 1 }"> </countdown>
+        <span style="display: inline; margin: 0 2px">/</span>
+        <p style="margin: 0; padding: 0">{{ test.duration }}</p>
+      </div>
+      <!-- Icon goes here -->
+      <div class="ms-auto iconHeader" style="color: white">
+        <i class="bi bi-gear-wide-connected"></i>
+        <!-- Replace bi-icon-name with the appropriate Bootstrap Icons class -->
       </div>
     </div>
   </div>
+
+  <div class="row" id="topBar">
+    <div class="col" style="padding: 0">
+      <app-sidebar-quiz
+        [testt]="test"
+        [currentTaskIndex]="currentTaskIndex"
+      ></app-sidebar-quiz>
+      <button type="button" id="run" class="btn btn-primary">
+        <i class="bi bi-play-fill"></i> Run
+      </button>
+      <button (click)="goToPreviousTask()" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Previous Task
+      </button>
+      <button (click)="goToNextTask()" class="btn btn-secondary">
+        Next Task
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="card flex justify-content-center">
+    <div class="flex flex-column gap-3">
+      <div
+        *ngFor="let option of test.quiz[currentTaskIndex].options"
+        class="field-checkbox"
+      >
+        <p-radioButton
+          [value]="option"
+          [(ngModel)]="selectedOption"
+        ></p-radioButton>
+        <label [for]="" class="ml-2">{{ option }}</label>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      {{ currentTaskIndex + 1 }}/{{ this.test.quiz.length }}
+    </div>
+  </footer>
 </div>

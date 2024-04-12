@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-sideBar',
-  templateUrl: './sideBar.component.html',
-  styleUrls: ['./sideBar.component.css'],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
 })
 export class SideBarComponent {
   sidebarVisible: boolean = false;

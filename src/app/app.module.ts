@@ -30,6 +30,8 @@ import { MenuModule } from 'primeng/menu';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { TagModule } from 'primeng/tag';
+import { SidebarQuizComponent } from './quiz-page/sidebar-quiz/sidebar-quiz.component';
+
 
 @NgModule({
   imports: [
@@ -69,6 +71,7 @@ import { TagModule } from 'primeng/tag';
     TestPageComponent,
     SideBarComponent,
     QuizPageComponent,
+    SidebarQuizComponent,
   ],
 })
 export class AppModule {}

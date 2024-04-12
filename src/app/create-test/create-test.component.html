@@ -185,9 +185,12 @@
           <td>{{ test.name }}</td>
           <td>{{ test.description }}</td>
           <td>{{ test.difficulty }}</td>
-<td>
-  <p-tag [severity]="test.type === 'Quiz' ? 'danger' : 'primary'" [value]="test.type"></p-tag>
-</td>
+          <td>
+            <p-tag
+              [severity]="test.type === 'Quiz' ? 'danger' : 'primary'"
+              [value]="test.type"
+            ></p-tag>
+          </td>
           <td>{{ test.duration }}</td>
           <!-- <td>{{ test._id }}</td> -->
           <td>{{ test.createdAt | date }}</td>
@@ -196,7 +199,7 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-                (click)="visitTest(test._id,test.type)"
+                (click)="visitTest(test._id, test.type)"
               >
                 Visit
               </button>
