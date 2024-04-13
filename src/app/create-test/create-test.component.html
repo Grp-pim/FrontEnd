@@ -178,6 +178,7 @@
           <!-- <th style="width: 25%">Id</th> -->
           <th style="width: 15%">Created at</th>
           <th style="width: 8%"></th>
+          <th style="width: 8%"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-test>
@@ -202,6 +203,17 @@
                 (click)="visitTest(test._id, test.type)"
               >
                 Visit
+              </button>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-success mr-2"
+             
+              >
+                Copy
               </button>
             </div>
           </td>

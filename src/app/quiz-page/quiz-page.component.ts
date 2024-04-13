@@ -1,7 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from './../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -14,12 +15,13 @@ export class QuizPageComponent implements OnInit {
   loading: boolean = false;
   loadingMessage: string = 'Executing...';
   currentTaskIndex: number = 0;
-  selectedOption: any;
-
+  selectedOption: any[] = [];
+  db: any;
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private localStore: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,8 @@ export class QuizPageComponent implements OnInit {
         this.loading = false; // Set loading to false after 5 seconds
       }, 1000);
     }
+      this.saveData();
+
   }
   goToPreviousTask() {
     this.loadingMessage = 'Previous task...';
@@ -55,5 +59,12 @@ export class QuizPageComponent implements OnInit {
         this.loading = false; // Set loading to false after 5 seconds
       }, 1000);
     }
+      this.saveData();
+  }
+  saveData() {
+    this.localStore.saveData(
+      `response-${this.currentTaskIndex}`,
+      JSON.stringify(this.selectedOption)
+    );
   }
 }

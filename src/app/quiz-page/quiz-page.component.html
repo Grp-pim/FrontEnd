@@ -39,7 +39,10 @@
       <button type="button" id="run" class="btn btn-primary">
         <i class="bi bi-play-fill"></i> Run
       </button>
-      <button (click)="goToPreviousTask()" class="btn btn-secondary">
+      <button
+        (click)="goToPreviousTask()"
+        class="btn btn-secondary"
+      >
         <i class="bi bi-arrow-left"></i> Previous Task
       </button>
       <button (click)="goToNextTask()" class="btn btn-secondary">
@@ -63,7 +66,6 @@
       </div>
     </div>
   </div>
-
   <footer>
     <div class="footer-content">
       {{ currentTaskIndex + 1 }}/{{ this.test.quiz.length }}

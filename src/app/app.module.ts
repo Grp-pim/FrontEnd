@@ -55,6 +55,7 @@ import { SidebarQuizComponent } from './quiz-page/sidebar-quiz/sidebar-quiz.comp
     MenuModule,
     ContextMenuModule,
     TagModule,
+    
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
