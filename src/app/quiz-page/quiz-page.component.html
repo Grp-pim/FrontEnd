@@ -36,7 +36,12 @@
         [testt]="test"
         [currentTaskIndex]="currentTaskIndex"
       ></app-sidebar-quiz>
-      <button type="button" id="run" class="btn btn-primary" (click)="submitQuiz()">
+      <button
+        type="button"
+        id="run"
+        class="btn btn-primary"
+        (click)="openModal()"
+      >
         <i class="bi bi-play-fill"></i> Submit
       </button>
       <button (click)="goToPreviousTask()" class="btn btn-secondary">
@@ -62,7 +67,7 @@
         ></p-radioButton>
         <label [for]="" class="ml-2">{{ option }}</label>
       </div>
-         <ng-container *ngIf="showOverallScore">  <p>Overall Score: {{ overallScore }}</p></ng-container>
+      <p>{{overallScore}}</p>
     </div>
   </div>
   <footer>

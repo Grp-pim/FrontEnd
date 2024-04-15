@@ -3,6 +3,8 @@ import { ApiService } from './../services/api.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalResultComponent } from './modal-result/modal-result.component';
 
 @Component({
   selector: 'app-quiz-page',
@@ -18,13 +20,13 @@ export class QuizPageComponent implements OnInit {
   selectedOption: any[] = [];
   db: any;
   overallScore: number = 0;
-  showOverallScore: boolean = false;
 
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
     private spinner: NgxSpinnerService,
-    private localStore: LocalStorageService
+    private localStore: LocalStorageService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -91,9 +93,15 @@ export class QuizPageComponent implements OnInit {
         console.log(response);
         if (response) {
           // Update the overall score
-          this.showOverallScore = true; // Show overall score flag
           this.overallScore = response.overallScore;
+          console.log('Overall Score:', this.overallScore); // Log the overall score
         }
       });
   }
+  openModal() {
+    const modalRef = this.modalService.open(ModalResultComponent);
+    modalRef.componentInstance.overallScore = this.overallScore;
+    console.log(this.overallScore);
+  }
 }
+   

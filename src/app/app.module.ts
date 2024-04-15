@@ -31,6 +31,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { TagModule } from 'primeng/tag';
 import { SidebarQuizComponent } from './quiz-page/sidebar-quiz/sidebar-quiz.component';
+import { ModalResultComponent } from './quiz-page/modal-result/modal-result.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { SidebarQuizComponent } from './quiz-page/sidebar-quiz/sidebar-quiz.comp
     SideBarComponent,
     QuizPageComponent,
     SidebarQuizComponent,
+    ModalResultComponent,
   ],
 })
 export class AppModule {}
