@@ -72,4 +72,11 @@ export class ApiService {
       })
     );
   }
+  // coompare quiz
+  compareQuiz(testId: string, selectedOptions: any[]): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/test/compare`, {
+      testId,
+      selectedOptions,
+    });
+  }
 }

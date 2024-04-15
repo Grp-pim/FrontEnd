@@ -17,6 +17,9 @@ export class QuizPageComponent implements OnInit {
   currentTaskIndex: number = 0;
   selectedOption: any[] = [];
   db: any;
+  overallScore: number = 0;
+  showOverallScore: boolean = false;
+
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
@@ -28,6 +31,22 @@ export class QuizPageComponent implements OnInit {
     this.id = this.act.snapshot.paramMap.get('id');
     this.fetchTest();
     this.spinner.show();
+    // store response if exist on quiz //
+    const storedData = localStorage.getItem('quizResponses');
+    if (storedData) {
+      this.selectedOption = JSON.parse(storedData);
+    }
+    ////
+  }
+
+  // Method to update selectedOption and save to localStorage
+  updateSelectedOption(questionIndex: number, selectedValue: any) {
+    this.selectedOption[questionIndex] = selectedValue;
+    this.saveData();
+  }
+
+  saveData() {
+    localStorage.setItem('quizResponses', JSON.stringify(this.selectedOption));
   }
 
   fetchTest() {
@@ -46,8 +65,6 @@ export class QuizPageComponent implements OnInit {
         this.loading = false; // Set loading to false after 5 seconds
       }, 1000);
     }
-      this.saveData();
-
   }
   goToPreviousTask() {
     this.loadingMessage = 'Previous task...';
@@ -59,12 +76,24 @@ export class QuizPageComponent implements OnInit {
         this.loading = false; // Set loading to false after 5 seconds
       }, 1000);
     }
-      this.saveData();
   }
-  saveData() {
-    this.localStore.saveData(
-      `response-${this.currentTaskIndex}`,
-      JSON.stringify(this.selectedOption)
+  submitQuiz() {
+    // Retrieve selected options from local storage
+    const quizResponses = JSON.parse(
+      localStorage.getItem('quizResponses') || '{}'
     );
+
+    // Use the 'id' variable obtained from ActivatedRoute
+    this.apiService
+      .compareQuiz(this.id, quizResponses)
+      .subscribe((response: any) => {
+        // Handle response from backend
+        console.log(response);
+        if (response) {
+          // Update the overall score
+          this.showOverallScore = true; // Show overall score flag
+          this.overallScore = response.overallScore;
+        }
+      });
   }
 }
