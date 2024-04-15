@@ -40,7 +40,7 @@
         type="button"
         id="run"
         class="btn btn-primary"
-        (click)="openModal()"
+        (click)="submitQuiz()"
       >
         <i class="bi bi-play-fill"></i> Submit
       </button>
@@ -67,7 +67,7 @@
         ></p-radioButton>
         <label [for]="" class="ml-2">{{ option }}</label>
       </div>
-      <p>{{overallScore}}</p>
+      <!-- <p>{{overallScore}}</p> -->
     </div>
   </div>
   <footer>

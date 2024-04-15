@@ -38,7 +38,6 @@ export class QuizPageComponent implements OnInit {
     if (storedData) {
       this.selectedOption = JSON.parse(storedData);
     }
-    ////
   }
 
   // Method to update selectedOption and save to localStorage
@@ -90,18 +89,20 @@ export class QuizPageComponent implements OnInit {
       .compareQuiz(this.id, quizResponses)
       .subscribe((response: any) => {
         // Handle response from backend
-        console.log(response);
+        // console.log(response);
         if (response) {
           // Update the overall score
           this.overallScore = response.overallScore;
-          console.log('Overall Score:', this.overallScore); // Log the overall score
+          console.log('zab:', this.overallScore); // Log the overall score
+          this.openModal();
         }
       });
   }
   openModal() {
+  
+    // Open the modal
     const modalRef = this.modalService.open(ModalResultComponent);
     modalRef.componentInstance.overallScore = this.overallScore;
     console.log(this.overallScore);
   }
 }
-   
