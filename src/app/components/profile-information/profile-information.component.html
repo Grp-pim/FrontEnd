@@ -1,0 +1,29 @@
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'>
+<div class="tab-pane active" id="profile" style="margin-top: 30px;">
+  <h6 style="color: black; text-align: center;">YOUR PROFILE INFORMATION</h6>
+  <hr>
+  <form [formGroup]="userForm">
+
+    <!-- fullName -->
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" class="form-control" id="fullName" placeholder="Your name may appear around here where you are mentioned. You can change or remove it at any time." formControlName="fullName">
+    </div>
+    <!-- email -->
+    <div class="form-group">
+      <label for="url">Your email</label>
+      <input type="text" class="form-control" id="url" placeholder="Enter your email address" formControlName="email">
+    </div>
+    <!-- phone -->
+    <div class="form-group">
+      <label for="location">Phone</label>
+      <input type="tel" class="form-control" id="location" placeholder="Enter your phone number" formControlName="phone">
+    </div>
+
+    <div class="form-group small text-muted">
+      All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
+    </div>
+    <!-- BTN update -->
+    <button type="button" class="btn btn-primary" (click)="editProfile()">Update Profile</button>
+  </form>
+</div>
