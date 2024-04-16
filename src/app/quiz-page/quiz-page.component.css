@@ -1,0 +1,129 @@
+
+/* Body Component CSS */
+.dark-theme {
+  background-color: #252e38;
+}
+
+/* Adjust container padding and margin */
+.navbar {
+  background-color: #131c25;
+}
+
+.bg-dark {
+  background-color: #212529;
+}
+
+#output {
+  resize: none;
+
+  /* Set appropriate height or rows */
+}
+
+/* Enhance button styling */
+
+#ideOutputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.output-container {
+  margin-top: 1rem; /* Adjust margin as needed */
+}
+
+#topBar {
+  background-color: #212529;
+}
+
+#taskInfo {
+  background-color: white;
+}
+#textAreaTask {
+  color: #191c1f;
+}
+#chapterName {
+  color: white;
+}
+textarea {
+  background-color: rgb(235, 235, 235);
+  resize: none;
+  margin: 3px 0px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border: none;
+  font-family: Monaco, Menlo, Ubuntu Mono, Droid Sans Mono, Consolas, monospace;
+}
+
+.bottomBar {
+  background-color: black;
+}
+.bottomBar p {
+  color: white;
+  text-align: center;
+  justify-self: center;
+}
+button {
+  border-radius: 0%;
+}
+.learnBanner {
+  background-color: white;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #252e38; /* Red background */
+}
+
+/* Center the text within the footer */
+.footer-content {
+  text-align: center;
+  color: white; /* Text color */
+  padding: 30px 0; /* Add padding for spacing */
+}
+.taskHeader {
+  color: rgb(238, 238, 238);
+  font-size: 18px;
+}
+.headerContainer h3 {
+  margin: 10px 3px;
+}
+.iconHeader {
+  font-size: 24px;
+  color: rgb(238, 238, 238);
+}
+countdown {
+  color: rgb(240, 73, 73);
+}
+.timerContainer {
+  display: flex;
+  flex-direction: row;
+  margin: 0 10px;
+  padding: 0 8px;
+  border-radius: 100px;
+
+  position: relative;
+  align-items: center;
+  background-color: white;
+}
+
+.firstCol,
+.secondCol {
+  display: flex; /* Use flexbox for the second column */
+  flex-direction: column; /* Arrange items vertically */
+  padding: 0;
+}
+
+.rowColContainer {
+  flex: 1;
+}
+
+html,
+body,
+* {
+  height: 100%;
+  margin: 0;
+}
+.container-fluid.dark-theme {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

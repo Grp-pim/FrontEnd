@@ -1,0 +1,27 @@
+.diffForm{
+    display: flex;
+    flex-direction: row;
+}
+.container-fluid{
+width: 60%;
+}
+.flex.align-items-center span{
+    font-size: 25px;
+    font-weight: bold;
+}
+.diffForm, .languageCheckBox {
+   display: flex;
+   justify-content: space-around;
+}
+.btnContainer1 button{
+    width: 100%;
+}
+btn.btn-primary.btn-block{
+    width: 100%;
+}
+td{
+    margin: 0;
+    padding: 5px;
+}
+
+

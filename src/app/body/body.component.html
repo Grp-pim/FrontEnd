@@ -1,0 +1,186 @@
+<div class="container-fluid dark-theme">
+  <ng-container *ngIf="loading">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="default"
+      color="#fff"
+      type="pacman"
+      [fullScreen]="true"
+      ><p style="color: #fff">Executing...</p></ngx-spinner
+    >
+  </ng-container>
+  <div class="row">
+    <nav
+      class="navbar navbar-expand-sm navbar-dark"
+      aria-label="Offcanvas navbar large"
+    >
+      <div class="container-fluid">
+        <h3 class="chapterHeader">
+          Question {{ currentChapter }}
+        </h3>
+        <span class="chapterHeader">-</span>
+        <h3 class="chapterHeader">{{ randomTask.name }} </h3>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar2"
+          aria-controls="offcanvasNavbar2"
+          aria-label="Toggle navigation"
+        >
+          <!-- <span class="navbar-toggler-icon"></span> -->
+        </button>
+        <div
+          class="offcanvas offcanvas-end text-bg-dark"
+          tabindex="-1"
+          id="offcanvasNavbar2"
+          aria-labelledby="offcanvasNavbar2Label"
+        >
+          <div class="offcanvas-header">
+            <!-- <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5> -->
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3 mt-lg-0" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="row" id="topBar">
+    <div class="col d-flex justify-content-start align-items-start">
+      <app-sidebar
+        [chapters]="chapters"
+        [currentChapter]="currentChapter"
+      ></app-sidebar>
+      <button
+        type="button"
+        id="run"
+        class="btn btn-primary"
+        (click)="executeUserCode()"
+      >
+        <i class="bi bi-play-fill"></i> Run
+      </button>
+      <button
+        [disabled]="nextChapterButtonClicked"
+        (click)="fetchNextChapterTask()"
+        class="btn btn-secondary"
+      >
+        <i class="bi bi-arrow-right"></i> Next Task
+      </button>
+      <button type="button" class="btn btn-info" (click)="openModal()">
+        <i class="bi bi-info-circle"></i> Get Hint
+      </button>
+    </div>
+  </div>
+  <div class="row gx-1 justify-content-center">
+    <div *ngIf="randomTask" class="col-lg-4 col-md-12" id="taskInfo">
+      <div class="learnBanner">
+        <i class="bi bi-book"></i>
+        <h6>Learn</h6>
+      </div>
+      <textarea
+        class="form-control task-textarea"
+        rows="7"
+        id="textAreaTask"
+        readonly
+        >{{ randomTask.description }}</textarea
+      >
+      <div class="learnBanner">
+        <i class="bi bi-check2-square"></i>
+        <h6>Task</h6>
+      </div>
+      <textarea
+        class="form-control task-textarea"
+        rows="7"
+        id="textAreaTask"
+        readonly
+        >{{ randomTask.toDo }}</textarea
+      >
+    </div>
+    <div class="col-lg-4 col-md-6" id="ideOutputContainer">
+      <div class="row">
+        <!-- First Row: #ide -->
+        <div class="col">
+          <div id="ide">
+            <ngx-monaco-editor
+              [options]="editorOptions"
+              [(ngModel)]="code"
+              class="editor"
+            ></ngx-monaco-editor>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Second Row: .output-container -->
+        <div class="col">
+          <div class="output-container flex-grow-1">
+            <label class="text-light mr-2">Output:</label>
+            <textarea
+              rows="8"
+              readonly
+              class="form-control overflow-auto text-light bg-dark"
+              [class.error]="executionResult.startsWith('Error:')"
+              type="text"
+              id="output"
+              aria-label="Output"
+              >{{ executionResult }}</textarea
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6" id="gameContainer">
+      <app-game></app-game>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">{{ currentChapter }}/{{ chapters.length }}</div>
+  </footer>
+</div>

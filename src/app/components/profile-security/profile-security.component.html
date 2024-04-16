@@ -1,0 +1,22 @@
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css'>
+<div class="tab-pane" id="security" style="margin-top: 30px;">
+  <h6 style="color: black; text-align: center;">SECURITY SETTINGS</h6>
+  <hr>
+  <form [formGroup]="pwdForm">
+    <!-- old password -->
+    <div class="form-group">
+      <label for="oldpassword">Old password</label>
+      <input type="password" class="form-control" id="oldpassword" placeholder="Enter your old password" formControlName="currentPassword">
+    </div>
+    <!-- New password -->
+    <div class="form-group">
+      <label for="Newpassword">New password</label>
+      <input type="password" class="form-control" id="Newpassword" placeholder="Enter your New password" formControlName="newPassword">
+    </div>
+    <div class="form-group small text-muted">
+      All of the fields on this page are optional.
+    </div>
+    <!-- BTN update password-->
+    <button type="button" class="btn btn-primary" (click)="updatePwd()">Change Password</button>
+  </form>
+</div>

@@ -1,0 +1,114 @@
+<div class="container-fluid dark-theme">
+  <ng-container *ngIf="loading">
+    <ngx-spinner
+      bdColor="rgba(0, 0, 0, 0.8)"
+      size="default"
+      color="#fff"
+      type="pacman"
+      [fullScreen]="true"
+      ><p style="color: #fff">{{this.loadingMessage}}</p></ngx-spinner
+    >
+  </ng-container>
+
+  <div class="headerContainer">
+    <div class="d-flex align-items-center py-2">
+      <!-- Add py-2 for vertical padding -->
+      <h3 class="taskHeader">
+        Question {{ currentTaskIndex + 1 }}/{{ this.test.tasks.length }}
+      </h3>
+      <span class="taskHeader">-</span>
+      <h3 class="taskHeader">{{ test.tasks[currentTaskIndex].name }}</h3>
+      <div class="timerContainer">
+        <countdown [config]="{ leftTime: test.duration * 1 }"> </countdown>
+        <span style="display: inline; margin: 0 2px">/</span>
+        <p style="margin: 0; padding: 0">{{ test.duration }}</p>
+      </div>
+      <!-- Icon goes here -->
+      <div class="ms-auto iconHeader" style="color: white">
+        <i class="bi bi-gear-wide-connected"></i>
+        <!-- Replace bi-icon-name with the appropriate Bootstrap Icons class -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="topBar">
+    <div class="col" style="padding: 0;">
+      <app-sideBar
+        [test]="test"
+        [currentTaskIndex]="currentTaskIndex"
+      ></app-sideBar>
+      <button
+        type="button"
+        id="run"
+        class="btn btn-primary"
+        (click)="executeUserCode()"
+      >
+        <i class="bi bi-play-fill"></i> Run
+      </button>
+      <button
+        [disabled]="nextChapterButtonClicked"
+        (click)="goToPreviousTask()"
+        class="btn btn-secondary"
+      >
+        <i class="bi bi-arrow-left"></i> Previous Task
+      </button>
+      <button
+        [disabled]="nextChapterButtonClicked"
+        (click)="goToNextTask()"
+        class="btn btn-secondary"
+      >
+        Next Task
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row rowColContainer">
+    <div *ngIf="randomTask" class="col-md-6 firstCol">
+      <div class="row allRow">
+        <div class="learnBanner" style="display: flex;flex-direction: row; flex: 1;align-items: center;padding-block: 8px;">
+          <i class="bi bi-check2-square" style="margin-right: 5px;"></i>
+          <h6>Task</h6>
+        </div>
+        <textarea
+          class="form-control"
+          rows="21"
+          id="textAreaTask"
+          readonly
+          >{{ test.tasks[currentTaskIndex].description }}</textarea
+        >
+      </div>
+    </div>
+    <div class="col-md-6 secondCol">
+      <div class="row allRow">
+        <div id="ide">
+          <ngx-monaco-editor
+            [options]="editorOptions"
+            [(ngModel)]="code"
+            class="editor"
+          ></ngx-monaco-editor>
+        </div>
+      </div>
+      <div class="row allRow">
+        <div class="output-container flex-grow-1">
+          <label class="text-light mr-2">Output:</label>
+          <textarea
+            rows="12"
+            readonly
+            class="form-control overflow-auto text-light bg-dark"
+            [class.error]="executionResult.startsWith('Error:')"
+            type="text"
+            id="textAreaOutput"
+            aria-label="Output"
+            >{{ executionResult }}</textarea
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      {{ currentTaskIndex + 1 }}/{{ this.test.tasks.length }}
+    </div>
+  </footer>
+</div>

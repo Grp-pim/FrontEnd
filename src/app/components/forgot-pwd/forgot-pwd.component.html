@@ -1,0 +1,40 @@
+<section class="py-3 py-md-5 py-xl-8" style="background-color: white;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-5">
+            <h2 class="display-5  fw-bold text-center" style="color: rgb(245, 100, 124);">FORGOT YOUR PASSWORD ?</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+          <div class="row gy-5 justify-content-center">
+            <div class="col-12 col-lg-5">
+              <form [formGroup]="forgotPwdForm">
+                <div class="row gy-3 overflow-hidden">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control border-1 border-bottom rounded-0" name="email" id="email" placeholder="name@example.com" formControlName="email" required>
+                      <label for="email" class="form-label">Email</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button class="btn btn-lg btn-dark rounded-0 fs-6" type="submit" [disabled]="forgotPwdForm.invalid" (click)="forgot()">CHANGE PASSWORD</button>
+                      <span style="color: red;">{{errorMsg}}</span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="text-center">
+                        <a routerLink="/login" routerLinkActive="active-link" class="link-secondary">Back</a>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

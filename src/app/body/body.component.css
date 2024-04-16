@@ -1,0 +1,114 @@
+/* Body Component CSS */
+.dark-theme {
+  background-color: #252E38;
+}
+
+/* Adjust container padding and margin */
+.navbar{
+  background-color: #131C25;
+}
+
+.bg-dark {
+  background-color: #212529;
+}
+
+#output {
+  resize: none;
+  
+  /* Set appropriate height or rows */
+}
+
+/* Enhance button styling */
+
+
+
+#ideOutputContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.output-container {
+  margin-top: 1rem; /* Adjust margin as needed */
+}
+
+#topBar{
+  background-color: #212529;  
+
+}
+
+#taskInfo{
+  background-color: white;
+}
+#textAreaTask{
+  color: #191c1f;
+}
+#chapterName{
+  color: white;
+}
+textarea{
+  background-color: rgb(235, 235, 235);
+  resize: none;
+  margin: 3px 0px;
+ font-size: 0.9rem;
+  letter-spacing: 1px;
+  line-height: 30px;
+  border: none;
+  font-family: Monaco,Menlo,Ubuntu Mono,Droid Sans Mono,Consolas,monospace;}
+
+  .bottomBar{
+    background-color: black;
+    width: 100%;
+    padding: 10px;
+  }
+  .bottomBar p{
+    color: white;
+    text-align: center;
+    justify-self: center;
+  }
+  button {
+    border-radius: 0%;
+  }
+
+  #topBar {
+  height: auto; /* Adjust the height as needed */
+}
+
+.navbar {
+  margin-bottom: 0; /* Eliminate the margin */
+}
+
+.learnBanner{
+  width: 100%;
+  background-color: white;
+  padding: 7px 13px ;
+
+}
+.learnBanner h6{
+  margin: 0 8px;
+  display: inline-block;  
+
+}
+/* Style for the footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #252E38; /* Red background */
+}
+
+/* Center the text within the footer */
+.footer-content {
+  text-align: center;
+  color: white; /* Text color */
+  padding: 30px 0; /* Add padding for spacing */
+}
+navbar navbar-expand-sm navbar-dark bg-dark{
+  margin: 30px 0;
+}
+
+.chapterHeader {
+  color: rgb(238, 238, 238);
+  font-size: 18px;
+}
