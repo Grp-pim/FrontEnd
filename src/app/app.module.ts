@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { BodyComponent } from './body/body.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -32,6 +30,20 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { TagModule } from 'primeng/tag';
 import { SidebarQuizComponent } from './quiz-page/sidebar-quiz/sidebar-quiz.component';
 import { ModalResultComponent } from './quiz-page/modal-result/modal-result.component';
+import { ForgotPwdComponent } from './components/forgot-pwd/forgot-pwd.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileAccountSettingsComponent } from './components/profile-account-settings/profile-account-settings.component';
+import { ProfileInformationComponent } from './components/profile-information/profile-information.component';
+import { ProfileNotificationsComponent } from './components/profile-notifications/profile-notifications.component';
+import { ProfileSecurityComponent } from './components/profile-security/profile-security.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
+
 
 
 @NgModule({
@@ -56,14 +68,12 @@ import { ModalResultComponent } from './quiz-page/modal-result/modal-result.comp
     MenuModule,
     ContextMenuModule,
     TagModule,
-    
+    ReactiveFormsModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     BodyComponent,
     GameComponent,
     HintModalComponent,
@@ -75,6 +85,20 @@ import { ModalResultComponent } from './quiz-page/modal-result/modal-result.comp
     QuizPageComponent,
     SidebarQuizComponent,
     ModalResultComponent,
+    //
+    FooterComponent,
+    HeaderComponent,
+    LoginComponent,
+    SignupComponent,
+    HomeComponent,
+    ForgotPwdComponent,
+    ProfileComponent,
+    ResetPwdComponent,
+    ProfileInformationComponent,
+    ProfileAccountSettingsComponent,
+    ProfileSecurityComponent,
+    ProfileNotificationsComponent,
+    HomeStepperComponent,
   ],
 })
 export class AppModule {}
