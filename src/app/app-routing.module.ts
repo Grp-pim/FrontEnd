@@ -6,8 +6,23 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { TestPageComponent } from './test-page/test-page.component';
 import { TestExistsGuard } from './test-exists.guard';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { ForgotPwdComponent } from './components/forgot-pwd/forgot-pwd.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'forgotPassword', component: ForgotPwdComponent },
+  { path: 'resetPassword/:token', component: ResetPwdComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'homeStepper', component: HomeStepperComponent },
+
   {
     path: 'test/:id',
     title: 'exam',

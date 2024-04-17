@@ -1,3 +1,8 @@
+#createTestSection{
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
 .diffForm{
     display: flex;
     flex-direction: row;

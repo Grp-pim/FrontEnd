@@ -10,7 +10,7 @@ import { error } from 'console';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  private url = 'http://localhost:9090';
+  private url = 'http://localhost:3000';
 
   // post method
   executeCode(code: string): Observable<any> {

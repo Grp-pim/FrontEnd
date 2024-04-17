@@ -90,8 +90,7 @@ textarea{
 
 }
 /* Style for the footer */
-footer {
-  position: fixed;
+section {
   bottom: 0;
   left: 0;
   width: 100%;
