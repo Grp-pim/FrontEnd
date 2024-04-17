@@ -1,8 +1,8 @@
 <header id="header" class="d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
     <div class="logo">
-      <h1><a routerLink="">Vesperr</a></h1>
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <h1><a routerLink="">Vesperr</a></h1> -->
+      <a routerLink=""><img src="../../../assets/img/coding_game.png" alt="" class="img-fluid"></a>
     </div>
 
     <div *ngIf="isLoggedIn() && user.role !== 'admin'">
@@ -19,17 +19,17 @@
     <nav id="navbar" class="navbar">
       <ul>
         <li *ngIf="isLoggedIn() && user.role !== 'admin'">
-          <a class="nav-link scrollto" routerLink="homeStepper">Quest</a>
+          <a class="nav-link scrollto" routerLink="homeStepper">Quest Map</a>
         </li>
         <li *ngIf="isLoggedIn() && user.role !== 'admin'">
           <a class="nav-link scrollto" routerLink="events">Events</a>
         </li>
         <li *ngIf="isLoggedIn() && user.role !== 'admin'">
-          <a class="nav-link scrollto" >Solo</a>
+          <a class="nav-link scrollto" routerLink="test">Solo</a>
         </li>
-        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
-          <a class="nav-link scrollto" >Multi</a>
-        </li>
+        <!-- <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="" >Multi</a>
+        </li> -->
         <li *ngIf="isLoggedIn() && user.role !== 'admin'">
           <a class="nav-link scrollto" routerLink="community">Community</a>
         </li>
