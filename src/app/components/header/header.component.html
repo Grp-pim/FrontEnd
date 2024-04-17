@@ -1,42 +1,67 @@
-<header class="p-3 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-between justify-content-lg-start">
-      <a routerLink="" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <img src="assets/assetsCyborg/images/logo.png" alt="">
-      </a>
-
-
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li *ngIf="isLoggedIn() && user.role!=='admin'"><a routerLink="homeStepper" class="nav-link px-2 text-white">Quest</a></li>
-        <li *ngIf="isLoggedIn() && user.role!=='admin'"><a routerLink="" class="nav-link px-2 text-white">Events</a></li>
-        <li *ngIf="isLoggedIn() && user.role!=='admin'"><a routerLink="" class="nav-link px-2 text-white">Solo</a></li>
-        <li *ngIf="isLoggedIn() && user.role!=='admin'"><a routerLink="" class="nav-link px-2 text-white">Multi</a></li>
-        <li *ngIf="isLoggedIn() && user.role!=='admin'"><a routerLink="" class="nav-link px-2 text-white">Community</a></li>
-      </ul>
-
-      <div *ngIf="isLoggedIn() && user.role!=='admin'" >
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-      </form>
-      </div>
-
-      <div class="text-end d-flex align-items-center">
-        <button type="button" class="btn btn-outline-light me-2" *ngIf="!isLoggedIn()">Login</button>
-        <button type="button" class="btn btn-warning me-2" *ngIf="!isLoggedIn()">Sign-up</button>
-
-       <div class="dropdown" *ngIf="isLoggedIn() && user.role!=='admin'">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            <span class="ms-2" style="color: white;">{{user.fullName}}</span>
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" routerLink="profile">Account</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="logo">
+      <h1><a routerLink="">Vesperr</a></h1>
+      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     </div>
+
+    <div *ngIf="isLoggedIn() && user.role !== 'admin'">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input
+          type="search"
+          class="form-control form-control-dark text-bg-dark"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+      </form>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto active" routerLink="homeStepper">Quest</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="">Events</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="">Solo</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="">Multi</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="">Community</a>
+        </li>
+
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'" class="dropdown">
+          <a ><span>User</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a routerLink="profile">Account</a></li>
+            <li><a (click)="logOut()">Sign out</a></li>
+          </ul>
+        </li>
+        <li>
+          <a
+            class="nav-link scrollto active"
+            routerLink="signup"
+            *ngIf="!isLoggedIn()"
+            >Sign up</a
+          >
+        </li>
+        <li>
+          <a
+            class="getstarted scrollto"
+            routerLink="login"
+            *ngIf="!isLoggedIn()"
+            >Get Started</a
+          >
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
   </div>
 </header>
+<!-- End Header -->

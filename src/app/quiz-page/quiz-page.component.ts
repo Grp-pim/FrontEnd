@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -20,13 +20,16 @@ export class QuizPageComponent implements OnInit {
   selectedOption: any[] = [];
   db: any;
   overallScore: number = 0;
+  testStartTime: number = 0;
+  remainingTime: number = 0;
 
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
     private spinner: NgxSpinnerService,
     private localStore: LocalStorageService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,6 +41,14 @@ export class QuizPageComponent implements OnInit {
     if (storedData) {
       this.selectedOption = JSON.parse(storedData);
     }
+
+    // Set the start time of the test
+    this.testStartTime = Date.now();
+
+    // Call the calculateRemainingTime function every second
+    // setInterval(() => {
+    //   this.calculateRemainingTime();
+    // }, 1000); // 1000 milliseconds = 1 second
   }
 
   // Method to update selectedOption and save to localStorage
@@ -48,6 +59,9 @@ export class QuizPageComponent implements OnInit {
 
   saveData() {
     localStorage.setItem('quizResponses', JSON.stringify(this.selectedOption));
+  }
+  clearData() {
+    localStorage.clear();
   }
 
   fetchTest() {
@@ -99,10 +113,31 @@ export class QuizPageComponent implements OnInit {
       });
   }
   openModal() {
-  
     // Open the modal
     const modalRef = this.modalService.open(ModalResultComponent);
     modalRef.componentInstance.overallScore = this.overallScore;
     console.log(this.overallScore);
   }
+  // when time over it logout
+  calculateRemainingTime(): void {
+    // Get the test duration from the test object
+    const testDuration = this.test?.duration; // Assuming 'duration' is the property for test duration
+
+    // Calculate the remaining time
+    const currentTime = Date.now();
+    const elapsedTime = currentTime - this.testStartTime;
+    this.remainingTime = testDuration - Math.floor(elapsedTime / 1000); // Convert milliseconds to seconds
+
+    // If the remaining time is less than or equal to 0, logout
+    if (this.remainingTime <= 0) {
+      this.logOut();
+    }
+  }
+
+  logOut() {
+    sessionStorage.removeItem('token');
+    this.router.navigate(['']);
+    this.clearData();
+  }
+  // end countdown time
 }

@@ -8,5 +8,7 @@ import { Component, Input, OnInit, input } from '@angular/core';
 export class ModalResultComponent implements OnInit {
   @Input() overallScore: any;
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 }

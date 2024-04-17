@@ -96,10 +96,10 @@ export class CreateTestComponent implements OnInit {
   visitTest(testId: string, testType: string) {
     if (testType === 'Code') {
       const url = `/test/${testId}`;
-      window.open(url, '_blank'); // Opens the URL in a new tab}
+     this.router.navigate([url]);
     } else if (testType === 'Quiz') {
       const url = `/quizTest/${testId}`;
-      window.open(url, '_blank');
+     this.router.navigate([url]);
     }
   }
 }
