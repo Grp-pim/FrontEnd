@@ -10,6 +10,8 @@ import jwt_decode from 'jwt-decode';
 export class HeaderComponent implements OnInit {
   user: any;
 
+  profileImage: string = 'https://bootdey.com/img/Content/avatar/avatar3.png';
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}

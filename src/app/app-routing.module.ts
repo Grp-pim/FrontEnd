@@ -13,6 +13,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
+import { EventsComponent } from './components/events/events.component';
+import { CommunityComponent } from './components/community/community.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'resetPassword/:token', component: ResetPwdComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'homeStepper', component: HomeStepperComponent },
+  { path: 'events', component: EventsComponent },
+  { path: 'community', component: CommunityComponent },
 
   {
     path: 'test/:id',

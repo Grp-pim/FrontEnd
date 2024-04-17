@@ -43,6 +43,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
+import { EventsComponent } from './components/events/events.component';
+import { CommunityComponent } from './components/community/community.component';
 
 
 @NgModule({
@@ -98,6 +100,8 @@ import { HomeStepperComponent } from './components/home-stepper/home-stepper.com
     ProfileSecurityComponent,
     ProfileNotificationsComponent,
     HomeStepperComponent,
+    EventsComponent,
+    CommunityComponent,
   ],
 })
 export class AppModule {}
