@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
       role: [""]
     });
 
-    this.handleGoogleCallback();
+
   }
 
   signup(){
@@ -58,27 +58,33 @@ export class SignupComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  continueWithGoogle(){
-    this.authService.redirectToGoogle();
-  }
-
-  handleGoogleCallback() {
-    const tokenOrCode = this.route.snapshot.queryParams['Code'];
-    if (tokenOrCode) {
-      this.authService.handleGoogleCallback().subscribe(
-        (response) => {
-          console.log('Google authentication successful:', response);
-          this.router.navigate([""]);
-        },
-        (error) => {
-          console.error('Error handling Google callback:', error);
-          this.router.navigate(['/error']);
+  continueWithGoogle(): void {
+        // Si le code et le rôle sont dans l'URL, nous les récupérons et appelons la méthode handleGoogleCallback
+        const code = this.route.snapshot.queryParamMap.get('code');
+        const role = this.route.snapshot.queryParamMap.get('state');
+    
+        if (code && role) {
+          this.authService.handleGoogleCallback(code, role).subscribe(
+            response => {
+              // Redirigez vers la page d'accueil ou la page appropriée après une authentification réussie
+              if (role === 'student') {
+                this.router.navigate(['/homeStepper']);
+              } else if (role === 'teacher') {
+                this.router.navigate(['/test']);
+              } else {
+                this.router.navigate(['/']);
+              }
+            },
+            error => {
+              console.error('Error during Google authentication:', error);
+              this.router.navigate(['/signup']); // Redirigez vers la page d'inscription en cas d'erreur
+            }
+          );
+        } else {
+          // Si le code et le rôle ne sont pas présents, redirigez vers la page d'accueil
+          this.router.navigate(['/']);
         }
-      );
-    } else {
-      console.error('No authorization code found in URL');
-    }
   }
-  
 
+  
 }

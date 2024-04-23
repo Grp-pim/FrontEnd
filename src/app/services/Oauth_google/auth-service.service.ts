@@ -7,15 +7,19 @@ import { Observable } from 'rxjs';
 })
 export class AuthServiceService {
 
+  private googleAuthUrl = 'http://localhost:3000/api/user/auth/google/url';
+  private googleCallbackUrl = 'http://localhost:3000/api/user/auth/google/callback';
+
   constructor(private http: HttpClient) { }
 
-  // Méthode pour rediriger l'utilisateur vers Google pour l'authentification OAuth
-  redirectToGoogle(): void {
-    window.location.href = 'http://localhost:3000/api/user/auth/google';
+  getGoogleAuthUrl(): Observable<{ url: string }> {
+    return this.http.get<{ url: string }>(this.googleAuthUrl);
   }
 
-  // Méthode pour gérer la réponse de Google après l'authentification réussie
-  handleGoogleCallback(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/api/user/auth/google/callback');
+  handleGoogleCallback(code: string, role: string): Observable<any> {
+    const url = `${this.googleCallbackUrl}?code=${code}&role=${role}`;
+    return this.http.get<any>(url);
   }
+
+
 }

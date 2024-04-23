@@ -10,7 +10,7 @@ import { GameComponent } from './game/game.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from './hint-modal/hint-modal.component';
 import { SidebarComponent } from './body/sidebar/sidebar.component';
-import { SidebarModule } from 'primeng/sidebar'; // 
+import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateTestComponent } from './create-test/create-test.component';
@@ -45,6 +45,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -72,7 +73,10 @@ import { CommunityComponent } from './components/community/community.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [
+    provideClientHydration(),
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+  ],
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,

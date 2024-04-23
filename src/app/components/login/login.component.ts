@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
       password:["", Validators.required],
     });
 
-    this.handleGoogleCallback();
   }
 
   login(){
@@ -59,25 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   continueWithGoogle(){
-    this.authService.redirectToGoogle();
-  }
-
-  handleGoogleCallback() {
-    const tokenOrCode = this.route.snapshot.queryParams['Code'];
-    if (tokenOrCode) {
-      this.authService.handleGoogleCallback().subscribe(
-        (response) => {
-          console.log('Google authentication successful:', response);
-          this.router.navigate([""]);
-        },
-        (error) => {
-          console.error('Error handling Google callback:', error);
-          this.router.navigate(['/error']);
-        }
-      );
-    } else {
-      console.error('No authorization code found in URL');
-    }
+    // this.authService.redirectToGoogle();
   }
 
 }

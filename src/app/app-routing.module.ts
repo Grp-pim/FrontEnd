@@ -27,21 +27,10 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'community', component: CommunityComponent },
 
-  {
-    path: 'test/:id',
-    title: 'exam',
-    component: TestPageComponent,
-    canActivate: [TestExistsGuard],
-  },
-  {
-    path: 'quizTest/:id',
-    title: 'exam',
-    component: QuizPageComponent,
-    canActivate: [TestExistsGuard],
-  },
+  { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard] },
+  { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard] },
   { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
   { path: 'compilator', title: 'Comp', component: BodyComponent },
-  // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
   { path: 'test', title: 'Test', component: CreateTestComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
