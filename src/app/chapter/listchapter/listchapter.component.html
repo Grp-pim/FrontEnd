@@ -1,0 +1,54 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Chapter Table</h4>
+                        <div class="card-category"> <strong> <a class="btn btn-light" routerLink="/add-chapter"> Add Chapter</a></strong></div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    
+                                    <th>
+                                        chapter Name
+                                    </th>
+                                    <th>
+                                        chapter Language
+                                    </th>
+                                    <th>
+                                        chapter Number
+                                    </th>
+                                  
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let i of Chapters">
+                                        <td>{{i.name}}</td>
+                                        <td>{{i.language}}</td>
+                                        <td>{{i.chapterNumber}}</td>
+                                      
+                                        <td>
+                                            <button type="button" class="btn btn-primary" [routerLink]="['/updateChapters/',i._id]" >Edit</button>
+                                            <button type="button" class="btn btn-danger" (click)="delete(i._id)">Delete</button>
+                                            <button type="button" class="btn btn-warning" [routerLink]="['/listTasks/',i._id]" >Add task</button>
+                                            <button type="button" class="btn btn-info" [routerLink]="['/Quiz/',i._id]" >Add quiz</button>
+
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

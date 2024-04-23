@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Test Table</h4>
+                        <div class="card-category"> <strong> <a class="btn btn-light" routerLink="/addtest"> Add
+                                    Test</a></strong>
+                            <button class="btn btn-danger" (click)="deleteAll()">Delete All</button>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                    <th>
+                                        Test Name
+                                    </th>
+                                    <th>
+                                        Test Description
+                                    </th>
+                                    <th>
+                                        Test Difficulty
+                                    </th>
+                                    <th>
+                                        Test Duration
+                                    </th>
+                                    <th>
+                                        Test Type
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let i of testing">
+                                        <td>{{i.name}}</td>
+                                        <td>{{i.description}}</td>
+                                        <td>{{i.difficulty}}</td>
+                                        <td>{{i.duration}}</td>
+                                        <td>{{i.type}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary"
+                                                [routerLink]="['/updatetest/',i._id]">Edit</button>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="delete(i._id)">Delete</button>
+                                            <button type="button" class="btn btn-warning"
+                                                [routerLink]="['/Tasks/',i._id]">Add Tasks</button>
+                                                <button type="button" class="btn btn-success"
+                                                [routerLink]="['/updatetest/',i._id]">Add Quiz</button> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

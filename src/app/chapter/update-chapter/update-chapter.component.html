@@ -1,0 +1,33 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Update Chapter</h4>
+                    </div>
+                    <div class="card-body">
+                        <div *ngIf="testing" class="alert alert-success">Chapter Updated</div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Chapter Name" [(ngModel)]="chaptername" name="chapterName" required>
+                            <span class="material-input"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Language" [(ngModel)]="language" name="language" required>
+                            <span class="material-input"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Chapter Number" [(ngModel)]="chapterNumber" name="chapterNumber" required>
+                            <span class="material-input"></span>
+                        </div>
+
+                     
+                        <button type="submit" class="btn btn-success" (click)="update()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning shadow">
+                        <h4 class="card-title ">Test Table</h4>
+                        <div class="card-category">
+                            <strong>
+                                <a class="btn btn-light" routerLink="/addChapterTask/{{id}}"> Add Task</a>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Loop through your data and create a card for each item -->
+                            <div class="col-md-4" *ngFor="let i of data2">
+                                <div class="card">
+                                    <div class="card-header card-header-primary">
+                                        <h4 class="card-title"><strong>{{ i.name }}</strong></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text"><strong>Description:</strong> {{ i.description }}</p>
+                                        <p class="card-text"><strong>Code:</strong> {{ i.initialCode }}</p>
+                                        <p class="card-text"><strong>Solution Code: </strong>{{ i.solutionCode }}</p>
+                                        <p class="card-text"><strong>Hint:</strong> {{ i.hint }}</p>
+                                        <p class="card-text"><strong>Order:</strong> {{ i.order }}</p>
+                                        <p class="card-text"><strong>Difficulty</strong> {{ i.difficulty }}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <!-- <button type="button" class="btn btn-primary" [routerLink]="['/updateTaks/',i._id]">Edit</button> -->
+                                        <button type="button" class="btn btn-danger" (click)="delete(i._id)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End loop -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
