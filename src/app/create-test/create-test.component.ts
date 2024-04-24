@@ -51,8 +51,6 @@ export class CreateTestComponent implements OnInit {
   }
 
   createTest() {
-    // this.Test.type = this.testType;
-
     return this.apiService
       .createTest({
         ...this.Test,
@@ -69,7 +67,7 @@ export class CreateTestComponent implements OnInit {
           this.getAllTest();
         },
         (error) => {
-          console.error(error);
+          console.error('error creating Test :', error);
         }
       );
   }
@@ -96,10 +94,14 @@ export class CreateTestComponent implements OnInit {
   visitTest(testId: string, testType: string) {
     if (testType === 'Code') {
       const url = `/test/${testId}`;
-     this.router.navigate([url]);
+      this.router.navigate([url]);
     } else if (testType === 'Quiz') {
       const url = `/quizTest/${testId}`;
-     this.router.navigate([url]);
+      this.router.navigate([url]);
     }
+  }
+
+  toTestDetails(testId: String) {
+    this.router.navigate(['test-details', testId]);
   }
 }

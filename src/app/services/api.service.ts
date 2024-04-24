@@ -79,4 +79,63 @@ export class ApiService {
       selectedOptions,
     });
   }
+  getAllItems(): Observable<any> {
+    return this.http.get(`${this.url}/api/chapter/getAllItems`).pipe(
+      catchError((error) => {
+        console.error('An error occurred while fetching items', error);
+        return throwError('Failed to fetch items; please try again later.');
+      })
+    );
+  }
+  updateTest(testId: string, updateData: any): Observable<any> {
+    console.log('Updating test with ID:', testId, 'and data:', updateData);
+
+    return this.http.put(`${this.url}/api/test/${testId}`, updateData).pipe(
+      catchError((error) => {
+        console.error('An error occurred while updating items', error);
+        return throwError('Failed to update test;please try again later.');
+      })
+    );
+  }
+
+  sendTestLinkByEmail(
+    candidates: any[],
+    emailContent: string,
+    modification: any
+  ): Observable<any> {
+    return this.http
+      .post(`${this.url}/api/test/sendTestLinkByEmail`, {
+        candidates,
+        emailContent,
+        modification,
+      })
+      .pipe(
+        catchError((error) => {
+          console.error(
+            'An error occurred while sending the test link:',
+            error
+          );
+          return throwError(
+            'An error occurred while sending the test link; please try again later.'
+          );
+        })
+      );
+  }
+  addEvent(event: any): Observable<any> {
+    return this.http.post<any>(`${this.url}/addEvent`, event);
+  }
+
+  getEventsByWeek(): Observable<any> {
+    return this.http.get<any>(`${this.url}/eventsByWeek`);
+  }
+
+  getAllEvent() {
+    return this.http.get<{ events: any }>(`${this.url}/getAllEvents`);
+  }
+
+  deleteEvent(eventId: string) {
+    return this.http.delete<{ msg: any }>(
+      `${this.url}/deleteEvent/${eventId}`
+    );
+  }
 }

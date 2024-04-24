@@ -1,6 +1,6 @@
 import {
   BaseIcon
-} from "./chunk-EI2ELTEY.js";
+} from "./chunk-BCQYFDDM.js";
 import {
   Component,
   setClassMetadata,
@@ -69,4 +69,4 @@ var CheckIcon = class _CheckIcon extends BaseIcon {
 export {
   CheckIcon
 };
-//# sourceMappingURL=chunk-KJ4CLKVH.js.map
+//# sourceMappingURL=chunk-2XKDFGN5.js.map

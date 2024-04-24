@@ -1,7 +1,7 @@
 import {
   PrimeTemplate,
   SharedModule
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   CommonModule,
   NgClass,
@@ -11,18 +11,23 @@ import {
 } from "./chunk-TBROOZEM.js";
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ContentChildren,
   Input,
+  InputFlags,
   NgModule,
   ViewEncapsulation$1,
+  booleanAttribute,
   setClassMetadata,
+  ɵɵInputTransformsFeature,
   ɵɵadvance,
   ɵɵclassMap,
   ɵɵcontentQuery,
   ɵɵdefineComponent,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
+  ɵɵdirectiveInject,
   ɵɵelement,
   ɵɵelementContainerEnd,
   ɵɵelementContainerStart,
@@ -38,8 +43,8 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-J4B6MK7R.js";
 
@@ -86,11 +91,18 @@ function Tag_span_3_Template(rf, ctx) {
 }
 var _c0 = ["*"];
 var Tag = class _Tag {
+  cd;
   /**
    * Inline style of the component.
    * @group Props
    */
-  style;
+  get style() {
+    return this._style;
+  }
+  set style(value) {
+    this._style = value;
+    this.cd.markForCheck();
+  }
   /**
    * Style class of the component.
    * @group Props
@@ -119,6 +131,7 @@ var Tag = class _Tag {
   rounded;
   templates;
   iconTemplate;
+  _style;
   ngAfterContentInit() {
     this.templates?.forEach((item) => {
       switch (item.getType()) {
@@ -127,6 +140,9 @@ var Tag = class _Tag {
           break;
       }
     });
+  }
+  constructor(cd) {
+    this.cd = cd;
   }
   containerClass() {
     return {
@@ -139,7 +155,7 @@ var Tag = class _Tag {
     };
   }
   static ɵfac = function Tag_Factory(t) {
-    return new (t || _Tag)();
+    return new (t || _Tag)(ɵɵdirectiveInject(ChangeDetectorRef));
   };
   static ɵcmp = ɵɵdefineComponent({
     type: _Tag,
@@ -160,8 +176,9 @@ var Tag = class _Tag {
       severity: "severity",
       value: "value",
       icon: "icon",
-      rounded: "rounded"
+      rounded: [InputFlags.HasDecoratorInputTransform, "rounded", "rounded", booleanAttribute]
     },
+    features: [ɵɵInputTransformsFeature],
     ngContentSelectors: _c0,
     decls: 6,
     vars: 7,
@@ -217,7 +234,9 @@ var Tag = class _Tag {
       },
       styles: ["@layer primeng{.p-tag{display:inline-flex;align-items:center;justify-content:center}.p-tag-icon,.p-tag-value,.p-tag-icon.pi{line-height:1.5}.p-tag.p-tag-rounded{border-radius:10rem}}\n"]
     }]
-  }], null, {
+  }], () => [{
+    type: ChangeDetectorRef
+  }], {
     style: [{
       type: Input
     }],
@@ -234,7 +253,10 @@ var Tag = class _Tag {
       type: Input
     }],
     rounded: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     templates: [{
       type: ContentChildren,

@@ -657,7 +657,7 @@ var MessageService = class _MessageService {
     }
   }
   /**
-   * Insterts new messages.
+   * Inserts new messages.
    * @param {Message[]} messages - Messages to be added.
    * @group Method
    */
@@ -907,20 +907,20 @@ var PrimeIcons = class {
   static SLIDERS_V = "pi pi-sliders-v";
   static SORT = "pi pi-sort";
   static SORT_ALPHA_DOWN = "pi pi-sort-alpha-down";
-  static SORT_ALPHA_ALT_DOWN = "pi pi-sort-alpha-alt-down";
+  static SORT_ALPHA_DOWN_ALT = "pi pi-sort-alpha-down-alt";
   static SORT_ALPHA_UP = "pi pi-sort-alpha-up";
-  static SORT_ALPHA_ALT_UP = "pi pi-sort-alpha-alt-up";
+  static SORT_ALPHA_UP_ALT = "pi pi-sort-alpha-up-alt";
   static SORT_ALT = "pi pi-sort-alt";
-  static SORT_ALT_SLASH = "pi pi-sort-slash";
+  static SORT_ALT_SLASH = "pi pi-sort-alt-slash";
   static SORT_AMOUNT_DOWN = "pi pi-sort-amount-down";
   static SORT_AMOUNT_DOWN_ALT = "pi pi-sort-amount-down-alt";
   static SORT_AMOUNT_UP = "pi pi-sort-amount-up";
   static SORT_AMOUNT_UP_ALT = "pi pi-sort-amount-up-alt";
   static SORT_DOWN = "pi pi-sort-down";
   static SORT_NUMERIC_DOWN = "pi pi-sort-numeric-down";
-  static SORT_NUMERIC_ALT_DOWN = "pi pi-sort-numeric-alt-down";
+  static SORT_NUMERIC_DOWN_ALT = "pi pi-sort-numeric-down-alt";
   static SORT_NUMERIC_UP = "pi pi-sort-numeric-up";
-  static SORT_NUMERIC_ALT_UP = "pi pi-sort-numeric-alt-up";
+  static SORT_NUMERIC_UP_ALT = "pi pi-sort-numeric-up-alt";
   static SORT_UP = "pi pi-sort-up";
   static SPINNER = "pi pi-spinner";
   static STAR = "pi pi-star";
@@ -1100,7 +1100,11 @@ var PrimeNGConfig = class _PrimeNGConfig {
       zoomOut: "Zoom Out",
       rotateRight: "Rotate Right",
       rotateLeft: "Rotate Left",
-      listLabel: "Option List"
+      listLabel: "Option List",
+      selectColor: "Select a color",
+      removeLabel: "Remove",
+      browseFiles: "Browse Files",
+      maximizeLabel: "Maximize"
     }
   };
   zIndex = {
@@ -1303,6 +1307,8 @@ var TranslationKeys = class {
   static HIDE_FILTER_MENU = "hideFilterMenu";
   static SELECTION_MESSAGE = "selectionMessage";
   static ARIA = "aria";
+  static SELECT_COLOR = "selectColor";
+  static BROWSE_FILES = "browseFiles";
 };
 var TreeDragDropService = class _TreeDragDropService {
   dragStartSource = new Subject();
@@ -1350,4 +1356,4 @@ export {
   TranslationKeys,
   TreeDragDropService
 };
-//# sourceMappingURL=chunk-77A4EMCZ.js.map
+//# sourceMappingURL=chunk-NQJZULIZ.js.map

@@ -6,20 +6,22 @@ import {
 import {
   Tooltip,
   TooltipModule
-} from "./chunk-6GYAOLVO.js";
+} from "./chunk-G4I33PJT.js";
 import {
-  ConnectedOverlayScrollHandler,
-  DomHandler,
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   OverlayService,
   PrimeNGConfig,
   PrimeTemplate,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   DomSanitizer
 } from "./chunk-HEK5OY27.js";
@@ -57,10 +59,13 @@ import {
   Renderer2,
   ViewChild,
   ViewEncapsulation$1,
+  booleanAttribute,
   computed,
   forwardRef,
+  numberAttribute,
   setClassMetadata,
   signal,
+  ɵɵInputTransformsFeature,
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassMap,
@@ -99,8 +104,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-J4B6MK7R.js";
 
@@ -902,7 +907,6 @@ var Menu = class _Menu {
           this.bindDocumentResizeListener();
           this.bindScrollListener();
           DomHandler.focus(this.listViewChild.nativeElement);
-          this.changeFocusedOptionIndex(0);
         }
         break;
       case "void":
@@ -976,14 +980,6 @@ var Menu = class _Menu {
   onListFocus(event) {
     if (!this.focused) {
       this.focused = true;
-      if (!this.popup) {
-        if (this.selectedOptionIndex() !== -1) {
-          this.changeFocusedOptionIndex(this.selectedOptionIndex());
-          this.selectedOptionIndex.set(-1);
-        } else {
-          this.changeFocusedOptionIndex(0);
-        }
-      }
       this.onFocus.emit(event);
     }
   }
@@ -1236,18 +1232,18 @@ var Menu = class _Menu {
     hostAttrs: [1, "p-element"],
     inputs: {
       model: "model",
-      popup: "popup",
+      popup: [InputFlags.HasDecoratorInputTransform, "popup", "popup", booleanAttribute],
       style: "style",
       styleClass: "styleClass",
       appendTo: "appendTo",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
       showTransitionOptions: "showTransitionOptions",
       hideTransitionOptions: "hideTransitionOptions",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
       id: "id",
-      tabindex: "tabindex"
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute]
     },
     outputs: {
       onShow: "onShow",
@@ -1255,6 +1251,7 @@ var Menu = class _Menu {
       onBlur: "onBlur",
       onFocus: "onFocus"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 1,
     vars: 1,
     consts: [[3, "ngClass", "class", "ngStyle", "click", 4, "ngIf"], [3, "ngClass", "ngStyle", "click"], ["container", ""], ["class", "p-menu-start", 4, "ngIf"], ["role", "menu", 1, "p-menu-list", "p-reset", 3, "focus", "blur", "keydown"], ["list", ""], [4, "ngIf"], ["class", "p-menu-end", 4, "ngIf"], [1, "p-menu-start"], [4, "ngTemplateOutlet"], ["ngFor", "", 3, "ngForOf"], ["class", "p-menuitem-separator", "role", "separator", 3, "ngClass", 4, "ngIf"], ["class", "p-submenu-header", "pTooltip", "", "role", "none", 3, "ngClass", "tooltipOptions", 4, "ngIf"], ["role", "separator", 1, "p-menuitem-separator", 3, "ngClass"], ["pTooltip", "", "role", "none", 1, "p-submenu-header", 3, "ngClass", "tooltipOptions"], [4, "ngIf", "ngIfElse"], ["htmlSubmenuLabel", ""], [3, "innerHTML"], ["class", "p-menuitem", "pTooltip", "", "role", "menuitem", 3, "pMenuItemContent", "itemTemplate", "ngClass", "ngStyle", "class", "tooltipOptions", "onMenuItemClick", 4, "ngIf"], ["pTooltip", "", "role", "menuitem", 1, "p-menuitem", 3, "pMenuItemContent", "itemTemplate", "ngClass", "ngStyle", "tooltipOptions", "onMenuItemClick"], [1, "p-menu-end"]],
@@ -1423,7 +1420,10 @@ var Menu = class _Menu {
       type: Input
     }],
     popup: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -1435,10 +1435,16 @@ var Menu = class _Menu {
       type: Input
     }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     showTransitionOptions: [{
       type: Input
@@ -1456,7 +1462,10 @@ var Menu = class _Menu {
       type: Input
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     onShow: [{
       type: Output

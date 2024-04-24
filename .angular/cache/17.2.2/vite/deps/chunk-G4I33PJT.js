@@ -1,12 +1,12 @@
 import {
   ConnectedOverlayScrollHandler,
   DomHandler
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-YAPAIHRL.js";
 import {
   PrimeNGConfig,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   CommonModule,
   isPlatformBrowser
@@ -24,7 +24,10 @@ import {
   Renderer2,
   TemplateRef,
   ViewContainerRef,
+  booleanAttribute,
+  numberAttribute,
   setClassMetadata,
+  ɵɵInputTransformsFeature,
   ɵɵNgOnChangesFeature,
   ɵɵdefineDirective,
   ɵɵdefineInjector,
@@ -685,20 +688,20 @@ var Tooltip = class _Tooltip {
       positionStyle: "positionStyle",
       tooltipStyleClass: "tooltipStyleClass",
       tooltipZIndex: "tooltipZIndex",
-      escape: "escape",
-      showDelay: "showDelay",
-      hideDelay: "hideDelay",
-      life: "life",
-      positionTop: "positionTop",
-      positionLeft: "positionLeft",
-      autoHide: "autoHide",
-      fitContent: "fitContent",
-      hideOnEscape: "hideOnEscape",
+      escape: [InputFlags.HasDecoratorInputTransform, "escape", "escape", booleanAttribute],
+      showDelay: [InputFlags.HasDecoratorInputTransform, "showDelay", "showDelay", numberAttribute],
+      hideDelay: [InputFlags.HasDecoratorInputTransform, "hideDelay", "hideDelay", numberAttribute],
+      life: [InputFlags.HasDecoratorInputTransform, "life", "life", numberAttribute],
+      positionTop: [InputFlags.HasDecoratorInputTransform, "positionTop", "positionTop", numberAttribute],
+      positionLeft: [InputFlags.HasDecoratorInputTransform, "positionLeft", "positionLeft", numberAttribute],
+      autoHide: [InputFlags.HasDecoratorInputTransform, "autoHide", "autoHide", booleanAttribute],
+      fitContent: [InputFlags.HasDecoratorInputTransform, "fitContent", "fitContent", booleanAttribute],
+      hideOnEscape: [InputFlags.HasDecoratorInputTransform, "hideOnEscape", "hideOnEscape", booleanAttribute],
       content: [InputFlags.None, "pTooltip", "content"],
       disabled: [InputFlags.None, "tooltipDisabled", "disabled"],
       tooltipOptions: "tooltipOptions"
     },
-    features: [ɵɵNgOnChangesFeature]
+    features: [ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature]
   });
 };
 (() => {
@@ -746,31 +749,58 @@ var Tooltip = class _Tooltip {
       type: Input
     }],
     escape: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showDelay: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     hideDelay: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     life: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     positionTop: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     positionLeft: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     autoHide: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     fitContent: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     hideOnEscape: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     content: [{
       type: Input,
@@ -818,4 +848,4 @@ export {
   Tooltip,
   TooltipModule
 };
-//# sourceMappingURL=chunk-6GYAOLVO.js.map
+//# sourceMappingURL=chunk-G4I33PJT.js.map

@@ -43,8 +43,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ResetPwdComponent } from './components/reset-pwd/reset-pwd.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
-import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { PickListModule } from 'primeng/picklist'; // Import PickListModule
+import { ButtonGroupModule } from 'primeng/buttongroup'; // Import ButtonGroupModule
+import { EventsComponent } from './components/events/events.component';
 
 
 @NgModule({
@@ -68,9 +71,11 @@ import { CommunityComponent } from './components/community/community.component';
     MenuModule,
     ContextMenuModule,
     TagModule,
+    PickListModule,
     // import module  "TDF" && "reactive Form"
     FormsModule,
     ReactiveFormsModule,
+    ButtonGroupModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
@@ -102,6 +107,7 @@ import { CommunityComponent } from './components/community/community.component';
     HomeStepperComponent,
     EventsComponent,
     CommunityComponent,
+    TestDetailsComponent,
   ],
 })
 export class AppModule {}

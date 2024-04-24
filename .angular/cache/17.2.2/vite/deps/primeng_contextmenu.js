@@ -4,18 +4,20 @@ import {
   RouterModule
 } from "./chunk-EMR77QBI.js";
 import {
-  AngleRightIcon
-} from "./chunk-I5VBRGSQ.js";
-import "./chunk-EI2ELTEY.js";
-import {
   Tooltip,
   TooltipModule
-} from "./chunk-6GYAOLVO.js";
+} from "./chunk-G4I33PJT.js";
 import {
-  DomHandler,
+  AngleRightIcon
+} from "./chunk-3ICCCD6Z.js";
+import "./chunk-BCQYFDDM.js";
+import {
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   ObjectUtils,
   OverlayService,
@@ -24,7 +26,7 @@ import {
   SharedModule,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import "./chunk-HEK5OY27.js";
 import "./chunk-QF6737VQ.js";
 import {
@@ -52,6 +54,7 @@ import {
   EventEmitter,
   Inject,
   Input,
+  InputFlags,
   NgModule,
   Output,
   PLATFORM_ID,
@@ -59,10 +62,13 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation$1,
+  booleanAttribute,
   effect,
   forwardRef,
+  numberAttribute,
   setClassMetadata,
   signal,
+  ɵɵInputTransformsFeature,
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassMap,
@@ -98,8 +104,8 @@ import {
   ɵɵtextInterpolate1,
   ɵɵviewQuery
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import {
   __spreadProps,
@@ -685,20 +691,20 @@ var ContextMenuSub = class _ContextMenuSub {
     },
     hostAttrs: [1, "p-element"],
     inputs: {
-      visible: "visible",
+      visible: [InputFlags.HasDecoratorInputTransform, "visible", "visible", booleanAttribute],
       items: "items",
       itemTemplate: "itemTemplate",
-      root: "root",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
-      popup: "popup",
+      root: [InputFlags.HasDecoratorInputTransform, "root", "root", booleanAttribute],
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
+      popup: [InputFlags.HasDecoratorInputTransform, "popup", "popup", booleanAttribute],
       menuId: "menuId",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
-      level: "level",
+      level: [InputFlags.HasDecoratorInputTransform, "level", "level", numberAttribute],
       focusedItemId: "focusedItemId",
       activeItemPath: "activeItemPath",
-      tabindex: "tabindex"
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute]
     },
     outputs: {
       itemClick: "itemClick",
@@ -707,6 +713,7 @@ var ContextMenuSub = class _ContextMenuSub {
       menuBlur: "menuBlur",
       menuKeydown: "menuKeydown"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 1,
     vars: 1,
     consts: [["role", "menu", 3, "ngClass", "tabindex", "keydown", "focus", "blur", 4, "ngIf"], ["role", "menu", 3, "ngClass", "tabindex", "keydown", "focus", "blur"], ["sublist", ""], ["ngFor", "", 3, "ngForOf"], ["role", "separator", 3, "style", "ngClass", 4, "ngIf"], ["role", "menuitem", "pTooltip", "", 3, "ngStyle", "ngClass", "class", "tooltipOptions", 4, "ngIf"], ["role", "separator", 3, "ngClass"], ["role", "menuitem", "pTooltip", "", 3, "ngStyle", "ngClass", "tooltipOptions"], ["listItem", ""], [1, "p-menuitem-content", 3, "click", "mouseenter"], [4, "ngIf"], [3, "items", "itemTemplate", "menuId", "visible", "activeItemPath", "focusedItemId", "level", "itemClick", "itemMouseEnter", 4, "ngIf"], ["pRipple", "", 3, "target", "ngClass", 4, "ngIf"], ["pRipple", "", 3, "routerLink", "queryParams", "routerLinkActive", "routerLinkActiveOptions", "target", "ngClass", "fragment", "queryParamsHandling", "preserveFragment", "skipLocationChange", "replaceUrl", "state", 4, "ngIf"], ["pRipple", "", 3, "target", "ngClass"], ["class", "p-menuitem-icon", 3, "ngClass", "ngStyle", 4, "ngIf"], ["class", "p-menuitem-text", 4, "ngIf", "ngIfElse"], ["htmlLabel", ""], ["class", "p-menuitem-badge", 3, "ngClass", 4, "ngIf"], [1, "p-menuitem-icon", 3, "ngClass", "ngStyle"], [1, "p-menuitem-text"], [1, "p-menuitem-text", 3, "innerHTML"], [1, "p-menuitem-badge", 3, "ngClass"], [3, "styleClass", 4, "ngIf"], [4, "ngTemplateOutlet"], [3, "styleClass"], ["pRipple", "", 3, "routerLink", "queryParams", "routerLinkActive", "routerLinkActiveOptions", "target", "ngClass", "fragment", "queryParamsHandling", "preserveFragment", "skipLocationChange", "replaceUrl", "state"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "items", "itemTemplate", "menuId", "visible", "activeItemPath", "focusedItemId", "level", "itemClick", "itemMouseEnter"]],
@@ -917,7 +924,10 @@ var ContextMenuSub = class _ContextMenuSub {
     type: ViewContainerRef
   }], {
     visible: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     items: [{
       type: Input
@@ -926,16 +936,28 @@ var ContextMenuSub = class _ContextMenuSub {
       type: Input
     }],
     root: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     popup: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     menuId: [{
       type: Input
@@ -947,7 +969,10 @@ var ContextMenuSub = class _ContextMenuSub {
       type: Input
     }],
     level: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     focusedItemId: [{
       type: Input
@@ -956,7 +981,10 @@ var ContextMenuSub = class _ContextMenuSub {
       type: Input
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     itemClick: [{
       type: Output
@@ -1488,7 +1516,6 @@ var ContextMenu = class _ContextMenu {
         this.moveOnTop();
         this.appendOverlay();
         this.bindGlobalListeners();
-        this.onShow.emit();
         DomHandler.focus(this.rootmenu.sublistViewChild.nativeElement);
         break;
     }
@@ -1522,7 +1549,6 @@ var ContextMenu = class _ContextMenu {
       zindexutils.clear(this.container);
     }
     this.container = null;
-    this.onHide.emit();
   }
   onTouchStart(event) {
     this.pressTimer = setTimeout(() => {
@@ -1534,6 +1560,7 @@ var ContextMenu = class _ContextMenu {
   }
   hide() {
     this.visible.set(false);
+    this.onHide.emit();
     this.activeItemPath.set([]);
     this.focusedItemInfo.set({
       index: -1,
@@ -1555,6 +1582,7 @@ var ContextMenu = class _ContextMenu {
     });
     this.pageX = event.pageX;
     this.pageY = event.pageY;
+    this.onShow.emit();
     this.visible() ? this.position() : this.visible.set(true);
     event.stopPropagation();
     event.preventDefault();
@@ -1744,21 +1772,22 @@ var ContextMenu = class _ContextMenu {
       model: "model",
       triggerEvent: "triggerEvent",
       target: "target",
-      global: "global",
+      global: [InputFlags.HasDecoratorInputTransform, "global", "global", booleanAttribute],
       style: "style",
       styleClass: "styleClass",
       appendTo: "appendTo",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
       id: "id",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
-      pressDelay: "pressDelay"
+      pressDelay: [InputFlags.HasDecoratorInputTransform, "pressDelay", "pressDelay", numberAttribute]
     },
     outputs: {
       onShow: "onShow",
       onHide: "onHide"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 1,
     vars: 1,
     consts: [[3, "ngClass", "class", "ngStyle", 4, "ngIf"], [3, "ngClass", "ngStyle"], ["container", ""], [3, "root", "items", "itemTemplate", "menuId", "tabindex", "ariaLabel", "ariaLabelledBy", "baseZIndex", "autoZIndex", "visible", "focusedItemId", "activeItemPath", "itemClick", "menuFocus", "menuBlur", "menuKeydown", "itemMouseEnter"], ["rootmenu", ""]],
@@ -1869,7 +1898,10 @@ var ContextMenu = class _ContextMenu {
       type: Input
     }],
     global: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -1881,10 +1913,16 @@ var ContextMenu = class _ContextMenu {
       type: Input
     }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     id: [{
       type: Input
@@ -1896,7 +1934,10 @@ var ContextMenu = class _ContextMenu {
       type: Input
     }],
     pressDelay: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     onShow: [{
       type: Output

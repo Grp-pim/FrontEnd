@@ -1,12 +1,15 @@
 import {
   ObjectUtils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   ChangeDetectionStrategy,
   Component,
   Input,
+  InputFlags,
   ViewEncapsulation$1,
+  booleanAttribute,
   setClassMetadata,
+  ɵɵInputTransformsFeature,
   ɵɵStandaloneFeature,
   ɵɵdefineComponent,
   ɵɵprojection,
@@ -43,11 +46,11 @@ var BaseIcon = class _BaseIcon {
     hostAttrs: [1, "p-element", "p-icon-wrapper"],
     inputs: {
       label: "label",
-      spin: "spin",
+      spin: [InputFlags.HasDecoratorInputTransform, "spin", "spin", booleanAttribute],
       styleClass: "styleClass"
     },
     standalone: true,
-    features: [ɵɵStandaloneFeature],
+    features: [ɵɵInputTransformsFeature, ɵɵStandaloneFeature],
     ngContentSelectors: _c0,
     decls: 1,
     vars: 0,
@@ -78,7 +81,10 @@ var BaseIcon = class _BaseIcon {
       type: Input
     }],
     spin: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     styleClass: [{
       type: Input
@@ -89,4 +95,4 @@ var BaseIcon = class _BaseIcon {
 export {
   BaseIcon
 };
-//# sourceMappingURL=chunk-EI2ELTEY.js.map
+//# sourceMappingURL=chunk-BCQYFDDM.js.map

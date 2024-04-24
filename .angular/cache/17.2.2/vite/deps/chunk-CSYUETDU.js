@@ -1,27 +1,41 @@
 import {
-  TimesIcon
-} from "./chunk-5U3EUKPT.js";
+  AngleDoubleLeftIcon,
+  AngleDoubleRightIcon,
+  AngleDownIcon,
+  AngleLeftIcon,
+  AngleUpIcon,
+  SearchIcon
+} from "./chunk-E7LTO325.js";
 import {
-  AngleRightIcon
-} from "./chunk-I5VBRGSQ.js";
+  TimesIcon
+} from "./chunk-QVJZPM3K.js";
 import {
   ButtonDirective,
   ButtonModule,
   SpinnerIcon
-} from "./chunk-TM72CV2J.js";
+} from "./chunk-DJD4ECAD.js";
 import {
-  BaseIcon
-} from "./chunk-EI2ELTEY.js";
+  AutoFocus,
+  AutoFocusModule
+} from "./chunk-VYAWNECH.js";
 import {
   Tooltip,
   TooltipModule
-} from "./chunk-6GYAOLVO.js";
+} from "./chunk-G4I33PJT.js";
 import {
-  ConnectedOverlayScrollHandler,
-  DomHandler,
+  AngleRightIcon
+} from "./chunk-3ICCCD6Z.js";
+import {
+  BaseIcon
+} from "./chunk-BCQYFDDM.js";
+import {
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   FilterService,
   ObjectUtils,
@@ -32,7 +46,14 @@ import {
   TranslationKeys,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControl,
+  NgControlStatus,
+  NgModel
+} from "./chunk-J5JU2N75.js";
 import {
   animate,
   animation,
@@ -41,13 +62,6 @@ import {
   trigger,
   useAnimation
 } from "./chunk-5TL24Y5K.js";
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControl,
-  NgControlStatus,
-  NgModel
-} from "./chunk-J5JU2N75.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -70,6 +84,7 @@ import {
   Inject,
   Injector,
   Input,
+  InputFlags,
   NgModule,
   NgZone,
   Optional,
@@ -78,12 +93,15 @@ import {
   Renderer2,
   ViewChild,
   ViewEncapsulation$1,
+  booleanAttribute,
   computed,
   effect,
   forwardRef,
+  numberAttribute,
   setClassMetadata,
   signal,
   ɵɵInheritDefinitionFeature,
+  ɵɵInputTransformsFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
   ɵɵStandaloneFeature,
@@ -137,88 +155,6 @@ import {
   __spreadProps,
   __spreadValues
 } from "./chunk-J4B6MK7R.js";
-
-// node_modules/primeng/fesm2022/primeng-autofocus.mjs
-var AutoFocus = class _AutoFocus {
-  host;
-  constructor(host) {
-    this.host = host;
-  }
-  /**
-   * When present, it specifies that the component should automatically get focus on load.
-   * @group Props
-   */
-  autofocus;
-  focused = false;
-  ngAfterContentChecked() {
-    if (!this.focused) {
-      if (this.autofocus) {
-        setTimeout(() => {
-          const focusableElements = DomHandler.getFocusableElements(this.host.nativeElement);
-          if (focusableElements.length === 0) {
-            this.host.nativeElement.focus();
-          }
-          if (focusableElements.length > 0) {
-            focusableElements[0].focus();
-          }
-          this.focused = true;
-        });
-      }
-    }
-  }
-  static ɵfac = function AutoFocus_Factory(t) {
-    return new (t || _AutoFocus)(ɵɵdirectiveInject(ElementRef));
-  };
-  static ɵdir = ɵɵdefineDirective({
-    type: _AutoFocus,
-    selectors: [["", "pAutoFocus", ""]],
-    hostAttrs: [1, "p-element"],
-    inputs: {
-      autofocus: "autofocus"
-    }
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocus, [{
-    type: Directive,
-    args: [{
-      selector: "[pAutoFocus]",
-      host: {
-        class: "p-element"
-      }
-    }]
-  }], () => [{
-    type: ElementRef
-  }], {
-    autofocus: [{
-      type: Input
-    }]
-  });
-})();
-var AutoFocusModule = class _AutoFocusModule {
-  static ɵfac = function AutoFocusModule_Factory(t) {
-    return new (t || _AutoFocusModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _AutoFocusModule,
-    declarations: [AutoFocus],
-    imports: [CommonModule],
-    exports: [AutoFocus]
-  });
-  static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AutoFocusModule, [{
-    type: NgModule,
-    args: [{
-      imports: [CommonModule],
-      exports: [AutoFocus],
-      declarations: [AutoFocus]
-    }]
-  }], null, null);
-})();
 
 // node_modules/primeng/fesm2022/primeng-overlay.mjs
 var _c0 = ["overlay"];
@@ -1783,7 +1719,7 @@ var Scroller = class _Scroller {
     this.initialized = false;
   }
   viewInit() {
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId) && !this.initialized) {
       if (DomHandler.isVisible(this.elementViewChild?.nativeElement)) {
         this.setInitialState();
         this.setContentEl(this.contentEl);
@@ -2243,9 +2179,9 @@ var Scroller = class _Scroller {
     if (isPlatformBrowser(this.platformId)) {
       if (!this.windowResizeListener) {
         this.zone.runOutsideAngular(() => {
-          const window = this.document.defaultView;
+          const window2 = this.document.defaultView;
           const event = DomHandler.isTouchDevice() ? "orientationchange" : "resize";
-          this.windowResizeListener = this.renderer.listen(window, event, this.onWindowResize.bind(this));
+          this.windowResizeListener = this.renderer.listen(window2, event, this.onWindowResize.bind(this));
         });
       }
     }
@@ -2650,76 +2586,6 @@ var ChevronDownIcon = class _ChevronDownIcon extends BaseIcon {
   }], null, null);
 })();
 
-// node_modules/primeng/fesm2022/primeng-icons-search.mjs
-var SearchIcon = class _SearchIcon extends BaseIcon {
-  pathId;
-  ngOnInit() {
-    this.pathId = "url(#" + UniqueComponentId() + ")";
-  }
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵSearchIcon_BaseFactory;
-    return function SearchIcon_Factory(t) {
-      return (ɵSearchIcon_BaseFactory || (ɵSearchIcon_BaseFactory = ɵɵgetInheritedFactory(_SearchIcon)))(t || _SearchIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _SearchIcon,
-    selectors: [["SearchIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 6,
-    vars: 7,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["fill-rule", "evenodd", "clip-rule", "evenodd", "d", "M2.67602 11.0265C3.6661 11.688 4.83011 12.0411 6.02086 12.0411C6.81149 12.0411 7.59438 11.8854 8.32483 11.5828C8.87005 11.357 9.37808 11.0526 9.83317 10.6803L12.9769 13.8241C13.0323 13.8801 13.0983 13.9245 13.171 13.9548C13.2438 13.985 13.3219 14.0003 13.4007 14C13.4795 14.0003 13.5575 13.985 13.6303 13.9548C13.7031 13.9245 13.7691 13.8801 13.8244 13.8241C13.9367 13.7116 13.9998 13.5592 13.9998 13.4003C13.9998 13.2414 13.9367 13.089 13.8244 12.9765L10.6807 9.8328C11.053 9.37773 11.3573 8.86972 11.5831 8.32452C11.8857 7.59408 12.0414 6.81119 12.0414 6.02056C12.0414 4.8298 11.6883 3.66579 11.0268 2.67572C10.3652 1.68564 9.42494 0.913972 8.32483 0.45829C7.22472 0.00260857 6.01418 -0.116618 4.84631 0.115686C3.67844 0.34799 2.60568 0.921393 1.76369 1.76338C0.921698 2.60537 0.348296 3.67813 0.115991 4.84601C-0.116313 6.01388 0.00291375 7.22441 0.458595 8.32452C0.914277 9.42464 1.68595 10.3649 2.67602 11.0265ZM3.35565 2.0158C4.14456 1.48867 5.07206 1.20731 6.02086 1.20731C7.29317 1.20731 8.51338 1.71274 9.41304 2.6124C10.3127 3.51206 10.8181 4.73226 10.8181 6.00457C10.8181 6.95337 10.5368 7.88088 10.0096 8.66978C9.48251 9.45868 8.73328 10.0736 7.85669 10.4367C6.98011 10.7997 6.01554 10.8947 5.08496 10.7096C4.15439 10.5245 3.2996 10.0676 2.62869 9.39674C1.95778 8.72583 1.50089 7.87104 1.31579 6.94046C1.13068 6.00989 1.22568 5.04532 1.58878 4.16874C1.95187 3.29215 2.56675 2.54292 3.35565 2.0158Z", "fill", "currentColor"], [3, "id"], ["width", "14", "height", "14", "fill", "white"]],
-    template: function SearchIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0)(1, "g");
-        ɵɵelement(2, "path", 1);
-        ɵɵelementEnd();
-        ɵɵelementStart(3, "defs")(4, "clipPath", 2);
-        ɵɵelement(5, "rect", 3);
-        ɵɵelementEnd()()();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-        ɵɵadvance();
-        ɵɵattribute("clip-path", ctx.pathId);
-        ɵɵadvance(3);
-        ɵɵproperty("id", ctx.pathId);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SearchIcon, [{
-    type: Component,
-    args: [{
-      selector: "SearchIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <g [attr.clip-path]="pathId">
-                <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M2.67602 11.0265C3.6661 11.688 4.83011 12.0411 6.02086 12.0411C6.81149 12.0411 7.59438 11.8854 8.32483 11.5828C8.87005 11.357 9.37808 11.0526 9.83317 10.6803L12.9769 13.8241C13.0323 13.8801 13.0983 13.9245 13.171 13.9548C13.2438 13.985 13.3219 14.0003 13.4007 14C13.4795 14.0003 13.5575 13.985 13.6303 13.9548C13.7031 13.9245 13.7691 13.8801 13.8244 13.8241C13.9367 13.7116 13.9998 13.5592 13.9998 13.4003C13.9998 13.2414 13.9367 13.089 13.8244 12.9765L10.6807 9.8328C11.053 9.37773 11.3573 8.86972 11.5831 8.32452C11.8857 7.59408 12.0414 6.81119 12.0414 6.02056C12.0414 4.8298 11.6883 3.66579 11.0268 2.67572C10.3652 1.68564 9.42494 0.913972 8.32483 0.45829C7.22472 0.00260857 6.01418 -0.116618 4.84631 0.115686C3.67844 0.34799 2.60568 0.921393 1.76369 1.76338C0.921698 2.60537 0.348296 3.67813 0.115991 4.84601C-0.116313 6.01388 0.00291375 7.22441 0.458595 8.32452C0.914277 9.42464 1.68595 10.3649 2.67602 11.0265ZM3.35565 2.0158C4.14456 1.48867 5.07206 1.20731 6.02086 1.20731C7.29317 1.20731 8.51338 1.71274 9.41304 2.6124C10.3127 3.51206 10.8181 4.73226 10.8181 6.00457C10.8181 6.95337 10.5368 7.88088 10.0096 8.66978C9.48251 9.45868 8.73328 10.0736 7.85669 10.4367C6.98011 10.7997 6.01554 10.8947 5.08496 10.7096C4.15439 10.5245 3.2996 10.0676 2.62869 9.39674C1.95778 8.72583 1.50089 7.87104 1.31579 6.94046C1.13068 6.00989 1.22568 5.04532 1.58878 4.16874C1.95187 3.29215 2.56675 2.54292 3.35565 2.0158Z"
-                    fill="currentColor"
-                />
-            </g>
-            <defs>
-                <clipPath [id]="pathId">
-                    <rect width="14" height="14" fill="white" />
-                </clipPath>
-            </defs>
-        </svg>
-    `
-    }]
-  }], null, null);
-})();
-
 // node_modules/primeng/fesm2022/primeng-dropdown.mjs
 function DropdownItem_span_1_Template(rf, ctx) {
   if (rf & 1) {
@@ -2859,9 +2725,8 @@ function Dropdown_input_3_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r2 = ɵɵnextContext();
-    let tmp_4_0;
-    ɵɵproperty("ngClass", ctx_r2.inputClass)("disabled", ctx_r2.disabled);
-    ɵɵattribute("maxlength", ctx_r2.maxlength)("placeholder", ctx_r2.modelValue() === void 0 || ctx_r2.modelValue() === null ? ctx_r2.placeholder() : void 0)("aria-expanded", (tmp_4_0 = ctx_r2.overlayVisible) !== null && tmp_4_0 !== void 0 ? tmp_4_0 : false);
+    ɵɵproperty("ngClass", ctx_r2.inputClass)("disabled", ctx_r2.disabled)("autofocus", ctx_r2.autofocus);
+    ɵɵattribute("maxlength", ctx_r2.maxlength)("placeholder", ctx_r2.modelValue() === void 0 || ctx_r2.modelValue() === null ? ctx_r2.placeholder() : void 0)("aria-label", ctx_r2.ariaLabel || (ctx_r2.label() === "p-emptylabel" ? void 0 : ctx_r2.label()))("aria-activedescendant", ctx_r2.focused ? ctx_r2.focusedOptionId : void 0);
   }
 }
 function Dropdown_ng_container_4_TimesIcon_1_Template(rf, ctx) {
@@ -3356,7 +3221,7 @@ function Dropdown_ng_template_10_Template(rf, ctx) {
     ɵɵclassMap(ctx_r7.panelStyleClass);
     ɵɵproperty("ngClass", "p-dropdown-panel p-component")("ngStyle", ctx_r7.panelStyle);
     ɵɵadvance();
-    ɵɵattribute("aria-hidden", true)("tabindex", 0)("data-p-hidden-accessible", true)("data-p-hidden-focusable", true);
+    ɵɵattribute("tabindex", 0)("data-p-hidden-accessible", true)("data-p-hidden-focusable", true);
     ɵɵadvance(2);
     ɵɵproperty("ngTemplateOutlet", ctx_r7.headerTemplate);
     ɵɵadvance();
@@ -3370,7 +3235,7 @@ function Dropdown_ng_template_10_Template(rf, ctx) {
     ɵɵadvance(3);
     ɵɵproperty("ngTemplateOutlet", ctx_r7.footerTemplate);
     ɵɵadvance();
-    ɵɵattribute("aria-hidden", true)("tabindex", 0)("data-p-hidden-accessible", true)("data-p-hidden-focusable", true);
+    ɵɵattribute("tabindex", 0)("data-p-hidden-accessible", true)("data-p-hidden-focusable", true);
   }
 }
 var DROPDOWN_VALUE_ACCESSOR = {
@@ -3410,12 +3275,12 @@ var DropdownItem = class _DropdownItem {
     inputs: {
       id: "id",
       option: "option",
-      selected: "selected",
-      focused: "focused",
+      selected: [InputFlags.HasDecoratorInputTransform, "selected", "selected", booleanAttribute],
+      focused: [InputFlags.HasDecoratorInputTransform, "focused", "focused", booleanAttribute],
       label: "label",
-      disabled: "disabled",
-      visible: "visible",
-      itemSize: "itemSize",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
+      visible: [InputFlags.HasDecoratorInputTransform, "visible", "visible", booleanAttribute],
+      itemSize: [InputFlags.HasDecoratorInputTransform, "itemSize", "itemSize", numberAttribute],
       ariaPosInset: "ariaPosInset",
       ariaSetSize: "ariaSetSize",
       template: "template"
@@ -3424,6 +3289,7 @@ var DropdownItem = class _DropdownItem {
       onClick: "onClick",
       onMouseEnter: "onMouseEnter"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 3,
     vars: 21,
     consts: [["role", "option", "pRipple", "", 3, "id", "ngStyle", "ngClass", "click", "mouseenter"], [4, "ngIf"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"]],
@@ -3489,22 +3355,37 @@ var DropdownItem = class _DropdownItem {
       type: Input
     }],
     selected: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     focused: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     label: [{
       type: Input
     }],
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     visible: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     itemSize: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     ariaPosInset: [{
       type: Input
@@ -4051,9 +3932,9 @@ var Dropdown = class _Dropdown {
       const _filterBy = this.filterBy || this.optionLabel;
       const filteredOptions = !_filterBy && !this.filterFields && !this.optionValue ? this.options.filter((option) => {
         if (option.label) {
-          return option.label.toLowerCase().indexOf(this._filterValue().toLowerCase().trim()) !== -1;
+          return option.label.toString().toLowerCase().indexOf(this._filterValue().toLowerCase().trim()) !== -1;
         }
-        return option.toLowerCase().indexOf(this._filterValue().toLowerCase().trim()) !== -1;
+        return option.toString().toLowerCase().indexOf(this._filterValue().toLowerCase().trim()) !== -1;
       }) : this.filterService.filter(options, this.searchFields(), this._filterValue().trim(), this.filterMatchMode, this.filterLocale);
       if (this.group) {
         const optionGroups = this.options || [];
@@ -4221,11 +4102,13 @@ var Dropdown = class _Dropdown {
       const value = this.getOptionValue(option);
       this.updateModel(value, event);
       this.focusedOptionIndex.set(this.findSelectedOptionIndex());
-      isHide && setTimeout(() => this.hide(true), 1);
       preventChange === false && this.onChange.emit({
         originalEvent: event,
         value
       });
+    }
+    if (isHide) {
+      this.hide(true);
     }
   }
   onOptionMouseEnter(event, index) {
@@ -4411,6 +4294,9 @@ var Dropdown = class _Dropdown {
     this.focusedOptionIndex.set(-1);
     this.clicked.set(false);
     this.searchValue = "";
+    if (this.overlayOptions?.mode === "modal") {
+      DomHandler.unblockBodyScroll();
+    }
     if (this.filter && this.resetFilterOnHide) {
       this.resetFilter();
     }
@@ -4436,7 +4322,7 @@ var Dropdown = class _Dropdown {
   }
   onInputBlur(event) {
     this.focused = false;
-    this.overlayVisible === false && this.onBlur.emit(event);
+    this.onBlur.emit(event);
     if (!this.preventModelTouched) {
       this.onModelTouched();
     }
@@ -4758,7 +4644,7 @@ var Dropdown = class _Dropdown {
     return matched;
   }
   isOptionMatched(option) {
-    return this.isValidOption(option) && this.getOptionLabel(option).toLocaleLowerCase(this.filterLocale).startsWith(this.searchValue.toLocaleLowerCase(this.filterLocale));
+    return this.isValidOption(option) && this.getOptionLabel(option).toString().toLocaleLowerCase(this.filterLocale).startsWith(this.searchValue.toLocaleLowerCase(this.filterLocale));
   }
   onFilterInputChange(event) {
     let value = event.target.value;
@@ -4852,17 +4738,17 @@ var Dropdown = class _Dropdown {
     inputs: {
       id: "id",
       scrollHeight: "scrollHeight",
-      filter: "filter",
+      filter: [InputFlags.HasDecoratorInputTransform, "filter", "filter", booleanAttribute],
       name: "name",
       style: "style",
       panelStyle: "panelStyle",
       styleClass: "styleClass",
       panelStyleClass: "panelStyleClass",
-      readonly: "readonly",
-      required: "required",
-      editable: "editable",
+      readonly: [InputFlags.HasDecoratorInputTransform, "readonly", "readonly", booleanAttribute],
+      required: [InputFlags.HasDecoratorInputTransform, "required", "required", booleanAttribute],
+      editable: [InputFlags.HasDecoratorInputTransform, "editable", "editable", booleanAttribute],
       appendTo: "appendTo",
-      tabindex: "tabindex",
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
       placeholder: "placeholder",
       filterPlaceholder: "filterPlaceholder",
       filterLocale: "filterLocale",
@@ -4870,37 +4756,37 @@ var Dropdown = class _Dropdown {
       dataKey: "dataKey",
       filterBy: "filterBy",
       filterFields: "filterFields",
-      autofocus: "autofocus",
-      resetFilterOnHide: "resetFilterOnHide",
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute],
+      resetFilterOnHide: [InputFlags.HasDecoratorInputTransform, "resetFilterOnHide", "resetFilterOnHide", booleanAttribute],
       dropdownIcon: "dropdownIcon",
       optionLabel: "optionLabel",
       optionValue: "optionValue",
       optionDisabled: "optionDisabled",
       optionGroupLabel: "optionGroupLabel",
       optionGroupChildren: "optionGroupChildren",
-      autoDisplayFirst: "autoDisplayFirst",
-      group: "group",
-      showClear: "showClear",
+      autoDisplayFirst: [InputFlags.HasDecoratorInputTransform, "autoDisplayFirst", "autoDisplayFirst", booleanAttribute],
+      group: [InputFlags.HasDecoratorInputTransform, "group", "group", booleanAttribute],
+      showClear: [InputFlags.HasDecoratorInputTransform, "showClear", "showClear", booleanAttribute],
       emptyFilterMessage: "emptyFilterMessage",
       emptyMessage: "emptyMessage",
-      lazy: "lazy",
-      virtualScroll: "virtualScroll",
-      virtualScrollItemSize: "virtualScrollItemSize",
+      lazy: [InputFlags.HasDecoratorInputTransform, "lazy", "lazy", booleanAttribute],
+      virtualScroll: [InputFlags.HasDecoratorInputTransform, "virtualScroll", "virtualScroll", booleanAttribute],
+      virtualScrollItemSize: [InputFlags.HasDecoratorInputTransform, "virtualScrollItemSize", "virtualScrollItemSize", numberAttribute],
       virtualScrollOptions: "virtualScrollOptions",
       overlayOptions: "overlayOptions",
       ariaFilterLabel: "ariaFilterLabel",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
       filterMatchMode: "filterMatchMode",
-      maxlength: "maxlength",
+      maxlength: [InputFlags.HasDecoratorInputTransform, "maxlength", "maxlength", numberAttribute],
       tooltip: "tooltip",
       tooltipPosition: "tooltipPosition",
       tooltipPositionStyle: "tooltipPositionStyle",
       tooltipStyleClass: "tooltipStyleClass",
-      focusOnHover: "focusOnHover",
-      selectOnFocus: "selectOnFocus",
-      autoOptionFocus: "autoOptionFocus",
-      autofocusFilter: "autofocusFilter",
+      focusOnHover: [InputFlags.HasDecoratorInputTransform, "focusOnHover", "focusOnHover", booleanAttribute],
+      selectOnFocus: [InputFlags.HasDecoratorInputTransform, "selectOnFocus", "selectOnFocus", booleanAttribute],
+      autoOptionFocus: [InputFlags.HasDecoratorInputTransform, "autoOptionFocus", "autoOptionFocus", booleanAttribute],
+      autofocusFilter: [InputFlags.HasDecoratorInputTransform, "autofocusFilter", "autofocusFilter", booleanAttribute],
       disabled: "disabled",
       itemSize: "itemSize",
       autoZIndex: "autoZIndex",
@@ -4921,17 +4807,17 @@ var Dropdown = class _Dropdown {
       onClear: "onClear",
       onLazyLoad: "onLazyLoad"
     },
-    features: [ɵɵProvidersFeature([DROPDOWN_VALUE_ACCESSOR])],
+    features: [ɵɵProvidersFeature([DROPDOWN_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     decls: 11,
     vars: 20,
-    consts: [[3, "ngClass", "ngStyle", "click"], ["container", ""], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown", 4, "ngIf"], ["type", "text", "aria-haspopup", "listbox", 3, "ngClass", "disabled", "input", "keydown", "focus", "blur", 4, "ngIf"], [4, "ngIf"], ["role", "button", "aria-label", "dropdown trigger", "aria-haspopup", "listbox", 1, "p-dropdown-trigger"], ["class", "p-dropdown-trigger-icon", 4, "ngIf"], [3, "visible", "options", "target", "appendTo", "autoZIndex", "baseZIndex", "showTransitionOptions", "hideTransitionOptions", "visibleChange", "onAnimationStart", "onHide"], ["overlay", ""], ["pTemplate", "content"], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown"], ["focusInput", ""], [4, "ngIf", "ngIfElse"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngIf"], ["defaultPlaceholder", ""], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["type", "text", "aria-haspopup", "listbox", 3, "ngClass", "disabled", "input", "keydown", "focus", "blur"], ["editableInput", ""], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-dropdown-clear-icon", 3, "click", 4, "ngIf"], [3, "styleClass", "click"], [1, "p-dropdown-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["class", "p-dropdown-trigger-icon", 3, "ngClass", 4, "ngIf"], [3, "styleClass", 4, "ngIf"], [1, "p-dropdown-trigger-icon", 3, "ngClass"], [3, "styleClass"], [1, "p-dropdown-trigger-icon"], [3, "ngClass", "ngStyle"], ["role", "presentation", 1, "p-hidden-accessible", "p-hidden-focusable", 3, "focus"], ["firstHiddenFocusableEl", ""], ["class", "p-dropdown-header", 3, "click", 4, "ngIf"], [1, "p-dropdown-items-wrapper"], [3, "items", "style", "itemSize", "autoSize", "lazy", "options", "onLazyLoad", 4, "ngIf"], ["buildInItems", ""], ["lastHiddenFocusableEl", ""], [1, "p-dropdown-header", 3, "click"], ["builtInFilterElement", ""], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-dropdown-filter-container"], ["type", "text", "autocomplete", "off", 1, "p-dropdown-filter", "p-inputtext", "p-component", 3, "value", "input", "keydown", "blur"], ["filter", ""], ["class", "p-dropdown-filter-icon", 4, "ngIf"], [1, "p-dropdown-filter-icon"], [3, "items", "itemSize", "autoSize", "lazy", "options", "onLazyLoad"], ["scroller", ""], ["pTemplate", "loader"], ["role", "listbox", 1, "p-dropdown-items", 3, "ngClass"], ["items", ""], ["ngFor", "", 3, "ngForOf"], ["class", "p-dropdown-empty-message", 3, "ngStyle", 4, "ngIf"], ["role", "option", 1, "p-dropdown-item-group", 3, "ngStyle"], [3, "id", "option", "selected", "label", "disabled", "template", "focused", "ariaPosInset", "ariaSetSize", "onClick", "onMouseEnter"], [1, "p-dropdown-empty-message", 3, "ngStyle"], ["emptyFilter", ""], ["empty", ""]],
+    consts: [[3, "ngClass", "ngStyle", "click"], ["container", ""], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown", 4, "ngIf"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "ngClass", "disabled", "autofocus", "input", "keydown", "focus", "blur", 4, "ngIf"], [4, "ngIf"], ["role", "button", "aria-label", "dropdown trigger", "aria-haspopup", "listbox", 1, "p-dropdown-trigger"], ["class", "p-dropdown-trigger-icon", 4, "ngIf"], [3, "visible", "options", "target", "appendTo", "autoZIndex", "baseZIndex", "showTransitionOptions", "hideTransitionOptions", "visibleChange", "onAnimationStart", "onHide"], ["overlay", ""], ["pTemplate", "content"], ["role", "combobox", "pAutoFocus", "", 3, "ngClass", "pTooltip", "tooltipPosition", "positionStyle", "tooltipStyleClass", "autofocus", "focus", "blur", "keydown"], ["focusInput", ""], [4, "ngIf", "ngIfElse"], [3, "ngTemplateOutlet", "ngTemplateOutletContext", 4, "ngIf"], ["defaultPlaceholder", ""], [3, "ngTemplateOutlet", "ngTemplateOutletContext"], ["type", "text", "aria-haspopup", "listbox", "pAutoFocus", "", 3, "ngClass", "disabled", "autofocus", "input", "keydown", "focus", "blur"], ["editableInput", ""], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-dropdown-clear-icon", 3, "click", 4, "ngIf"], [3, "styleClass", "click"], [1, "p-dropdown-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["class", "p-dropdown-trigger-icon", 3, "ngClass", 4, "ngIf"], [3, "styleClass", 4, "ngIf"], [1, "p-dropdown-trigger-icon", 3, "ngClass"], [3, "styleClass"], [1, "p-dropdown-trigger-icon"], [3, "ngClass", "ngStyle"], ["role", "presentation", 1, "p-hidden-accessible", "p-hidden-focusable", 3, "focus"], ["firstHiddenFocusableEl", ""], ["class", "p-dropdown-header", 3, "click", 4, "ngIf"], ["role", "section", 1, "p-dropdown-items-wrapper"], [3, "items", "style", "itemSize", "autoSize", "lazy", "options", "onLazyLoad", 4, "ngIf"], ["buildInItems", ""], ["lastHiddenFocusableEl", ""], [1, "p-dropdown-header", 3, "click"], ["builtInFilterElement", ""], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-dropdown-filter-container"], ["type", "text", "role", "searchbox", "autocomplete", "off", 1, "p-dropdown-filter", "p-inputtext", "p-component", 3, "value", "input", "keydown", "blur"], ["filter", ""], ["class", "p-dropdown-filter-icon", 4, "ngIf"], [1, "p-dropdown-filter-icon"], [3, "items", "itemSize", "autoSize", "lazy", "options", "onLazyLoad"], ["scroller", ""], ["pTemplate", "loader"], ["role", "listbox", 1, "p-dropdown-items", 3, "ngClass"], ["items", ""], ["ngFor", "", 3, "ngForOf"], ["class", "p-dropdown-empty-message", "role", "option", 3, "ngStyle", 4, "ngIf"], ["role", "option", 1, "p-dropdown-item-group", 3, "ngStyle"], [3, "id", "option", "selected", "label", "disabled", "template", "focused", "ariaPosInset", "ariaSetSize", "onClick", "onMouseEnter"], ["role", "option", 1, "p-dropdown-empty-message", 3, "ngStyle"], ["emptyFilter", ""], ["empty", ""]],
     template: function Dropdown_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "div", 0, 1);
         ɵɵlistener("click", function Dropdown_Template_div_click_0_listener($event) {
           return ctx.onContainerClick($event);
         });
-        ɵɵtemplate(2, Dropdown_span_2_Template, 6, 20, "span", 2)(3, Dropdown_input_3_Template, 2, 5, "input", 3)(4, Dropdown_ng_container_4_Template, 3, 2, "ng-container", 4);
+        ɵɵtemplate(2, Dropdown_span_2_Template, 6, 20, "span", 2)(3, Dropdown_input_3_Template, 2, 7, "input", 3)(4, Dropdown_ng_container_4_Template, 3, 2, "ng-container", 4);
         ɵɵelementStart(5, "div", 5);
         ɵɵtemplate(6, Dropdown_ng_container_6_Template, 3, 2, "ng-container", 4)(7, Dropdown_span_7_Template, 2, 1, "span", 6);
         ɵɵelementEnd();
@@ -4945,7 +4831,7 @@ var Dropdown = class _Dropdown {
         })("onHide", function Dropdown_Template_p_overlay_onHide_8_listener() {
           return ctx.hide();
         });
-        ɵɵtemplate(10, Dropdown_ng_template_10_Template, 13, 19, "ng-template", 9);
+        ɵɵtemplate(10, Dropdown_ng_template_10_Template, 13, 17, "ng-template", 9);
         ɵɵelementEnd()();
       }
       if (rf & 2) {
@@ -5024,9 +4910,12 @@ var Dropdown = class _Dropdown {
                 [disabled]="disabled"
                 aria-haspopup="listbox"
                 [attr.placeholder]="modelValue() === undefined || modelValue() === null ? placeholder() : undefined"
-                [attr.aria-expanded]="overlayVisible ?? false"
+                [attr.aria-label]="ariaLabel || (label() === 'p-emptylabel' ? undefined : label())"
                 (input)="onEditableInput($event)"
                 (keydown)="onKeyDown($event)"
+                pAutoFocus
+                [autofocus]="autofocus"
+                [attr.aria-activedescendant]="focused ? focusedOptionId : undefined"
                 (focus)="onInputFocus($event)"
                 (blur)="onInputBlur($event)"
             />
@@ -5065,7 +4954,6 @@ var Dropdown = class _Dropdown {
                         <span
                             #firstHiddenFocusableEl
                             role="presentation"
-                            [attr.aria-hidden]="true"
                             class="p-hidden-accessible p-hidden-focusable"
                             [attr.tabindex]="0"
                             (focus)="onFirstHiddenFocus($event)"
@@ -5083,6 +4971,7 @@ var Dropdown = class _Dropdown {
                                     <input
                                         #filter
                                         type="text"
+                                        role="searchbox"
                                         autocomplete="off"
                                         [value]="_filterValue() || ''"
                                         class="p-dropdown-filter p-inputtext p-component"
@@ -5101,7 +4990,7 @@ var Dropdown = class _Dropdown {
                                 </div>
                             </ng-template>
                         </div>
-                        <div class="p-dropdown-items-wrapper" [style.max-height]="virtualScroll ? 'auto' : scrollHeight || 'auto'">
+                        <div class="p-dropdown-items-wrapper" [style.max-height]="virtualScroll ? 'auto' : scrollHeight || 'auto'" role="section">
                             <p-scroller
                                 *ngIf="virtualScroll"
                                 #scroller
@@ -5151,14 +5040,13 @@ var Dropdown = class _Dropdown {
                                             ></p-dropdownItem>
                                         </ng-container>
                                     </ng-template>
-
-                                    <li *ngIf="filterValue && isEmpty()" class="p-dropdown-empty-message" [ngStyle]="{ height: scrollerOptions.itemSize + 'px' }">
+                                    <li *ngIf="filterValue && isEmpty()" class="p-dropdown-empty-message" [ngStyle]="{ height: scrollerOptions.itemSize + 'px' }" role="option">
                                         <ng-container *ngIf="!emptyFilterTemplate && !emptyTemplate; else emptyFilter">
                                             {{ emptyFilterMessageLabel }}
                                         </ng-container>
                                         <ng-container #emptyFilter *ngTemplateOutlet="emptyFilterTemplate || emptyTemplate"></ng-container>
                                     </li>
-                                    <li *ngIf="!filterValue && isEmpty()" class="p-dropdown-empty-message" [ngStyle]="{ height: scrollerOptions.itemSize + 'px' }">
+                                    <li *ngIf="!filterValue && isEmpty()" class="p-dropdown-empty-message" [ngStyle]="{ height: scrollerOptions.itemSize + 'px' }" role="option">
                                         <ng-container *ngIf="!emptyTemplate; else empty">
                                             {{ emptyMessageLabel }}
                                         </ng-container>
@@ -5171,7 +5059,6 @@ var Dropdown = class _Dropdown {
                         <span
                             #lastHiddenFocusableEl
                             role="presentation"
-                            [attr.aria-hidden]="true"
                             class="p-hidden-accessible p-hidden-focusable"
                             [attr.tabindex]="0"
                             (focus)="onLastHiddenFocus($event)"
@@ -5213,7 +5100,10 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     filter: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     name: [{
       type: Input
@@ -5231,19 +5121,31 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     readonly: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     required: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     editable: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     appendTo: [{
       type: Input
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     placeholder: [{
       type: Input
@@ -5267,10 +5169,16 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     autofocus: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     resetFilterOnHide: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dropdownIcon: [{
       type: Input
@@ -5291,13 +5199,22 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     autoDisplayFirst: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     group: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showClear: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     emptyFilterMessage: [{
       type: Input
@@ -5306,13 +5223,22 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     lazy: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     virtualScroll: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     virtualScrollItemSize: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     virtualScrollOptions: [{
       type: Input
@@ -5333,7 +5259,10 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     maxlength: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     tooltip: [{
       type: Input
@@ -5348,16 +5277,28 @@ var Dropdown = class _Dropdown {
       type: Input
     }],
     focusOnHover: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     selectOnFocus: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     autoOptionFocus: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     autofocusFilter: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     disabled: [{
       type: Input
@@ -5473,260 +5414,6 @@ var DropdownModule = class _DropdownModule {
       imports: [CommonModule, OverlayModule, SharedModule, TooltipModule, RippleModule, ScrollerModule, AutoFocusModule, TimesIcon, ChevronDownIcon, SearchIcon],
       exports: [Dropdown, OverlayModule, SharedModule, ScrollerModule],
       declarations: [Dropdown, DropdownItem]
-    }]
-  }], null, null);
-})();
-
-// node_modules/primeng/fesm2022/primeng-icons-angledoubleleft.mjs
-var AngleDoubleLeftIcon = class _AngleDoubleLeftIcon extends BaseIcon {
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵAngleDoubleLeftIcon_BaseFactory;
-    return function AngleDoubleLeftIcon_Factory(t) {
-      return (ɵAngleDoubleLeftIcon_BaseFactory || (ɵAngleDoubleLeftIcon_BaseFactory = ɵɵgetInheritedFactory(_AngleDoubleLeftIcon)))(t || _AngleDoubleLeftIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _AngleDoubleLeftIcon,
-    selectors: [["AngleDoubleLeftIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 2,
-    vars: 5,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["fill-rule", "evenodd", "clip-rule", "evenodd", "d", "M5.71602 11.164C5.80782 11.2021 5.9063 11.2215 6.00569 11.221C6.20216 11.2301 6.39427 11.1612 6.54025 11.0294C6.68191 10.8875 6.76148 10.6953 6.76148 10.4948C6.76148 10.2943 6.68191 10.1021 6.54025 9.96024L3.51441 6.9344L6.54025 3.90855C6.624 3.76126 6.65587 3.59011 6.63076 3.42254C6.60564 3.25498 6.525 3.10069 6.40175 2.98442C6.2785 2.86815 6.11978 2.79662 5.95104 2.7813C5.78229 2.76598 5.61329 2.80776 5.47112 2.89994L1.97123 6.39983C1.82957 6.54167 1.75 6.73393 1.75 6.9344C1.75 7.13486 1.82957 7.32712 1.97123 7.46896L5.47112 10.9991C5.54096 11.0698 5.62422 11.1259 5.71602 11.164ZM11.0488 10.9689C11.1775 11.1156 11.3585 11.2061 11.5531 11.221C11.7477 11.2061 11.9288 11.1156 12.0574 10.9689C12.1815 10.8302 12.25 10.6506 12.25 10.4645C12.25 10.2785 12.1815 10.0989 12.0574 9.96024L9.03158 6.93439L12.0574 3.90855C12.1248 3.76739 12.1468 3.60881 12.1204 3.45463C12.0939 3.30045 12.0203 3.15826 11.9097 3.04765C11.7991 2.93703 11.6569 2.86343 11.5027 2.83698C11.3486 2.81053 11.19 2.83252 11.0488 2.89994L7.51865 6.36957C7.37699 6.51141 7.29742 6.70367 7.29742 6.90414C7.29742 7.1046 7.37699 7.29686 7.51865 7.4387L11.0488 10.9689Z", "fill", "currentColor"]],
-    template: function AngleDoubleLeftIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0);
-        ɵɵelement(1, "path", 1);
-        ɵɵelementEnd();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AngleDoubleLeftIcon, [{
-    type: Component,
-    args: [{
-      selector: "AngleDoubleLeftIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M5.71602 11.164C5.80782 11.2021 5.9063 11.2215 6.00569 11.221C6.20216 11.2301 6.39427 11.1612 6.54025 11.0294C6.68191 10.8875 6.76148 10.6953 6.76148 10.4948C6.76148 10.2943 6.68191 10.1021 6.54025 9.96024L3.51441 6.9344L6.54025 3.90855C6.624 3.76126 6.65587 3.59011 6.63076 3.42254C6.60564 3.25498 6.525 3.10069 6.40175 2.98442C6.2785 2.86815 6.11978 2.79662 5.95104 2.7813C5.78229 2.76598 5.61329 2.80776 5.47112 2.89994L1.97123 6.39983C1.82957 6.54167 1.75 6.73393 1.75 6.9344C1.75 7.13486 1.82957 7.32712 1.97123 7.46896L5.47112 10.9991C5.54096 11.0698 5.62422 11.1259 5.71602 11.164ZM11.0488 10.9689C11.1775 11.1156 11.3585 11.2061 11.5531 11.221C11.7477 11.2061 11.9288 11.1156 12.0574 10.9689C12.1815 10.8302 12.25 10.6506 12.25 10.4645C12.25 10.2785 12.1815 10.0989 12.0574 9.96024L9.03158 6.93439L12.0574 3.90855C12.1248 3.76739 12.1468 3.60881 12.1204 3.45463C12.0939 3.30045 12.0203 3.15826 11.9097 3.04765C11.7991 2.93703 11.6569 2.86343 11.5027 2.83698C11.3486 2.81053 11.19 2.83252 11.0488 2.89994L7.51865 6.36957C7.37699 6.51141 7.29742 6.70367 7.29742 6.90414C7.29742 7.1046 7.37699 7.29686 7.51865 7.4387L11.0488 10.9689Z"
-                fill="currentColor"
-            />
-        </svg>
-    `
-    }]
-  }], null, null);
-})();
-
-// node_modules/primeng/fesm2022/primeng-icons-angledoubleright.mjs
-var AngleDoubleRightIcon = class _AngleDoubleRightIcon extends BaseIcon {
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵAngleDoubleRightIcon_BaseFactory;
-    return function AngleDoubleRightIcon_Factory(t) {
-      return (ɵAngleDoubleRightIcon_BaseFactory || (ɵAngleDoubleRightIcon_BaseFactory = ɵɵgetInheritedFactory(_AngleDoubleRightIcon)))(t || _AngleDoubleRightIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _AngleDoubleRightIcon,
-    selectors: [["AngleDoubleRightIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 2,
-    vars: 5,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["fill-rule", "evenodd", "clip-rule", "evenodd", "d", "M7.68757 11.1451C7.7791 11.1831 7.8773 11.2024 7.9764 11.2019C8.07769 11.1985 8.17721 11.1745 8.26886 11.1312C8.36052 11.088 8.44238 11.0265 8.50943 10.9505L12.0294 7.49085C12.1707 7.34942 12.25 7.15771 12.25 6.95782C12.25 6.75794 12.1707 6.56622 12.0294 6.42479L8.50943 2.90479C8.37014 2.82159 8.20774 2.78551 8.04633 2.80192C7.88491 2.81833 7.73309 2.88635 7.6134 2.99588C7.4937 3.10541 7.41252 3.25061 7.38189 3.40994C7.35126 3.56927 7.37282 3.73423 7.44337 3.88033L10.4605 6.89748L7.44337 9.91463C7.30212 10.0561 7.22278 10.2478 7.22278 10.4477C7.22278 10.6475 7.30212 10.8393 7.44337 10.9807C7.51301 11.0512 7.59603 11.1071 7.68757 11.1451ZM1.94207 10.9505C2.07037 11.0968 2.25089 11.1871 2.44493 11.2019C2.63898 11.1871 2.81949 11.0968 2.94779 10.9505L6.46779 7.49085C6.60905 7.34942 6.68839 7.15771 6.68839 6.95782C6.68839 6.75793 6.60905 6.56622 6.46779 6.42479L2.94779 2.90479C2.80704 2.83757 2.6489 2.81563 2.49517 2.84201C2.34143 2.86839 2.19965 2.94178 2.08936 3.05207C1.97906 3.16237 1.90567 3.30415 1.8793 3.45788C1.85292 3.61162 1.87485 3.76975 1.94207 3.9105L4.95922 6.92765L1.94207 9.9448C1.81838 10.0831 1.75 10.2621 1.75 10.4477C1.75 10.6332 1.81838 10.8122 1.94207 10.9505Z", "fill", "currentColor"]],
-    template: function AngleDoubleRightIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0);
-        ɵɵelement(1, "path", 1);
-        ɵɵelementEnd();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AngleDoubleRightIcon, [{
-    type: Component,
-    args: [{
-      selector: "AngleDoubleRightIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M7.68757 11.1451C7.7791 11.1831 7.8773 11.2024 7.9764 11.2019C8.07769 11.1985 8.17721 11.1745 8.26886 11.1312C8.36052 11.088 8.44238 11.0265 8.50943 10.9505L12.0294 7.49085C12.1707 7.34942 12.25 7.15771 12.25 6.95782C12.25 6.75794 12.1707 6.56622 12.0294 6.42479L8.50943 2.90479C8.37014 2.82159 8.20774 2.78551 8.04633 2.80192C7.88491 2.81833 7.73309 2.88635 7.6134 2.99588C7.4937 3.10541 7.41252 3.25061 7.38189 3.40994C7.35126 3.56927 7.37282 3.73423 7.44337 3.88033L10.4605 6.89748L7.44337 9.91463C7.30212 10.0561 7.22278 10.2478 7.22278 10.4477C7.22278 10.6475 7.30212 10.8393 7.44337 10.9807C7.51301 11.0512 7.59603 11.1071 7.68757 11.1451ZM1.94207 10.9505C2.07037 11.0968 2.25089 11.1871 2.44493 11.2019C2.63898 11.1871 2.81949 11.0968 2.94779 10.9505L6.46779 7.49085C6.60905 7.34942 6.68839 7.15771 6.68839 6.95782C6.68839 6.75793 6.60905 6.56622 6.46779 6.42479L2.94779 2.90479C2.80704 2.83757 2.6489 2.81563 2.49517 2.84201C2.34143 2.86839 2.19965 2.94178 2.08936 3.05207C1.97906 3.16237 1.90567 3.30415 1.8793 3.45788C1.85292 3.61162 1.87485 3.76975 1.94207 3.9105L4.95922 6.92765L1.94207 9.9448C1.81838 10.0831 1.75 10.2621 1.75 10.4477C1.75 10.6332 1.81838 10.8122 1.94207 10.9505Z"
-                fill="currentColor"
-            />
-        </svg>
-    `
-    }]
-  }], null, null);
-})();
-
-// node_modules/primeng/fesm2022/primeng-icons-angleleft.mjs
-var AngleLeftIcon = class _AngleLeftIcon extends BaseIcon {
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵAngleLeftIcon_BaseFactory;
-    return function AngleLeftIcon_Factory(t) {
-      return (ɵAngleLeftIcon_BaseFactory || (ɵAngleLeftIcon_BaseFactory = ɵɵgetInheritedFactory(_AngleLeftIcon)))(t || _AngleLeftIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _AngleLeftIcon,
-    selectors: [["AngleLeftIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 2,
-    vars: 5,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["d", "M8.75 11.185C8.65146 11.1854 8.55381 11.1662 8.4628 11.1284C8.37179 11.0906 8.28924 11.0351 8.22 10.965L4.72 7.46496C4.57955 7.32433 4.50066 7.13371 4.50066 6.93496C4.50066 6.73621 4.57955 6.54558 4.72 6.40496L8.22 2.93496C8.36095 2.84357 8.52851 2.80215 8.69582 2.81733C8.86312 2.83252 9.02048 2.90344 9.14268 3.01872C9.26487 3.134 9.34483 3.28696 9.36973 3.4531C9.39463 3.61924 9.36303 3.78892 9.28 3.93496L6.28 6.93496L9.28 9.93496C9.42045 10.0756 9.49934 10.2662 9.49934 10.465C9.49934 10.6637 9.42045 10.8543 9.28 10.995C9.13526 11.1257 8.9448 11.1939 8.75 11.185Z", "fill", "currentColor"]],
-    template: function AngleLeftIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0);
-        ɵɵelement(1, "path", 1);
-        ɵɵelementEnd();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AngleLeftIcon, [{
-    type: Component,
-    args: [{
-      selector: "AngleLeftIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <path
-                d="M8.75 11.185C8.65146 11.1854 8.55381 11.1662 8.4628 11.1284C8.37179 11.0906 8.28924 11.0351 8.22 10.965L4.72 7.46496C4.57955 7.32433 4.50066 7.13371 4.50066 6.93496C4.50066 6.73621 4.57955 6.54558 4.72 6.40496L8.22 2.93496C8.36095 2.84357 8.52851 2.80215 8.69582 2.81733C8.86312 2.83252 9.02048 2.90344 9.14268 3.01872C9.26487 3.134 9.34483 3.28696 9.36973 3.4531C9.39463 3.61924 9.36303 3.78892 9.28 3.93496L6.28 6.93496L9.28 9.93496C9.42045 10.0756 9.49934 10.2662 9.49934 10.465C9.49934 10.6637 9.42045 10.8543 9.28 10.995C9.13526 11.1257 8.9448 11.1939 8.75 11.185Z"
-                fill="currentColor"
-            />
-        </svg>
-    `
-    }]
-  }], null, null);
-})();
-
-// node_modules/primeng/fesm2022/primeng-icons-angledown.mjs
-var AngleDownIcon = class _AngleDownIcon extends BaseIcon {
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵAngleDownIcon_BaseFactory;
-    return function AngleDownIcon_Factory(t) {
-      return (ɵAngleDownIcon_BaseFactory || (ɵAngleDownIcon_BaseFactory = ɵɵgetInheritedFactory(_AngleDownIcon)))(t || _AngleDownIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _AngleDownIcon,
-    selectors: [["AngleDownIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 2,
-    vars: 5,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["d", "M3.58659 4.5007C3.68513 4.50023 3.78277 4.51945 3.87379 4.55723C3.9648 4.59501 4.04735 4.65058 4.11659 4.7207L7.11659 7.7207L10.1166 4.7207C10.2619 4.65055 10.4259 4.62911 10.5843 4.65956C10.7427 4.69002 10.8871 4.77074 10.996 4.88976C11.1049 5.00877 11.1726 5.15973 11.1889 5.32022C11.2052 5.48072 11.1693 5.6422 11.0866 5.7807L7.58659 9.2807C7.44597 9.42115 7.25534 9.50004 7.05659 9.50004C6.85784 9.50004 6.66722 9.42115 6.52659 9.2807L3.02659 5.7807C2.88614 5.64007 2.80725 5.44945 2.80725 5.2507C2.80725 5.05195 2.88614 4.86132 3.02659 4.7207C3.09932 4.64685 3.18675 4.58911 3.28322 4.55121C3.37969 4.51331 3.48305 4.4961 3.58659 4.5007Z", "fill", "currentColor"]],
-    template: function AngleDownIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0);
-        ɵɵelement(1, "path", 1);
-        ɵɵelementEnd();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AngleDownIcon, [{
-    type: Component,
-    args: [{
-      selector: "AngleDownIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <path
-                d="M3.58659 4.5007C3.68513 4.50023 3.78277 4.51945 3.87379 4.55723C3.9648 4.59501 4.04735 4.65058 4.11659 4.7207L7.11659 7.7207L10.1166 4.7207C10.2619 4.65055 10.4259 4.62911 10.5843 4.65956C10.7427 4.69002 10.8871 4.77074 10.996 4.88976C11.1049 5.00877 11.1726 5.15973 11.1889 5.32022C11.2052 5.48072 11.1693 5.6422 11.0866 5.7807L7.58659 9.2807C7.44597 9.42115 7.25534 9.50004 7.05659 9.50004C6.85784 9.50004 6.66722 9.42115 6.52659 9.2807L3.02659 5.7807C2.88614 5.64007 2.80725 5.44945 2.80725 5.2507C2.80725 5.05195 2.88614 4.86132 3.02659 4.7207C3.09932 4.64685 3.18675 4.58911 3.28322 4.55121C3.37969 4.51331 3.48305 4.4961 3.58659 4.5007Z"
-                fill="currentColor"
-            />
-        </svg>
-    `
-    }]
-  }], null, null);
-})();
-
-// node_modules/primeng/fesm2022/primeng-icons-angleup.mjs
-var AngleUpIcon = class _AngleUpIcon extends BaseIcon {
-  static ɵfac = /* @__PURE__ */ (() => {
-    let ɵAngleUpIcon_BaseFactory;
-    return function AngleUpIcon_Factory(t) {
-      return (ɵAngleUpIcon_BaseFactory || (ɵAngleUpIcon_BaseFactory = ɵɵgetInheritedFactory(_AngleUpIcon)))(t || _AngleUpIcon);
-    };
-  })();
-  static ɵcmp = ɵɵdefineComponent({
-    type: _AngleUpIcon,
-    selectors: [["AngleUpIcon"]],
-    standalone: true,
-    features: [ɵɵInheritDefinitionFeature, ɵɵStandaloneFeature],
-    decls: 2,
-    vars: 5,
-    consts: [["width", "14", "height", "14", "viewBox", "0 0 14 14", "fill", "none", "xmlns", "http://www.w3.org/2000/svg"], ["d", "M10.4134 9.49931C10.3148 9.49977 10.2172 9.48055 10.1262 9.44278C10.0352 9.405 9.95263 9.34942 9.88338 9.27931L6.88338 6.27931L3.88338 9.27931C3.73811 9.34946 3.57409 9.3709 3.41567 9.34044C3.25724 9.30999 3.11286 9.22926 3.00395 9.11025C2.89504 8.99124 2.82741 8.84028 2.8111 8.67978C2.79478 8.51928 2.83065 8.35781 2.91338 8.21931L6.41338 4.71931C6.55401 4.57886 6.74463 4.49997 6.94338 4.49997C7.14213 4.49997 7.33276 4.57886 7.47338 4.71931L10.9734 8.21931C11.1138 8.35994 11.1927 8.55056 11.1927 8.74931C11.1927 8.94806 11.1138 9.13868 10.9734 9.27931C10.9007 9.35315 10.8132 9.41089 10.7168 9.44879C10.6203 9.48669 10.5169 9.5039 10.4134 9.49931Z", "fill", "currentColor"]],
-    template: function AngleUpIcon_Template(rf, ctx) {
-      if (rf & 1) {
-        ɵɵnamespaceSVG();
-        ɵɵelementStart(0, "svg", 0);
-        ɵɵelement(1, "path", 1);
-        ɵɵelementEnd();
-      }
-      if (rf & 2) {
-        ɵɵclassMap(ctx.getClassNames());
-        ɵɵattribute("aria-label", ctx.ariaLabel)("aria-hidden", ctx.ariaHidden)("role", ctx.role);
-      }
-    },
-    encapsulation: 2
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AngleUpIcon, [{
-    type: Component,
-    args: [{
-      selector: "AngleUpIcon",
-      standalone: true,
-      imports: [BaseIcon],
-      template: `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" [attr.aria-label]="ariaLabel" [attr.aria-hidden]="ariaHidden" [attr.role]="role" [class]="getClassNames()">
-            <path
-                d="M10.4134 9.49931C10.3148 9.49977 10.2172 9.48055 10.1262 9.44278C10.0352 9.405 9.95263 9.34942 9.88338 9.27931L6.88338 6.27931L3.88338 9.27931C3.73811 9.34946 3.57409 9.3709 3.41567 9.34044C3.25724 9.30999 3.11286 9.22926 3.00395 9.11025C2.89504 8.99124 2.82741 8.84028 2.8111 8.67978C2.79478 8.51928 2.83065 8.35781 2.91338 8.21931L6.41338 4.71931C6.55401 4.57886 6.74463 4.49997 6.94338 4.49997C7.14213 4.49997 7.33276 4.57886 7.47338 4.71931L10.9734 8.21931C11.1138 8.35994 11.1927 8.55056 11.1927 8.74931C11.1927 8.94806 11.1138 9.13868 10.9734 9.27931C10.9007 9.35315 10.8132 9.41089 10.7168 9.44879C10.6203 9.48669 10.5169 9.5039 10.4134 9.49931Z"
-                fill="currentColor"
-            />
-        </svg>
-    `
     }]
   }], null, null);
 })();
@@ -6409,6 +6096,11 @@ var InputNumber = class _InputNumber {
    */
   showClear = false;
   /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
+  /**
    * When present, it specifies that the element should be disabled.
    * @group Props
    */
@@ -6901,6 +6593,13 @@ var InputNumber = class _InputNumber {
     }
     const newValue = this.parseValue(this.input.nativeElement.value + char);
     const newValueStr = newValue != null ? newValue.toString() : "";
+    if (this.maxlength && this.getSelectedText()?.length == this.maxlength) {
+      this.insert(event, char, {
+        isDecimalSign,
+        isMinusSign
+      });
+      return;
+    }
     if (this.maxlength && newValueStr.length > this.maxlength) {
       return;
     }
@@ -6910,6 +6609,9 @@ var InputNumber = class _InputNumber {
         isMinusSign
       });
     }
+  }
+  getSelectedText() {
+    return window?.getSelection()?.toString().replaceAll(/[^0-9']/g, "") || "";
   }
   onPaste(event) {
     if (!this.disabled && !this.readonly) {
@@ -7253,10 +6955,11 @@ var InputNumber = class _InputNumber {
   }
   onInputBlur(event) {
     this.focused = false;
-    let newValue = this.validateValue(this.parseValue(this.input.nativeElement.value)).toString();
-    this.input.nativeElement.value = this.formatValue(newValue);
-    this.input.nativeElement.setAttribute("aria-valuenow", newValue);
-    this.updateModel(event, newValue);
+    const newValueNumber = this.validateValue(this.parseValue(this.input.nativeElement.value));
+    const newValueString = newValueNumber?.toString();
+    this.input.nativeElement.value = this.formatValue(newValueString);
+    this.input.nativeElement.setAttribute("aria-valuenow", newValueString);
+    this.updateModel(event, newValueNumber);
     this.onBlur.emit(event);
   }
   formattedValue() {
@@ -7329,45 +7032,46 @@ var InputNumber = class _InputNumber {
       }
     },
     inputs: {
-      showButtons: "showButtons",
-      format: "format",
+      showButtons: [InputFlags.HasDecoratorInputTransform, "showButtons", "showButtons", booleanAttribute],
+      format: [InputFlags.HasDecoratorInputTransform, "format", "format", booleanAttribute],
       buttonLayout: "buttonLayout",
       inputId: "inputId",
       styleClass: "styleClass",
       style: "style",
       placeholder: "placeholder",
-      size: "size",
-      maxlength: "maxlength",
-      tabindex: "tabindex",
+      size: [InputFlags.HasDecoratorInputTransform, "size", "size", numberAttribute],
+      maxlength: [InputFlags.HasDecoratorInputTransform, "maxlength", "maxlength", numberAttribute],
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
       title: "title",
       ariaLabelledBy: "ariaLabelledBy",
       ariaLabel: "ariaLabel",
-      ariaRequired: "ariaRequired",
+      ariaRequired: [InputFlags.HasDecoratorInputTransform, "ariaRequired", "ariaRequired", booleanAttribute],
       name: "name",
-      required: "required",
+      required: [InputFlags.HasDecoratorInputTransform, "required", "required", booleanAttribute],
       autocomplete: "autocomplete",
-      min: "min",
-      max: "max",
+      min: [InputFlags.HasDecoratorInputTransform, "min", "min", numberAttribute],
+      max: [InputFlags.HasDecoratorInputTransform, "max", "max", numberAttribute],
       incrementButtonClass: "incrementButtonClass",
       decrementButtonClass: "decrementButtonClass",
       incrementButtonIcon: "incrementButtonIcon",
       decrementButtonIcon: "decrementButtonIcon",
-      readonly: "readonly",
-      step: "step",
-      allowEmpty: "allowEmpty",
+      readonly: [InputFlags.HasDecoratorInputTransform, "readonly", "readonly", booleanAttribute],
+      step: [InputFlags.HasDecoratorInputTransform, "step", "step", numberAttribute],
+      allowEmpty: [InputFlags.HasDecoratorInputTransform, "allowEmpty", "allowEmpty", booleanAttribute],
       locale: "locale",
       localeMatcher: "localeMatcher",
       mode: "mode",
       currency: "currency",
       currencyDisplay: "currencyDisplay",
-      useGrouping: "useGrouping",
-      minFractionDigits: "minFractionDigits",
-      maxFractionDigits: "maxFractionDigits",
+      useGrouping: [InputFlags.HasDecoratorInputTransform, "useGrouping", "useGrouping", booleanAttribute],
+      minFractionDigits: [InputFlags.HasDecoratorInputTransform, "minFractionDigits", "minFractionDigits", (value) => numberAttribute(value, null)],
+      maxFractionDigits: [InputFlags.HasDecoratorInputTransform, "maxFractionDigits", "maxFractionDigits", (value) => numberAttribute(value, null)],
       prefix: "prefix",
       suffix: "suffix",
       inputStyle: "inputStyle",
       inputStyleClass: "inputStyleClass",
-      showClear: "showClear",
+      showClear: [InputFlags.HasDecoratorInputTransform, "showClear", "showClear", booleanAttribute],
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute],
       disabled: "disabled"
     },
     outputs: {
@@ -7377,10 +7081,10 @@ var InputNumber = class _InputNumber {
       onKeyDown: "onKeyDown",
       onClear: "onClear"
     },
-    features: [ɵɵProvidersFeature([INPUTNUMBER_VALUE_ACCESSOR]), ɵɵNgOnChangesFeature],
+    features: [ɵɵProvidersFeature([INPUTNUMBER_VALUE_ACCESSOR]), ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature],
     decls: 7,
-    vars: 39,
-    consts: [[3, "ngClass", "ngStyle"], ["pInputText", "", "role", "spinbutton", "inputmode", "decimal", 3, "ngClass", "ngStyle", "value", "disabled", "readonly", "input", "keydown", "keypress", "paste", "click", "focus", "blur"], ["input", ""], [4, "ngIf"], ["class", "p-inputnumber-button-group", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-icon-only", "tabindex", "-1", 3, "ngClass", "class", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup", 4, "ngIf"], [3, "ngClass", "click", 4, "ngIf"], ["class", "p-inputnumber-clear-icon", 3, "click", 4, "ngIf"], [3, "ngClass", "click"], [1, "p-inputnumber-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], [1, "p-inputnumber-button-group"], ["type", "button", "pButton", "", "tabindex", "-1", 1, "p-button-icon-only", 3, "ngClass", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"]],
+    vars: 40,
+    consts: [[3, "ngClass", "ngStyle"], ["pInputText", "", "role", "spinbutton", "inputmode", "decimal", "pAutoFocus", "", 3, "ngClass", "ngStyle", "value", "disabled", "readonly", "autofocus", "input", "keydown", "keypress", "paste", "click", "focus", "blur"], ["input", ""], [4, "ngIf"], ["class", "p-inputnumber-button-group", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-icon-only", "tabindex", "-1", 3, "ngClass", "class", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup", 4, "ngIf"], [3, "ngClass", "click", 4, "ngIf"], ["class", "p-inputnumber-clear-icon", 3, "click", 4, "ngIf"], [3, "ngClass", "click"], [1, "p-inputnumber-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], [1, "p-inputnumber-button-group"], ["type", "button", "pButton", "", "tabindex", "-1", 1, "p-button-icon-only", 3, "ngClass", "disabled", "mousedown", "mouseup", "mouseleave", "keydown", "keyup"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"]],
     template: function InputNumber_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "span", 0)(1, "input", 1, 2);
@@ -7405,11 +7109,11 @@ var InputNumber = class _InputNumber {
       }
       if (rf & 2) {
         ɵɵclassMap(ctx.styleClass);
-        ɵɵproperty("ngClass", ɵɵpureFunction3(35, _c34, ctx.showButtons && ctx.buttonLayout === "stacked", ctx.showButtons && ctx.buttonLayout === "horizontal", ctx.showButtons && ctx.buttonLayout === "vertical"))("ngStyle", ctx.style);
+        ɵɵproperty("ngClass", ɵɵpureFunction3(36, _c34, ctx.showButtons && ctx.buttonLayout === "stacked", ctx.showButtons && ctx.buttonLayout === "horizontal", ctx.showButtons && ctx.buttonLayout === "vertical"))("ngStyle", ctx.style);
         ɵɵattribute("data-pc-name", "inputnumber")("data-pc-section", "root");
         ɵɵadvance();
         ɵɵclassMap(ctx.inputStyleClass);
-        ɵɵproperty("ngClass", "p-inputnumber-input")("ngStyle", ctx.inputStyle)("value", ctx.formattedValue())("disabled", ctx.disabled)("readonly", ctx.readonly);
+        ɵɵproperty("ngClass", "p-inputnumber-input")("ngStyle", ctx.inputStyle)("value", ctx.formattedValue())("disabled", ctx.disabled)("readonly", ctx.readonly)("autofocus", ctx.autofocus);
         ɵɵattribute("id", ctx.inputId)("aria-valuemin", ctx.min)("aria-valuemax", ctx.max)("aria-valuenow", ctx.value)("placeholder", ctx.placeholder)("aria-label", ctx.ariaLabel)("aria-labelledby", ctx.ariaLabelledBy)("title", ctx.title)("size", ctx.size)("name", ctx.name)("autocomplete", ctx.autocomplete)("maxlength", ctx.maxlength)("tabindex", ctx.tabindex)("aria-required", ctx.ariaRequired)("required", ctx.required)("min", ctx.min)("max", ctx.max)("data-pc-section", "input");
         ɵɵadvance(2);
         ɵɵproperty("ngIf", ctx.buttonLayout != "vertical" && ctx.showClear && ctx.value);
@@ -7421,7 +7125,7 @@ var InputNumber = class _InputNumber {
         ɵɵproperty("ngIf", ctx.showButtons && ctx.buttonLayout !== "stacked");
       }
     },
-    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, InputText, ButtonDirective, TimesIcon, AngleUpIcon, AngleDownIcon],
+    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, InputText, ButtonDirective, AutoFocus, TimesIcon, AngleUpIcon, AngleDownIcon],
     styles: ["@layer primeng{p-inputnumber,.p-inputnumber{display:inline-flex}.p-inputnumber-button{display:flex;align-items:center;justify-content:center;flex:0 0 auto}.p-inputnumber-buttons-stacked .p-button.p-inputnumber-button .p-button-label,.p-inputnumber-buttons-horizontal .p-button.p-inputnumber-button .p-button-label{display:none}.p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-up{border-top-left-radius:0;border-bottom-left-radius:0;border-bottom-right-radius:0;padding:0}.p-inputnumber-buttons-stacked .p-inputnumber-input{border-top-right-radius:0;border-bottom-right-radius:0}.p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-down{border-top-left-radius:0;border-top-right-radius:0;border-bottom-left-radius:0;padding:0}.p-inputnumber-buttons-stacked .p-inputnumber-button-group{display:flex;flex-direction:column}.p-inputnumber-buttons-stacked .p-inputnumber-button-group .p-button.p-inputnumber-button{flex:1 1 auto}.p-inputnumber-buttons-horizontal .p-button.p-inputnumber-button-up{order:3;border-top-left-radius:0;border-bottom-left-radius:0}.p-inputnumber-buttons-horizontal .p-inputnumber-input{order:2;border-radius:0}.p-inputnumber-buttons-horizontal .p-button.p-inputnumber-button-down{order:1;border-top-right-radius:0;border-bottom-right-radius:0}.p-inputnumber-buttons-vertical{flex-direction:column}.p-inputnumber-buttons-vertical .p-button.p-inputnumber-button-up{order:1;border-bottom-left-radius:0;border-bottom-right-radius:0;width:100%}.p-inputnumber-buttons-vertical .p-inputnumber-input{order:2;border-radius:0;text-align:center}.p-inputnumber-buttons-vertical .p-button.p-inputnumber-button-down{order:3;border-top-left-radius:0;border-top-right-radius:0;width:100%}.p-inputnumber-input{flex:1 1 auto}.p-fluid p-inputnumber,.p-fluid .p-inputnumber{width:100%}.p-fluid .p-inputnumber .p-inputnumber-input{width:1%}.p-fluid .p-inputnumber-buttons-vertical .p-inputnumber-input{width:100%}.p-inputnumber-clear-icon{position:absolute;top:50%;margin-top:-.5rem;cursor:pointer}.p-inputnumber-clearable{position:relative}}\n"],
     encapsulation: 2,
     changeDetection: 0
@@ -7481,6 +7185,8 @@ var InputNumber = class _InputNumber {
                 (focus)="onInputFocus($event)"
                 (blur)="onInputBlur($event)"
                 [attr.data-pc-section]="'input'"
+                pAutoFocus
+                [autofocus]="autofocus"
             />
             <ng-container *ngIf="buttonLayout != 'vertical' && showClear && value">
                 <TimesIcon *ngIf="!clearIconTemplate" [ngClass]="'p-inputnumber-clear-icon'" (click)="clear()" [attr.data-pc-section]="'clearIcon'" />
@@ -7607,10 +7313,16 @@ var InputNumber = class _InputNumber {
     type: Injector
   }], {
     showButtons: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     format: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     buttonLayout: [{
       type: Input
@@ -7628,13 +7340,22 @@ var InputNumber = class _InputNumber {
       type: Input
     }],
     size: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     maxlength: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     title: [{
       type: Input
@@ -7646,22 +7367,34 @@ var InputNumber = class _InputNumber {
       type: Input
     }],
     ariaRequired: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     name: [{
       type: Input
     }],
     required: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     autocomplete: [{
       type: Input
     }],
     min: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     max: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     incrementButtonClass: [{
       type: Input
@@ -7676,13 +7409,22 @@ var InputNumber = class _InputNumber {
       type: Input
     }],
     readonly: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     step: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     allowEmpty: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     locale: [{
       type: Input
@@ -7700,13 +7442,22 @@ var InputNumber = class _InputNumber {
       type: Input
     }],
     useGrouping: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     minFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     maxFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     prefix: [{
       type: Input
@@ -7721,7 +7472,16 @@ var InputNumber = class _InputNumber {
       type: Input
     }],
     showClear: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     disabled: [{
       type: Input
@@ -7758,18 +7518,18 @@ var InputNumberModule = class _InputNumberModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _InputNumberModule,
     declarations: [InputNumber],
-    imports: [CommonModule, InputTextModule, ButtonModule, TimesIcon, AngleUpIcon, AngleDownIcon],
+    imports: [CommonModule, InputTextModule, ButtonModule, AutoFocusModule, TimesIcon, AngleUpIcon, AngleDownIcon],
     exports: [InputNumber, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule, InputTextModule, ButtonModule, TimesIcon, AngleUpIcon, AngleDownIcon, SharedModule]
+    imports: [CommonModule, InputTextModule, ButtonModule, AutoFocusModule, TimesIcon, AngleUpIcon, AngleDownIcon, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(InputNumberModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule, InputTextModule, ButtonModule, TimesIcon, AngleUpIcon, AngleDownIcon],
+      imports: [CommonModule, InputTextModule, ButtonModule, AutoFocusModule, TimesIcon, AngleUpIcon, AngleDownIcon],
       exports: [InputNumber, SharedModule],
       declarations: [InputNumber]
     }]
@@ -7935,35 +7695,57 @@ function Paginator_div_0_p_dropdown_8_ng_template_1_Template(rf, ctx) {
     ɵɵtextInterpolate(ctx_r27.currentPageReport);
   }
 }
-function Paginator_div_0_p_dropdown_8_2_ng_template_0_ng_container_0_Template(rf, ctx) {
+function Paginator_div_0_p_dropdown_8_ng_container_2_ng_template_1_ng_container_0_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainer(0);
   }
 }
-function Paginator_div_0_p_dropdown_8_2_ng_template_0_Template(rf, ctx) {
+function Paginator_div_0_p_dropdown_8_ng_container_2_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵtemplate(0, Paginator_div_0_p_dropdown_8_2_ng_template_0_ng_container_0_Template, 1, 0, "ng-container", 21);
+    ɵɵtemplate(0, Paginator_div_0_p_dropdown_8_ng_container_2_ng_template_1_ng_container_0_Template, 1, 0, "ng-container", 16);
   }
   if (rf & 2) {
-    const ctx_r29 = ɵɵnextContext(4);
-    ɵɵproperty("ngTemplateOutlet", ctx_r29.dropdownIconTemplate);
+    const item_r31 = ctx.$implicit;
+    const ctx_r30 = ɵɵnextContext(4);
+    ɵɵproperty("ngTemplateOutlet", ctx_r30.jumpToPageItemTemplate)("ngTemplateOutletContext", ɵɵpureFunction1(2, _c05, item_r31));
   }
 }
-function Paginator_div_0_p_dropdown_8_2_Template(rf, ctx) {
+function Paginator_div_0_p_dropdown_8_ng_container_2_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵtemplate(0, Paginator_div_0_p_dropdown_8_2_ng_template_0_Template, 1, 1, "ng-template", 28);
+    ɵɵelementContainerStart(0);
+    ɵɵtemplate(1, Paginator_div_0_p_dropdown_8_ng_container_2_ng_template_1_Template, 1, 4, "ng-template", 28);
+    ɵɵelementContainerEnd();
+  }
+}
+function Paginator_div_0_p_dropdown_8_3_ng_template_0_ng_container_0_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵelementContainer(0);
+  }
+}
+function Paginator_div_0_p_dropdown_8_3_ng_template_0_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵtemplate(0, Paginator_div_0_p_dropdown_8_3_ng_template_0_ng_container_0_Template, 1, 0, "ng-container", 21);
+  }
+  if (rf & 2) {
+    const ctx_r33 = ɵɵnextContext(4);
+    ɵɵproperty("ngTemplateOutlet", ctx_r33.dropdownIconTemplate);
+  }
+}
+function Paginator_div_0_p_dropdown_8_3_Template(rf, ctx) {
+  if (rf & 1) {
+    ɵɵtemplate(0, Paginator_div_0_p_dropdown_8_3_ng_template_0_Template, 1, 1, "ng-template", 29);
   }
 }
 function Paginator_div_0_p_dropdown_8_Template(rf, ctx) {
   if (rf & 1) {
-    const _r32 = ɵɵgetCurrentView();
+    const _r36 = ɵɵgetCurrentView();
     ɵɵelementStart(0, "p-dropdown", 25);
     ɵɵlistener("onChange", function Paginator_div_0_p_dropdown_8_Template_p_dropdown_onChange_0_listener($event) {
-      ɵɵrestoreView(_r32);
-      const ctx_r31 = ɵɵnextContext(2);
-      return ɵɵresetView(ctx_r31.onPageDropdownChange($event));
+      ɵɵrestoreView(_r36);
+      const ctx_r35 = ɵɵnextContext(2);
+      return ɵɵresetView(ctx_r35.onPageDropdownChange($event));
     });
-    ɵɵtemplate(1, Paginator_div_0_p_dropdown_8_ng_template_1_Template, 1, 1, "ng-template", 26)(2, Paginator_div_0_p_dropdown_8_2_Template, 1, 0, null, 27);
+    ɵɵtemplate(1, Paginator_div_0_p_dropdown_8_ng_template_1_Template, 1, 1, "ng-template", 26)(2, Paginator_div_0_p_dropdown_8_ng_container_2_Template, 2, 0, "ng-container", 27)(3, Paginator_div_0_p_dropdown_8_3_Template, 1, 0, null, 27);
     ɵɵelementEnd();
   }
   if (rf & 2) {
@@ -7971,6 +7753,8 @@ function Paginator_div_0_p_dropdown_8_Template(rf, ctx) {
     ɵɵproperty("options", ctx_r7.pageItems)("ngModel", ctx_r7.getPage())("disabled", ctx_r7.empty())("appendTo", ctx_r7.dropdownAppendTo)("scrollHeight", ctx_r7.dropdownScrollHeight);
     ɵɵattribute("aria-label", ctx_r7.getAriaLabel("jumpToPageDropdownLabel"));
     ɵɵadvance(2);
+    ɵɵproperty("ngIf", ctx_r7.jumpToPageItemTemplate);
+    ɵɵadvance();
     ɵɵproperty("ngIf", ctx_r7.dropdownIconTemplate);
   }
 }
@@ -8023,19 +7807,19 @@ function Paginator_div_0_button_12_span_2_Template(rf, ctx) {
     ɵɵelementEnd();
   }
   if (rf & 2) {
-    const ctx_r36 = ɵɵnextContext(3);
+    const ctx_r40 = ɵɵnextContext(3);
     ɵɵadvance();
-    ɵɵproperty("ngTemplateOutlet", ctx_r36.lastPageLinkIconTemplate);
+    ɵɵproperty("ngTemplateOutlet", ctx_r40.lastPageLinkIconTemplate);
   }
 }
 function Paginator_div_0_button_12_Template(rf, ctx) {
   if (rf & 1) {
-    const _r40 = ɵɵgetCurrentView();
-    ɵɵelementStart(0, "button", 29);
+    const _r44 = ɵɵgetCurrentView();
+    ɵɵelementStart(0, "button", 30);
     ɵɵlistener("click", function Paginator_div_0_button_12_Template_button_click_0_listener($event) {
-      ɵɵrestoreView(_r40);
-      const ctx_r39 = ɵɵnextContext(2);
-      return ɵɵresetView(ctx_r39.changePageToLast($event));
+      ɵɵrestoreView(_r44);
+      const ctx_r43 = ɵɵnextContext(2);
+      return ɵɵresetView(ctx_r43.changePageToLast($event));
     });
     ɵɵtemplate(1, Paginator_div_0_button_12_AngleDoubleRightIcon_1_Template, 1, 1, "AngleDoubleRightIcon", 6)(2, Paginator_div_0_button_12_span_2_Template, 2, 1, "span", 7);
     ɵɵelementEnd();
@@ -8052,12 +7836,12 @@ function Paginator_div_0_button_12_Template(rf, ctx) {
 }
 function Paginator_div_0_p_inputNumber_13_Template(rf, ctx) {
   if (rf & 1) {
-    const _r42 = ɵɵgetCurrentView();
-    ɵɵelementStart(0, "p-inputNumber", 30);
+    const _r46 = ɵɵgetCurrentView();
+    ɵɵelementStart(0, "p-inputNumber", 31);
     ɵɵlistener("ngModelChange", function Paginator_div_0_p_inputNumber_13_Template_p_inputNumber_ngModelChange_0_listener($event) {
-      ɵɵrestoreView(_r42);
-      const ctx_r41 = ɵɵnextContext(2);
-      return ɵɵresetView(ctx_r41.changePage($event - 1));
+      ɵɵrestoreView(_r46);
+      const ctx_r45 = ɵɵnextContext(2);
+      return ɵɵresetView(ctx_r45.changePage($event - 1));
     });
     ɵɵelementEnd();
   }
@@ -8076,15 +7860,15 @@ function Paginator_div_0_p_dropdown_14_ng_container_1_ng_template_1_Template(rf,
     ɵɵtemplate(0, Paginator_div_0_p_dropdown_14_ng_container_1_ng_template_1_ng_container_0_Template, 1, 0, "ng-container", 16);
   }
   if (rf & 2) {
-    const item_r46 = ctx.$implicit;
-    const ctx_r45 = ɵɵnextContext(4);
-    ɵɵproperty("ngTemplateOutlet", ctx_r45.dropdownItemTemplate)("ngTemplateOutletContext", ɵɵpureFunction1(2, _c05, item_r46));
+    const item_r50 = ctx.$implicit;
+    const ctx_r49 = ɵɵnextContext(4);
+    ɵɵproperty("ngTemplateOutlet", ctx_r49.dropdownItemTemplate)("ngTemplateOutletContext", ɵɵpureFunction1(2, _c05, item_r50));
   }
 }
 function Paginator_div_0_p_dropdown_14_ng_container_1_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainerStart(0);
-    ɵɵtemplate(1, Paginator_div_0_p_dropdown_14_ng_container_1_ng_template_1_Template, 1, 4, "ng-template", 32);
+    ɵɵtemplate(1, Paginator_div_0_p_dropdown_14_ng_container_1_ng_template_1_Template, 1, 4, "ng-template", 28);
     ɵɵelementContainerEnd();
   }
 }
@@ -8098,29 +7882,29 @@ function Paginator_div_0_p_dropdown_14_2_ng_template_0_Template(rf, ctx) {
     ɵɵtemplate(0, Paginator_div_0_p_dropdown_14_2_ng_template_0_ng_container_0_Template, 1, 0, "ng-container", 21);
   }
   if (rf & 2) {
-    const ctx_r48 = ɵɵnextContext(4);
-    ɵɵproperty("ngTemplateOutlet", ctx_r48.dropdownIconTemplate);
+    const ctx_r52 = ɵɵnextContext(4);
+    ɵɵproperty("ngTemplateOutlet", ctx_r52.dropdownIconTemplate);
   }
 }
 function Paginator_div_0_p_dropdown_14_2_Template(rf, ctx) {
   if (rf & 1) {
-    ɵɵtemplate(0, Paginator_div_0_p_dropdown_14_2_ng_template_0_Template, 1, 1, "ng-template", 28);
+    ɵɵtemplate(0, Paginator_div_0_p_dropdown_14_2_ng_template_0_Template, 1, 1, "ng-template", 29);
   }
 }
 function Paginator_div_0_p_dropdown_14_Template(rf, ctx) {
   if (rf & 1) {
-    const _r51 = ɵɵgetCurrentView();
-    ɵɵelementStart(0, "p-dropdown", 31);
+    const _r55 = ɵɵgetCurrentView();
+    ɵɵelementStart(0, "p-dropdown", 32);
     ɵɵtwoWayListener("ngModelChange", function Paginator_div_0_p_dropdown_14_Template_p_dropdown_ngModelChange_0_listener($event) {
-      ɵɵrestoreView(_r51);
-      const ctx_r50 = ɵɵnextContext(2);
-      ɵɵtwoWayBindingSet(ctx_r50.rows, $event) || (ctx_r50.rows = $event);
+      ɵɵrestoreView(_r55);
+      const ctx_r54 = ɵɵnextContext(2);
+      ɵɵtwoWayBindingSet(ctx_r54.rows, $event) || (ctx_r54.rows = $event);
       return ɵɵresetView($event);
     });
     ɵɵlistener("onChange", function Paginator_div_0_p_dropdown_14_Template_p_dropdown_onChange_0_listener($event) {
-      ɵɵrestoreView(_r51);
-      const ctx_r52 = ɵɵnextContext(2);
-      return ɵɵresetView(ctx_r52.onRppChange($event));
+      ɵɵrestoreView(_r55);
+      const ctx_r56 = ɵɵnextContext(2);
+      return ɵɵresetView(ctx_r56.onRppChange($event));
     });
     ɵɵtemplate(1, Paginator_div_0_p_dropdown_14_ng_container_1_Template, 2, 0, "ng-container", 27)(2, Paginator_div_0_p_dropdown_14_2_Template, 1, 0, null, 27);
     ɵɵelementEnd();
@@ -8156,23 +7940,23 @@ function Paginator_div_0_div_15_Template(rf, ctx) {
 }
 function Paginator_div_0_Template(rf, ctx) {
   if (rf & 1) {
-    const _r55 = ɵɵgetCurrentView();
+    const _r59 = ɵɵgetCurrentView();
     ɵɵelementStart(0, "div", 1);
     ɵɵtemplate(1, Paginator_div_0_div_1_Template, 2, 5, "div", 2)(2, Paginator_div_0_span_2_Template, 2, 1, "span", 3)(3, Paginator_div_0_button_3_Template, 3, 7, "button", 4);
     ɵɵelementStart(4, "button", 5);
     ɵɵlistener("click", function Paginator_div_0_Template_button_click_4_listener($event) {
-      ɵɵrestoreView(_r55);
-      const ctx_r54 = ɵɵnextContext();
-      return ɵɵresetView(ctx_r54.changePageToPrev($event));
+      ɵɵrestoreView(_r59);
+      const ctx_r58 = ɵɵnextContext();
+      return ɵɵresetView(ctx_r58.changePageToPrev($event));
     });
     ɵɵtemplate(5, Paginator_div_0_AngleLeftIcon_5_Template, 1, 1, "AngleLeftIcon", 6)(6, Paginator_div_0_span_6_Template, 2, 1, "span", 7);
     ɵɵelementEnd();
-    ɵɵtemplate(7, Paginator_div_0_span_7_Template, 2, 1, "span", 8)(8, Paginator_div_0_p_dropdown_8_Template, 3, 7, "p-dropdown", 9);
+    ɵɵtemplate(7, Paginator_div_0_span_7_Template, 2, 1, "span", 8)(8, Paginator_div_0_p_dropdown_8_Template, 4, 8, "p-dropdown", 9);
     ɵɵelementStart(9, "button", 10);
     ɵɵlistener("click", function Paginator_div_0_Template_button_click_9_listener($event) {
-      ɵɵrestoreView(_r55);
-      const ctx_r56 = ɵɵnextContext();
-      return ɵɵresetView(ctx_r56.changePageToNext($event));
+      ɵɵrestoreView(_r59);
+      const ctx_r60 = ɵɵnextContext();
+      return ɵɵresetView(ctx_r60.changePageToNext($event));
     });
     ɵɵtemplate(10, Paginator_div_0_AngleRightIcon_10_Template, 1, 1, "AngleRightIcon", 6)(11, Paginator_div_0_span_11_Template, 2, 1, "span", 7);
     ɵɵelementEnd();
@@ -8309,6 +8093,12 @@ var Paginator = class _Paginator {
    */
   showJumpToPageInput;
   /**
+   * Template instance to inject into the jump to page dropdown item inside in the paginator.
+   * @param {Object} context - item instance.
+   * @group Props
+   */
+  jumpToPageItemTemplate;
+  /**
    * Whether to show page links.
    * @group Props
    */
@@ -8319,7 +8109,7 @@ var Paginator = class _Paginator {
    */
   locale;
   /**
-   * Template instance to inject into the dropdown item inside in the paginator.
+   * Template instance to inject into the rows per page dropdown item inside in the paginator.
    * @param {Object} context - item instance.
    * @group Props
    */
@@ -8416,6 +8206,9 @@ var Paginator = class _Paginator {
     }
     if (simpleChange.rowsPerPageOptions) {
       this.updateRowsPerPageOptions();
+    }
+    if (simpleChange.pageLinkSize) {
+      this.updatePageLinks();
     }
   }
   updateRowsPerPageOptions() {
@@ -8557,24 +8350,25 @@ var Paginator = class _Paginator {
     },
     hostAttrs: [1, "p-element"],
     inputs: {
-      pageLinkSize: "pageLinkSize",
+      pageLinkSize: [InputFlags.HasDecoratorInputTransform, "pageLinkSize", "pageLinkSize", numberAttribute],
       style: "style",
       styleClass: "styleClass",
-      alwaysShow: "alwaysShow",
+      alwaysShow: [InputFlags.HasDecoratorInputTransform, "alwaysShow", "alwaysShow", booleanAttribute],
       dropdownAppendTo: "dropdownAppendTo",
       templateLeft: "templateLeft",
       templateRight: "templateRight",
       appendTo: "appendTo",
       dropdownScrollHeight: "dropdownScrollHeight",
       currentPageReportTemplate: "currentPageReportTemplate",
-      showCurrentPageReport: "showCurrentPageReport",
-      showFirstLastIcon: "showFirstLastIcon",
-      totalRecords: "totalRecords",
-      rows: "rows",
+      showCurrentPageReport: [InputFlags.HasDecoratorInputTransform, "showCurrentPageReport", "showCurrentPageReport", booleanAttribute],
+      showFirstLastIcon: [InputFlags.HasDecoratorInputTransform, "showFirstLastIcon", "showFirstLastIcon", booleanAttribute],
+      totalRecords: [InputFlags.HasDecoratorInputTransform, "totalRecords", "totalRecords", numberAttribute],
+      rows: [InputFlags.HasDecoratorInputTransform, "rows", "rows", numberAttribute],
       rowsPerPageOptions: "rowsPerPageOptions",
-      showJumpToPageDropdown: "showJumpToPageDropdown",
-      showJumpToPageInput: "showJumpToPageInput",
-      showPageLinks: "showPageLinks",
+      showJumpToPageDropdown: [InputFlags.HasDecoratorInputTransform, "showJumpToPageDropdown", "showJumpToPageDropdown", booleanAttribute],
+      showJumpToPageInput: [InputFlags.HasDecoratorInputTransform, "showJumpToPageInput", "showJumpToPageInput", booleanAttribute],
+      jumpToPageItemTemplate: "jumpToPageItemTemplate",
+      showPageLinks: [InputFlags.HasDecoratorInputTransform, "showPageLinks", "showPageLinks", booleanAttribute],
       locale: "locale",
       dropdownItemTemplate: "dropdownItemTemplate",
       first: "first"
@@ -8582,10 +8376,10 @@ var Paginator = class _Paginator {
     outputs: {
       onPageChange: "onPageChange"
     },
-    features: [ɵɵNgOnChangesFeature],
+    features: [ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature],
     decls: 1,
     vars: 1,
-    consts: [[3, "class", "ngStyle", "ngClass", 4, "ngIf"], [3, "ngStyle", "ngClass"], ["class", "p-paginator-left-content", 4, "ngIf"], ["class", "p-paginator-current", 4, "ngIf"], ["type", "button", "pRipple", "", "class", "p-paginator-first p-paginator-element p-link", 3, "disabled", "ngClass", "click", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-paginator-prev", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [3, "styleClass", 4, "ngIf"], ["class", "p-paginator-icon", 4, "ngIf"], ["class", "p-paginator-pages", 4, "ngIf"], ["styleClass", "p-paginator-page-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "onChange", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-paginator-next", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], ["type", "button", "pRipple", "", "class", "p-paginator-last p-paginator-element p-link", 3, "disabled", "ngClass", "click", 4, "ngIf"], ["class", "p-paginator-page-input", 3, "ngModel", "disabled", "ngModelChange", 4, "ngIf"], ["styleClass", "p-paginator-rpp-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "ariaLabel", "ngModelChange", "onChange", 4, "ngIf"], ["class", "p-paginator-right-content", 4, "ngIf"], [1, "p-paginator-left-content"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-paginator-current"], ["type", "button", "pRipple", "", 1, "p-paginator-first", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [3, "styleClass"], [1, "p-paginator-icon"], [4, "ngTemplateOutlet"], [1, "p-paginator-pages"], ["type", "button", "class", "p-paginator-page p-paginator-element p-link", "pRipple", "", 3, "ngClass", "click", 4, "ngFor", "ngForOf"], ["type", "button", "pRipple", "", 1, "p-paginator-page", "p-paginator-element", "p-link", 3, "ngClass", "click"], ["styleClass", "p-paginator-page-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "onChange"], ["pTemplate", "selectedItem"], [4, "ngIf"], ["pTemplate", "dropdownicon"], ["type", "button", "pRipple", "", 1, "p-paginator-last", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [1, "p-paginator-page-input", 3, "ngModel", "disabled", "ngModelChange"], ["styleClass", "p-paginator-rpp-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "ariaLabel", "ngModelChange", "onChange"], ["pTemplate", "item"], [1, "p-paginator-right-content"]],
+    consts: [[3, "class", "ngStyle", "ngClass", 4, "ngIf"], [3, "ngStyle", "ngClass"], ["class", "p-paginator-left-content", 4, "ngIf"], ["class", "p-paginator-current", 4, "ngIf"], ["type", "button", "pRipple", "", "class", "p-paginator-first p-paginator-element p-link", 3, "disabled", "ngClass", "click", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-paginator-prev", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [3, "styleClass", 4, "ngIf"], ["class", "p-paginator-icon", 4, "ngIf"], ["class", "p-paginator-pages", 4, "ngIf"], ["styleClass", "p-paginator-page-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "onChange", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-paginator-next", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], ["type", "button", "pRipple", "", "class", "p-paginator-last p-paginator-element p-link", 3, "disabled", "ngClass", "click", 4, "ngIf"], ["class", "p-paginator-page-input", 3, "ngModel", "disabled", "ngModelChange", 4, "ngIf"], ["styleClass", "p-paginator-rpp-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "ariaLabel", "ngModelChange", "onChange", 4, "ngIf"], ["class", "p-paginator-right-content", 4, "ngIf"], [1, "p-paginator-left-content"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-paginator-current"], ["type", "button", "pRipple", "", 1, "p-paginator-first", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [3, "styleClass"], [1, "p-paginator-icon"], [4, "ngTemplateOutlet"], [1, "p-paginator-pages"], ["type", "button", "class", "p-paginator-page p-paginator-element p-link", "pRipple", "", 3, "ngClass", "click", 4, "ngFor", "ngForOf"], ["type", "button", "pRipple", "", 1, "p-paginator-page", "p-paginator-element", "p-link", 3, "ngClass", "click"], ["styleClass", "p-paginator-page-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "onChange"], ["pTemplate", "selectedItem"], [4, "ngIf"], ["pTemplate", "item"], ["pTemplate", "dropdownicon"], ["type", "button", "pRipple", "", 1, "p-paginator-last", "p-paginator-element", "p-link", 3, "disabled", "ngClass", "click"], [1, "p-paginator-page-input", 3, "ngModel", "disabled", "ngModelChange"], ["styleClass", "p-paginator-rpp-options", 3, "options", "ngModel", "disabled", "appendTo", "scrollHeight", "ariaLabel", "ngModelChange", "onChange"], [1, "p-paginator-right-content"]],
     template: function Paginator_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵtemplate(0, Paginator_div_0_Template, 16, 29, "div", 0);
@@ -8666,6 +8460,11 @@ var Paginator = class _Paginator {
                 [scrollHeight]="dropdownScrollHeight"
             >
                 <ng-template pTemplate="selectedItem">{{ currentPageReport }}</ng-template>
+                <ng-container *ngIf="jumpToPageItemTemplate">
+                    <ng-template let-item pTemplate="item">
+                        <ng-container *ngTemplateOutlet="jumpToPageItemTemplate; context: { $implicit: item }"> </ng-container>
+                    </ng-template>
+                </ng-container>
                 <ng-template pTemplate="dropdownicon" *ngIf="dropdownIconTemplate">
                     <ng-container *ngTemplateOutlet="dropdownIconTemplate"></ng-container>
                 </ng-template>
@@ -8738,7 +8537,10 @@ var Paginator = class _Paginator {
     type: PrimeNGConfig
   }], {
     pageLinkSize: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -8747,7 +8549,10 @@ var Paginator = class _Paginator {
       type: Input
     }],
     alwaysShow: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dropdownAppendTo: [{
       type: Input
@@ -8768,28 +8573,52 @@ var Paginator = class _Paginator {
       type: Input
     }],
     showCurrentPageReport: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showFirstLastIcon: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     totalRecords: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     rows: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     rowsPerPageOptions: [{
       type: Input
     }],
     showJumpToPageDropdown: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showJumpToPageInput: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    jumpToPageItemTemplate: [{
       type: Input
     }],
     showPageLinks: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     locale: [{
       type: Input
@@ -8847,4 +8676,4 @@ export {
   Paginator,
   PaginatorModule
 };
-//# sourceMappingURL=chunk-UJC5NJ7P.js.map
+//# sourceMappingURL=chunk-CSYUETDU.js.map

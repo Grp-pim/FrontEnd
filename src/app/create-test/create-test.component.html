@@ -195,7 +195,7 @@
           </td>
           <td>{{ test.duration }}</td>
           <!-- <td>{{ test._id }}</td> -->
-          <td>{{ test.createdAt | date }}</td>
+         <td>{{ test.createdAt | date }}</td>
           <td>
             <div class="d-flex">
               <button
@@ -212,9 +212,9 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-             
+              (click)="toTestDetails(this.test._id)"
               >
-                Copy
+                Details
               </button>
             </div>
           </td>

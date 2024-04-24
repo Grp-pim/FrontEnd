@@ -15,6 +15,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,6 +44,12 @@ const routes: Routes = [
   { path: 'compilator', title: 'Comp', component: BodyComponent },
   // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
   { path: 'test', title: 'Test', component: CreateTestComponent },
+  {
+    path: 'test-details/:id',
+    title: 'Test-details',
+    component: TestDetailsComponent,
+  },
+
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
 

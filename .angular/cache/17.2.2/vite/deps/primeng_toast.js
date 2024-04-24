@@ -1,16 +1,17 @@
 import {
   CheckIcon
-} from "./chunk-KJ4CLKVH.js";
+} from "./chunk-2XKDFGN5.js";
 import {
   TimesIcon
-} from "./chunk-5U3EUKPT.js";
+} from "./chunk-QVJZPM3K.js";
 import {
   BaseIcon
-} from "./chunk-EI2ELTEY.js";
+} from "./chunk-BCQYFDDM.js";
 import {
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import "./chunk-YAPAIHRL.js";
 import {
   MessageService,
   ObjectUtils,
@@ -19,7 +20,7 @@ import {
   SharedModule,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   animate,
   animateChild,
@@ -46,14 +47,18 @@ import {
   EventEmitter,
   Inject,
   Input,
+  InputFlags,
   NgModule,
   NgZone,
   Output,
   Renderer2,
   ViewChild,
   ViewEncapsulation$1,
+  booleanAttribute,
+  numberAttribute,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
+  ɵɵInputTransformsFeature,
   ɵɵStandaloneFeature,
   ɵɵadvance,
   ɵɵattribute,
@@ -89,8 +94,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-J4B6MK7R.js";
 
@@ -609,8 +614,8 @@ var ToastItem = class _ToastItem {
     hostAttrs: [1, "p-element"],
     inputs: {
       message: "message",
-      index: "index",
-      life: "life",
+      index: [InputFlags.HasDecoratorInputTransform, "index", "index", numberAttribute],
+      life: [InputFlags.HasDecoratorInputTransform, "life", "life", numberAttribute],
       template: "template",
       headlessTemplate: "headlessTemplate",
       showTransformOptions: "showTransformOptions",
@@ -621,6 +626,7 @@ var ToastItem = class _ToastItem {
     outputs: {
       onClose: "onClose"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 5,
     vars: 18,
     consts: [["role", "alert", "aria-live", "assertive", "aria-atomic", "true", 3, "ngClass", "mouseenter", "mouseleave"], ["container", ""], [4, "ngIf", "ngIfElse"], ["notHeadless", ""], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [1, "p-toast-message-content", 3, "ngClass"], [4, "ngIf"], ["type", "button", "class", "p-toast-icon-close p-link", "pRipple", "", 3, "click", "keydown.enter", 4, "ngIf"], [3, "class", 4, "ngIf"], ["class", "p-toast-message-icon", 4, "ngIf"], [1, "p-toast-message-text"], [1, "p-toast-summary"], [1, "p-toast-detail"], [1, "p-toast-message-icon"], ["type", "button", "pRipple", "", 1, "p-toast-icon-close", "p-link", 3, "click", "keydown.enter"], [3, "styleClass", 4, "ngIf"], [3, "styleClass"]],
@@ -746,10 +752,16 @@ var ToastItem = class _ToastItem {
       type: Input
     }],
     index: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     life: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     template: [{
       type: Input
@@ -1040,14 +1052,14 @@ var Toast = class _Toast {
     hostAttrs: [1, "p-element"],
     inputs: {
       key: "key",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
-      life: "life",
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
+      life: [InputFlags.HasDecoratorInputTransform, "life", "life", numberAttribute],
       style: "style",
       styleClass: "styleClass",
       position: "position",
-      preventOpenDuplicates: "preventOpenDuplicates",
-      preventDuplicates: "preventDuplicates",
+      preventOpenDuplicates: [InputFlags.HasDecoratorInputTransform, "preventOpenDuplicates", "preventOpenDuplicates", booleanAttribute],
+      preventDuplicates: [InputFlags.HasDecoratorInputTransform, "preventDuplicates", "preventDuplicates", booleanAttribute],
       showTransformOptions: "showTransformOptions",
       hideTransformOptions: "hideTransformOptions",
       showTransitionOptions: "showTransitionOptions",
@@ -1057,6 +1069,7 @@ var Toast = class _Toast {
     outputs: {
       onClose: "onClose"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 3,
     vars: 5,
     consts: [[1, "p-toast", "p-component", 3, "ngClass", "ngStyle"], ["container", ""], [3, "message", "index", "life", "template", "headlessTemplate", "showTransformOptions", "hideTransformOptions", "showTransitionOptions", "hideTransitionOptions", "onClose", 4, "ngFor", "ngForOf"], [3, "message", "index", "life", "template", "headlessTemplate", "showTransformOptions", "hideTransformOptions", "showTransitionOptions", "hideTransitionOptions", "onClose"]],
@@ -1134,13 +1147,22 @@ var Toast = class _Toast {
       type: Input
     }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     life: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -1152,10 +1174,16 @@ var Toast = class _Toast {
       type: Input
     }],
     preventOpenDuplicates: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     preventDuplicates: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showTransformOptions: [{
       type: Input

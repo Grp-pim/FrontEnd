@@ -1,17 +1,23 @@
 import {
-  BaseIcon
-} from "./chunk-EI2ELTEY.js";
+  AutoFocus,
+  AutoFocusModule
+} from "./chunk-VYAWNECH.js";
 import {
-  DomHandler,
+  BaseIcon
+} from "./chunk-BCQYFDDM.js";
+import {
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   ObjectUtils,
   PrimeTemplate,
   SharedModule,
   UniqueComponentId
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -29,11 +35,15 @@ import {
   EventEmitter,
   Inject,
   Input,
+  InputFlags,
   NgModule,
   Output,
   ViewEncapsulation$1,
+  booleanAttribute,
+  numberAttribute,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
+  ɵɵInputTransformsFeature,
   ɵɵStandaloneFeature,
   ɵɵadvance,
   ɵɵattribute,
@@ -352,6 +362,41 @@ var ButtonDirective = class _ButtonDirective {
       this.setStyleClass();
     }
   }
+  /**
+   * Defines the style of the button.
+   * @group Props
+   */
+  severity;
+  /**
+   * Add a shadow to indicate elevation.
+   * @group Props
+   */
+  raised = false;
+  /**
+   * Add a circular border radius to the button.
+   * @group Props
+   */
+  rounded = false;
+  /**
+   * Add a textual class to the button without a background initially.
+   * @group Props
+   */
+  text = false;
+  /**
+   * Add a border class without a background initially.
+   * @group Props
+   */
+  outlined = false;
+  /**
+   * Defines the size of the button.
+   * @group Props
+   */
+  size = null;
+  /**
+   * Add a plain textual class to the button without a background initially.
+   * @group Props
+   */
+  plain = false;
   _label;
   _icon;
   _loading = false;
@@ -396,6 +441,33 @@ var ButtonDirective = class _ButtonDirective {
       if (this.icon && !this.label && !ObjectUtils.isEmpty(this.htmlElement.textContent)) {
         styleClass.push(INTERNAL_BUTTON_CLASSES.iconOnly);
       }
+    }
+    if (this.text) {
+      styleClass.push("p-button-text");
+    }
+    if (this.severity) {
+      styleClass.push(`p-button-${this.severity}`);
+    }
+    if (this.plain) {
+      styleClass.push("p-button-plain");
+    }
+    if (this.raised) {
+      styleClass.push("p-button-raised");
+    }
+    if (this.size) {
+      styleClass.push(`p-button-${this.size}`);
+    }
+    if (this.outlined) {
+      styleClass.push("p-button-outlined");
+    }
+    if (this.rounded) {
+      styleClass.push("p-button-rounded");
+    }
+    if (this.size === "small") {
+      styleClass.push("p-button-sm");
+    }
+    if (this.size === "large") {
+      styleClass.push("p-button-lg");
     }
     return styleClass;
   }
@@ -480,8 +552,16 @@ var ButtonDirective = class _ButtonDirective {
       loadingIcon: "loadingIcon",
       label: "label",
       icon: "icon",
-      loading: "loading"
-    }
+      loading: "loading",
+      severity: "severity",
+      raised: [InputFlags.HasDecoratorInputTransform, "raised", "raised", booleanAttribute],
+      rounded: [InputFlags.HasDecoratorInputTransform, "rounded", "rounded", booleanAttribute],
+      text: [InputFlags.HasDecoratorInputTransform, "text", "text", booleanAttribute],
+      outlined: [InputFlags.HasDecoratorInputTransform, "outlined", "outlined", booleanAttribute],
+      size: "size",
+      plain: [InputFlags.HasDecoratorInputTransform, "plain", "plain", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -516,6 +596,42 @@ var ButtonDirective = class _ButtonDirective {
     }],
     loading: [{
       type: Input
+    }],
+    severity: [{
+      type: Input
+    }],
+    raised: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    rounded: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    text: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    outlined: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    size: [{
+      type: Input
+    }],
+    plain: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }]
   });
 })();
@@ -592,10 +708,15 @@ var Button = class _Button {
    */
   outlined = false;
   /**
-   *  Add a link style to the button.
+   * Add a link style to the button.
    * @group Props
    */
   link = false;
+  /**
+   * Add a tabindex to the button.
+   * @group Props
+   */
+  tabindex;
   /**
    * Defines the size of the button.
    * @group Props
@@ -621,6 +742,11 @@ var Button = class _Button {
    * @group Props
    */
   ariaLabel;
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
   /**
    * Callback to execute when button is clicked.
    * This event is intended to be used with the <p-button> component. Using a regular <button> element, use (click).
@@ -733,31 +859,34 @@ var Button = class _Button {
       icon: "icon",
       badge: "badge",
       label: "label",
-      disabled: "disabled",
-      loading: "loading",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
+      loading: [InputFlags.HasDecoratorInputTransform, "loading", "loading", booleanAttribute],
       loadingIcon: "loadingIcon",
-      raised: "raised",
-      rounded: "rounded",
-      text: "text",
-      plain: "plain",
+      raised: [InputFlags.HasDecoratorInputTransform, "raised", "raised", booleanAttribute],
+      rounded: [InputFlags.HasDecoratorInputTransform, "rounded", "rounded", booleanAttribute],
+      text: [InputFlags.HasDecoratorInputTransform, "text", "text", booleanAttribute],
+      plain: [InputFlags.HasDecoratorInputTransform, "plain", "plain", booleanAttribute],
       severity: "severity",
-      outlined: "outlined",
-      link: "link",
+      outlined: [InputFlags.HasDecoratorInputTransform, "outlined", "outlined", booleanAttribute],
+      link: [InputFlags.HasDecoratorInputTransform, "link", "link", booleanAttribute],
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
       size: "size",
       style: "style",
       styleClass: "styleClass",
       badgeClass: "badgeClass",
-      ariaLabel: "ariaLabel"
+      ariaLabel: "ariaLabel",
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
     },
     outputs: {
       onClick: "onClick",
       onFocus: "onFocus",
       onBlur: "onBlur"
     },
+    features: [ɵɵInputTransformsFeature],
     ngContentSelectors: _c0,
     decls: 7,
-    vars: 12,
-    consts: [["pRipple", "", 3, "ngStyle", "disabled", "ngClass", "click", "focus", "blur"], [4, "ngTemplateOutlet"], [4, "ngIf"], ["class", "p-button-label", 4, "ngIf"], [3, "ngClass", "class", 4, "ngIf"], ["class", "p-button-loading-icon", 3, "ngClass", 4, "ngIf"], [3, "class", "ngClass", 4, "ngIf"], [3, "styleClass", "spin", 4, "ngIf"], [3, "ngClass"], [3, "styleClass", "spin"], [1, "p-button-loading-icon", 3, "ngClass"], [3, "ngClass", 4, "ngIf"], [3, "ngIf"], [1, "p-button-label"]],
+    vars: 14,
+    consts: [["pRipple", "", "pAutoFocus", "", 3, "ngStyle", "disabled", "ngClass", "autofocus", "click", "focus", "blur"], [4, "ngTemplateOutlet"], [4, "ngIf"], ["class", "p-button-label", 4, "ngIf"], [3, "ngClass", "class", 4, "ngIf"], ["class", "p-button-loading-icon", 3, "ngClass", 4, "ngIf"], [3, "class", "ngClass", 4, "ngIf"], [3, "styleClass", "spin", 4, "ngIf"], [3, "ngClass"], [3, "styleClass", "spin"], [1, "p-button-loading-icon", 3, "ngClass"], [3, "ngClass", 4, "ngIf"], [3, "ngIf"], [1, "p-button-label"]],
     template: function Button_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵprojectionDef();
@@ -774,8 +903,8 @@ var Button = class _Button {
         ɵɵelementEnd();
       }
       if (rf & 2) {
-        ɵɵproperty("ngStyle", ctx.style)("disabled", ctx.disabled || ctx.loading)("ngClass", ctx.buttonClass);
-        ɵɵattribute("type", ctx.type)("aria-label", ctx.ariaLabel)("data-pc-name", "button")("data-pc-section", "root");
+        ɵɵproperty("ngStyle", ctx.style)("disabled", ctx.disabled || ctx.loading)("ngClass", ctx.buttonClass)("autofocus", ctx.autofocus);
+        ɵɵattribute("type", ctx.type)("aria-label", ctx.ariaLabel)("data-pc-name", "button")("data-pc-section", "root")("tabindex", ctx.tabindex);
         ɵɵadvance(2);
         ɵɵproperty("ngTemplateOutlet", ctx.contentTemplate);
         ɵɵadvance();
@@ -788,7 +917,7 @@ var Button = class _Button {
         ɵɵproperty("ngIf", !ctx.contentTemplate && ctx.badge);
       }
     },
-    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, Ripple, SpinnerIcon],
+    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, Ripple, AutoFocus, SpinnerIcon],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -811,6 +940,9 @@ var Button = class _Button {
             pRipple
             [attr.data-pc-name]="'button'"
             [attr.data-pc-section]="'root'"
+            [attr.tabindex]="tabindex"
+            pAutoFocus
+            [autofocus]="autofocus"
         >
             <ng-content></ng-content>
             <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
@@ -859,34 +991,64 @@ var Button = class _Button {
       type: Input
     }],
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     loading: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     loadingIcon: [{
       type: Input
     }],
     raised: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     rounded: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     text: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     plain: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     severity: [{
       type: Input
     }],
     outlined: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     link: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    tabindex: [{
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     size: [{
       type: Input
@@ -902,6 +1064,12 @@ var Button = class _Button {
     }],
     ariaLabel: [{
       type: Input
+    }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onClick: [{
       type: Output
@@ -925,18 +1093,18 @@ var ButtonModule = class _ButtonModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _ButtonModule,
     declarations: [ButtonDirective, Button],
-    imports: [CommonModule, RippleModule, SharedModule, SpinnerIcon],
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon],
     exports: [ButtonDirective, Button, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule, RippleModule, SharedModule, SpinnerIcon, SharedModule]
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ButtonModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule, RippleModule, SharedModule, SpinnerIcon],
+      imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SpinnerIcon],
       exports: [ButtonDirective, Button, SharedModule],
       declarations: [ButtonDirective, Button]
     }]
@@ -949,4 +1117,4 @@ export {
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-TM72CV2J.js.map
+//# sourceMappingURL=chunk-DJD4ECAD.js.map

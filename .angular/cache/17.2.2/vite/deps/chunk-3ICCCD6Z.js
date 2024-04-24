@@ -1,6 +1,6 @@
 import {
   BaseIcon
-} from "./chunk-EI2ELTEY.js";
+} from "./chunk-BCQYFDDM.js";
 import {
   Component,
   setClassMetadata,
@@ -69,4 +69,4 @@ var AngleRightIcon = class _AngleRightIcon extends BaseIcon {
 export {
   AngleRightIcon
 };
-//# sourceMappingURL=chunk-I5VBRGSQ.js.map
+//# sourceMappingURL=chunk-3ICCCD6Z.js.map

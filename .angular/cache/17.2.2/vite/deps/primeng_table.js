@@ -1,6 +1,6 @@
 import {
   CheckIcon
-} from "./chunk-KJ4CLKVH.js";
+} from "./chunk-2XKDFGN5.js";
 import {
   ChevronDownIcon,
   Dropdown,
@@ -13,26 +13,33 @@ import {
   PaginatorModule,
   Scroller,
   ScrollerModule
-} from "./chunk-UJC5NJ7P.js";
+} from "./chunk-CSYUETDU.js";
+import "./chunk-E7LTO325.js";
 import {
   TimesIcon
-} from "./chunk-5U3EUKPT.js";
-import "./chunk-I5VBRGSQ.js";
+} from "./chunk-QVJZPM3K.js";
 import {
   ButtonDirective,
   ButtonModule,
   SpinnerIcon
-} from "./chunk-TM72CV2J.js";
+} from "./chunk-DJD4ECAD.js";
+import {
+  AutoFocus,
+  AutoFocusModule
+} from "./chunk-VYAWNECH.js";
+import "./chunk-G4I33PJT.js";
+import "./chunk-3ICCCD6Z.js";
 import {
   BaseIcon
-} from "./chunk-EI2ELTEY.js";
-import "./chunk-6GYAOLVO.js";
+} from "./chunk-BCQYFDDM.js";
 import {
-  ConnectedOverlayScrollHandler,
-  DomHandler,
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  ConnectedOverlayScrollHandler,
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   FilterMatchMode,
   FilterOperator,
@@ -45,7 +52,13 @@ import {
   TranslationKeys,
   UniqueComponentId,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
+import {
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  NgControlStatus,
+  NgModel
+} from "./chunk-J5JU2N75.js";
 import {
   animate,
   state,
@@ -53,12 +66,6 @@ import {
   transition,
   trigger
 } from "./chunk-5TL24Y5K.js";
-import {
-  FormsModule,
-  NG_VALUE_ACCESSOR,
-  NgControlStatus,
-  NgModel
-} from "./chunk-J5JU2N75.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -93,9 +100,12 @@ import {
   Renderer2,
   ViewChild,
   ViewEncapsulation$1,
+  booleanAttribute,
   forwardRef,
+  numberAttribute,
   setClassMetadata,
   ɵɵInheritDefinitionFeature,
+  ɵɵInputTransformsFeature,
   ɵɵNgOnChangesFeature,
   ɵɵProvidersFeature,
   ɵɵStandaloneFeature,
@@ -147,8 +157,8 @@ import {
   ɵɵtextInterpolate2,
   ɵɵviewQuery
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import {
   Subject
 } from "./chunk-PQ7O3X3G.js";
@@ -546,10 +556,10 @@ function Calendar_ng_template_2_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r1 = ɵɵnextContext();
-    let tmp_11_0;
+    let tmp_12_0;
     ɵɵclassMap(ctx_r1.inputStyleClass);
-    ɵɵproperty("value", ctx_r1.inputFieldValue)("readonly", ctx_r1.readonlyInput)("ngStyle", ctx_r1.inputStyle)("placeholder", ctx_r1.placeholder || "")("disabled", ctx_r1.disabled)("ngClass", "p-inputtext p-component");
-    ɵɵattribute("id", ctx_r1.inputId)("name", ctx_r1.name)("required", ctx_r1.required)("aria-required", ctx_r1.required)("aria-expanded", (tmp_11_0 = ctx_r1.overlayVisible) !== null && tmp_11_0 !== void 0 ? tmp_11_0 : false)("aria-controls", ctx_r1.overlayVisible ? ctx_r1.panelId : null)("aria-labelledby", ctx_r1.ariaLabelledBy)("aria-label", ctx_r1.ariaLabel)("tabindex", ctx_r1.tabindex)("inputmode", ctx_r1.touchUI ? "off" : null);
+    ɵɵproperty("value", ctx_r1.inputFieldValue)("readonly", ctx_r1.readonlyInput)("ngStyle", ctx_r1.inputStyle)("placeholder", ctx_r1.placeholder || "")("disabled", ctx_r1.disabled)("ngClass", "p-inputtext p-component")("autofocus", ctx_r1.autofocus);
+    ɵɵattribute("id", ctx_r1.inputId)("name", ctx_r1.name)("required", ctx_r1.required)("aria-required", ctx_r1.required)("aria-expanded", (tmp_12_0 = ctx_r1.overlayVisible) !== null && tmp_12_0 !== void 0 ? tmp_12_0 : false)("aria-controls", ctx_r1.overlayVisible ? ctx_r1.panelId : null)("aria-labelledby", ctx_r1.ariaLabelledBy)("aria-label", ctx_r1.ariaLabel)("tabindex", ctx_r1.tabindex)("inputmode", ctx_r1.touchUI ? "off" : null);
     ɵɵadvance(2);
     ɵɵproperty("ngIf", ctx_r1.showClear && !ctx_r1.disabled && ctx_r1.value != null);
     ɵɵadvance();
@@ -1667,8 +1677,8 @@ function Calendar_div_3_Template(rf, ctx) {
   if (rf & 2) {
     const ctx_r2 = ɵɵnextContext();
     ɵɵclassMap(ctx_r2.panelStyleClass);
-    ɵɵproperty("ngStyle", ctx_r2.panelStyle)("ngClass", ɵɵpureFunction6(14, _c9, ctx_r2.inline, ctx_r2.disabled, ctx_r2.timeOnly, ctx_r2.numberOfMonths > 1, ctx_r2.view === "month", ctx_r2.touchUI))("@overlayAnimation", ctx_r2.touchUI ? ɵɵpureFunction1(24, _c11, ɵɵpureFunction2(21, _c10, ctx_r2.showTransitionOptions, ctx_r2.hideTransitionOptions)) : ɵɵpureFunction1(29, _c12, ɵɵpureFunction2(26, _c10, ctx_r2.showTransitionOptions, ctx_r2.hideTransitionOptions)))("@.disabled", ctx_r2.inline === true);
-    ɵɵattribute("aria-label", ctx_r2.getTranslation("chooseDate"))("role", ctx_r2.inline ? null : "dialog")("aria-modal", ctx_r2.inline ? null : "true");
+    ɵɵproperty("ngStyle", ctx_r2.panelStyle)("ngClass", ɵɵpureFunction6(15, _c9, ctx_r2.inline, ctx_r2.disabled, ctx_r2.timeOnly, ctx_r2.numberOfMonths > 1, ctx_r2.view === "month", ctx_r2.touchUI))("@overlayAnimation", ctx_r2.touchUI ? ɵɵpureFunction1(25, _c11, ɵɵpureFunction2(22, _c10, ctx_r2.showTransitionOptions, ctx_r2.hideTransitionOptions)) : ɵɵpureFunction1(30, _c12, ɵɵpureFunction2(27, _c10, ctx_r2.showTransitionOptions, ctx_r2.hideTransitionOptions)))("@.disabled", ctx_r2.inline === true);
+    ɵɵattribute("id", ctx_r2.panelId)("aria-label", ctx_r2.getTranslation("chooseDate"))("role", ctx_r2.inline ? null : "dialog")("aria-modal", ctx_r2.inline ? null : "true");
     ɵɵadvance(3);
     ɵɵproperty("ngTemplateOutlet", ctx_r2.headerTemplate);
     ɵɵadvance();
@@ -1873,6 +1883,11 @@ var Calendar = class _Calendar {
    */
   showWeek = false;
   /**
+   * When enabled, calendar will start week numbers from first day of the year.
+   * @group Props
+   */
+  startWeekFromFirstDayOfYear = false;
+  /**
    * When enabled, a clear icon is displayed to clear the value.
    * @group Props
    */
@@ -1907,6 +1922,11 @@ var Calendar = class _Calendar {
    * @group Props
    */
   clearButtonStyleClass = "p-button-text";
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
   /**
    * Whether to automatically manage layering.
    * @group Props
@@ -2287,8 +2307,8 @@ var Calendar = class _Calendar {
   get nextIconAriaLabel() {
     return this.currentView === "year" ? this.getTranslation("nextDecade") : this.currentView === "month" ? this.getTranslation("nextYear") : this.getTranslation("nextMonth");
   }
-  constructor(document, el, renderer, cd, zone, config, overlayService) {
-    this.document = document;
+  constructor(document2, el, renderer, cd, zone, config, overlayService) {
+    this.document = document2;
     this.el = el;
     this.renderer = renderer;
     this.cd = cd;
@@ -2423,7 +2443,12 @@ var Calendar = class _Calendar {
   }
   getWeekNumber(date) {
     let checkDate = new Date(date.getTime());
-    checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+    if (this.startWeekFromFirstDayOfYear) {
+      let firstDayOfWeek = +this.getFirstDateOfWeek();
+      checkDate.setDate(checkDate.getDate() + 6 + firstDayOfWeek - checkDate.getDay());
+    } else {
+      checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+    }
     let time = checkDate.getTime();
     checkDate.setMonth(0);
     checkDate.setDate(1);
@@ -2880,16 +2905,17 @@ var Calendar = class _Calendar {
     }
     return false;
   }
-  isMonthDisabled(month) {
-    for (let day = 1; day < this.getDaysCountInMonth(month, this.currentYear) + 1; day++) {
-      if (this.isSelectable(day, month, this.currentYear, false)) {
+  isMonthDisabled(month, year) {
+    const yearToCheck = year ?? this.currentYear;
+    for (let day = 1; day < this.getDaysCountInMonth(month, yearToCheck) + 1; day++) {
+      if (this.isSelectable(day, month, yearToCheck, false)) {
         return false;
       }
     }
     return true;
   }
   isYearDisabled(year) {
-    return !this.isSelectable(1, this.currentMonth, year, false);
+    return Array(12).fill(0).every((v, month) => this.isMonthDisabled(month, year));
   }
   isYearSelected(year) {
     if (this.isComparable()) {
@@ -2935,7 +2961,7 @@ var Calendar = class _Calendar {
     if (this.minDate) {
       if (this.minDate.getFullYear() > year) {
         validMin = false;
-      } else if (this.minDate.getFullYear() === year) {
+      } else if (this.minDate.getFullYear() === year && this.currentView != "year") {
         if (this.minDate.getMonth() > month) {
           validMin = false;
         } else if (this.minDate.getMonth() === month) {
@@ -3056,8 +3082,12 @@ var Calendar = class _Calendar {
         if (this.inline) {
           const headerElements = DomHandler.findSingle(this.containerViewChild?.nativeElement, ".p-datepicker-header");
           const element = event2.target;
-          if (element == headerElements.children[headerElements.children.length - 1]) {
-            this.initFocusableCell();
+          if (this.timeOnly) {
+            return;
+          } else {
+            if (element == headerElements.children[headerElements?.children?.length - 1]) {
+              this.initFocusableCell();
+            }
           }
         }
         break;
@@ -3516,51 +3546,46 @@ var Calendar = class _Calendar {
     }
     return hours;
   };
-  validateTime(hour, minute, second, pm) {
+  constrainTime(hour, minute, second, pm) {
+    let returnTimeTriple = [hour, minute, second];
     let value = this.value;
     const convertedHour = this.convertTo24Hour(hour, pm);
-    if (this.isRangeSelection()) {
-      value = this.value[1] || this.value[0];
-    }
-    if (this.isMultipleSelection()) {
-      value = this.value[this.value.length - 1];
+    const isRange = this.isRangeSelection(), isMultiple = this.isMultipleSelection(), isMultiValue = isRange || isMultiple;
+    if (isMultiValue) {
+      if (!this.value) {
+        this.value = [/* @__PURE__ */ new Date(), /* @__PURE__ */ new Date()];
+      }
+      if (isRange) {
+        value = this.value[1] || this.value[0];
+      }
+      if (isMultiple) {
+        value = this.value[this.value.length - 1];
+      }
     }
     const valueDateString = value ? value.toDateString() : null;
-    if (this.minDate && valueDateString && this.minDate.toDateString() === valueDateString) {
-      if (this.minDate.getHours() > convertedHour) {
-        return false;
-      }
-      if (this.minDate.getHours() === convertedHour) {
-        if (this.minDate.getMinutes() > minute) {
-          return false;
-        }
-        if (this.minDate.getMinutes() === minute) {
-          if (this.minDate.getSeconds() > second) {
-            return false;
-          }
-        }
-      }
+    let isMinDate = this.minDate && valueDateString && this.minDate.toDateString() === valueDateString;
+    let isMaxDate = this.maxDate && valueDateString && this.maxDate.toDateString() === valueDateString;
+    switch (true) {
+      case (isMinDate && this.minDate.getHours() > convertedHour):
+        returnTimeTriple[0] = this.minDate.getHours();
+      case (isMinDate && this.minDate.getHours() === convertedHour && this.minDate.getMinutes() > minute):
+        returnTimeTriple[1] = this.minDate.getMinutes();
+      case (isMinDate && this.minDate.getHours() === convertedHour && this.minDate.getMinutes() === minute && this.minDate.getSeconds() > second):
+        returnTimeTriple[2] = this.minDate.getSeconds();
+        break;
+      case (isMaxDate && this.maxDate.getHours() < convertedHour):
+        returnTimeTriple[0] = this.maxDate.getHours();
+      case (isMaxDate && this.maxDate.getHours() === convertedHour && this.maxDate.getMinutes() < minute):
+        returnTimeTriple[1] = this.maxDate.getMinutes();
+      case (isMaxDate && this.maxDate.getHours() === convertedHour && this.maxDate.getMinutes() === minute && this.maxDate.getSeconds() < second):
+        returnTimeTriple[2] = this.maxDate.getSeconds();
+        break;
     }
-    if (this.maxDate && valueDateString && this.maxDate.toDateString() === valueDateString) {
-      if (this.maxDate.getHours() < convertedHour) {
-        return false;
-      }
-      if (this.maxDate.getHours() === convertedHour) {
-        if (this.maxDate.getMinutes() < minute) {
-          return false;
-        }
-        if (this.maxDate.getMinutes() === minute) {
-          if (this.maxDate.getSeconds() < second) {
-            return false;
-          }
-        }
-      }
-    }
-    return true;
+    return returnTimeTriple;
   }
   incrementHour(event2) {
-    const prevHour = this.currentHour;
-    let newHour = this.currentHour + this.stepHour;
+    const prevHour = this.currentHour ?? 0;
+    let newHour = (this.currentHour ?? 0) + this.stepHour;
     let newPM = this.pm;
     if (this.hourFormat == "24")
       newHour = newHour >= 24 ? newHour - 24 : newHour;
@@ -3570,10 +3595,8 @@ var Calendar = class _Calendar {
       }
       newHour = newHour >= 13 ? newHour - 12 : newHour;
     }
-    if (this.validateTime(newHour, this.currentMinute, this.currentSecond, newPM)) {
-      this.currentHour = newHour;
-      this.pm = newPM;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(newHour, this.currentMinute, this.currentSecond, newPM);
+    this.pm = newPM;
     event2.preventDefault();
   }
   onTimePickerElementMouseDown(event2, type, direction) {
@@ -3630,7 +3653,7 @@ var Calendar = class _Calendar {
     }
   }
   decrementHour(event2) {
-    let newHour = this.currentHour - this.stepHour;
+    let newHour = (this.currentHour ?? 0) - this.stepHour;
     let newPM = this.pm;
     if (this.hourFormat == "24")
       newHour = newHour < 0 ? 24 + newHour : newHour;
@@ -3640,42 +3663,32 @@ var Calendar = class _Calendar {
       }
       newHour = newHour <= 0 ? 12 + newHour : newHour;
     }
-    if (this.validateTime(newHour, this.currentMinute, this.currentSecond, newPM)) {
-      this.currentHour = newHour;
-      this.pm = newPM;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(newHour, this.currentMinute, this.currentSecond, newPM);
+    this.pm = newPM;
     event2.preventDefault();
   }
   incrementMinute(event2) {
-    let newMinute = this.currentMinute + this.stepMinute;
+    let newMinute = (this.currentMinute ?? 0) + this.stepMinute;
     newMinute = newMinute > 59 ? newMinute - 60 : newMinute;
-    if (this.validateTime(this.currentHour, newMinute, this.currentSecond, this.pm)) {
-      this.currentMinute = newMinute;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(this.currentHour, newMinute, this.currentSecond, this.pm);
     event2.preventDefault();
   }
   decrementMinute(event2) {
-    let newMinute = this.currentMinute - this.stepMinute;
+    let newMinute = (this.currentMinute ?? 0) - this.stepMinute;
     newMinute = newMinute < 0 ? 60 + newMinute : newMinute;
-    if (this.validateTime(this.currentHour, newMinute, this.currentSecond, this.pm)) {
-      this.currentMinute = newMinute;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(this.currentHour, newMinute, this.currentSecond, this.pm);
     event2.preventDefault();
   }
   incrementSecond(event2) {
     let newSecond = this.currentSecond + this.stepSecond;
     newSecond = newSecond > 59 ? newSecond - 60 : newSecond;
-    if (this.validateTime(this.currentHour, this.currentMinute, newSecond, this.pm)) {
-      this.currentSecond = newSecond;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(this.currentHour, this.currentMinute, newSecond, this.pm);
     event2.preventDefault();
   }
   decrementSecond(event2) {
     let newSecond = this.currentSecond - this.stepSecond;
     newSecond = newSecond < 0 ? 60 + newSecond : newSecond;
-    if (this.validateTime(this.currentHour, this.currentMinute, newSecond, this.pm)) {
-      this.currentSecond = newSecond;
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(this.currentHour, this.currentMinute, newSecond, this.pm);
     event2.preventDefault();
   }
   updateTime() {
@@ -3712,10 +3725,9 @@ var Calendar = class _Calendar {
   }
   toggleAMPM(event2) {
     const newPM = !this.pm;
-    if (this.validateTime(this.currentHour, this.currentMinute, this.currentSecond, newPM)) {
-      this.pm = newPM;
-      this.updateTime();
-    }
+    [this.currentHour, this.currentMinute, this.currentSecond] = this.constrainTime(this.currentHour, this.currentMinute, this.currentSecond, newPM);
+    this.pm = newPM;
+    this.updateTime();
     event2.preventDefault();
   }
   onUserInput(event2) {
@@ -3740,15 +3752,12 @@ var Calendar = class _Calendar {
     this.onInput.emit(event2);
   }
   isValidSelection(value) {
-    let isValid = true;
     if (this.isSingleSelection()) {
-      if (!this.isSelectable(value.getDate(), value.getMonth(), value.getFullYear(), false)) {
-        isValid = false;
-      }
-    } else if (value.every((v) => this.isSelectable(v.getDate(), v.getMonth(), v.getFullYear(), false))) {
-      if (this.isRangeSelection()) {
-        isValid = value.length > 1 && value[1] > value[0] ? true : false;
-      }
+      return this.isSelectable(value.getDate(), value.getMonth(), value.getFullYear(), false);
+    }
+    let isValid = value.every((v) => this.isSelectable(v.getDate(), v.getMonth(), v.getFullYear(), false));
+    if (isValid && this.isRangeSelection()) {
+      isValid = value.length === 1 || value.length > 1 && value[1] >= value[0];
     }
     return isValid;
   }
@@ -3809,7 +3818,7 @@ var Calendar = class _Calendar {
   updateUI() {
     let propValue = this.value;
     if (Array.isArray(propValue)) {
-      propValue = propValue[0];
+      propValue = propValue.length === 2 ? propValue[1] : propValue[0];
     }
     let val = this.defaultDate && this.isValidDate(this.defaultDate) && !this.value ? this.defaultDate : propValue && this.isValidDate(propValue) ? propValue : /* @__PURE__ */ new Date();
     this.currentMonth = val.getMonth();
@@ -4294,7 +4303,7 @@ var Calendar = class _Calendar {
     };
     this.createMonths(date.getMonth(), date.getFullYear());
     this.onDateSelect(event2, dateMeta);
-    this.onTodayClick.emit(event2);
+    this.onTodayClick.emit(date);
   }
   onClearButtonClick(event2) {
     this.updateModel(null);
@@ -4479,48 +4488,50 @@ var Calendar = class _Calendar {
       ariaLabelledBy: "ariaLabelledBy",
       ariaLabel: "ariaLabel",
       iconAriaLabel: "iconAriaLabel",
-      disabled: "disabled",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
       dateFormat: "dateFormat",
       multipleSeparator: "multipleSeparator",
       rangeSeparator: "rangeSeparator",
-      inline: "inline",
-      showOtherMonths: "showOtherMonths",
-      selectOtherMonths: "selectOtherMonths",
-      showIcon: "showIcon",
+      inline: [InputFlags.HasDecoratorInputTransform, "inline", "inline", booleanAttribute],
+      showOtherMonths: [InputFlags.HasDecoratorInputTransform, "showOtherMonths", "showOtherMonths", booleanAttribute],
+      selectOtherMonths: [InputFlags.HasDecoratorInputTransform, "selectOtherMonths", "selectOtherMonths", booleanAttribute],
+      showIcon: [InputFlags.HasDecoratorInputTransform, "showIcon", "showIcon", booleanAttribute],
       icon: "icon",
       appendTo: "appendTo",
-      readonlyInput: "readonlyInput",
+      readonlyInput: [InputFlags.HasDecoratorInputTransform, "readonlyInput", "readonlyInput", booleanAttribute],
       shortYearCutoff: "shortYearCutoff",
-      monthNavigator: "monthNavigator",
-      yearNavigator: "yearNavigator",
+      monthNavigator: [InputFlags.HasDecoratorInputTransform, "monthNavigator", "monthNavigator", booleanAttribute],
+      yearNavigator: [InputFlags.HasDecoratorInputTransform, "yearNavigator", "yearNavigator", booleanAttribute],
       hourFormat: "hourFormat",
-      timeOnly: "timeOnly",
-      stepHour: "stepHour",
-      stepMinute: "stepMinute",
-      stepSecond: "stepSecond",
-      showSeconds: "showSeconds",
-      required: "required",
-      showOnFocus: "showOnFocus",
-      showWeek: "showWeek",
-      showClear: "showClear",
+      timeOnly: [InputFlags.HasDecoratorInputTransform, "timeOnly", "timeOnly", booleanAttribute],
+      stepHour: [InputFlags.HasDecoratorInputTransform, "stepHour", "stepHour", numberAttribute],
+      stepMinute: [InputFlags.HasDecoratorInputTransform, "stepMinute", "stepMinute", numberAttribute],
+      stepSecond: [InputFlags.HasDecoratorInputTransform, "stepSecond", "stepSecond", numberAttribute],
+      showSeconds: [InputFlags.HasDecoratorInputTransform, "showSeconds", "showSeconds", booleanAttribute],
+      required: [InputFlags.HasDecoratorInputTransform, "required", "required", booleanAttribute],
+      showOnFocus: [InputFlags.HasDecoratorInputTransform, "showOnFocus", "showOnFocus", booleanAttribute],
+      showWeek: [InputFlags.HasDecoratorInputTransform, "showWeek", "showWeek", booleanAttribute],
+      startWeekFromFirstDayOfYear: "startWeekFromFirstDayOfYear",
+      showClear: [InputFlags.HasDecoratorInputTransform, "showClear", "showClear", booleanAttribute],
       dataType: "dataType",
       selectionMode: "selectionMode",
-      maxDateCount: "maxDateCount",
-      showButtonBar: "showButtonBar",
+      maxDateCount: [InputFlags.HasDecoratorInputTransform, "maxDateCount", "maxDateCount", numberAttribute],
+      showButtonBar: [InputFlags.HasDecoratorInputTransform, "showButtonBar", "showButtonBar", booleanAttribute],
       todayButtonStyleClass: "todayButtonStyleClass",
       clearButtonStyleClass: "clearButtonStyleClass",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute],
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
       panelStyleClass: "panelStyleClass",
       panelStyle: "panelStyle",
-      keepInvalid: "keepInvalid",
-      hideOnDateTimeSelect: "hideOnDateTimeSelect",
-      touchUI: "touchUI",
+      keepInvalid: [InputFlags.HasDecoratorInputTransform, "keepInvalid", "keepInvalid", booleanAttribute],
+      hideOnDateTimeSelect: [InputFlags.HasDecoratorInputTransform, "hideOnDateTimeSelect", "hideOnDateTimeSelect", booleanAttribute],
+      touchUI: [InputFlags.HasDecoratorInputTransform, "touchUI", "touchUI", booleanAttribute],
       timeSeparator: "timeSeparator",
-      focusTrap: "focusTrap",
+      focusTrap: [InputFlags.HasDecoratorInputTransform, "focusTrap", "focusTrap", booleanAttribute],
       showTransitionOptions: "showTransitionOptions",
       hideTransitionOptions: "hideTransitionOptions",
-      tabindex: "tabindex",
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
       minDate: "minDate",
       maxDate: "maxDate",
       disabledDates: "disabledDates",
@@ -4548,16 +4559,16 @@ var Calendar = class _Calendar {
       onClickOutside: "onClickOutside",
       onShow: "onShow"
     },
-    features: [ɵɵProvidersFeature([CALENDAR_VALUE_ACCESSOR])],
+    features: [ɵɵProvidersFeature([CALENDAR_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     ngContentSelectors: _c15,
     decls: 4,
     vars: 12,
-    consts: [[3, "ngClass", "ngStyle"], ["container", ""], [3, "ngIf"], [3, "class", "ngStyle", "ngClass", "click", 4, "ngIf"], ["type", "text", "role", "combobox", "aria-autocomplete", "none", "aria-haspopup", "dialog", "autocomplete", "off", 3, "value", "readonly", "ngStyle", "placeholder", "disabled", "ngClass", "focus", "keydown", "click", "blur", "input"], ["inputfield", ""], [4, "ngIf"], ["type", "button", "aria-haspopup", "dialog", "pButton", "", "pRipple", "", "class", "p-datepicker-trigger p-button-icon-only", "tabindex", "0", 3, "disabled", "click", 4, "ngIf"], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-calendar-clear-icon", 3, "click", 4, "ngIf"], [3, "styleClass", "click"], [1, "p-calendar-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["type", "button", "aria-haspopup", "dialog", "pButton", "", "pRipple", "", "tabindex", "0", 1, "p-datepicker-trigger", "p-button-icon-only", 3, "disabled", "click"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"], [3, "ngClass", "click", 4, "ngIf"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "ngClass", "click"], [3, "ngStyle", "ngClass", "click"], ["contentWrapper", ""], ["class", "p-timepicker", 4, "ngIf"], ["class", "p-datepicker-buttonbar", 4, "ngIf"], [1, "p-datepicker-group-container"], ["class", "p-datepicker-group", 4, "ngFor", "ngForOf"], ["class", "p-monthpicker", 4, "ngIf"], ["class", "p-yearpicker", 4, "ngIf"], [1, "p-datepicker-group"], [1, "p-datepicker-header"], ["class", "p-datepicker-prev p-link", "type", "button", "pRipple", "", 3, "keydown", "click", 4, "ngIf"], [1, "p-datepicker-title"], ["type", "button", "class", "p-datepicker-month p-link", 3, "disabled", "click", "keydown", 4, "ngIf"], ["type", "button", "class", "p-datepicker-year p-link", 3, "disabled", "click", "keydown", 4, "ngIf"], ["class", "p-datepicker-decade", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-datepicker-next", "p-link", 3, "keydown", "click"], [3, "styleClass", 4, "ngIf"], ["class", "p-datepicker-next-icon", 4, "ngIf"], ["class", "p-datepicker-calendar-container", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-datepicker-prev", "p-link", 3, "keydown", "click"], ["class", "p-datepicker-prev-icon", 4, "ngIf"], [3, "styleClass"], [1, "p-datepicker-prev-icon"], ["type", "button", 1, "p-datepicker-month", "p-link", 3, "disabled", "click", "keydown"], ["type", "button", 1, "p-datepicker-year", "p-link", 3, "disabled", "click", "keydown"], [1, "p-datepicker-decade"], [1, "p-datepicker-next-icon"], [1, "p-datepicker-calendar-container"], ["role", "grid", 1, "p-datepicker-calendar"], ["class", "p-datepicker-weekheader p-disabled", 4, "ngIf"], ["scope", "col", 4, "ngFor", "ngForOf"], [4, "ngFor", "ngForOf"], [1, "p-datepicker-weekheader", "p-disabled"], ["scope", "col"], ["class", "p-datepicker-weeknumber", 4, "ngIf"], [3, "ngClass", 4, "ngFor", "ngForOf"], [1, "p-datepicker-weeknumber"], [1, "p-disabled"], ["draggable", "false", "pRipple", "", 3, "ngClass", "click", "keydown"], ["class", "p-hidden-accessible", "aria-live", "polite", 4, "ngIf"], ["aria-live", "polite", 1, "p-hidden-accessible"], [1, "p-monthpicker"], ["class", "p-monthpicker-month", "pRipple", "", 3, "ngClass", "click", "keydown", 4, "ngFor", "ngForOf"], ["pRipple", "", 1, "p-monthpicker-month", 3, "ngClass", "click", "keydown"], [1, "p-yearpicker"], ["class", "p-yearpicker-year", "pRipple", "", 3, "ngClass", "click", "keydown", 4, "ngFor", "ngForOf"], ["pRipple", "", 1, "p-yearpicker-year", 3, "ngClass", "click", "keydown"], [1, "p-timepicker"], [1, "p-hour-picker"], ["type", "button", "pRipple", "", 1, "p-link", 3, "keydown", "keydown.enter", "keydown.space", "mousedown", "mouseup", "keyup.enter", "keyup.space", "mouseleave"], [1, "p-separator"], [1, "p-minute-picker"], ["class", "p-separator", 4, "ngIf"], ["class", "p-second-picker", 4, "ngIf"], ["class", "p-ampm-picker", 4, "ngIf"], [1, "p-second-picker"], [1, "p-ampm-picker"], ["type", "button", "pRipple", "", 1, "p-link", 3, "keydown", "click", "keydown.enter"], [1, "p-datepicker-buttonbar"], ["type", "button", "pButton", "", "pRipple", "", 3, "label", "ngClass", "keydown", "click"]],
+    consts: [[3, "ngClass", "ngStyle"], ["container", ""], [3, "ngIf"], [3, "class", "ngStyle", "ngClass", "click", 4, "ngIf"], ["type", "text", "role", "combobox", "aria-autocomplete", "none", "aria-haspopup", "dialog", "autocomplete", "off", "pAutoFocus", "", 3, "value", "readonly", "ngStyle", "placeholder", "disabled", "ngClass", "autofocus", "focus", "keydown", "click", "blur", "input"], ["inputfield", ""], [4, "ngIf"], ["type", "button", "aria-haspopup", "dialog", "pButton", "", "pRipple", "", "class", "p-datepicker-trigger p-button-icon-only", "tabindex", "0", 3, "disabled", "click", 4, "ngIf"], [3, "styleClass", "click", 4, "ngIf"], ["class", "p-calendar-clear-icon", 3, "click", 4, "ngIf"], [3, "styleClass", "click"], [1, "p-calendar-clear-icon", 3, "click"], [4, "ngTemplateOutlet"], ["type", "button", "aria-haspopup", "dialog", "pButton", "", "pRipple", "", "tabindex", "0", 1, "p-datepicker-trigger", "p-button-icon-only", 3, "disabled", "click"], [3, "ngClass", 4, "ngIf"], [3, "ngClass"], [3, "ngClass", "click", 4, "ngIf"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "ngClass", "click"], [3, "ngStyle", "ngClass", "click"], ["contentWrapper", ""], ["class", "p-timepicker", 4, "ngIf"], ["class", "p-datepicker-buttonbar", 4, "ngIf"], [1, "p-datepicker-group-container"], ["class", "p-datepicker-group", 4, "ngFor", "ngForOf"], ["class", "p-monthpicker", 4, "ngIf"], ["class", "p-yearpicker", 4, "ngIf"], [1, "p-datepicker-group"], [1, "p-datepicker-header"], ["class", "p-datepicker-prev p-link", "type", "button", "pRipple", "", 3, "keydown", "click", 4, "ngIf"], [1, "p-datepicker-title"], ["type", "button", "class", "p-datepicker-month p-link", 3, "disabled", "click", "keydown", 4, "ngIf"], ["type", "button", "class", "p-datepicker-year p-link", 3, "disabled", "click", "keydown", 4, "ngIf"], ["class", "p-datepicker-decade", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-datepicker-next", "p-link", 3, "keydown", "click"], [3, "styleClass", 4, "ngIf"], ["class", "p-datepicker-next-icon", 4, "ngIf"], ["class", "p-datepicker-calendar-container", 4, "ngIf"], ["type", "button", "pRipple", "", 1, "p-datepicker-prev", "p-link", 3, "keydown", "click"], ["class", "p-datepicker-prev-icon", 4, "ngIf"], [3, "styleClass"], [1, "p-datepicker-prev-icon"], ["type", "button", 1, "p-datepicker-month", "p-link", 3, "disabled", "click", "keydown"], ["type", "button", 1, "p-datepicker-year", "p-link", 3, "disabled", "click", "keydown"], [1, "p-datepicker-decade"], [1, "p-datepicker-next-icon"], [1, "p-datepicker-calendar-container"], ["role", "grid", 1, "p-datepicker-calendar"], ["class", "p-datepicker-weekheader p-disabled", 4, "ngIf"], ["scope", "col", 4, "ngFor", "ngForOf"], [4, "ngFor", "ngForOf"], [1, "p-datepicker-weekheader", "p-disabled"], ["scope", "col"], ["class", "p-datepicker-weeknumber", 4, "ngIf"], [3, "ngClass", 4, "ngFor", "ngForOf"], [1, "p-datepicker-weeknumber"], [1, "p-disabled"], ["draggable", "false", "pRipple", "", 3, "ngClass", "click", "keydown"], ["class", "p-hidden-accessible", "aria-live", "polite", 4, "ngIf"], ["aria-live", "polite", 1, "p-hidden-accessible"], [1, "p-monthpicker"], ["class", "p-monthpicker-month", "pRipple", "", 3, "ngClass", "click", "keydown", 4, "ngFor", "ngForOf"], ["pRipple", "", 1, "p-monthpicker-month", 3, "ngClass", "click", "keydown"], [1, "p-yearpicker"], ["class", "p-yearpicker-year", "pRipple", "", 3, "ngClass", "click", "keydown", 4, "ngFor", "ngForOf"], ["pRipple", "", 1, "p-yearpicker-year", 3, "ngClass", "click", "keydown"], [1, "p-timepicker"], [1, "p-hour-picker"], ["type", "button", "pRipple", "", 1, "p-link", 3, "keydown", "keydown.enter", "keydown.space", "mousedown", "mouseup", "keyup.enter", "keyup.space", "mouseleave"], [1, "p-separator"], [1, "p-minute-picker"], ["class", "p-separator", 4, "ngIf"], ["class", "p-second-picker", 4, "ngIf"], ["class", "p-ampm-picker", 4, "ngIf"], [1, "p-second-picker"], [1, "p-ampm-picker"], ["type", "button", "pRipple", "", 1, "p-link", 3, "keydown", "click", "keydown.enter"], [1, "p-datepicker-buttonbar"], ["type", "button", "pButton", "", "pRipple", "", 3, "label", "ngClass", "keydown", "click"]],
     template: function Calendar_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵprojectionDef(_c13);
         ɵɵelementStart(0, "span", 0, 1);
-        ɵɵtemplate(2, Calendar_ng_template_2_Template, 5, 21, "ng-template", 2)(3, Calendar_div_3_Template, 9, 31, "div", 3);
+        ɵɵtemplate(2, Calendar_ng_template_2_Template, 5, 22, "ng-template", 2)(3, Calendar_div_3_Template, 9, 32, "div", 3);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -4569,8 +4580,8 @@ var Calendar = class _Calendar {
         ɵɵproperty("ngIf", ctx.inline || ctx.overlayVisible);
       }
     },
-    dependencies: () => [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgStyle, ButtonDirective, Ripple, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon],
-    styles: ["@layer primeng{.p-calendar{position:relative;display:inline-flex;max-width:100%}.p-calendar .p-inputtext{flex:1 1 auto;width:1%}.p-calendar-w-btn .p-inputtext{border-top-right-radius:0;border-bottom-right-radius:0}.p-calendar-w-btn .p-datepicker-trigger{border-top-left-radius:0;border-bottom-left-radius:0}.p-fluid .p-calendar{display:flex}.p-fluid .p-calendar .p-inputtext{width:1%}.p-calendar .p-datepicker{min-width:100%}.p-datepicker{width:auto;position:absolute;top:0;left:0}.p-datepicker-inline{display:inline-block;position:static;overflow-x:auto}.p-datepicker-header{display:flex;align-items:center;justify-content:space-between}.p-datepicker-header .p-datepicker-title{margin:0 auto}.p-datepicker-prev,.p-datepicker-next{cursor:pointer;display:inline-flex;justify-content:center;align-items:center;overflow:hidden;position:relative}.p-datepicker-multiple-month .p-datepicker-group-container .p-datepicker-group{flex:1 1 auto}.p-datepicker-multiple-month .p-datepicker-group-container{display:flex}.p-datepicker table{width:100%;border-collapse:collapse}.p-datepicker td>span{display:flex;justify-content:center;align-items:center;cursor:pointer;margin:0 auto;overflow:hidden;position:relative}.p-monthpicker-month{width:33.3%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-datepicker-buttonbar{display:flex;justify-content:space-between;align-items:center}.p-timepicker{display:flex;justify-content:center;align-items:center}.p-timepicker button{display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-timepicker>div{display:flex;align-items:center;flex-direction:column}.p-datepicker-touch-ui,.p-calendar .p-datepicker-touch-ui{position:fixed;top:50%;left:50%;min-width:80vw;transform:translate(-50%,-50%)}.p-yearpicker-year{width:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-calendar-clear-icon{position:absolute;top:50%;margin-top:-.5rem;cursor:pointer}.p-datepicker-icon{pointer-events:none}.p-calendar-clearable{position:relative}}\n"],
+    dependencies: () => [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgStyle, ButtonDirective, Ripple, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon, AutoFocus],
+    styles: ["@layer primeng{.p-calendar{position:relative;display:inline-flex;max-width:100%}.p-calendar .p-inputtext{flex:1 1 auto;width:1%;text-overflow:ellipsis}.p-calendar-w-btn .p-inputtext{border-top-right-radius:0;border-bottom-right-radius:0}.p-calendar-w-btn .p-datepicker-trigger{border-top-left-radius:0;border-bottom-left-radius:0}.p-fluid .p-calendar{display:flex}.p-fluid .p-calendar .p-inputtext{width:1%}.p-calendar .p-datepicker{min-width:100%}.p-datepicker{width:auto;position:absolute;top:0;left:0}.p-datepicker-inline{display:inline-block;position:static;overflow-x:auto}.p-datepicker-header{display:flex;align-items:center;justify-content:space-between}.p-datepicker-header .p-datepicker-title{margin:0 auto}.p-datepicker-prev,.p-datepicker-next{cursor:pointer;display:inline-flex;justify-content:center;align-items:center;overflow:hidden;position:relative}.p-datepicker-multiple-month .p-datepicker-group-container .p-datepicker-group{flex:1 1 auto}.p-datepicker-multiple-month .p-datepicker-group-container{display:flex}.p-datepicker table{width:100%;border-collapse:collapse}.p-datepicker td>span{display:flex;justify-content:center;align-items:center;cursor:pointer;margin:0 auto;overflow:hidden;position:relative}.p-monthpicker-month{width:33.3%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-datepicker-buttonbar{display:flex;justify-content:space-between;align-items:center}.p-timepicker{display:flex;justify-content:center;align-items:center}.p-timepicker button{display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-timepicker>div{display:flex;align-items:center;flex-direction:column}.p-datepicker-touch-ui,.p-calendar .p-datepicker-touch-ui{position:fixed;top:50%;left:50%;min-width:80vw;transform:translate(-50%,-50%)}.p-yearpicker-year{width:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-calendar-clear-icon{position:absolute;top:50%;margin-top:-.5rem;cursor:pointer}.p-datepicker-icon{pointer-events:none}.p-calendar-clearable{position:relative}}\n"],
     encapsulation: 2,
     data: {
       animation: [trigger("overlayAnimation", [state("visibleTouchUI", style({
@@ -4644,6 +4655,8 @@ var Calendar = class _Calendar {
                     [attr.inputmode]="touchUI ? 'off' : null"
                     [ngClass]="'p-inputtext p-component'"
                     autocomplete="off"
+                    pAutoFocus
+                    [autofocus]="autofocus"
                 />
                 <ng-container *ngIf="showClear && !disabled && value != null">
                     <TimesIcon *ngIf="!clearIconTemplate" [styleClass]="'p-calendar-clear-icon'" (click)="clear()" />
@@ -4684,6 +4697,7 @@ var Calendar = class _Calendar {
             </ng-template>
             <div
                 #contentWrapper
+                [attr.id]="panelId"
                 [class]="panelStyleClass"
                 [ngStyle]="panelStyle"
                 [ngClass]="{
@@ -5008,7 +5022,7 @@ var Calendar = class _Calendar {
       providers: [CALENDAR_VALUE_ACCESSOR],
       changeDetection: ChangeDetectionStrategy.OnPush,
       encapsulation: ViewEncapsulation$1.None,
-      styles: ["@layer primeng{.p-calendar{position:relative;display:inline-flex;max-width:100%}.p-calendar .p-inputtext{flex:1 1 auto;width:1%}.p-calendar-w-btn .p-inputtext{border-top-right-radius:0;border-bottom-right-radius:0}.p-calendar-w-btn .p-datepicker-trigger{border-top-left-radius:0;border-bottom-left-radius:0}.p-fluid .p-calendar{display:flex}.p-fluid .p-calendar .p-inputtext{width:1%}.p-calendar .p-datepicker{min-width:100%}.p-datepicker{width:auto;position:absolute;top:0;left:0}.p-datepicker-inline{display:inline-block;position:static;overflow-x:auto}.p-datepicker-header{display:flex;align-items:center;justify-content:space-between}.p-datepicker-header .p-datepicker-title{margin:0 auto}.p-datepicker-prev,.p-datepicker-next{cursor:pointer;display:inline-flex;justify-content:center;align-items:center;overflow:hidden;position:relative}.p-datepicker-multiple-month .p-datepicker-group-container .p-datepicker-group{flex:1 1 auto}.p-datepicker-multiple-month .p-datepicker-group-container{display:flex}.p-datepicker table{width:100%;border-collapse:collapse}.p-datepicker td>span{display:flex;justify-content:center;align-items:center;cursor:pointer;margin:0 auto;overflow:hidden;position:relative}.p-monthpicker-month{width:33.3%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-datepicker-buttonbar{display:flex;justify-content:space-between;align-items:center}.p-timepicker{display:flex;justify-content:center;align-items:center}.p-timepicker button{display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-timepicker>div{display:flex;align-items:center;flex-direction:column}.p-datepicker-touch-ui,.p-calendar .p-datepicker-touch-ui{position:fixed;top:50%;left:50%;min-width:80vw;transform:translate(-50%,-50%)}.p-yearpicker-year{width:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-calendar-clear-icon{position:absolute;top:50%;margin-top:-.5rem;cursor:pointer}.p-datepicker-icon{pointer-events:none}.p-calendar-clearable{position:relative}}\n"]
+      styles: ["@layer primeng{.p-calendar{position:relative;display:inline-flex;max-width:100%}.p-calendar .p-inputtext{flex:1 1 auto;width:1%;text-overflow:ellipsis}.p-calendar-w-btn .p-inputtext{border-top-right-radius:0;border-bottom-right-radius:0}.p-calendar-w-btn .p-datepicker-trigger{border-top-left-radius:0;border-bottom-left-radius:0}.p-fluid .p-calendar{display:flex}.p-fluid .p-calendar .p-inputtext{width:1%}.p-calendar .p-datepicker{min-width:100%}.p-datepicker{width:auto;position:absolute;top:0;left:0}.p-datepicker-inline{display:inline-block;position:static;overflow-x:auto}.p-datepicker-header{display:flex;align-items:center;justify-content:space-between}.p-datepicker-header .p-datepicker-title{margin:0 auto}.p-datepicker-prev,.p-datepicker-next{cursor:pointer;display:inline-flex;justify-content:center;align-items:center;overflow:hidden;position:relative}.p-datepicker-multiple-month .p-datepicker-group-container .p-datepicker-group{flex:1 1 auto}.p-datepicker-multiple-month .p-datepicker-group-container{display:flex}.p-datepicker table{width:100%;border-collapse:collapse}.p-datepicker td>span{display:flex;justify-content:center;align-items:center;cursor:pointer;margin:0 auto;overflow:hidden;position:relative}.p-monthpicker-month{width:33.3%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-datepicker-buttonbar{display:flex;justify-content:space-between;align-items:center}.p-timepicker{display:flex;justify-content:center;align-items:center}.p-timepicker button{display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-timepicker>div{display:flex;align-items:center;flex-direction:column}.p-datepicker-touch-ui,.p-calendar .p-datepicker-touch-ui{position:fixed;top:50%;left:50%;min-width:80vw;transform:translate(-50%,-50%)}.p-yearpicker-year{width:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;position:relative}.p-calendar-clear-icon{position:absolute;top:50%;margin-top:-.5rem;cursor:pointer}.p-datepicker-icon{pointer-events:none}.p-calendar-clearable{position:relative}}\n"]
     }]
   }], () => [{
     type: Document,
@@ -5063,7 +5077,10 @@ var Calendar = class _Calendar {
       type: Input
     }],
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dateFormat: [{
       type: Input
@@ -5075,16 +5092,28 @@ var Calendar = class _Calendar {
       type: Input
     }],
     inline: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showOtherMonths: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     selectOtherMonths: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showIcon: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     icon: [{
       type: Input
@@ -5093,46 +5122,85 @@ var Calendar = class _Calendar {
       type: Input
     }],
     readonlyInput: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     shortYearCutoff: [{
       type: Input
     }],
     monthNavigator: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     yearNavigator: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     hourFormat: [{
       type: Input
     }],
     timeOnly: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     stepHour: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     stepMinute: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     stepSecond: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     showSeconds: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     required: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showOnFocus: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showWeek: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    startWeekFromFirstDayOfYear: [{
       type: Input
     }],
     showClear: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dataType: [{
       type: Input
@@ -5141,10 +5209,16 @@ var Calendar = class _Calendar {
       type: Input
     }],
     maxDateCount: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     showButtonBar: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     todayButtonStyleClass: [{
       type: Input
@@ -5152,11 +5226,23 @@ var Calendar = class _Calendar {
     clearButtonStyleClass: [{
       type: Input
     }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     panelStyleClass: [{
       type: Input
@@ -5165,19 +5251,31 @@ var Calendar = class _Calendar {
       type: Input
     }],
     keepInvalid: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     hideOnDateTimeSelect: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     touchUI: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     timeSeparator: [{
       type: Input
     }],
     focusTrap: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showTransitionOptions: [{
       type: Input
@@ -5186,7 +5284,10 @@ var Calendar = class _Calendar {
       type: Input
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     minDate: [{
       type: Input
@@ -5291,18 +5392,18 @@ var CalendarModule = class _CalendarModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _CalendarModule,
     declarations: [Calendar],
-    imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon],
+    imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon, AutoFocusModule],
     exports: [Calendar, ButtonModule, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon, ButtonModule, SharedModule]
+    imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon, AutoFocusModule, ButtonModule, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(CalendarModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon],
+      imports: [CommonModule, ButtonModule, SharedModule, RippleModule, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, ChevronDownIcon, TimesIcon, CalendarIcon, AutoFocusModule],
       exports: [Calendar, ButtonModule, SharedModule],
       declarations: [Calendar]
     }]
@@ -6029,7 +6130,7 @@ function SelectButton_div_2_Template(rf, ctx) {
     const _r6 = ɵɵreference(3);
     const ctx_r1 = ɵɵnextContext();
     ɵɵclassMap(option_r2.styleClass);
-    ɵɵproperty("role", ctx_r1.multiple ? "checkbox" : "radio")("ngClass", ɵɵpureFunction3(14, _c22, ctx_r1.isSelected(option_r2), ctx_r1.disabled || ctx_r1.isOptionDisabled(option_r2), option_r2.icon && !ctx_r1.getOptionLabel(option_r2)));
+    ɵɵproperty("role", ctx_r1.multiple ? "checkbox" : "radio")("ngClass", ɵɵpureFunction3(15, _c22, ctx_r1.isSelected(option_r2), ctx_r1.disabled || ctx_r1.isOptionDisabled(option_r2), option_r2.icon && !ctx_r1.getOptionLabel(option_r2)))("autofocus", ctx_r1.autofocus);
     ɵɵattribute("tabindex", i_r3 === ctx_r1.focusedIndex ? "0" : "-1")("aria-label", option_r2.label)("aria-checked", ctx_r1.isSelected(option_r2))("aria-disabled", ctx_r1.optionDisabled)("aria-pressed", ctx_r1.isSelected(option_r2))("title", option_r2.title)("aria-labelledby", ctx_r1.getOptionLabel(option_r2))("data-pc-section", "button");
     ɵɵadvance();
     ɵɵproperty("ngIf", !ctx_r1.itemTemplate)("ngIfElse", _r6);
@@ -6107,6 +6208,11 @@ var SelectButton = class _SelectButton {
    * @group Props
    */
   dataKey;
+  /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
   /**
    * Callback to invoke on input click.
    * @param {SelectButtonOptionClickEvent} event - Custom click event.
@@ -6295,28 +6401,29 @@ var SelectButton = class _SelectButton {
       optionLabel: "optionLabel",
       optionValue: "optionValue",
       optionDisabled: "optionDisabled",
-      unselectable: "unselectable",
-      tabindex: "tabindex",
-      multiple: "multiple",
-      allowEmpty: "allowEmpty",
+      unselectable: [InputFlags.HasDecoratorInputTransform, "unselectable", "unselectable", booleanAttribute],
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
+      multiple: [InputFlags.HasDecoratorInputTransform, "multiple", "multiple", booleanAttribute],
+      allowEmpty: [InputFlags.HasDecoratorInputTransform, "allowEmpty", "allowEmpty", booleanAttribute],
       style: "style",
       styleClass: "styleClass",
       ariaLabelledBy: "ariaLabelledBy",
-      disabled: "disabled",
-      dataKey: "dataKey"
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
+      dataKey: "dataKey",
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
     },
     outputs: {
       onOptionClick: "onOptionClick",
       onChange: "onChange"
     },
-    features: [ɵɵProvidersFeature([SELECTBUTTON_VALUE_ACCESSOR])],
+    features: [ɵɵProvidersFeature([SELECTBUTTON_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     decls: 3,
     vars: 8,
-    consts: [["role", "group", 3, "ngClass", "ngStyle"], ["container", ""], ["pRipple", "", "class", "p-button p-component", 3, "role", "class", "ngClass", "click", "keydown", "focus", "blur", 4, "ngFor", "ngForOf"], ["pRipple", "", 1, "p-button", "p-component", 3, "role", "ngClass", "click", "keydown", "focus", "blur"], [4, "ngIf", "ngIfElse"], ["customcontent", ""], [3, "ngClass", "class", 4, "ngIf"], [1, "p-button-label"], [3, "ngClass"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"]],
+    consts: [["role", "group", 3, "ngClass", "ngStyle"], ["container", ""], ["pRipple", "", "class", "p-button p-component", "pAutoFocus", "", 3, "role", "class", "ngClass", "autofocus", "click", "keydown", "focus", "blur", 4, "ngFor", "ngForOf"], ["pRipple", "", "pAutoFocus", "", 1, "p-button", "p-component", 3, "role", "ngClass", "autofocus", "click", "keydown", "focus", "blur"], [4, "ngIf", "ngIfElse"], ["customcontent", ""], [3, "ngClass", "class", 4, "ngIf"], [1, "p-button-label"], [3, "ngClass"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"]],
     template: function SelectButton_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "div", 0, 1);
-        ɵɵtemplate(2, SelectButton_div_2_Template, 4, 18, "div", 2);
+        ɵɵtemplate(2, SelectButton_div_2_Template, 4, 19, "div", 2);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -6327,7 +6434,7 @@ var SelectButton = class _SelectButton {
         ɵɵproperty("ngForOf", ctx.options);
       }
     },
-    dependencies: [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgStyle, Ripple],
+    dependencies: [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgStyle, Ripple, AutoFocus],
     styles: ['@layer primeng{.p-button{margin:0;display:inline-flex;cursor:pointer;-webkit-user-select:none;user-select:none;align-items:center;vertical-align:bottom;text-align:center;overflow:hidden;position:relative}.p-button-label{flex:1 1 auto}.p-button-icon-right{order:1}.p-button:disabled{cursor:default;pointer-events:none}.p-button-icon-only{justify-content:center}.p-button-icon-only:after{content:"p";visibility:hidden;clip:rect(0 0 0 0);width:0}.p-button-vertical{flex-direction:column}.p-button-icon-bottom{order:2}.p-button-group .p-button{margin:0}.p-button-group .p-button:focus,.p-button-group p-button:focus .p-button,.p-buttonset .p-button:focus,.p-buttonset p-button:focus .p-button{position:relative;z-index:1}.p-button-group .p-button:not(:last-child),.p-button-group .p-button:not(:last-child):hover,.p-button-group p-button:not(:last-child) .p-button,.p-button-group p-button:not(:last-child) .p-button:hover,.p-buttonset .p-button:not(:last-child),.p-buttonset .p-button:not(:last-child):hover,.p-buttonset p-button:not(:last-child) .p-button,.p-buttonset p-button:not(:last-child) .p-button:hover{border-right:0 none}.p-button-group .p-button:not(:first-of-type):not(:last-of-type),.p-button-group p-button:not(:first-of-type):not(:last-of-type) .p-button,.p-buttonset .p-button:not(:first-of-type):not(:last-of-type),.p-buttonset p-button:not(:first-of-type):not(:last-of-type) .p-button{border-radius:0}.p-button-group .p-button:first-of-type:not(:only-of-type),.p-button-group p-button:first-of-type:not(:only-of-type) .p-button,.p-buttonset .p-button:first-of-type:not(:only-of-type),.p-buttonset p-button:first-of-type:not(:only-of-type) .p-button{border-top-right-radius:0;border-bottom-right-radius:0}.p-button-group .p-button:last-of-type:not(:only-of-type),.p-button-group p-button:last-of-type:not(:only-of-type) .p-button,.p-buttonset .p-button:last-of-type:not(:only-of-type),.p-buttonset p-button:last-of-type:not(:only-of-type) .p-button{border-top-left-radius:0;border-bottom-left-radius:0}p-button[iconpos=right] spinnericon{order:1}}\n'],
     encapsulation: 2,
     changeDetection: 0
@@ -6359,6 +6466,8 @@ var SelectButton = class _SelectButton {
                 (blur)="onBlur()"
                 [attr.aria-labelledby]="this.getOptionLabel(option)"
                 [attr.data-pc-section]="'button'"
+                pAutoFocus
+                [autofocus]="autofocus"
             >
                 <ng-container *ngIf="!itemTemplate; else customcontent">
                     <span [ngClass]="'p-button-icon p-button-icon-left'" [class]="option.icon" *ngIf="option.icon" [attr.data-pc-section]="'icon'"></span>
@@ -6394,16 +6503,28 @@ var SelectButton = class _SelectButton {
       type: Input
     }],
     unselectable: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     multiple: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     allowEmpty: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -6415,10 +6536,19 @@ var SelectButton = class _SelectButton {
       type: Input
     }],
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dataKey: [{
       type: Input
+    }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onOptionClick: [{
       type: Output
@@ -6443,18 +6573,18 @@ var SelectButtonModule = class _SelectButtonModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _SelectButtonModule,
     declarations: [SelectButton],
-    imports: [CommonModule, RippleModule, SharedModule],
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule],
     exports: [SelectButton, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule, RippleModule, SharedModule, SharedModule]
+    imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(SelectButtonModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule, RippleModule, SharedModule],
+      imports: [CommonModule, RippleModule, SharedModule, AutoFocusModule],
       exports: [SelectButton, SharedModule],
       declarations: [SelectButton]
     }]
@@ -6703,6 +6833,11 @@ var TriStateCheckbox = class _TriStateCheckbox {
    */
   checkboxFalseIcon;
   /**
+   * When present, it specifies that the component should automatically get focus on load.
+   * @group Props
+   */
+  autofocus;
+  /**
    * Callback to invoke on value change.
    * @param {TriStateCheckboxChangeEvent} event - Custom change event.
    * @group Emits
@@ -6793,26 +6928,27 @@ var TriStateCheckbox = class _TriStateCheckbox {
     },
     hostAttrs: [1, "p-element"],
     inputs: {
-      disabled: "disabled",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
       name: "name",
       ariaLabel: "ariaLabel",
       ariaLabelledBy: "ariaLabelledBy",
-      tabindex: "tabindex",
+      tabindex: [InputFlags.HasDecoratorInputTransform, "tabindex", "tabindex", numberAttribute],
       inputId: "inputId",
       style: "style",
       styleClass: "styleClass",
       label: "label",
-      readonly: "readonly",
+      readonly: [InputFlags.HasDecoratorInputTransform, "readonly", "readonly", booleanAttribute],
       checkboxTrueIcon: "checkboxTrueIcon",
-      checkboxFalseIcon: "checkboxFalseIcon"
+      checkboxFalseIcon: "checkboxFalseIcon",
+      autofocus: [InputFlags.HasDecoratorInputTransform, "autofocus", "autofocus", booleanAttribute]
     },
     outputs: {
       onChange: "onChange"
     },
-    features: [ɵɵProvidersFeature([TRISTATECHECKBOX_VALUE_ACCESSOR])],
+    features: [ɵɵProvidersFeature([TRISTATECHECKBOX_VALUE_ACCESSOR]), ɵɵInputTransformsFeature],
     decls: 8,
-    vars: 26,
-    consts: [[3, "ngStyle", "ngClass", "click"], [1, "p-hidden-accessible"], ["type", "checkbox", "inputmode", "none", 3, "name", "readonly", "disabled", "keydown", "focus", "blur"], ["input", ""], ["role", "checkbox", 1, "p-checkbox-box", 3, "ngClass"], [4, "ngIf"], ["class", "p-checkbox-label", 3, "ngClass", "click", 4, "ngIf"], ["class", "p-checkbox-icon", 3, "ngClass", 4, "ngIf"], [1, "p-checkbox-icon", 3, "ngClass"], [3, "styleClass", 4, "ngIf"], ["class", "p-checkbox-icon", 4, "ngIf"], [3, "styleClass"], [1, "p-checkbox-icon"], [4, "ngTemplateOutlet"], [1, "p-checkbox-label", 3, "ngClass", "click"]],
+    vars: 27,
+    consts: [[3, "ngStyle", "ngClass", "click"], [1, "p-hidden-accessible"], ["type", "checkbox", "inputmode", "none", "pAutoFocus", "", 3, "name", "readonly", "disabled", "autofocus", "keydown", "focus", "blur"], ["input", ""], ["role", "checkbox", 1, "p-checkbox-box", 3, "ngClass"], [4, "ngIf"], ["class", "p-checkbox-label", 3, "ngClass", "click", 4, "ngIf"], ["class", "p-checkbox-icon", 3, "ngClass", 4, "ngIf"], [1, "p-checkbox-icon", 3, "ngClass"], [3, "styleClass", 4, "ngIf"], ["class", "p-checkbox-icon", 4, "ngIf"], [3, "styleClass"], [1, "p-checkbox-icon"], [4, "ngTemplateOutlet"], [1, "p-checkbox-label", 3, "ngClass", "click"]],
     template: function TriStateCheckbox_Template(rf, ctx) {
       if (rf & 1) {
         const _r18 = ɵɵgetCurrentView();
@@ -6838,13 +6974,13 @@ var TriStateCheckbox = class _TriStateCheckbox {
       }
       if (rf & 2) {
         ɵɵclassMap(ctx.styleClass);
-        ɵɵproperty("ngStyle", ctx.style)("ngClass", ɵɵpureFunction2(19, _c17, ctx.disabled, ctx.focused));
+        ɵɵproperty("ngStyle", ctx.style)("ngClass", ɵɵpureFunction2(20, _c17, ctx.disabled, ctx.focused));
         ɵɵattribute("data-pc-name", "tristatecheckbox")("data-pc-section", "root");
         ɵɵadvance(2);
-        ɵɵproperty("name", ctx.name)("readonly", ctx.readonly)("disabled", ctx.disabled);
+        ɵɵproperty("name", ctx.name)("readonly", ctx.readonly)("disabled", ctx.disabled)("autofocus", ctx.autofocus);
         ɵɵattribute("id", ctx.inputId)("tabindex", ctx.tabindex)("aria-labelledby", ctx.ariaLabelledBy)("aria-label", ctx.ariaLabel)("data-pc-section", "hiddenInput");
         ɵɵadvance(2);
-        ɵɵproperty("ngClass", ɵɵpureFunction3(22, _c23, ctx.value != null, ctx.disabled, ctx.focused));
+        ɵɵproperty("ngClass", ɵɵpureFunction3(23, _c23, ctx.value != null, ctx.disabled, ctx.focused));
         ɵɵattribute("aria-checked", ctx.value === true);
         ɵɵadvance();
         ɵɵproperty("ngIf", ctx.value === true);
@@ -6854,7 +6990,7 @@ var TriStateCheckbox = class _TriStateCheckbox {
         ɵɵproperty("ngIf", ctx.label);
       }
     },
-    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, CheckIcon, TimesIcon],
+    dependencies: () => [NgClass, NgIf, NgTemplateOutlet, NgStyle, AutoFocus, CheckIcon, TimesIcon],
     encapsulation: 2,
     changeDetection: 0
   });
@@ -6889,6 +7025,8 @@ var TriStateCheckbox = class _TriStateCheckbox {
                     [attr.aria-label]="ariaLabel"
                     inputmode="none"
                     [attr.data-pc-section]="'hiddenInput'"
+                    pAutoFocus
+                    [autofocus]="autofocus"
                 />
             </div>
             <div class="p-checkbox-box" role="checkbox" [attr.aria-checked]="value === true" [ngClass]="{ 'p-highlight': value != null, 'p-disabled': disabled, 'p-focus': focused }">
@@ -6925,7 +7063,10 @@ var TriStateCheckbox = class _TriStateCheckbox {
     type: ChangeDetectorRef
   }], {
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     name: [{
       type: Input
@@ -6937,7 +7078,10 @@ var TriStateCheckbox = class _TriStateCheckbox {
       type: Input
     }],
     tabindex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     inputId: [{
       type: Input
@@ -6952,13 +7096,22 @@ var TriStateCheckbox = class _TriStateCheckbox {
       type: Input
     }],
     readonly: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     checkboxTrueIcon: [{
       type: Input
     }],
     checkboxFalseIcon: [{
       type: Input
+    }],
+    autofocus: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onChange: [{
       type: Output
@@ -6976,18 +7129,18 @@ var TriStateCheckboxModule = class _TriStateCheckboxModule {
   static ɵmod = ɵɵdefineNgModule({
     type: _TriStateCheckboxModule,
     declarations: [TriStateCheckbox],
-    imports: [CommonModule, SharedModule, CheckIcon, TimesIcon],
+    imports: [CommonModule, SharedModule, AutoFocusModule, CheckIcon, TimesIcon],
     exports: [TriStateCheckbox, SharedModule]
   });
   static ɵinj = ɵɵdefineInjector({
-    imports: [CommonModule, SharedModule, CheckIcon, TimesIcon, SharedModule]
+    imports: [CommonModule, SharedModule, AutoFocusModule, CheckIcon, TimesIcon, SharedModule]
   });
 };
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TriStateCheckboxModule, [{
     type: NgModule,
     args: [{
-      imports: [CommonModule, SharedModule, CheckIcon, TimesIcon],
+      imports: [CommonModule, SharedModule, AutoFocusModule, CheckIcon, TimesIcon],
       exports: [TriStateCheckbox, SharedModule],
       declarations: [TriStateCheckbox]
     }]
@@ -8121,7 +8274,7 @@ function ColumnFilter_p_columnFilterFormElement_1_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r0 = ɵɵnextContext();
-    ɵɵproperty("type", ctx_r0.type)("field", ctx_r0.field)("filterConstraint", ctx_r0.dt.filters[ctx_r0.field])("filterTemplate", ctx_r0.filterTemplate)("placeholder", ctx_r0.placeholder)("minFractionDigits", ctx_r0.minFractionDigits)("maxFractionDigits", ctx_r0.maxFractionDigits)("prefix", ctx_r0.prefix)("suffix", ctx_r0.suffix)("locale", ctx_r0.locale)("localeMatcher", ctx_r0.localeMatcher)("currency", ctx_r0.currency)("currencyDisplay", ctx_r0.currencyDisplay)("useGrouping", ctx_r0.useGrouping)("showButtons", ctx_r0.showButtons);
+    ɵɵproperty("type", ctx_r0.type)("field", ctx_r0.field)("ariaLabel", ctx_r0.ariaLabel)("filterConstraint", ctx_r0.dt.filters[ctx_r0.field])("filterTemplate", ctx_r0.filterTemplate)("placeholder", ctx_r0.placeholder)("minFractionDigits", ctx_r0.minFractionDigits)("maxFractionDigits", ctx_r0.maxFractionDigits)("prefix", ctx_r0.prefix)("suffix", ctx_r0.suffix)("locale", ctx_r0.locale)("localeMatcher", ctx_r0.localeMatcher)("currency", ctx_r0.currency)("currencyDisplay", ctx_r0.currencyDisplay)("useGrouping", ctx_r0.useGrouping)("showButtons", ctx_r0.showButtons);
   }
 }
 function ColumnFilter_button_2_FilterIcon_2_Template(rf, ctx) {
@@ -8581,7 +8734,7 @@ function ColumnFilterFormElement_ng_template_1_input_1_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r4 = ɵɵnextContext(2);
-    ɵɵproperty("value", ctx_r4.filterConstraint == null ? null : ctx_r4.filterConstraint.value);
+    ɵɵproperty("ariaLabel", ctx_r4.ariaLabel)("value", ctx_r4.filterConstraint == null ? null : ctx_r4.filterConstraint.value);
     ɵɵattribute("placeholder", ctx_r4.placeholder);
   }
 }
@@ -8602,7 +8755,7 @@ function ColumnFilterFormElement_ng_template_1_p_inputNumber_2_Template(rf, ctx)
   }
   if (rf & 2) {
     const ctx_r5 = ɵɵnextContext(2);
-    ɵɵproperty("ngModel", ctx_r5.filterConstraint == null ? null : ctx_r5.filterConstraint.value)("showButtons", ctx_r5.showButtons)("minFractionDigits", ctx_r5.minFractionDigits)("maxFractionDigits", ctx_r5.maxFractionDigits)("prefix", ctx_r5.prefix)("suffix", ctx_r5.suffix)("placeholder", ctx_r5.placeholder)("mode", ctx_r5.currency ? "currency" : "decimal")("locale", ctx_r5.locale)("localeMatcher", ctx_r5.localeMatcher)("currency", ctx_r5.currency)("currencyDisplay", ctx_r5.currencyDisplay)("useGrouping", ctx_r5.useGrouping);
+    ɵɵproperty("ngModel", ctx_r5.filterConstraint == null ? null : ctx_r5.filterConstraint.value)("showButtons", ctx_r5.showButtons)("minFractionDigits", ctx_r5.minFractionDigits)("maxFractionDigits", ctx_r5.maxFractionDigits)("ariaLabel", ctx_r5.ariaLabel)("prefix", ctx_r5.prefix)("suffix", ctx_r5.suffix)("placeholder", ctx_r5.placeholder)("mode", ctx_r5.currency ? "currency" : "decimal")("locale", ctx_r5.locale)("localeMatcher", ctx_r5.localeMatcher)("currency", ctx_r5.currency)("currencyDisplay", ctx_r5.currencyDisplay)("useGrouping", ctx_r5.useGrouping);
   }
 }
 function ColumnFilterFormElement_ng_template_1_p_triStateCheckbox_3_Template(rf, ctx) {
@@ -8618,7 +8771,7 @@ function ColumnFilterFormElement_ng_template_1_p_triStateCheckbox_3_Template(rf,
   }
   if (rf & 2) {
     const ctx_r6 = ɵɵnextContext(2);
-    ɵɵproperty("ngModel", ctx_r6.filterConstraint == null ? null : ctx_r6.filterConstraint.value);
+    ɵɵproperty("ariaLabel", ctx_r6.ariaLabel)("ngModel", ctx_r6.filterConstraint == null ? null : ctx_r6.filterConstraint.value);
   }
 }
 function ColumnFilterFormElement_ng_template_1_p_calendar_4_Template(rf, ctx) {
@@ -8634,13 +8787,13 @@ function ColumnFilterFormElement_ng_template_1_p_calendar_4_Template(rf, ctx) {
   }
   if (rf & 2) {
     const ctx_r7 = ɵɵnextContext(2);
-    ɵɵproperty("placeholder", ctx_r7.placeholder)("ngModel", ctx_r7.filterConstraint == null ? null : ctx_r7.filterConstraint.value);
+    ɵɵproperty("ariaLabel", ctx_r7.ariaLabel)("placeholder", ctx_r7.placeholder)("ngModel", ctx_r7.filterConstraint == null ? null : ctx_r7.filterConstraint.value);
   }
 }
 function ColumnFilterFormElement_ng_template_1_Template(rf, ctx) {
   if (rf & 1) {
     ɵɵelementContainerStart(0, 3);
-    ɵɵtemplate(1, ColumnFilterFormElement_ng_template_1_input_1_Template, 1, 2, "input", 4)(2, ColumnFilterFormElement_ng_template_1_p_inputNumber_2_Template, 1, 13, "p-inputNumber", 5)(3, ColumnFilterFormElement_ng_template_1_p_triStateCheckbox_3_Template, 1, 1, "p-triStateCheckbox", 6)(4, ColumnFilterFormElement_ng_template_1_p_calendar_4_Template, 1, 2, "p-calendar", 7);
+    ɵɵtemplate(1, ColumnFilterFormElement_ng_template_1_input_1_Template, 1, 3, "input", 4)(2, ColumnFilterFormElement_ng_template_1_p_inputNumber_2_Template, 1, 14, "p-inputNumber", 5)(3, ColumnFilterFormElement_ng_template_1_p_triStateCheckbox_3_Template, 1, 2, "p-triStateCheckbox", 6)(4, ColumnFilterFormElement_ng_template_1_p_calendar_4_Template, 1, 3, "p-calendar", 7);
     ɵɵelementContainerEnd();
   }
   if (rf & 2) {
@@ -9436,8 +9589,8 @@ var Table = class _Table {
   styleElement;
   responsiveStyleElement;
   window;
-  constructor(document, platformId, renderer, el, zone, tableService, cd, filterService, overlayService, config) {
-    this.document = document;
+  constructor(document2, platformId, renderer, el, zone, tableService, cd, filterService, overlayService, config) {
+    this.document = document2;
     this.platformId = platformId;
     this.renderer = renderer;
     this.el = el;
@@ -9590,10 +9743,13 @@ var Table = class _Table {
       this.tableService.onValueChange(simpleChange.value.currentValue);
     }
     if (simpleChange.columns) {
-      this._columns = simpleChange.columns.currentValue;
-      this.tableService.onColumnsChange(simpleChange.columns.currentValue);
+      if (!this.isStateful()) {
+        this._columns = simpleChange.columns.currentValue;
+        this.tableService.onColumnsChange(simpleChange.columns.currentValue);
+      }
       if (this._columns && this.isStateful() && this.reorderableColumns && !this.columnOrderStateRestored) {
         this.restoreColumnOrder();
+        this.tableService.onColumnsChange(this._columns);
       }
     }
     if (simpleChange.sortField) {
@@ -10276,13 +10432,10 @@ var Table = class _Table {
       clearTimeout(this.filterTimeout);
     }
     if (!this.isFilterBlank(value)) {
-      this.filters[field] = field == "global" ? {
+      this.filters[field] = {
         value,
         matchMode
-      } : [{
-        value,
-        matchMode
-      }];
+      };
     } else if (this.filters[field]) {
       delete this.filters[field];
     }
@@ -10609,10 +10762,10 @@ var Table = class _Table {
     delete this.editingRowKeys[dataKeyValue];
   }
   toggleRow(rowData, event2) {
-    if (!this.dataKey) {
-      throw new Error("dataKey must be defined to use row expansion");
+    if (!this.dataKey && !this.groupRowsBy) {
+      throw new Error("dataKey or groupRowsBy must be defined to use row expansion");
     }
-    let dataKeyValue = String(ObjectUtils.resolveFieldData(rowData, this.dataKey));
+    let dataKeyValue = this.groupRowsBy ? String(ObjectUtils.resolveFieldData(rowData, this.groupRowsBy)) : String(ObjectUtils.resolveFieldData(rowData, this.dataKey));
     if (this.expandedRowKeys[dataKeyValue] != null) {
       delete this.expandedRowKeys[dataKeyValue];
       this.onRowCollapse.emit({
@@ -10637,7 +10790,7 @@ var Table = class _Table {
     }
   }
   isRowExpanded(rowData) {
-    return this.expandedRowKeys[String(ObjectUtils.resolveFieldData(rowData, this.dataKey))] === true;
+    return this.groupRowsBy ? this.expandedRowKeys[String(ObjectUtils.resolveFieldData(rowData, this.groupRowsBy))] === true : this.expandedRowKeys[String(ObjectUtils.resolveFieldData(rowData, this.dataKey))] === true;
   }
   isRowEditing(rowData) {
     return this.editingRowKeys[String(ObjectUtils.resolveFieldData(rowData, this.dataKey))] === true;
@@ -11167,71 +11320,71 @@ var Table = class _Table {
       styleClass: "styleClass",
       tableStyle: "tableStyle",
       tableStyleClass: "tableStyleClass",
-      paginator: "paginator",
-      pageLinks: "pageLinks",
+      paginator: [InputFlags.HasDecoratorInputTransform, "paginator", "paginator", booleanAttribute],
+      pageLinks: [InputFlags.HasDecoratorInputTransform, "pageLinks", "pageLinks", numberAttribute],
       rowsPerPageOptions: "rowsPerPageOptions",
-      alwaysShowPaginator: "alwaysShowPaginator",
+      alwaysShowPaginator: [InputFlags.HasDecoratorInputTransform, "alwaysShowPaginator", "alwaysShowPaginator", booleanAttribute],
       paginatorPosition: "paginatorPosition",
       paginatorStyleClass: "paginatorStyleClass",
       paginatorDropdownAppendTo: "paginatorDropdownAppendTo",
       paginatorDropdownScrollHeight: "paginatorDropdownScrollHeight",
       currentPageReportTemplate: "currentPageReportTemplate",
-      showCurrentPageReport: "showCurrentPageReport",
-      showJumpToPageDropdown: "showJumpToPageDropdown",
-      showJumpToPageInput: "showJumpToPageInput",
-      showFirstLastIcon: "showFirstLastIcon",
-      showPageLinks: "showPageLinks",
-      defaultSortOrder: "defaultSortOrder",
+      showCurrentPageReport: [InputFlags.HasDecoratorInputTransform, "showCurrentPageReport", "showCurrentPageReport", booleanAttribute],
+      showJumpToPageDropdown: [InputFlags.HasDecoratorInputTransform, "showJumpToPageDropdown", "showJumpToPageDropdown", booleanAttribute],
+      showJumpToPageInput: [InputFlags.HasDecoratorInputTransform, "showJumpToPageInput", "showJumpToPageInput", booleanAttribute],
+      showFirstLastIcon: [InputFlags.HasDecoratorInputTransform, "showFirstLastIcon", "showFirstLastIcon", booleanAttribute],
+      showPageLinks: [InputFlags.HasDecoratorInputTransform, "showPageLinks", "showPageLinks", booleanAttribute],
+      defaultSortOrder: [InputFlags.HasDecoratorInputTransform, "defaultSortOrder", "defaultSortOrder", numberAttribute],
       sortMode: "sortMode",
-      resetPageOnSort: "resetPageOnSort",
+      resetPageOnSort: [InputFlags.HasDecoratorInputTransform, "resetPageOnSort", "resetPageOnSort", booleanAttribute],
       selectionMode: "selectionMode",
-      selectionPageOnly: "selectionPageOnly",
+      selectionPageOnly: [InputFlags.HasDecoratorInputTransform, "selectionPageOnly", "selectionPageOnly", booleanAttribute],
       contextMenuSelection: "contextMenuSelection",
       contextMenuSelectionMode: "contextMenuSelectionMode",
       dataKey: "dataKey",
-      metaKeySelection: "metaKeySelection",
+      metaKeySelection: [InputFlags.HasDecoratorInputTransform, "metaKeySelection", "metaKeySelection", booleanAttribute],
       rowSelectable: "rowSelectable",
       rowTrackBy: "rowTrackBy",
-      lazy: "lazy",
-      lazyLoadOnInit: "lazyLoadOnInit",
+      lazy: [InputFlags.HasDecoratorInputTransform, "lazy", "lazy", booleanAttribute],
+      lazyLoadOnInit: [InputFlags.HasDecoratorInputTransform, "lazyLoadOnInit", "lazyLoadOnInit", booleanAttribute],
       compareSelectionBy: "compareSelectionBy",
       csvSeparator: "csvSeparator",
       exportFilename: "exportFilename",
       filters: "filters",
       globalFilterFields: "globalFilterFields",
-      filterDelay: "filterDelay",
+      filterDelay: [InputFlags.HasDecoratorInputTransform, "filterDelay", "filterDelay", numberAttribute],
       filterLocale: "filterLocale",
       expandedRowKeys: "expandedRowKeys",
       editingRowKeys: "editingRowKeys",
       rowExpandMode: "rowExpandMode",
-      scrollable: "scrollable",
+      scrollable: [InputFlags.HasDecoratorInputTransform, "scrollable", "scrollable", booleanAttribute],
       scrollDirection: "scrollDirection",
       rowGroupMode: "rowGroupMode",
       scrollHeight: "scrollHeight",
-      virtualScroll: "virtualScroll",
-      virtualScrollItemSize: "virtualScrollItemSize",
+      virtualScroll: [InputFlags.HasDecoratorInputTransform, "virtualScroll", "virtualScroll", booleanAttribute],
+      virtualScrollItemSize: [InputFlags.HasDecoratorInputTransform, "virtualScrollItemSize", "virtualScrollItemSize", numberAttribute],
       virtualScrollOptions: "virtualScrollOptions",
-      virtualScrollDelay: "virtualScrollDelay",
+      virtualScrollDelay: [InputFlags.HasDecoratorInputTransform, "virtualScrollDelay", "virtualScrollDelay", numberAttribute],
       frozenWidth: "frozenWidth",
       responsive: "responsive",
       contextMenu: "contextMenu",
-      resizableColumns: "resizableColumns",
+      resizableColumns: [InputFlags.HasDecoratorInputTransform, "resizableColumns", "resizableColumns", booleanAttribute],
       columnResizeMode: "columnResizeMode",
-      reorderableColumns: "reorderableColumns",
-      loading: "loading",
+      reorderableColumns: [InputFlags.HasDecoratorInputTransform, "reorderableColumns", "reorderableColumns", booleanAttribute],
+      loading: [InputFlags.HasDecoratorInputTransform, "loading", "loading", booleanAttribute],
       loadingIcon: "loadingIcon",
-      showLoader: "showLoader",
-      rowHover: "rowHover",
-      customSort: "customSort",
-      showInitialSortBadge: "showInitialSortBadge",
-      autoLayout: "autoLayout",
+      showLoader: [InputFlags.HasDecoratorInputTransform, "showLoader", "showLoader", booleanAttribute],
+      rowHover: [InputFlags.HasDecoratorInputTransform, "rowHover", "rowHover", booleanAttribute],
+      customSort: [InputFlags.HasDecoratorInputTransform, "customSort", "customSort", booleanAttribute],
+      showInitialSortBadge: [InputFlags.HasDecoratorInputTransform, "showInitialSortBadge", "showInitialSortBadge", booleanAttribute],
+      autoLayout: [InputFlags.HasDecoratorInputTransform, "autoLayout", "autoLayout", booleanAttribute],
       exportFunction: "exportFunction",
       exportHeader: "exportHeader",
       stateKey: "stateKey",
       stateStorage: "stateStorage",
       editMode: "editMode",
       groupRowsBy: "groupRowsBy",
-      groupRowsByOrder: "groupRowsByOrder",
+      groupRowsByOrder: [InputFlags.HasDecoratorInputTransform, "groupRowsByOrder", "groupRowsByOrder", numberAttribute],
       responsiveLayout: "responsiveLayout",
       breakpoint: "breakpoint",
       paginatorLocale: "paginatorLocale",
@@ -11273,7 +11426,7 @@ var Table = class _Table {
       onStateSave: "onStateSave",
       onStateRestore: "onStateRestore"
     },
-    features: [ɵɵProvidersFeature([TableService]), ɵɵNgOnChangesFeature],
+    features: [ɵɵProvidersFeature([TableService]), ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature],
     decls: 16,
     vars: 22,
     consts: [[3, "ngStyle", "ngClass"], ["container", ""], ["class", "p-datatable-loading-overlay p-component-overlay", 4, "ngIf"], ["class", "p-datatable-header", 4, "ngIf"], [3, "rows", "first", "totalRecords", "pageLinkSize", "alwaysShow", "rowsPerPageOptions", "templateLeft", "templateRight", "dropdownAppendTo", "dropdownScrollHeight", "currentPageReportTemplate", "showFirstLastIcon", "dropdownItemTemplate", "showCurrentPageReport", "showJumpToPageDropdown", "showJumpToPageInput", "showPageLinks", "styleClass", "locale", "onPageChange", 4, "ngIf"], [1, "p-datatable-wrapper", 3, "ngStyle"], ["wrapper", ""], [3, "items", "columns", "style", "scrollHeight", "itemSize", "step", "delay", "inline", "lazy", "loaderDisabled", "showSpacer", "showLoader", "options", "autoSize", "onLazyLoad", 4, "ngIf"], [4, "ngIf"], ["buildInTable", ""], ["class", "p-datatable-footer", 4, "ngIf"], ["class", "p-column-resizer-helper", "style", "display:none", 4, "ngIf"], ["class", "p-datatable-reorder-indicator-up", "style", "display: none;", 4, "ngIf"], ["class", "p-datatable-reorder-indicator-down", "style", "display: none;", 4, "ngIf"], [1, "p-datatable-loading-overlay", "p-component-overlay"], [3, "class", 4, "ngIf"], [3, "spin", "styleClass", 4, "ngIf"], ["class", "p-datatable-loading-icon", 4, "ngIf"], [3, "spin", "styleClass"], [1, "p-datatable-loading-icon"], [4, "ngTemplateOutlet"], [1, "p-datatable-header"], [3, "rows", "first", "totalRecords", "pageLinkSize", "alwaysShow", "rowsPerPageOptions", "templateLeft", "templateRight", "dropdownAppendTo", "dropdownScrollHeight", "currentPageReportTemplate", "showFirstLastIcon", "dropdownItemTemplate", "showCurrentPageReport", "showJumpToPageDropdown", "showJumpToPageInput", "showPageLinks", "styleClass", "locale", "onPageChange"], ["pTemplate", "dropdownicon"], ["pTemplate", "firstpagelinkicon"], ["pTemplate", "previouspagelinkicon"], ["pTemplate", "lastpagelinkicon"], ["pTemplate", "nextpagelinkicon"], [3, "items", "columns", "scrollHeight", "itemSize", "step", "delay", "inline", "lazy", "loaderDisabled", "showSpacer", "showLoader", "options", "autoSize", "onLazyLoad"], ["scroller", ""], ["pTemplate", "content"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], ["role", "table", 3, "ngClass"], ["table", ""], ["role", "rowgroup", 1, "p-datatable-thead"], ["thead", ""], ["role", "rowgroup", "class", "p-datatable-tbody p-datatable-frozen-tbody", 3, "value", "frozenRows", "pTableBody", "pTableBodyTemplate", "frozen", 4, "ngIf"], ["role", "rowgroup", 1, "p-datatable-tbody", 3, "ngClass", "value", "pTableBody", "pTableBodyTemplate", "scrollerOptions"], ["role", "rowgroup", "class", "p-datatable-scroller-spacer", 3, "style", 4, "ngIf"], ["role", "rowgroup", "class", "p-datatable-tfoot", 4, "ngIf"], ["role", "rowgroup", 1, "p-datatable-tbody", "p-datatable-frozen-tbody", 3, "value", "frozenRows", "pTableBody", "pTableBodyTemplate", "frozen"], ["role", "rowgroup", 1, "p-datatable-scroller-spacer"], ["role", "rowgroup", 1, "p-datatable-tfoot"], ["tfoot", ""], [1, "p-datatable-footer"], [1, "p-column-resizer-helper", 2, "display", "none"], ["resizeHelper", ""], [1, "p-datatable-reorder-indicator-up", 2, "display", "none"], ["reorderIndicatorUp", ""], [1, "p-datatable-reorder-indicator-down", 2, "display", "none"], ["reorderIndicatorDown", ""]],
@@ -11578,16 +11731,25 @@ var Table = class _Table {
       type: Input
     }],
     paginator: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     pageLinks: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     rowsPerPageOptions: [{
       type: Input
     }],
     alwaysShowPaginator: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     paginatorPosition: [{
       type: Input
@@ -11605,34 +11767,58 @@ var Table = class _Table {
       type: Input
     }],
     showCurrentPageReport: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showJumpToPageDropdown: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showJumpToPageInput: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showFirstLastIcon: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showPageLinks: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     defaultSortOrder: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     sortMode: [{
       type: Input
     }],
     resetPageOnSort: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     selectionMode: [{
       type: Input
     }],
     selectionPageOnly: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     contextMenuSelection: [{
       type: Input
@@ -11647,7 +11833,10 @@ var Table = class _Table {
       type: Input
     }],
     metaKeySelection: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     rowSelectable: [{
       type: Input
@@ -11656,10 +11845,16 @@ var Table = class _Table {
       type: Input
     }],
     lazy: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     lazyLoadOnInit: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     compareSelectionBy: [{
       type: Input
@@ -11677,7 +11872,10 @@ var Table = class _Table {
       type: Input
     }],
     filterDelay: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     filterLocale: [{
       type: Input
@@ -11692,7 +11890,10 @@ var Table = class _Table {
       type: Input
     }],
     scrollable: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     scrollDirection: [{
       type: Input
@@ -11704,16 +11905,25 @@ var Table = class _Table {
       type: Input
     }],
     virtualScroll: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     virtualScrollItemSize: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     virtualScrollOptions: [{
       type: Input
     }],
     virtualScrollDelay: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     frozenWidth: [{
       type: Input
@@ -11725,34 +11935,58 @@ var Table = class _Table {
       type: Input
     }],
     resizableColumns: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     columnResizeMode: [{
       type: Input
     }],
     reorderableColumns: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     loading: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     loadingIcon: [{
       type: Input
     }],
     showLoader: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     rowHover: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     customSort: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showInitialSortBadge: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     autoLayout: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     exportFunction: [{
       type: Input
@@ -11773,7 +12007,10 @@ var Table = class _Table {
       type: Input
     }],
     groupRowsByOrder: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     responsiveLayout: [{
       type: Input
@@ -11973,7 +12210,7 @@ var TableBody = class _TableBody {
   }
   shouldRenderRowGroupHeader(value, rowData, i) {
     let currentRowFieldData = ObjectUtils.resolveFieldData(rowData, this.dt.groupRowsBy);
-    let prevRowData = value[i - 1];
+    let prevRowData = value[i - (1 + this.dt._first)];
     if (prevRowData) {
       let previousRowFieldData = ObjectUtils.resolveFieldData(prevRowData, this.dt.groupRowsBy);
       return currentRowFieldData !== previousRowFieldData;
@@ -11983,7 +12220,7 @@ var TableBody = class _TableBody {
   }
   shouldRenderRowGroupFooter(value, rowData, i) {
     let currentRowFieldData = ObjectUtils.resolveFieldData(rowData, this.dt.groupRowsBy);
-    let nextRowData = value[i + 1];
+    let nextRowData = value[i + (1 + this.dt._first)];
     if (nextRowData) {
       let nextRowFieldData = ObjectUtils.resolveFieldData(nextRowData, this.dt.groupRowsBy);
       return currentRowFieldData !== nextRowFieldData;
@@ -12053,10 +12290,11 @@ var TableBody = class _TableBody {
       columns: [InputFlags.None, "pTableBody", "columns"],
       template: [InputFlags.None, "pTableBodyTemplate", "template"],
       value: "value",
-      frozen: "frozen",
-      frozenRows: "frozenRows",
+      frozen: [InputFlags.HasDecoratorInputTransform, "frozen", "frozen", booleanAttribute],
+      frozenRows: [InputFlags.HasDecoratorInputTransform, "frozenRows", "frozenRows", booleanAttribute],
       scrollerOptions: "scrollerOptions"
     },
+    features: [ɵɵInputTransformsFeature],
     attrs: _c162,
     decls: 5,
     vars: 5,
@@ -12194,10 +12432,16 @@ var TableBody = class _TableBody {
       type: Input
     }],
     frozen: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     frozenRows: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     scrollerOptions: [{
       type: Input
@@ -12243,6 +12487,7 @@ var RowGroupHeader = class _RowGroupHeader {
 })();
 var FrozenColumn = class _FrozenColumn {
   el;
+  zone;
   get frozen() {
     return this._frozen;
   }
@@ -12251,13 +12496,16 @@ var FrozenColumn = class _FrozenColumn {
     Promise.resolve(null).then(() => this.updateStickyPosition());
   }
   alignFrozen = "left";
-  constructor(el) {
+  constructor(el, zone) {
     this.el = el;
+    this.zone = zone;
   }
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.updateStickyPosition();
-    }, 1e3);
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.updateStickyPosition();
+      }, 1e3);
+    });
   }
   _frozen = true;
   updateStickyPosition() {
@@ -12288,7 +12536,7 @@ var FrozenColumn = class _FrozenColumn {
     }
   }
   static ɵfac = function FrozenColumn_Factory(t) {
-    return new (t || _FrozenColumn)(ɵɵdirectiveInject(ElementRef));
+    return new (t || _FrozenColumn)(ɵɵdirectiveInject(ElementRef), ɵɵdirectiveInject(NgZone));
   };
   static ɵdir = ɵɵdefineDirective({
     type: _FrozenColumn,
@@ -12318,6 +12566,8 @@ var FrozenColumn = class _FrozenColumn {
     }]
   }], () => [{
     type: ElementRef
+  }, {
+    type: NgZone
   }], {
     frozen: [{
       type: Input
@@ -12404,8 +12654,9 @@ var SortableColumn = class _SortableColumn {
     },
     inputs: {
       field: [InputFlags.None, "pSortableColumn", "field"],
-      pSortableColumnDisabled: "pSortableColumnDisabled"
-    }
+      pSortableColumnDisabled: [InputFlags.HasDecoratorInputTransform, "pSortableColumnDisabled", "pSortableColumnDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -12430,7 +12681,10 @@ var SortableColumn = class _SortableColumn {
       args: ["pSortableColumn"]
     }],
     pSortableColumnDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onClick: [{
       type: HostListener,
@@ -12783,8 +13037,9 @@ var SelectableRow = class _SelectableRow {
     inputs: {
       data: [InputFlags.None, "pSelectableRow", "data"],
       index: [InputFlags.None, "pSelectableRowIndex", "index"],
-      pSelectableRowDisabled: "pSelectableRowDisabled"
-    }
+      pSelectableRowDisabled: [InputFlags.HasDecoratorInputTransform, "pSelectableRowDisabled", "pSelectableRowDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -12817,7 +13072,10 @@ var SelectableRow = class _SelectableRow {
       args: ["pSelectableRowIndex"]
     }],
     pSelectableRowDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onClick: [{
       type: HostListener,
@@ -12893,8 +13151,9 @@ var SelectableRowDblClick = class _SelectableRowDblClick {
     inputs: {
       data: [InputFlags.None, "pSelectableRowDblClick", "data"],
       index: [InputFlags.None, "pSelectableRowIndex", "index"],
-      pSelectableRowDisabled: "pSelectableRowDisabled"
-    }
+      pSelectableRowDisabled: [InputFlags.HasDecoratorInputTransform, "pSelectableRowDisabled", "pSelectableRowDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -12922,7 +13181,10 @@ var SelectableRowDblClick = class _SelectableRowDblClick {
       args: ["pSelectableRowIndex"]
     }],
     pSelectableRowDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onClick: [{
       type: HostListener,
@@ -12990,8 +13252,9 @@ var ContextMenuRow = class _ContextMenuRow {
     inputs: {
       data: [InputFlags.None, "pContextMenuRow", "data"],
       index: [InputFlags.None, "pContextMenuRowIndex", "index"],
-      pContextMenuRowDisabled: "pContextMenuRowDisabled"
-    }
+      pContextMenuRowDisabled: [InputFlags.HasDecoratorInputTransform, "pContextMenuRowDisabled", "pContextMenuRowDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -13021,7 +13284,10 @@ var ContextMenuRow = class _ContextMenuRow {
       args: ["pContextMenuRowIndex"]
     }],
     pContextMenuRowDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onContextMenu: [{
       type: HostListener,
@@ -13061,8 +13327,9 @@ var RowToggler = class _RowToggler {
     },
     inputs: {
       data: [InputFlags.None, "pRowToggler", "data"],
-      pRowTogglerDisabled: "pRowTogglerDisabled"
-    }
+      pRowTogglerDisabled: [InputFlags.HasDecoratorInputTransform, "pRowTogglerDisabled", "pRowTogglerDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -13082,7 +13349,10 @@ var RowToggler = class _RowToggler {
       args: ["pRowToggler"]
     }],
     pRowTogglerDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onClick: [{
       type: HostListener,
@@ -13102,8 +13372,8 @@ var ResizableColumn = class _ResizableColumn {
   resizerMouseDownListener;
   documentMouseMoveListener;
   documentMouseUpListener;
-  constructor(document, platformId, renderer, dt, el, zone) {
-    this.document = document;
+  constructor(document2, platformId, renderer, dt, el, zone) {
+    this.document = document2;
     this.platformId = platformId;
     this.renderer = renderer;
     this.dt = dt;
@@ -13170,8 +13440,9 @@ var ResizableColumn = class _ResizableColumn {
     selectors: [["", "pResizableColumn", ""]],
     hostAttrs: [1, "p-element"],
     inputs: {
-      pResizableColumnDisabled: "pResizableColumnDisabled"
-    }
+      pResizableColumnDisabled: [InputFlags.HasDecoratorInputTransform, "pResizableColumnDisabled", "pResizableColumnDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -13205,7 +13476,10 @@ var ResizableColumn = class _ResizableColumn {
     type: NgZone
   }], {
     pResizableColumnDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }]
   });
 })();
@@ -13310,8 +13584,9 @@ var ReorderableColumn = class _ReorderableColumn {
       }
     },
     inputs: {
-      pReorderableColumnDisabled: "pReorderableColumnDisabled"
-    }
+      pReorderableColumnDisabled: [InputFlags.HasDecoratorInputTransform, "pReorderableColumnDisabled", "pReorderableColumnDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -13339,7 +13614,10 @@ var ReorderableColumn = class _ReorderableColumn {
     type: NgZone
   }], {
     pReorderableColumnDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onDrop: [{
       type: HostListener,
@@ -13660,10 +13938,10 @@ var EditableColumn = class _EditableColumn {
       data: [InputFlags.None, "pEditableColumn", "data"],
       field: [InputFlags.None, "pEditableColumnField", "field"],
       rowIndex: [InputFlags.None, "pEditableColumnRowIndex", "rowIndex"],
-      pEditableColumnDisabled: "pEditableColumnDisabled",
+      pEditableColumnDisabled: [InputFlags.HasDecoratorInputTransform, "pEditableColumnDisabled", "pEditableColumnDisabled", booleanAttribute],
       pFocusCellSelector: "pFocusCellSelector"
     },
-    features: [ɵɵNgOnChangesFeature]
+    features: [ɵɵInputTransformsFeature, ɵɵNgOnChangesFeature]
   });
 };
 (() => {
@@ -13695,7 +13973,10 @@ var EditableColumn = class _EditableColumn {
       args: ["pEditableColumnRowIndex"]
     }],
     pEditableColumnDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     pFocusCellSelector: [{
       type: Input
@@ -13763,8 +14044,9 @@ var EditableRow = class _EditableRow {
     hostAttrs: [1, "p-element"],
     inputs: {
       data: [InputFlags.None, "pEditableRow", "data"],
-      pEditableRowDisabled: "pEditableRowDisabled"
-    }
+      pEditableRowDisabled: [InputFlags.HasDecoratorInputTransform, "pEditableRowDisabled", "pEditableRowDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -13784,7 +14066,10 @@ var EditableRow = class _EditableRow {
       args: ["pEditableRow"]
     }],
     pEditableRowDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }]
   });
 })();
@@ -14089,13 +14374,14 @@ var TableRadioButton = class _TableRadioButton {
     },
     hostAttrs: [1, "p-element"],
     inputs: {
-      disabled: "disabled",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
       value: "value",
-      index: "index",
+      index: [InputFlags.HasDecoratorInputTransform, "index", "index", numberAttribute],
       inputId: "inputId",
       name: "name",
       ariaLabel: "ariaLabel"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 7,
     vars: 16,
     consts: [[1, "p-radiobutton", "p-component", 3, "ngClass", "click"], [1, "p-hidden-accessible"], ["type", "radio", 3, "checked", "disabled", "tabindex", "focus", "blur"], ["rb", ""], [3, "ngClass"], ["box", ""], [1, "p-radiobutton-icon"]],
@@ -14157,13 +14443,19 @@ var TableRadioButton = class _TableRadioButton {
     type: ChangeDetectorRef
   }], {
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     value: [{
       type: Input
     }],
     index: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     inputId: [{
       type: Input
@@ -14235,14 +14527,15 @@ var TableCheckbox = class _TableCheckbox {
     selectors: [["p-tableCheckbox"]],
     hostAttrs: [1, "p-element"],
     inputs: {
-      disabled: "disabled",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
       value: "value",
-      index: "index",
+      index: [InputFlags.HasDecoratorInputTransform, "index", "index", numberAttribute],
       inputId: "inputId",
       name: "name",
-      required: "required",
+      required: [InputFlags.HasDecoratorInputTransform, "required", "required", booleanAttribute],
       ariaLabel: "ariaLabel"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 7,
     vars: 18,
     consts: [[1, "p-checkbox", "p-component", 3, "ngClass", "click"], [1, "p-hidden-accessible"], ["type", "checkbox", 3, "checked", "disabled", "tabindex", "focus", "blur"], [3, "ngClass"], ["box", ""], [4, "ngIf"], [3, "styleClass", 4, "ngIf"], [3, "styleClass"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"]],
@@ -14326,13 +14619,19 @@ var TableCheckbox = class _TableCheckbox {
     type: ChangeDetectorRef
   }], {
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     value: [{
       type: Input
     }],
     index: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     inputId: [{
       type: Input
@@ -14341,7 +14640,10 @@ var TableCheckbox = class _TableCheckbox {
       type: Input
     }],
     required: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     ariaLabel: [{
       type: Input
@@ -14422,11 +14724,12 @@ var TableHeaderCheckbox = class _TableHeaderCheckbox {
     selectors: [["p-tableHeaderCheckbox"]],
     hostAttrs: [1, "p-element"],
     inputs: {
-      disabled: "disabled",
+      disabled: [InputFlags.HasDecoratorInputTransform, "disabled", "disabled", booleanAttribute],
       inputId: "inputId",
       name: "name",
       ariaLabel: "ariaLabel"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 8,
     vars: 17,
     consts: [[1, "p-checkbox", "p-component", 3, "ngClass", "click"], [1, "p-hidden-accessible"], ["type", "checkbox", 3, "tabindex", "checked", "disabled", "focus", "blur"], ["cb", ""], [3, "ngClass"], ["box", ""], [4, "ngIf"], ["class", "p-checkbox-icon", 4, "ngIf"], [3, "styleClass", 4, "ngIf"], [3, "styleClass"], [1, "p-checkbox-icon"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"]],
@@ -14499,7 +14802,10 @@ var TableHeaderCheckbox = class _TableHeaderCheckbox {
     type: ChangeDetectorRef
   }], {
     disabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     inputId: [{
       type: Input
@@ -14599,10 +14905,18 @@ var ReorderableRow = class _ReorderableRow {
     }
   }
   onMouseDown(event2) {
-    if (DomHandler.hasClass(event2.target, "p-datatable-reorderablerow-handle"))
-      this.el.nativeElement.draggable = true;
-    else
-      this.el.nativeElement.draggable = false;
+    const targetElement = event2.target;
+    const isHandleClicked = this.isHandleElement(targetElement);
+    this.el.nativeElement.draggable = isHandleClicked;
+  }
+  isHandleElement(element) {
+    if (element?.classList.contains("p-datatable-reorderablerow-handle")) {
+      return true;
+    }
+    if (element?.parentElement && !["TD", "TR"].includes(element?.parentElement?.tagName)) {
+      return this.isHandleElement(element?.parentElement);
+    }
+    return false;
   }
   onDragStart(event2) {
     this.dt.onRowDragStart(event2, this.index);
@@ -14646,8 +14960,9 @@ var ReorderableRow = class _ReorderableRow {
     },
     inputs: {
       index: [InputFlags.None, "pReorderableRow", "index"],
-      pReorderableRowDisabled: "pReorderableRowDisabled"
-    }
+      pReorderableRowDisabled: [InputFlags.HasDecoratorInputTransform, "pReorderableRowDisabled", "pReorderableRowDisabled", booleanAttribute]
+    },
+    features: [ɵɵInputTransformsFeature]
   });
 };
 (() => {
@@ -14673,7 +14988,10 @@ var ReorderableRow = class _ReorderableRow {
       args: ["pReorderableRow"]
     }],
     pReorderableRowDisabled: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     onDrop: [{
       type: HostListener,
@@ -14815,6 +15133,11 @@ var ColumnFilter = class _ColumnFilter {
    * @group Props
    */
   showButtons = true;
+  /**
+   * Defines the aria-label of the form element.
+   * @group Props
+   */
+  ariaLabel;
   icon;
   clearButtonViewChild;
   templates;
@@ -14884,8 +15207,8 @@ var ColumnFilter = class _ColumnFilter {
   get filterConstraintAriaLabel() {
     return this.config.translation ? this.config.translation.aria.filterConstraint : void 0;
   }
-  constructor(document, el, dt, renderer, config, overlayService, cd) {
-    this.document = document;
+  constructor(document2, el, dt, renderer, config, overlayService, cd) {
+    this.document = document2;
     this.el = el;
     this.dt = dt;
     this.renderer = renderer;
@@ -15015,7 +15338,9 @@ var ColumnFilter = class _ColumnFilter {
   }
   removeConstraint(filterMeta) {
     this.dt.filters[this.field] = this.dt.filters[this.field].filter((meta) => meta !== filterMeta);
-    this.dt._filter();
+    if (!this.showApplyButton) {
+      this.dt._filter();
+    }
     DomHandler.focus(this.clearButtonViewChild.nativeElement);
   }
   onOperatorChange(value) {
@@ -15146,13 +15471,15 @@ var ColumnFilter = class _ColumnFilter {
     return false;
   }
   isOutsideClicked(event2) {
-    return !(this.overlay?.isSameNode(event2.target) || this.overlay?.contains(event2.target) || this.icon?.nativeElement.isSameNode(event2.target) || this.icon?.nativeElement.contains(event2.target) || DomHandler.hasClass(event2.target, "p-column-filter-add-button") || DomHandler.hasClass(event2.target.parentElement, "p-column-filter-add-button") || DomHandler.hasClass(event2.target, "p-column-filter-remove-button") || DomHandler.hasClass(event2.target.parentElement, "p-column-filter-remove-button"));
+    return !(DomHandler.hasClass(this.overlay?.nextElementSibling, "p-overlay") || this.overlay?.isSameNode(event2.target) || this.overlay?.contains(event2.target) || this.icon?.nativeElement.isSameNode(event2.target) || this.icon?.nativeElement.contains(event2.target) || DomHandler.hasClass(event2.target, "p-column-filter-add-button") || DomHandler.hasClass(event2.target.parentElement, "p-column-filter-add-button") || DomHandler.hasClass(event2.target, "p-column-filter-remove-button") || DomHandler.hasClass(event2.target.parentElement, "p-column-filter-remove-button"));
   }
   bindDocumentClickListener() {
     if (!this.documentClickListener) {
       const documentTarget = this.el ? this.el.nativeElement.ownerDocument : "document";
       this.documentClickListener = this.renderer.listen(documentTarget, "mousedown", (event2) => {
-        if (this.overlayVisible && this.isOutsideClicked(event2)) {
+        const dialogElements = document.querySelectorAll('[role="dialog"]');
+        const targetIsColumnFilterMenuButton = event2.target.closest(".p-column-filter-menu-button");
+        if (this.overlayVisible && this.isOutsideClicked(event2) && (targetIsColumnFilterMenuButton || dialogElements?.length <= 1)) {
           this.hide();
         }
         this.selfClick = false;
@@ -15263,36 +15590,38 @@ var ColumnFilter = class _ColumnFilter {
       field: "field",
       type: "type",
       display: "display",
-      showMenu: "showMenu",
+      showMenu: [InputFlags.HasDecoratorInputTransform, "showMenu", "showMenu", booleanAttribute],
       matchMode: "matchMode",
       operator: "operator",
-      showOperator: "showOperator",
-      showClearButton: "showClearButton",
-      showApplyButton: "showApplyButton",
-      showMatchModes: "showMatchModes",
-      showAddButton: "showAddButton",
-      hideOnClear: "hideOnClear",
+      showOperator: [InputFlags.HasDecoratorInputTransform, "showOperator", "showOperator", booleanAttribute],
+      showClearButton: [InputFlags.HasDecoratorInputTransform, "showClearButton", "showClearButton", booleanAttribute],
+      showApplyButton: [InputFlags.HasDecoratorInputTransform, "showApplyButton", "showApplyButton", booleanAttribute],
+      showMatchModes: [InputFlags.HasDecoratorInputTransform, "showMatchModes", "showMatchModes", booleanAttribute],
+      showAddButton: [InputFlags.HasDecoratorInputTransform, "showAddButton", "showAddButton", booleanAttribute],
+      hideOnClear: [InputFlags.HasDecoratorInputTransform, "hideOnClear", "hideOnClear", booleanAttribute],
       placeholder: "placeholder",
       matchModeOptions: "matchModeOptions",
-      maxConstraints: "maxConstraints",
-      minFractionDigits: "minFractionDigits",
-      maxFractionDigits: "maxFractionDigits",
+      maxConstraints: [InputFlags.HasDecoratorInputTransform, "maxConstraints", "maxConstraints", numberAttribute],
+      minFractionDigits: [InputFlags.HasDecoratorInputTransform, "minFractionDigits", "minFractionDigits", (value) => numberAttribute(value, null)],
+      maxFractionDigits: [InputFlags.HasDecoratorInputTransform, "maxFractionDigits", "maxFractionDigits", (value) => numberAttribute(value, null)],
       prefix: "prefix",
       suffix: "suffix",
       locale: "locale",
       localeMatcher: "localeMatcher",
       currency: "currency",
       currencyDisplay: "currencyDisplay",
-      useGrouping: "useGrouping",
-      showButtons: "showButtons"
+      useGrouping: [InputFlags.HasDecoratorInputTransform, "useGrouping", "useGrouping", booleanAttribute],
+      showButtons: [InputFlags.HasDecoratorInputTransform, "showButtons", "showButtons", booleanAttribute],
+      ariaLabel: "ariaLabel"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 5,
     vars: 8,
-    consts: [[1, "p-column-filter", 3, "ngClass"], ["class", "p-fluid", 3, "type", "field", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "showButtons", 4, "ngIf"], ["type", "button", "class", "p-column-filter-menu-button p-link", "aria-haspopup", "true", 3, "ngClass", "click", "keydown", 4, "ngIf"], ["type", "button", "class", "p-column-filter-clear-button p-link", 3, "ngClass", "click", 4, "ngIf"], ["role", "dialog", 3, "ngClass", "id", "click", "keydown.escape", 4, "ngIf"], [1, "p-fluid", 3, "type", "field", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "showButtons"], ["type", "button", "aria-haspopup", "true", 1, "p-column-filter-menu-button", "p-link", 3, "ngClass", "click", "keydown"], ["icon", ""], [3, "styleClass", 4, "ngIf"], ["class", "pi-filter-icon", 4, "ngIf"], [3, "styleClass"], [1, "pi-filter-icon"], [4, "ngTemplateOutlet"], ["type", "button", 1, "p-column-filter-clear-button", "p-link", 3, "ngClass", "click"], [4, "ngIf"], ["role", "dialog", 3, "ngClass", "id", "click", "keydown.escape"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], ["class", "p-column-filter-row-items", 4, "ngIf", "ngIfElse"], ["menu", ""], [1, "p-column-filter-row-items"], ["class", "p-column-filter-row-item", 3, "ngClass", "click", "keydown", "keydown.enter", 4, "ngFor", "ngForOf"], [1, "p-column-filter-separator"], [1, "p-column-filter-row-item", 3, "click", "keydown", "keydown.enter"], [1, "p-column-filter-row-item", 3, "ngClass", "click", "keydown", "keydown.enter"], ["class", "p-column-filter-operator", 4, "ngIf"], [1, "p-column-filter-constraints"], ["class", "p-column-filter-constraint", 4, "ngFor", "ngForOf"], ["class", "p-column-filter-add-rule", 4, "ngIf"], [1, "p-column-filter-buttonbar"], ["type", "button", "pButton", "", "class", "p-button-outlined p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], [1, "p-column-filter-operator"], ["styleClass", "p-column-filter-operator-dropdown", 3, "options", "ngModel", "ngModelChange"], [1, "p-column-filter-constraint"], ["styleClass", "p-column-filter-matchmode-dropdown", 3, "options", "ngModel", "ngModelChange", 4, "ngIf"], [3, "type", "field", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping"], ["type", "button", "pButton", "", "class", "p-column-filter-remove-button p-button-text p-button-danger p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], ["styleClass", "p-column-filter-matchmode-dropdown", 3, "options", "ngModel", "ngModelChange"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-column-filter-remove-button", "p-button-text", "p-button-danger", "p-button-sm", 3, "label", "click"], [1, "p-column-filter-add-rule"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-column-filter-add-button", "p-button-text", "p-button-sm", 3, "label", "click"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-button-outlined", "p-button-sm", 3, "label", "click"], ["clearBtn", ""], ["type", "button", "pButton", "", "pRipple", "", 1, "p-button-sm", 3, "label", "click"]],
+    consts: [[1, "p-column-filter", 3, "ngClass"], ["class", "p-fluid", 3, "type", "field", "ariaLabel", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "showButtons", 4, "ngIf"], ["type", "button", "class", "p-column-filter-menu-button p-link", "aria-haspopup", "true", 3, "ngClass", "click", "keydown", 4, "ngIf"], ["type", "button", "class", "p-column-filter-clear-button p-link", 3, "ngClass", "click", 4, "ngIf"], ["role", "dialog", 3, "ngClass", "id", "click", "keydown.escape", 4, "ngIf"], [1, "p-fluid", 3, "type", "field", "ariaLabel", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "showButtons"], ["type", "button", "aria-haspopup", "true", 1, "p-column-filter-menu-button", "p-link", 3, "ngClass", "click", "keydown"], ["icon", ""], [3, "styleClass", 4, "ngIf"], ["class", "pi-filter-icon", 4, "ngIf"], [3, "styleClass"], [1, "pi-filter-icon"], [4, "ngTemplateOutlet"], ["type", "button", 1, "p-column-filter-clear-button", "p-link", 3, "ngClass", "click"], [4, "ngIf"], ["role", "dialog", 3, "ngClass", "id", "click", "keydown.escape"], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], ["class", "p-column-filter-row-items", 4, "ngIf", "ngIfElse"], ["menu", ""], [1, "p-column-filter-row-items"], ["class", "p-column-filter-row-item", 3, "ngClass", "click", "keydown", "keydown.enter", 4, "ngFor", "ngForOf"], [1, "p-column-filter-separator"], [1, "p-column-filter-row-item", 3, "click", "keydown", "keydown.enter"], [1, "p-column-filter-row-item", 3, "ngClass", "click", "keydown", "keydown.enter"], ["class", "p-column-filter-operator", 4, "ngIf"], [1, "p-column-filter-constraints"], ["class", "p-column-filter-constraint", 4, "ngFor", "ngForOf"], ["class", "p-column-filter-add-rule", 4, "ngIf"], [1, "p-column-filter-buttonbar"], ["type", "button", "pButton", "", "class", "p-button-outlined p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], ["type", "button", "pButton", "", "class", "p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], [1, "p-column-filter-operator"], ["styleClass", "p-column-filter-operator-dropdown", 3, "options", "ngModel", "ngModelChange"], [1, "p-column-filter-constraint"], ["styleClass", "p-column-filter-matchmode-dropdown", 3, "options", "ngModel", "ngModelChange", 4, "ngIf"], [3, "type", "field", "filterConstraint", "filterTemplate", "placeholder", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping"], ["type", "button", "pButton", "", "class", "p-column-filter-remove-button p-button-text p-button-danger p-button-sm", "pRipple", "", 3, "label", "click", 4, "ngIf"], ["styleClass", "p-column-filter-matchmode-dropdown", 3, "options", "ngModel", "ngModelChange"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-column-filter-remove-button", "p-button-text", "p-button-danger", "p-button-sm", 3, "label", "click"], [1, "p-column-filter-add-rule"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-column-filter-add-button", "p-button-text", "p-button-sm", 3, "label", "click"], ["type", "button", "pButton", "", "pRipple", "", 1, "p-button-outlined", "p-button-sm", 3, "label", "click"], ["clearBtn", ""], ["type", "button", "pButton", "", "pRipple", "", 1, "p-button-sm", 3, "label", "click"]],
     template: function ColumnFilter_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵelementStart(0, "div", 0);
-        ɵɵtemplate(1, ColumnFilter_p_columnFilterFormElement_1_Template, 1, 15, "p-columnFilterFormElement", 1)(2, ColumnFilter_button_2_Template, 4, 9, "button", 2)(3, ColumnFilter_button_3_Template, 4, 6, "button", 3)(4, ColumnFilter_div_4_Template, 6, 16, "div", 4);
+        ɵɵtemplate(1, ColumnFilter_p_columnFilterFormElement_1_Template, 1, 16, "p-columnFilterFormElement", 1)(2, ColumnFilter_button_2_Template, 4, 9, "button", 2)(3, ColumnFilter_button_3_Template, 4, 6, "button", 3)(4, ColumnFilter_div_4_Template, 6, 16, "div", 4);
         ɵɵelementEnd();
       }
       if (rf & 2) {
@@ -15331,6 +15660,7 @@ var ColumnFilter = class _ColumnFilter {
                 class="p-fluid"
                 [type]="type"
                 [field]="field"
+                [ariaLabel]="ariaLabel"
                 [filterConstraint]="dt.filters[field]"
                 [filterTemplate]="filterTemplate"
                 [placeholder]="placeholder"
@@ -15496,7 +15826,10 @@ var ColumnFilter = class _ColumnFilter {
       type: Input
     }],
     showMenu: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     matchMode: [{
       type: Input
@@ -15505,22 +15838,40 @@ var ColumnFilter = class _ColumnFilter {
       type: Input
     }],
     showOperator: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showClearButton: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showApplyButton: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showMatchModes: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showAddButton: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     hideOnClear: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     placeholder: [{
       type: Input
@@ -15529,13 +15880,22 @@ var ColumnFilter = class _ColumnFilter {
       type: Input
     }],
     maxConstraints: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     minFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     maxFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     prefix: [{
       type: Input
@@ -15556,9 +15916,18 @@ var ColumnFilter = class _ColumnFilter {
       type: Input
     }],
     useGrouping: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showButtons: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    ariaLabel: [{
       type: Input
     }],
     icon: [{
@@ -15592,6 +15961,7 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
   currency;
   currencyDisplay;
   useGrouping = true;
+  ariaLabel;
   get showButtons() {
     return this.colFilter.showButtons;
   }
@@ -15635,19 +16005,21 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
       filterConstraint: "filterConstraint",
       filterTemplate: "filterTemplate",
       placeholder: "placeholder",
-      minFractionDigits: "minFractionDigits",
-      maxFractionDigits: "maxFractionDigits",
+      minFractionDigits: [InputFlags.HasDecoratorInputTransform, "minFractionDigits", "minFractionDigits", (value) => numberAttribute(value, null)],
+      maxFractionDigits: [InputFlags.HasDecoratorInputTransform, "maxFractionDigits", "maxFractionDigits", (value) => numberAttribute(value, null)],
       prefix: "prefix",
       suffix: "suffix",
       locale: "locale",
       localeMatcher: "localeMatcher",
       currency: "currency",
       currencyDisplay: "currencyDisplay",
-      useGrouping: "useGrouping"
+      useGrouping: [InputFlags.HasDecoratorInputTransform, "useGrouping", "useGrouping", booleanAttribute],
+      ariaLabel: "ariaLabel"
     },
+    features: [ɵɵInputTransformsFeature],
     decls: 3,
     vars: 2,
-    consts: [[4, "ngIf", "ngIfElse"], ["builtInElement", ""], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "ngSwitch"], ["type", "text", "pInputText", "", 3, "value", "input", "keydown.enter", 4, "ngSwitchCase"], [3, "ngModel", "showButtons", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "placeholder", "mode", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "ngModelChange", "onKeyDown", 4, "ngSwitchCase"], [3, "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["appendTo", "body", 3, "placeholder", "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["type", "text", "pInputText", "", 3, "value", "input", "keydown.enter"], [3, "ngModel", "showButtons", "minFractionDigits", "maxFractionDigits", "prefix", "suffix", "placeholder", "mode", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "ngModelChange", "onKeyDown"], [3, "ngModel", "ngModelChange"], ["appendTo", "body", 3, "placeholder", "ngModel", "ngModelChange"]],
+    consts: [[4, "ngIf", "ngIfElse"], ["builtInElement", ""], [4, "ngTemplateOutlet", "ngTemplateOutletContext"], [3, "ngSwitch"], ["type", "text", "pInputText", "", 3, "ariaLabel", "value", "input", "keydown.enter", 4, "ngSwitchCase"], [3, "ngModel", "showButtons", "minFractionDigits", "maxFractionDigits", "ariaLabel", "prefix", "suffix", "placeholder", "mode", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "ngModelChange", "onKeyDown", 4, "ngSwitchCase"], [3, "ariaLabel", "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["appendTo", "body", 3, "ariaLabel", "placeholder", "ngModel", "ngModelChange", 4, "ngSwitchCase"], ["type", "text", "pInputText", "", 3, "ariaLabel", "value", "input", "keydown.enter"], [3, "ngModel", "showButtons", "minFractionDigits", "maxFractionDigits", "ariaLabel", "prefix", "suffix", "placeholder", "mode", "locale", "localeMatcher", "currency", "currencyDisplay", "useGrouping", "ngModelChange", "onKeyDown"], [3, "ariaLabel", "ngModel", "ngModelChange"], ["appendTo", "body", 3, "ariaLabel", "placeholder", "ngModel", "ngModelChange"]],
     template: function ColumnFilterFormElement_Template(rf, ctx) {
       if (rf & 1) {
         ɵɵtemplate(0, ColumnFilterFormElement_ng_container_0_Template, 2, 19, "ng-container", 0)(1, ColumnFilterFormElement_ng_template_1_Template, 5, 5, "ng-template", null, 1, ɵɵtemplateRefExtractor);
@@ -15694,7 +16066,16 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
         </ng-container>
         <ng-template #builtInElement>
             <ng-container [ngSwitch]="type">
-                <input *ngSwitchCase="'text'" type="text" pInputText [value]="filterConstraint?.value" (input)="onModelChange($event.target.value)" (keydown.enter)="onTextInputEnterKeyDown($event)" [attr.placeholder]="placeholder" />
+                <input
+                    *ngSwitchCase="'text'"
+                    type="text"
+                    [ariaLabel]="ariaLabel"
+                    pInputText
+                    [value]="filterConstraint?.value"
+                    (input)="onModelChange($event.target.value)"
+                    (keydown.enter)="onTextInputEnterKeyDown($event)"
+                    [attr.placeholder]="placeholder"
+                />
                 <p-inputNumber
                     *ngSwitchCase="'numeric'"
                     [ngModel]="filterConstraint?.value"
@@ -15703,6 +16084,7 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
                     [showButtons]="showButtons"
                     [minFractionDigits]="minFractionDigits"
                     [maxFractionDigits]="maxFractionDigits"
+                    [ariaLabel]="ariaLabel"
                     [prefix]="prefix"
                     [suffix]="suffix"
                     [placeholder]="placeholder"
@@ -15713,8 +16095,8 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
                     [currencyDisplay]="currencyDisplay"
                     [useGrouping]="useGrouping"
                 ></p-inputNumber>
-                <p-triStateCheckbox *ngSwitchCase="'boolean'" [ngModel]="filterConstraint?.value" (ngModelChange)="onModelChange($event)"></p-triStateCheckbox>
-                <p-calendar *ngSwitchCase="'date'" [placeholder]="placeholder" [ngModel]="filterConstraint?.value" (ngModelChange)="onModelChange($event)" appendTo="body"></p-calendar>
+                <p-triStateCheckbox [ariaLabel]="ariaLabel" *ngSwitchCase="'boolean'" [ngModel]="filterConstraint?.value" (ngModelChange)="onModelChange($event)"></p-triStateCheckbox>
+                <p-calendar [ariaLabel]="ariaLabel" *ngSwitchCase="'date'" [placeholder]="placeholder" [ngModel]="filterConstraint?.value" (ngModelChange)="onModelChange($event)" appendTo="body"></p-calendar>
             </ng-container>
         </ng-template>
     `,
@@ -15744,10 +16126,16 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
       type: Input
     }],
     minFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     maxFractionDigits: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: (value) => numberAttribute(value, null)
+      }]
     }],
     prefix: [{
       type: Input
@@ -15768,6 +16156,12 @@ var ColumnFilterFormElement = class _ColumnFilterFormElement {
       type: Input
     }],
     useGrouping: [{
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
+    }],
+    ariaLabel: [{
       type: Input
     }]
   });

@@ -1,18 +1,20 @@
 import {
   TimesIcon
-} from "./chunk-5U3EUKPT.js";
-import "./chunk-EI2ELTEY.js";
+} from "./chunk-QVJZPM3K.js";
+import "./chunk-BCQYFDDM.js";
 import {
-  DomHandler,
   Ripple,
   RippleModule
-} from "./chunk-H3CUXKDU.js";
+} from "./chunk-5WMYXZMH.js";
+import {
+  DomHandler
+} from "./chunk-YAPAIHRL.js";
 import {
   PrimeNGConfig,
   PrimeTemplate,
   SharedModule,
   zindexutils
-} from "./chunk-77A4EMCZ.js";
+} from "./chunk-NQJZULIZ.js";
 import {
   animate,
   animation,
@@ -38,11 +40,15 @@ import {
   EventEmitter,
   Inject,
   Input,
+  InputFlags,
   NgModule,
   Output,
   Renderer2,
   ViewEncapsulation$1,
+  booleanAttribute,
+  numberAttribute,
   setClassMetadata,
+  ɵɵInputTransformsFeature,
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassMap,
@@ -74,8 +80,8 @@ import {
   ɵɵtemplate,
   ɵɵtemplateRefExtractor
 } from "./chunk-O245X4TD.js";
-import "./chunk-SAVXX6OM.js";
 import "./chunk-SG3BCSKH.js";
+import "./chunk-SAVXX6OM.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-J4B6MK7R.js";
 
@@ -599,16 +605,16 @@ var Sidebar = class _Sidebar {
     hostAttrs: [1, "p-element"],
     inputs: {
       appendTo: "appendTo",
-      blockScroll: "blockScroll",
+      blockScroll: [InputFlags.HasDecoratorInputTransform, "blockScroll", "blockScroll", booleanAttribute],
       style: "style",
       styleClass: "styleClass",
       ariaCloseLabel: "ariaCloseLabel",
-      autoZIndex: "autoZIndex",
-      baseZIndex: "baseZIndex",
-      modal: "modal",
-      dismissible: "dismissible",
-      showCloseIcon: "showCloseIcon",
-      closeOnEscape: "closeOnEscape",
+      autoZIndex: [InputFlags.HasDecoratorInputTransform, "autoZIndex", "autoZIndex", booleanAttribute],
+      baseZIndex: [InputFlags.HasDecoratorInputTransform, "baseZIndex", "baseZIndex", numberAttribute],
+      modal: [InputFlags.HasDecoratorInputTransform, "modal", "modal", booleanAttribute],
+      dismissible: [InputFlags.HasDecoratorInputTransform, "dismissible", "dismissible", booleanAttribute],
+      showCloseIcon: [InputFlags.HasDecoratorInputTransform, "showCloseIcon", "showCloseIcon", booleanAttribute],
+      closeOnEscape: [InputFlags.HasDecoratorInputTransform, "closeOnEscape", "closeOnEscape", booleanAttribute],
       transitionOptions: "transitionOptions",
       visible: "visible",
       position: "position",
@@ -619,6 +625,7 @@ var Sidebar = class _Sidebar {
       onHide: "onHide",
       visibleChange: "visibleChange"
     },
+    features: [ɵɵInputTransformsFeature],
     ngContentSelectors: _c3,
     decls: 1,
     vars: 1,
@@ -731,7 +738,10 @@ var Sidebar = class _Sidebar {
       type: Input
     }],
     blockScroll: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     style: [{
       type: Input
@@ -743,22 +753,40 @@ var Sidebar = class _Sidebar {
       type: Input
     }],
     autoZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     baseZIndex: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: numberAttribute
+      }]
     }],
     modal: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     dismissible: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     showCloseIcon: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     closeOnEscape: [{
-      type: Input
+      type: Input,
+      args: [{
+        transform: booleanAttribute
+      }]
     }],
     transitionOptions: [{
       type: Input
