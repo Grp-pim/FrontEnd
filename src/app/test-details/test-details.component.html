@@ -1,6 +1,10 @@
+<p-toast></p-toast>
+
 <p-buttonGroup class="buttonGroup">
+    <p-button (click)="toTestList()" severity="secondary" label="" icon="pi-chevron-left"></p-button>
     <p-button (click)="toFrame1()" severity="secondary" label="Questions" icon="pi-list-check"></p-button>
     <p-button (click)="toFrame2()" severity="secondary" label="Candidates" icon="pi pi-users"></p-button>
+    <p-button (click)="saveChanges()" severity="secondary" label="Save" icon="pi pi-users"></p-button>
 </p-buttonGroup>
 <ng-container *ngIf="currentFrame === '1'">
   <p-pickList
@@ -16,14 +20,14 @@
     sourceFilterPlaceholder="Search by name"
     targetFilterPlaceholder="Search by name"
     breakpoint="1400px"
-    (onMoveToSource)="onMoveToSource($event)"
-    (onMoveToTarget)="onMoveToTarget($event)"
+   
   >
     <!-- Template for source items -->
     <ng-template let-quiz pTemplate="item">
       <div class="flex flex-wrap p-2 align-items-center gap-3">
         <div class="flex-1 flex flex-column gap-2">
           <span class="font-bold">{{ quiz?.name }}</span>
+        <p-tag [severity]="getSeverity(quiz.difficulty)" [value]="quiz.difficulty"></p-tag>
         </div>
       </div>
     </ng-template>
@@ -54,5 +58,4 @@
   </div>
   <button type="button" class="btn btn-primary" (click)="inviteCandidates()">Invite Candidates</button>
 </form>
-
 </ng-container>

@@ -1,11 +1,13 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-test-details',
   templateUrl: './test-details.component.html',
   styleUrls: ['./test-details.component.css'],
+  providers: [MessageService],
 })
 export class TestDetailsComponent implements OnInit {
   currentFrame: any = '1';
@@ -20,7 +22,12 @@ export class TestDetailsComponent implements OnInit {
   emailContent: string;
   modification: any = { subject: '', text: '' };
 
-  constructor(private apiService: ApiService, private act: ActivatedRoute) {
+  constructor(
+    private apiService: ApiService,
+    private act: ActivatedRoute,
+    private messageService: MessageService,
+    private router: Router
+  ) {
     const mailOptions = {
       subject: 'Lien vers votre test',
       text: ` \n\nBonjour ${this.candidateName},\n\nVoici le lien vers votre test : ${this.testLink}\n\nCordialement,\nVotre équipe de recrutement`,
@@ -53,7 +60,21 @@ export class TestDetailsComponent implements OnInit {
       }
     );
   }
-
+  getSeverity(difficulty: string): string {
+    switch (difficulty) {
+      case 'Easy':
+        return 'success';
+      case 'Medium':
+        return 'warning';
+      case 'Hard':
+        return 'danger';
+      default:
+        return 'info';
+    }
+  }
+  toTestList() {
+    this.router.navigate(['test']);
+  }
   getTestById(testId: string): void {
     this.apiService.getTestById(testId).subscribe(
       (data) => {
@@ -64,44 +85,21 @@ export class TestDetailsComponent implements OnInit {
       }
     );
   }
-
-  onMoveToSource(event: any): void {
-    console.log('Moving from target to source');
-    console.log('Current Test:', this.currentTest);
-    const removedItem: any = event.items[0];
-    this.currentTest = this.currentTest.filter(
-      (item: any) => item.id !== removedItem.id
-    );
-    console.log('After Removal:', this.currentTest);
-    this.saveChanges(); // Call saveChanges after removing item
-  }
-  
-
-  onMoveToTarget(event: any): void {
-    console.log('Moving from source to target');
-    console.log('Current Test:', this.currentTest);
-    const addedItem: any = event.items[0];
-    if (!this.currentTest.find((item: any) => item.id === addedItem.id)) {
-      this.currentTest.push(addedItem);
-      console.log('After Addition:', this.currentTest);
-      this.saveChanges(); // Call saveChanges after adding item
-    } else {
-      console.log('Item already exists in currentTest array.');
-    }
-  }
-
   saveChanges(): void {
     const updateData = { quiz: this.currentTest };
     this.apiService.updateTest(this.testId, updateData).subscribe(
       (data) => {
-        console.log('Updated Test:', data);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Your test has been updated.',
+        });
       },
       (error) => {
         console.log('Error updating Test:', error);
       }
     );
   }
-
   //yeser
   inviteCandidates() {
     const candidate = {
