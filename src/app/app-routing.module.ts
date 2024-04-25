@@ -17,15 +17,15 @@ import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'forgotPassword', component: ForgotPwdComponent },
-  { path: 'resetPassword/:token', component: ResetPwdComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'homeStepper', component: HomeStepperComponent },
-  { path: 'events', component: EventsComponent },
-  { path: 'community', component: CommunityComponent },
+  { path: '', title: 'home', component: HomeComponent },
+  { path: 'login', title: 'login', component: LoginComponent },
+  { path: 'signup', title: 'signup', component: SignupComponent },
+  { path: 'forgotPassword', title: 'forgot Password', component: ForgotPwdComponent },
+  { path: 'resetPassword/:token', title: 'reset Password', component: ResetPwdComponent },
+  { path: 'profile', title: 'profile', component: ProfileComponent },
+  { path: 'homeStepper', title: 'Map', component: HomeStepperComponent },
+  { path: 'events', title: 'events', component: EventsComponent },
+  { path: 'community', title: 'community', component: CommunityComponent },
 
   { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard] },
   { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard] },

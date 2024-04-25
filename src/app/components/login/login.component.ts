@@ -38,12 +38,12 @@ export class LoginComponent implements OnInit {
       if (response.token){
         sessionStorage.setItem("token", response.token);
         let role = this.decodeToken(response.token).role
-        if (role == "admin"){
-          this.router.navigate([""]);
-        }else if (role == "student"){
+        if (role == "Admin"){
+          this.router.navigate(["dashboard-Admin"]);
+        }else if (role == "Student"){
           this.router.navigate(["homeStepper"]);
-        }else if (role == "teacher"){
-          this.router.navigate(["homeStepper"]);
+        }else if (role == "Teacher"){
+          this.router.navigate(["test"]);
         }else{
           this.router.navigate([""]);
         }
@@ -58,7 +58,11 @@ export class LoginComponent implements OnInit {
   }
 
   continueWithGoogle(){
-    // this.authService.redirectToGoogle();
+    this.authService.redirectToGoogle();
+  }
+
+  continueWithGitHub(){
+    
   }
 
 }
