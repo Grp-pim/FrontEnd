@@ -1,0 +1,69 @@
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="logo">
+      <!-- <h1><a routerLink="">Vesperr</a></h1> -->
+      <a routerLink=""><img src="../../../assets/img/coding_game.png" alt="" class="img-fluid"></a>
+    </div>
+
+    <div *ngIf="isLoggedIn() && user.role !== 'admin'">
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input
+          type="search"
+          class="form-control form-control-dark text-bg-white"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+      </form>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="homeStepper">Quest Map</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="events">Events</a>
+        </li>
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="test">Solo</a>
+        </li>
+        <!-- <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="" >Multi</a>
+        </li> -->
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'">
+          <a class="nav-link scrollto" routerLink="community">Community</a>
+        </li>
+
+        <li *ngIf="isLoggedIn() && user.role !== 'admin'" class="dropdown" style="padding-left: 30px;">
+          <span class="badge d-flex align-items-center p-1 pe-2 text-warning-emphasis bg-warning-subtle border border-warning-subtle rounded-pill">
+          <img class="rounded-circle me-1" width="24" height="24" src="assets/img/profile-header.jpg" alt="">{{user.fullName}}
+          <span class="vr mx-2"></span>
+          <i class="bi bi-chevron-down"></i>
+          </span>
+          <ul>
+            <li><a routerLink="profile">Account</a></li>
+            <li><a (click)="logOut()">Sign out</a></li>
+          </ul>
+        </li>
+        <li>
+          <a
+            class="nav-link scrollto active"
+            routerLink="signup"
+            *ngIf="!isLoggedIn()"
+            >Sign up</a
+          >
+        </li>
+        <li>
+          <a
+            class="getstarted scrollto"
+            routerLink="login"
+            *ngIf="!isLoggedIn()"
+            >Get Started</a
+          >
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>

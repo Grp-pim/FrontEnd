@@ -1,0 +1,58 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<section id="het">
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            <!-- begin profile -->
+            <div class="profile">
+               <div class="profile-header">
+                  <!-- BEGIN profile-header-cover -->
+                  <div class="profile-header-cover"></div>
+                  <!-- END profile-header-cover -->
+                  <!-- BEGIN profile-header-content -->
+                  <div class="profile-header-content">
+                     <!-- BEGIN profile-header-img -->
+                     <div class="profile-header-img">
+                        <img src="{{profileImage}}" alt="">
+                     </div>
+                     <!-- END profile-header-img -->
+                     <!-- BEGIN profile-header-info -->
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5" style="color : #f2bb13;">{{ fullName }}</h4>
+                        <p class="m-b-10" style="color : #f2bb13;">{{role}}</p>
+                     </div>
+                     <!-- END profile-header-info -->
+                  </div>
+                  <!-- END profile-header-content -->
+                  <!-- BEGIN profile-header-tab -->
+                  <ul class="profile-header-tab nav nav-tabs">
+                     <li class="nav-item"><a (click)="changeTab('profileInformation')" class="nav-link_">General Informations</a></li>
+                     <li class="nav-item"><a (click)="changeTab('profileSettings')" class="nav-link_">Account Settings</a></li>
+                     <li class="nav-item"><a (click)="changeTab('profileSecurity')">Security</a></li>
+                     <li class="nav-item"><a (click)="changeTab('profileNotif')">Notifications</a></li>
+                     <li class="nav-item"><a (click)="logOut()">LOGOUT</a></li>
+                  </ul>
+                  <!-- END profile-header-tab -->
+               </div>
+            </div>
+            <!-- end profile -->
+
+            <div *ngIf="selectedTab === 'profileInformation'">
+               <app-profile-information></app-profile-information>
+            </div>
+            <div *ngIf="selectedTab === 'profileSettings'">
+               <app-profile-account-settings></app-profile-account-settings>
+            </div>
+            <div *ngIf="selectedTab === 'profileSecurity'">
+               <app-profile-security></app-profile-security>
+            </div>
+            <div *ngIf="selectedTab === 'profileNotif'">
+               <app-profile-notifications></app-profile-notifications>
+            </div>
+
+         </div>
+      </div>
+   </div>
+</div>
+</section>

@@ -1,0 +1,232 @@
+<section id="createTestSection">
+<div class="container-fluid" *ngIf="currentStep === 1">
+  <div class="flex align-items-center">
+    <i class="bi bi-file-text"></i> <span class="ml-2">Create a new test</span>
+  </div>
+  <br />
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label"
+      >1-Name of the test</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="type the name of the test"
+      [(ngModel)]="Test.name"
+    />
+  </div>
+
+  <p>2-What is the type :</p>
+  <div class="diffForm">
+    <div class="flex align-items-center">
+      <p-radioButton value="Code" [(ngModel)]="testType"></p-radioButton>
+      <label for="Code">Code</label><br />
+    </div>
+
+    <div class="flex align-items-center">
+      <p-radioButton value="Quiz" [(ngModel)]="testType"></p-radioButton>
+      <label for="Quiz">Quiz</label>
+    </div>
+  </div>
+
+  <p>2-What is the difficulty :</p>
+  <div class="diffForm">
+    <div class="flex align-items-center">
+      <p-radioButton
+        name="difficulty"
+        value="Easy"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="easy">Easy</label><br />
+    </div>
+
+    <div class="flex align-items-center">
+      <p-radioButton
+        name="difficulty"
+        value="Medium"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="medium">Medium</label>
+    </div>
+
+    <div class="flex align-items-center">
+      <p-radioButton
+        name="difficulty"
+        value="Hard"
+        [(ngModel)]="selectedDifficulty"
+      ></p-radioButton>
+      <label for="hard">Hard</label>
+    </div>
+  </div>
+
+  <br />
+  <div class="btnContainer1">
+    <button
+      type="button"
+      class="btn btn-primary btn-block"
+      (click)="nextStep()"
+    >
+      Next step: choose skills
+      <i class="bi bi-arrow-right"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning btn-block"
+      (click)="listTestPage()"
+    >
+      List tests
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="currentStep === 2">
+  <div class="flex align-items-center">
+    <i class="bi bi-file-text"></i> <span class="ml-2">Create a new test</span>
+  </div>
+  <br />
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label"
+      >3-Description of the test</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="type the description of the test"
+      [(ngModel)]="Test.description"
+    />
+  </div>
+  <p>4. Which skills do you want to test?</p>
+  <div class="languageCheckBox">
+    <div class="form-check form-check-inline">
+      <input type="checkbox" /> Java
+    </div>
+    <div class="form-check form-check-inline">
+      <input type="checkbox" />
+      Python
+    </div>
+    <div class="form-check form-check-inline"><input type="checkbox" /> C</div>
+  </div>
+  <br />
+  <p>5. Choose the duration (in minutes)</p>
+  <mat-chip-listbox aria-label="Duration selection">
+    <mat-chip highlighted (click)="selectDuration(5)">5</mat-chip>
+    <mat-chip highlighted (click)="selectDuration(10)">10</mat-chip>
+    <mat-chip (click)="selectDuration(15)">15</mat-chip>
+    <mat-chip (click)="selectDuration(20)">20</mat-chip>
+  </mat-chip-listbox>
+
+  <br />
+  <div class="btnContainer row">
+    <button
+      type="button"
+      class="btn btn-default btn-block col-sm-2"
+      (click)="previousStep()"
+    >
+      Back
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary btn-block col-sm-10"
+      (click)="createTest()"
+    >
+      Create my test
+
+      <i class="bi bi-arrow-right"></i>
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning btn-block"
+      (click)="listTestPage()"
+    >
+      List tests
+      <i class="bi bi-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid" *ngIf="currentStep === 3">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="h3 align-item-center">
+      <i class="bi bi-file-text"></i> <span class="ml-2">Test list</span>
+    </div>
+    <button type="button" class="btn btn-warning" (click)="goToCreateTest()">
+      Create new test
+      <i class="bi bi-plus-circle"></i>
+    </button>
+  </div>
+
+  <br />
+  <div class="card">
+    <p-table
+      [value]="tests"
+      [paginator]="true"
+      [rows]="6"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '30rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 30%">Name</th>
+          <th style="width: 30%">Description</th>
+          <th style="width: 8%">Difficulty</th>
+          <th style="width: 8%">type</th>
+          <th style="width: 8%">Link</th>
+          <th style="width: 8%">Duration</th>
+          <!-- <th style="width: 25%">Id</th> -->
+          <th style="width: 15%">Created at</th>
+          <th style="width: 8%"></th>
+          <th style="width: 8%"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-test>
+        <tr>
+          <td>{{ test.name }}</td>
+          <td>{{ test.description }}</td>
+          <td>{{ test.difficulty }}</td>
+          <td>
+            <p-tag
+              [severity]="test.type === 'Quiz' ? 'danger' : 'primary'"
+              [value]="test.type"
+            ></p-tag>
+          </td>
+          <td>
+            <a href="{{ test.link }}" target="_blank">Open Link</a>
+          </td>
+          <td>{{ test.duration }}</td>
+          <!-- <td>{{ test._id }}</td> -->
+          <td>{{ test.createdAt | date }}</td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-success mr-2"
+                (click)="visitTest(test._id, test.type)"
+              >
+                Visit
+              </button>
+            </div>
+          </td>
+          <td>
+            <div class="d-flex">
+              <button
+                type="button"
+                class="btn btn-success mr-2"
+                (click)="navigateToInvitePage()"
+              >
+                Details
+              </button>
+              
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+<p-toast></p-toast>
+</section>

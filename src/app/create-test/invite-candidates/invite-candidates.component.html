@@ -1,0 +1,23 @@
+<form>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="candidateName" name="name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="candidateEmail" name="email">
+  </div>
+  <div class="form-group">
+    <label for="emailContent">Email Content:</label>
+    <textarea class="form-control" id="emailContent" [(ngModel)]="emailContent" name="emailContent"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="subject">Subject:</label>
+    <input type="text" class="form-control" id="subject" [(ngModel)]="modification.subject" name="subject">
+  </div>
+  <div class="form-group">
+    <label for="text">Text:</label>
+    <textarea class="form-control" id="text" [(ngModel)]="modification.text" name="text"></textarea>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="inviteCandidates()">Invite Candidates</button>
+</form>
