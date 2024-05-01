@@ -48,8 +48,6 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { PickListModule } from 'primeng/picklist'; // Import PickListModule
 import { ButtonGroupModule } from 'primeng/buttongroup'; // Import ButtonGroupModule
 import { EventsComponent } from './components/events/events.component';
-
-
 @NgModule({
   imports: [
     BrowserModule,

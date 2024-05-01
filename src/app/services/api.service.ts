@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { error } from 'console';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -58,6 +58,14 @@ export class ApiService {
     return this.http.get(`${this.url}/api/test`).pipe(
       catchError((error) => {
         console.error('error fetching Tests', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+  getTestByUser(id: string): Observable<any> {
+    return this.http.get(`${this.url}/api/test/getTestByUser/${id}`).pipe(
+      catchError((error) => {
+        console.error('error fetching Tests by user ID', error);
         return throwError('An error occurred; please try again later.');
       })
     );
@@ -121,21 +129,21 @@ export class ApiService {
         })
       );
   }
-  addEvent(event: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/addEvent`, event);
-  }
-
-  getEventsByWeek(): Observable<any> {
-    return this.http.get<any>(`${this.url}/eventsByWeek`);
-  }
-
-  getAllEvent() {
-    return this.http.get<{ events: any }>(`${this.url}/getAllEvents`);
-  }
-
-  deleteEvent(eventId: string) {
-    return this.http.delete<{ msg: any }>(
-      `${this.url}/deleteEvent/${eventId}`
+  createSubmission(sub: any): Observable<any> {
+    return this.http.post(`${this.url}/api/test/sub`, sub).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
     );
   }
+  getSubmissionPerUser(testId: any): Observable<any> {
+    return this.http.get(`${this.url}/api/test/sub/${testId}`).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+ 
 }

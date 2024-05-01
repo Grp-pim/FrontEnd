@@ -1,3 +1,4 @@
+import { UserService } from './../services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,8 @@ export class TestDetailsComponent implements OnInit {
   items: any[] = [];
   testId: any;
   currentTest: any;
+  sub: any;
+  userData: any;
 
   //yeser
   candidateEmail: string = '';
@@ -26,7 +29,8 @@ export class TestDetailsComponent implements OnInit {
     private apiService: ApiService,
     private act: ActivatedRoute,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     const mailOptions = {
       subject: 'Lien vers votre test',
@@ -39,6 +43,9 @@ export class TestDetailsComponent implements OnInit {
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
     this.getTestById(this.testId);
+    this.getSubmissionPerUser();
+    this.getUserById();
+    console.log('user id : ', this.sub.id);
   }
   toFrame1() {
     this.currentFrame = '1';
@@ -48,6 +55,11 @@ export class TestDetailsComponent implements OnInit {
   toFrame2() {
     this.currentFrame = '2';
     console.log('click on frame 2 ');
+    console.log(this.currentFrame);
+  }
+  toFrame3() {
+    this.currentFrame = '3';
+    console.log('click on frame 3 ');
     console.log(this.currentFrame);
   }
   getAllItems() {
@@ -124,5 +136,33 @@ export class TestDetailsComponent implements OnInit {
           console.error('Error sending invitation:', error);
         }
       );
+  }
+  getSubmissionPerUser() {
+    this.apiService.getSubmissionPerUser(this.testId).subscribe(
+      (data) => {
+        // Check if data is an array, if not, convert it to an array
+        if (!Array.isArray(data)) {
+          data = [data];
+        }
+        this.sub = data;
+        console.log('sayb zebi', this.sub);
+      },
+      (error) => {
+        console.log('error fetching submission', error);
+      }
+    );
+  }
+  test() {
+    console.log('aaaaaaa');
+  }
+  getUserById() {
+    this.userService.getUserById(this.sub.id).subscribe(
+      (data) => {
+        this.userData = data;
+      },
+      (error) => {
+        console.log('error : ', error);
+      }
+    );
   }
 }

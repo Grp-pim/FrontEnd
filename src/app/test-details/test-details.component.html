@@ -1,10 +1,36 @@
 <p-toast></p-toast>
 
 <p-buttonGroup class="buttonGroup">
-    <p-button (click)="toTestList()" severity="secondary" label="" icon="pi-chevron-left"></p-button>
-    <p-button (click)="toFrame1()" severity="secondary" label="Questions" icon="pi-list-check"></p-button>
-    <p-button (click)="toFrame2()" severity="secondary" label="Candidates" icon="pi pi-users"></p-button>
-    <p-button (click)="saveChanges()" severity="secondary" label="Save" icon="pi pi-users"></p-button>
+  <p-button
+    (click)="toTestList()"
+    severity="secondary"
+    label=""
+    icon="pi-chevron-left"
+  ></p-button>
+  <p-button
+    (click)="toFrame1()"
+    severity="secondary"
+    label="Questions"
+    icon="pi-list-check"
+  ></p-button>
+  <p-button
+    (click)="toFrame2()"
+    severity="secondary"
+    label="Candidates"
+    icon="pi pi-users"
+  ></p-button>
+  <p-button
+    (click)="toFrame3()"
+    severity="secondary"
+    label="Submission"
+    icon="pi pi-users"
+  ></p-button>
+  <p-button
+    (click)="saveChanges()"
+    severity="secondary"
+    label="Save"
+    icon="pi pi-users"
+  ></p-button>
 </p-buttonGroup>
 <ng-container *ngIf="currentFrame === '1'">
   <p-pickList
@@ -20,42 +46,103 @@
     sourceFilterPlaceholder="Search by name"
     targetFilterPlaceholder="Search by name"
     breakpoint="1400px"
-   
   >
     <!-- Template for source items -->
     <ng-template let-quiz pTemplate="item">
       <div class="flex flex-wrap p-2 align-items-center gap-3">
         <div class="flex-1 flex flex-column gap-2">
           <span class="font-bold">{{ quiz?.name }}</span>
-        <p-tag [severity]="getSeverity(quiz.difficulty)" [value]="quiz.difficulty"></p-tag>
+          <p-tag
+            [severity]="getSeverity(quiz.difficulty)"
+            [value]="quiz.difficulty"
+          ></p-tag>
+          <button pButton (click)="test()" type="button" label="Add"></button>
         </div>
       </div>
     </ng-template>
   </p-pickList>
-  <br>
+  <br />
 </ng-container>
 <ng-container *ngIf="currentFrame === '2'">
-<form>
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" id="name" [(ngModel)]="candidateName" name="name">
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="candidateName"
+        name="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        [(ngModel)]="candidateEmail"
+        name="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="emailContent">Email Content:</label>
+      <textarea
+        class="form-control"
+        id="emailContent"
+        [(ngModel)]="emailContent"
+        name="emailContent"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="subject"
+        [(ngModel)]="modification.subject"
+        name="subject"
+      />
+    </div>
+    <div class="form-group">
+      <label for="text">Text:</label>
+      <textarea
+        class="form-control"
+        id="text"
+        [(ngModel)]="modification.text"
+        name="text"
+      ></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="inviteCandidates()">
+      Invite Candidates
+    </button>
+  </form>
+</ng-container>
+<ng-container *ngIf="currentFrame === '3'">
+  <div class="card">
+    <p-table
+      [value]="sub"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 25%">User ID</th>
+        </tr>
+        <th style="width: 25%">Actions</th>
+      </ng-template>
+      <ng-template pTemplate="body" let-subb>
+        <tr>
+          <td>{{ subb.userId }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-search"></button>
+          </td>
+        </tr>
+      </ng-template>
+      </p-table>
   </div>
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" class="form-control" id="email" [(ngModel)]="candidateEmail" name="email">
-  </div>
-  <div class="form-group">
-    <label for="emailContent">Email Content:</label>
-    <textarea class="form-control" id="emailContent" [(ngModel)]="emailContent" name="emailContent"></textarea>
-  </div>
-  <div class="form-group">
-    <label for="subject">Subject:</label>
-    <input type="text" class="form-control" id="subject" [(ngModel)]="modification.subject" name="subject">
-  </div>
-  <div class="form-group">
-    <label for="text">Text:</label>
-    <textarea class="form-control" id="text" [(ngModel)]="modification.text" name="text"></textarea>
-  </div>
-  <button type="button" class="btn btn-primary" (click)="inviteCandidates()">Invite Candidates</button>
-</form>
 </ng-container>

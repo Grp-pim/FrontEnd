@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalResultComponent } from './modal-result/modal-result.component';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-quiz-page',
@@ -92,26 +93,60 @@ export class QuizPageComponent implements OnInit {
       }, 1000);
     }
   }
+  decodeToken(token: string): any {
+    return jwt_decode(token);
+  }
+
   submitQuiz() {
     // Retrieve selected options from local storage
     const quizResponses = JSON.parse(
       localStorage.getItem('quizResponses') || '{}'
     );
 
-    // Use the 'id' variable obtained from ActivatedRoute
-    this.apiService
-      .compareQuiz(this.id, quizResponses)
-      .subscribe((response: any) => {
+    // Get the token from sessionStorage
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      console.error('Token not found in sessionStorage');
+      return;
+    }
+
+    // Decode the token to get the user ID
+    const decodedToken = this.decodeToken(token);
+    const studentId = decodedToken._id;
+
+    // Call the API service to compare the quiz and create the submission
+    this.apiService.compareQuiz(this.id, quizResponses).subscribe(
+      (response: any) => {
         // Handle response from backend
-        // console.log(response);
         if (response) {
           // Update the overall score
           this.overallScore = response.overallScore;
-          console.log('zab:', this.overallScore); // Log the overall score
           this.openModal();
+
+          // Create the submission object
+          const sub = {
+            userId: studentId,
+            testId: this.id,
+            userChoices: quizResponses,
+          };
+
+          // Call the API service to create the submission
+          this.apiService.createSubmission(sub).subscribe(
+            (response: any) => {
+              console.log(response);
+            },
+            (error: any) => {
+              console.log(error);
+            }
+          );
         }
-      });
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
+
   openModal() {
     // Open the modal
     const modalRef = this.modalService.open(ModalResultComponent);
