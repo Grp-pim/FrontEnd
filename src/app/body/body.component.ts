@@ -1,18 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service'; // Adjust the path as needed
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';import { ApiService } from '../services/api.service';
 import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from '../hint-modal/hint-modal.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ChangeDetectorRef } from '@angular/core';
+import { ChapterServiceService } from '../shared/chapter-service.service';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrl: './body.component.css',
+  styleUrls: ['./body.component.css'],
 })
 export class BodyComponent implements OnInit {
   chapters: any[] = [];
+  previousChapter: number = 0;
   totalChapter: number = this.chapters.length;
   randomTask: any;
   currentChapter: number = 1;
@@ -20,99 +25,171 @@ export class BodyComponent implements OnInit {
   code: string = '';
   errorTry: number = 0;
   showHintButton: boolean = false;
+  chapterStates: boolean[] = [];
   executionResult: string = '';
-  codeExecutionSuccess: boolean = false; // Flag to track code execution success
-  nextChapterButtonClicked: boolean = false; // Flag to track if the next chapter button has been clicked
+  codeExecutionSuccess: boolean = false;
+  nextChapterButtonClicked: boolean = false;
   hintContent: string = 'aaaa';
-  closeModal: any; // Define the type according to your requirement
+  disableNextButton: boolean = true;
+  disablePreviousButton: boolean = true;
+  closeModal: any;
   loading: boolean = false;
+  currentChapterNumber: number = 1;
+  currentChapterStatus: boolean = false;
+  isNextChapterActive: boolean = false;
+  @Output() nextChapter: EventEmitter<void> = new EventEmitter<void>();
+  @Output() previousChapters: EventEmitter<void> = new EventEmitter<void>();
+  @Output() chaptersChange: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() currentChapterChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() chapterActivationState: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+
   constructor(
     private apiService: ApiService,
     private sharedService: SharedService,
     private router: Router,
     private modalService: NgbModal,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private cdr: ChangeDetectorRef,
+    private chapterService: ChapterServiceService,
+    private route: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
     this.getAllChapters();
     this.getRandomTask(this.currentChapter);
     this.spinner.show();
+    this.previousChapter = this.currentChapter;
+    this.chapterStates = Array(this.chapters.length).fill(false);
+        this.route.params.subscribe(params => {
+      this.currentChapter = +params['chapterNumber'];
+    });
   }
 
-  // Method to execute code
-
-   executeUserCode() {
+  executeUserCode() {
     this.loading = true;
     this.apiService.executeCode(this.code).subscribe({
       next: (response) => {
         this.executionResult = response.success
           ? response.output
           : `Error: ${response.error}`;
-        // Trigger game start with autoPlay based on success
         this.sharedService.triggerStartGame(response.success);
         if (response.success) {
-          this.codeExecutionSuccess = true;
-          this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
+          this.loading = false;
+          if (response.output.includes("Tests success, Congrats!")) {
+            this.codeExecutionSuccess = true;
+            this.chapterStates[this.currentChapter - 1] = true;
+          } else {
+            this.codeExecutionSuccess = false;
+            this.showFailedTestsPopup();
+          }
         }
-        this.loading = false;
       },
       error: (httpErrorResponse) => {
         this.executionResult = `Error: ${httpErrorResponse.error.error}`;
-        // Trigger game start without autoPlay in case of HTTP error
         this.sharedService.triggerStartGame(false);
+        this.errorTry++;
         this.loading = false;
+        if (this.errorTry >= 2) {
+          this.showHintButton = true;
+        }
       },
     });
   }
 
-  
+  showFailedTestsPopup() {
+    if (confirm("Test failed. Do you want to try again?")) {
+      this.refreshTask();
+    }
+  }
+
+  refreshTask() {
+    this.getRandomTask(this.currentChapter);
+  }
 
   getRandomTask(currentChapter: number): void {
     this.executionResult = '';
-    this.nextChapterButtonClicked = false; // Reset the flag
+    this.nextChapterButtonClicked = false;
+    if (this.chapterStates[currentChapter - 1]) {
+      return;
+    }
     this.apiService.getRandomTask(currentChapter).subscribe(
       (task: any) => {
-        this.randomTask = task; // Assign the received task object to the randomTask property
+        this.randomTask = task;
         this.code = task.initialCode;
       },
       (error: any) => {
         console.error('Error fetching random task:', error);
-        // Handle the error appropriately
       }
     );
   }
+
   openModal() {
     const modalRef = this.modalService.open(HintModalComponent);
-    // Optionally, pass data to the modal component
     modalRef.componentInstance.hintContent = this.randomTask.hint;
   }
+
   refreshRoute() {
-    // Navigate to the current route with the option to skip the location change
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      // Navigate to the current route again to trigger a refresh
       this.router.navigate([this.router.url]);
-      console.log('refreshing');
     });
   }
-  fetchNextChapterTask() {
-    if (!this.nextChapterButtonClicked && this.codeExecutionSuccess) {
-      this.nextChapterButtonClicked = true; // Set flag to true to prevent multiple clicks
-      this.currentChapter++;
-      this.codeExecutionSuccess = false; // Reset code execution success flag
-      this.getRandomTask(this.currentChapter);
+
+ fetchNextChapterTask() {
+  if (this.codeExecutionSuccess) {
+    this.disableNextButton = false;
+    this.disablePreviousButton = false;
+    this.nextChapterButtonClicked = true;
+    this.previousChapter = this.currentChapter;
+    this.codeExecutionSuccess = false;
+    this.chapterStates[this.currentChapter - 1] = true;
+    this.nextChapter.emit();
+    this.chapterService.setCurrentChapter(this.currentChapter + 1);
+    this.currentChapter++;
+    this.getRandomTask(this.currentChapter);
+    this.isNextChapterActive = true;
+  } else {
+    this.disableNextButton = true;
+    this.disablePreviousButton = false;
+    this.nextChapterButtonClicked = false;
+  }
+}
+
+fetchPreviousChapterTask() {
+  if (this.currentChapter > 1) {
+    this.disablePreviousButton = false;
+    this.previousChapter = this.currentChapter;
+    this.currentChapter--;
+    this.chapterService.setCurrentChapter(this.currentChapter);
+    this.getRandomTask(this.currentChapter);
+    this.codeExecutionSuccess = false;
+    this.nextChapterButtonClicked = false;
+    this.previousChapters.emit();
+  } else {
+    this.disablePreviousButton = true;
+  }
+}
+getAllChapters() {
+  this.apiService.getAllChapters().subscribe(
+    (data) => {
+      this.chapters = data;
+      this.emitChapterData();
+      this.chapterService.setChapters(this.chapters); // Émettre les données après avoir obtenu les chapitres
+    },
+    (error) => {
+      console.log('error fetching', error);
     }
+  );
+}
+
+emitChapterData() {
+  this.chaptersChange.emit(this.chapters);
+  this.currentChapterChange.emit(this.currentChapter);
+}
+
+  // Méthode pour vérifier si un chapitre est actif
+  isChapterActive(chapterNumber: number): boolean {
+    // Vérifie si le chapitre est actif dans votre logique actuelle
+    return this.currentChapter === chapterNumber && this.isNextChapterActive;
   }
-  // for sidebar
-  getAllChapters() {
-    this.apiService.getAllChapters().subscribe(
-      (data) => {
-        // console.log(data); // Check the retrieved data
-        this.chapters = data; // Adjust based on the actual structure
-      },
-      (error) => {
-        console.log('error fetching', error);
-      }
-    );
-  }
-  //end for sidebar
 }

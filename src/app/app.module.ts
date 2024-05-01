@@ -52,7 +52,8 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { PickListModule } from 'primeng/picklist'; // Import PickListModule
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
-import { GeneralInfoDashboardComponent } from './components/admin-folder/general-info-dashboard/general-info-dashboard.component'; // Import ButtonGroupModule
+import { GeneralInfoDashboardComponent } from './components/admin-folder/general-info-dashboard/general-info-dashboard.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component'; // Import ButtonGroupModule
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import { GeneralInfoDashboardComponent } from './components/admin-folder/general
     TestDetailsComponent,
     DashboardComponent,
     GeneralInfoDashboardComponent,
+    ProgressBarComponent,
   ],
 })
 export class AppModule {}

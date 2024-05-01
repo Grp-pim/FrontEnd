@@ -1,3 +1,9 @@
+<app-progress-bar 
+  [totalChapter]="5" 
+  [currentChapterNumber]="currentChapter"
+  (nextChapter)="fetchNextChapterTask()"
+  (previousChapter)="fetchPreviousChapterTask()">
+</app-progress-bar>
 <div class="container-fluid dark-theme">
   <ng-container *ngIf="loading">
     <ngx-spinner
@@ -64,12 +70,12 @@
       >
         <i class="bi bi-play-fill"></i> Run
       </button>
-      <button
-        [disabled]="nextChapterButtonClicked"
-        (click)="fetchNextChapterTask()"
-        class="btn btn-secondary"
-      >
+      
+      <button [disabled]="nextChapterButtonClicked || !chapterStates[currentChapter - 1]" (click)="fetchNextChapterTask()" class="btn btn-secondary">
         <i class="bi bi-arrow-right"></i> Next Task
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="fetchPreviousChapterTask()">
+        <i class="bi bi-arrow-left"></i> Previous Task
       </button>
       <button type="button" class="btn btn-info" (click)="openModal()">
         <i class="bi bi-info-circle"></i> Get Hint

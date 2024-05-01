@@ -33,6 +33,21 @@ export class ApiService {
     );
   }
 
+  // getRandomTask(currentChapter: number): Observable<any> {
+  //   return this.http
+  //     .get(`${this.url}/api/chapter/${currentChapter}/random`)
+  //     .pipe(
+  //       catchError((error) => {
+  //         console.error('An error occurred while fetching chapters', error);
+  //         return throwError(
+  //           'Failed to fetch chapters; please try again later.'
+  //         );
+  //       })
+  //     );
+  // }
+
+
+  // new yesser
   getRandomTask(currentChapter: number): Observable<any> {
     return this.http
       .get(`${this.url}/api/chapter/${currentChapter}/random`)
@@ -45,6 +60,9 @@ export class ApiService {
         })
       );
   }
+
+
+
   createTest(test: any): Observable<any> {
     return this.http.post(`${this.url}/api/test`, test).pipe(
       catchError((error) => {

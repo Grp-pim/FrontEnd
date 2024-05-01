@@ -64,3 +64,14 @@
         </div>
     </main>
 </section>
+
+
+<section>
+    <div class="stepper">
+    <div class="step" *ngFor="let chapter of chapters; let i = index" [class.active]="i + 1 === currentChapter" [class.disabled]="!chapterActivationState[i]">
+      <div class="circle">{{ i + 1 }}</div>
+      <div class="label" (click)="navigateToChapter(i + 1)">{{ chapter.name }}</div>
+    </div>
+    <button (click)="goToNextChapter()" [disabled]="!chapterActivationState[currentChapter + 1]">Chapitre suivant</button>
+  </div> 
+</section>
