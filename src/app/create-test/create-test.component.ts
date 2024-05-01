@@ -1,3 +1,4 @@
+import { SharedService } from './../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [MessageService], // Add MessageService to providers array
 })
 export class CreateTestComponent implements OnInit {
+  ingredient!: string;
   currentStep: number = 1;
   tests: any[] = [];
 
@@ -22,13 +24,15 @@ export class CreateTestComponent implements OnInit {
     duration: 0,
   };
   selectedDifficulty: string = '';
+  selectedLanguage: string = '';
   testType: string = '';
-
+  currentUserId: any;
   constructor(
     private router: Router,
     private apiService: ApiService,
     private messageService: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +40,12 @@ export class CreateTestComponent implements OnInit {
       const id = params['_id']; // Access the value of _id parameter
       // Now you can use the ID to fetch the corresponding test data from MongoDB
     });
-    this.getAllTest();
+    // this.getAllTest();
+    //retieve current user id from shared service
+    this.sharedService.sendCurrentUserid();
+    this.currentUserId = this.sharedService.getCurrentUserId();
+    console.log('Current User ID:', this.currentUserId);
+    this.getTestByUser();
   }
 
   nextStep() {
@@ -51,13 +60,12 @@ export class CreateTestComponent implements OnInit {
   }
 
   createTest() {
-    // this.Test.type = this.testType;
-
     return this.apiService
       .createTest({
         ...this.Test,
         difficulty: this.selectedDifficulty,
         type: this.testType,
+        creator: this.currentUserId,
       })
       .subscribe(
         (data) => {
@@ -66,16 +74,27 @@ export class CreateTestComponent implements OnInit {
             summary: 'Success',
             detail: 'Test Created',
           });
-          this.getAllTest();
+          this.getTestByUser();
         },
         (error) => {
-          console.error(error);
+          console.error('error creating Test :', error);
         }
       );
   }
 
-  getAllTest() {
-    return this.apiService.getAllTests().subscribe(
+  // getAllTest() {
+  //   return this.apiService.getAllTests().subscribe(
+  //     (data) => {
+  //       this.tests = data;
+  //       // console.log(this.tests);
+  //     },
+  //     (error) => {
+  //       console.log('error fetching', error);
+  //     }
+  //   );
+  // }
+  getTestByUser(){
+    return this.apiService.getTestByUser(this.currentUserId).subscribe(
       (data) => {
         this.tests = data;
         // console.log(this.tests);
@@ -96,10 +115,14 @@ export class CreateTestComponent implements OnInit {
   visitTest(testId: string, testType: string) {
     if (testType === 'Code') {
       const url = `/test/${testId}`;
-     this.router.navigate([url]);
+      this.router.navigate([url]);
     } else if (testType === 'Quiz') {
       const url = `/quizTest/${testId}`;
-     this.router.navigate([url]);
+      this.router.navigate([url]);
     }
+  }
+
+  toTestDetails(testId: String) {
+    this.router.navigate(['test-details', testId]);
   }
 }

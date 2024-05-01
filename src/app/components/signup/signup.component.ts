@@ -13,14 +13,12 @@ export class SignupComponent implements OnInit {
 
   signupForm! : FormGroup;
   imagePreview : any;
-  errorMsg!: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private authService: AuthServiceService,
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -32,19 +30,26 @@ export class SignupComponent implements OnInit {
       image:[""],
       role: [""]
     });
-
-
   }
 
   signup(){
-    this.userService.signUp(this.signupForm.value, this.signupForm.value.image).subscribe((response)=>{
+    this.userService.signUp(this.signupForm.value, this.signupForm.value.image).subscribe((response) => {
       console.log("here response from BE", response.msg);
-      if (response.msg == "Success"){
-        this.router.navigate(["login"]);
-      } else{
-        this.errorMsg = response.msg;
-      }
-    })
+      // Afficher le toast après un ajout réussi
+      this.router.navigate(["login"]);
+      this.userService.Toast.fire({
+        icon: 'success',
+        title: 'Account created with success'
+      });
+    },
+    (error) => {
+      console.error("Error adding USER:", error);
+      this.userService.Toast.fire({
+       icon: "error",
+       title: "An error was occured while create account"
+      });
+    }
+    );
   }
 
   onImageSelected(event: Event) {
@@ -59,8 +64,9 @@ export class SignupComponent implements OnInit {
   }
 
   continueWithGoogle(): void {
-    this.authService.redirectToGoogle();
+    this.authService.redirectToGoogle()
   }
+  
 
   continueWithGitHub(){
     

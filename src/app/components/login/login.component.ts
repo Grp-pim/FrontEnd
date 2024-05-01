@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private authService: AuthServiceService,
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -33,26 +32,45 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.userService.login(this.loginForm.value).subscribe((response)=>{
-      console.log("user connected", response);
-      if (response.token){
-        sessionStorage.setItem("token", response.token);
-        let role = this.decodeToken(response.token).role
-        if (role == "Admin"){
-          this.router.navigate(["dashboard-Admin"]);
-        }else if (role == "Student"){
-          this.router.navigate(["homeStepper"]);
-        }else if (role == "Teacher"){
-          this.router.navigate(["test"]);
-        }else{
-          this.router.navigate([""]);
-        }
-      } else {
-        this.errorMsg = "Please check Email && Password"
+    this.userService.login(this.loginForm.value).subscribe(
+      (response) => {
+        console.log("user connected", response);
+        if (response.token){
+          sessionStorage.setItem("token", response.token);
+          let role = this.decodeToken(response.token).role
+          if (role == "Admin"){
+            this.router.navigate(["dashboard/Admin"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Admin'
+            });
+          } else if (role == "Student"){
+            this.router.navigate(["homeStepper"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Student'
+            });
+          } else if (role == "Teacher"){
+            this.router.navigate(["dashboard/Teacher"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Teacher'
+            });
+          } else {
+            this.router.navigate([""]);
+          }
+        } 
+      },
+      (error) => {
+        console.error("Error login USER:", error);
+        this.userService.Toast.fire({
+          icon: "error",
+          title: "Please check Email and Password"
+        });
       }
-    }) 
+    ); 
   }
-
+  
   decodeToken(token: string) : any {
     return jwt_decode(token);
   }

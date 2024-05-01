@@ -46,6 +46,13 @@ import { HomeStepperComponent } from './components/home-stepper/home-stepper.com
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { SelectRoleComponent } from './components/select-role/select-role.component';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { PickListModule } from 'primeng/picklist'; // Import PickListModule
+import { ButtonGroupModule } from 'primeng/buttongroup';
+import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
+import { GeneralInfoDashboardComponent } from './components/admin-folder/general-info-dashboard/general-info-dashboard.component'; // Import ButtonGroupModule
 
 
 @NgModule({
@@ -72,6 +79,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     // import module  "TDF" && "reactive Form"
     FormsModule,
     ReactiveFormsModule,
+    ButtonGroupModule,
+    PickListModule,
   ],
   providers: [
     provideClientHydration(),
@@ -106,6 +115,11 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     HomeStepperComponent,
     EventsComponent,
     CommunityComponent,
+    SelectRoleComponent,
+    DashboardTeacherComponent,
+    TestDetailsComponent,
+    DashboardComponent,
+    GeneralInfoDashboardComponent,
   ],
 })
 export class AppModule {}

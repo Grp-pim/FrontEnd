@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -65,5 +67,25 @@ export class UserService {
   getTeachers(){
     return this.http.get<{teachers : any}>(this.userURL + "/getByRoleTeachers");
   }
+
+  getUserById(userid: any): Observable<any> {
+    return this.http.get(`${this.userURL}/api/user/getUserById/${userid}`).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+
+  Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
 }

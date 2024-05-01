@@ -15,6 +15,10 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
+import { SelectRoleComponent } from './components/select-role/select-role.component';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', title: 'home', component: HomeComponent },
@@ -26,12 +30,16 @@ const routes: Routes = [
   { path: 'homeStepper', title: 'Map', component: HomeStepperComponent },
   { path: 'events', title: 'events', component: EventsComponent },
   { path: 'community', title: 'community', component: CommunityComponent },
+  { path: 'select-role', title: 'select role google', component: SelectRoleComponent },
+  { path: 'dashboard/Teacher', title: 'dashboard Teacher', component: DashboardTeacherComponent },
+  { path: 'dashboard/Admin', title: 'dashboard Admin', component: DashboardComponent },
 
   { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard] },
   { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard] },
   { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
   { path: 'compilator', title: 'Comp', component: BodyComponent },
   { path: 'test', title: 'Test', component: CreateTestComponent },
+  { path: 'test-details/:id', title: 'Test-details', component: TestDetailsComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
 
