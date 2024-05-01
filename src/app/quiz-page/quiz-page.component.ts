@@ -128,6 +128,7 @@ export class QuizPageComponent implements OnInit {
             userId: studentId,
             testId: this.id,
             userChoices: quizResponses,
+            overallScore: this.overallScore,
           };
 
           // Call the API service to create the submission

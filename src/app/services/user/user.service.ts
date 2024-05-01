@@ -89,7 +89,7 @@ export class UserService {
     );
   }
   getUserById(userid: any): Observable<any> {
-    return this.http.get(`${this.userURL}/api/user/getUserById/${userid}`).pipe(
+    return this.http.get(`${this.userURL}/getUserById/${userid}`).pipe(
       catchError((error) => {
         console.error('An error occurred', error);
         return throwError('An error occurred; please try again later.');

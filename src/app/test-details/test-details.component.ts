@@ -45,7 +45,6 @@ export class TestDetailsComponent implements OnInit {
     this.getTestById(this.testId);
     this.getSubmissionPerUser();
     this.getUserById();
-    console.log('user id : ', this.sub.id);
   }
   toFrame1() {
     this.currentFrame = '1';
@@ -145,7 +144,6 @@ export class TestDetailsComponent implements OnInit {
           data = [data];
         }
         this.sub = data;
-        console.log('sayb zebi', this.sub);
       },
       (error) => {
         console.log('error fetching submission', error);
@@ -156,7 +154,8 @@ export class TestDetailsComponent implements OnInit {
     console.log('aaaaaaa');
   }
   getUserById() {
-    this.userService.getUserById(this.sub.id).subscribe(
+      const userId = this.sub[0].userId;
+    this.userService.getUserById(userId).subscribe(
       (data) => {
         this.userData = data;
       },
