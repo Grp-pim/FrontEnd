@@ -11,12 +11,17 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class TestDetailsComponent implements OnInit {
+  selectedTab: string = 'Dashboard';
+
+  changeTab(tabName: string) {
+    this.selectedTab = tabName;
+  }
   currentFrame: any = '1';
   items: any[] = [];
   testId: any;
   currentTest: any;
   sub: any;
-  userData: any;
+  userData: any[] = []; // Initialize userData as an empty array
 
   //yeser
   candidateEmail: string = '';
@@ -43,8 +48,7 @@ export class TestDetailsComponent implements OnInit {
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
     this.getTestById(this.testId);
-    this.getSubmissionPerUser();
-    this.getUserById();
+    this.getSubmissionPerTest();
   }
   toFrame1() {
     this.currentFrame = '1';
@@ -136,31 +140,33 @@ export class TestDetailsComponent implements OnInit {
         }
       );
   }
-  getSubmissionPerUser() {
-    this.apiService.getSubmissionPerUser(this.testId).subscribe(
-      (data) => {
-        // Check if data is an array, if not, convert it to an array
-        if (!Array.isArray(data)) {
-          data = [data];
+  getUserData(submissions: any[]) {
+    const userIds = submissions.map((submission) => submission.userId);
+    userIds.forEach((userId) => {
+      this.userService.getUserById(userId).subscribe(
+        (user) => {
+          console.log('Fetched user data:', user);
+          this.userData.push(user);
+          console.log('users data', this.userData);
+        },
+        (error) => {
+          console.log('Error fetching user data:', error);
         }
-        this.sub = data;
-      },
-      (error) => {
-        console.log('error fetching submission', error);
-      }
-    );
+      );
+    });
   }
-  test() {
-    console.log('aaaaaaa');
-  }
-  getUserById() {
-      const userId = this.sub[0].userId;
-    this.userService.getUserById(userId).subscribe(
+
+  getSubmissionPerTest() {
+    this.apiService.getSubmissionPerTest(this.testId).subscribe(
       (data) => {
-        this.userData = data;
+        const submissions = Array.isArray(data) ? data : [data];
+        this.sub = submissions;
+
+        // Fetch user data for each submission
+        this.getUserData(this.sub);
       },
       (error) => {
-        console.log('error : ', error);
+        console.log('Error fetching submissions:', error);
       }
     );
   }

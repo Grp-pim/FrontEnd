@@ -5,7 +5,7 @@
     (click)="toTestList()"
     severity="secondary"
     label=""
-    icon="pi-chevron-left"
+    icon="pi-caret-left"
   ></p-button>
   <p-button
     (click)="toFrame1()"
@@ -13,12 +13,7 @@
     label="Questions"
     icon="pi-list-check"
   ></p-button>
-  <p-button
-    (click)="toFrame2()"
-    severity="secondary"
-    label="Candidates"
-    icon="pi pi-users"
-  ></p-button>
+
   <p-button
     (click)="toFrame3()"
     severity="secondary"
@@ -56,7 +51,7 @@
             [severity]="getSeverity(quiz.difficulty)"
             [value]="quiz.difficulty"
           ></p-tag>
-          <button pButton (click)="test()" type="button" label="Add"></button>
+          <!-- <button pButton type="button" label="Add"></button> -->
         </div>
       </div>
     </ng-template>
@@ -132,24 +127,18 @@
       <ng-template pTemplate="header">
         <tr>
           <th style="width: 25%">Candidates</th>
-        </tr>
-        <tr>
           <th style="width: 25%">Last activity</th>
-        </tr>
-        <tr>
+          <th style="width: 25%">Email</th>
           <th style="width: 25%">Score</th>
+          <th style="width: 25%">Actions</th>
         </tr>
-        <th style="width: 25%">Actions</th>
       </ng-template>
-      <ng-template pTemplate="body" let-subb>
-        <tr>
-          <td>{{ subb.fullName }}</td>
-          <td>
-                    <tr>
-          <td>{{ subb.updatedAt }}</td>
-          <td>
-                    <tr>
-          <td>{{ subb.overallScore }}</td>
+      <ng-template pTemplate="body" let-userData>
+        <tr *ngFor="let user of userData">
+          <td>{{ user.fullName }}</td>
+          <td>{{ userData.overallScore }}</td>
+          <td>{{ user.email }}</td>
+          <td></td>
           <td>
             <button pButton type="button" icon="pi pi-search"></button>
           </td>

@@ -49,7 +49,6 @@ const routes: Routes = [
     title: 'Test-details',
     component: TestDetailsComponent,
   },
-
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
 
