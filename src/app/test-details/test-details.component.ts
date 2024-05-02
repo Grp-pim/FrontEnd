@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-test-details',
@@ -22,13 +23,13 @@ export class TestDetailsComponent implements OnInit {
   currentTest: any;
   sub: any;
   userData: any[] = []; // Initialize userData as an empty array
-
   //yeser
   candidateEmail: string = '';
   candidateName: string = '';
   testLink: string = '';
   emailContent: string;
   modification: any = { subject: '', text: '' };
+  submissions: any[] = [];
 
   constructor(
     private apiService: ApiService,
@@ -47,8 +48,8 @@ export class TestDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
-    this.getTestById(this.testId);
-    this.getSubmissionPerTest();
+    // this.getTestById(this.testId);
+      this.getSubmissions();
   }
   toFrame1() {
     this.currentFrame = '1';
@@ -146,8 +147,8 @@ export class TestDetailsComponent implements OnInit {
       this.userService.getUserById(userId).subscribe(
         (user) => {
           console.log('Fetched user data:', user);
-          this.userData.push(user);
-          console.log('users data', this.userData);
+          this.userData.push(user[0]); // Push the first (and only) element of the user array
+          console.log('userData:', this.userData);
         },
         (error) => {
           console.log('Error fetching user data:', error);
@@ -156,14 +157,11 @@ export class TestDetailsComponent implements OnInit {
     });
   }
 
-  getSubmissionPerTest() {
+  getSubmissions(): void {
     this.apiService.getSubmissionPerTest(this.testId).subscribe(
       (data) => {
-        const submissions = Array.isArray(data) ? data : [data];
-        this.sub = submissions;
-
-        // Fetch user data for each submission
-        this.getUserData(this.sub);
+        this.submissions = data;
+        console.log('Fetched submissions:', this.submissions);
       },
       (error) => {
         console.log('Error fetching submissions:', error);

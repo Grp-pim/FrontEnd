@@ -137,7 +137,7 @@ export class ApiService {
       })
     );
   }
-  getSubmissionPerTest(testId:any): Observable<any> {
+  getSubmissionPerTest(testId: any): Observable<any> {
     return this.http.get(`${this.url}/api/test/sub/${testId}`).pipe(
       catchError((error) => {
         console.error('An error occurred', error);
