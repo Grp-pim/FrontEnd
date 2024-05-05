@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { error } from 'console';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private router: Router) {}
 
   private url = 'http://localhost:3000';
+
 
   // post method
   executeCode(code: string): Observable<any> {
@@ -33,18 +35,14 @@ export class ApiService {
     );
   }
 
-  getRandomTask(currentChapter: number): Observable<any> {
-    return this.http
-      .get(`${this.url}/api/chapter/${currentChapter}/random`)
-      .pipe(
-        catchError((error) => {
-          console.error('An error occurred while fetching chapters', error);
-          return throwError(
-            'Failed to fetch chapters; please try again later.'
-          );
-        })
-      );
-  }
+ getRandomTask(currentChapter: number): Observable<any> {
+  return this.http.get(`${this.url}/api/chapter/${currentChapter}/random`).pipe(
+    catchError((error) => {
+      console.error('An error occurred while fetching random task', error);
+      return throwError('Failed to fetch random task; please try again later.');
+    })
+  );
+}
   createTest(test: any): Observable<any> {
     return this.http.post(`${this.url}/api/test`, test).pipe(
       catchError((error) => {

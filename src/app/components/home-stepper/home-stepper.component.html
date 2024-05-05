@@ -49,7 +49,8 @@
 </div> -->
 
 
-<div class="container">
+ <!--<div class="container">
+    
     <div class="row text-center justify-content-center mb-5">
         <div class="col-xl-6 col-lg-8">
             <h2 class="font-weight-bold" style="color : #f2bb13;">QUEST MAP</h2>
@@ -58,7 +59,7 @@
     </div>
 <div class="main-timeline">
 
-                        <!-- start experience section-->
+                        
                         <div class="timeline">
                             <div class="icon"></div>
                             <div class="date-content">
@@ -76,9 +77,6 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
                         <div class="timeline">
                             <div class="icon"></div>
                             <div class="date-content">
@@ -96,9 +94,6 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
                         <div class="timeline">
                             <div class="icon"></div>
                             <div class="date-content">
@@ -116,9 +111,6 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- end experience section-->
-
-                        <!-- start experience section-->
                         <div class="timeline">
                             <div class="icon"></div>
                             <div class="date-content">
@@ -136,9 +128,30 @@
                                 </p>
                             </div>
                         </div>
-                        <!-- end experience section-->
 
                     </div>
 </div>
 
-</section>
+</section>-->
+    <!-- Afficher les données chapters et chapterStates si nécessaire -->
+  <!--  <div class="container">
+
+    <div *ngFor="let chapter of chapters; let i = index">
+      <p>Chapter {{ chapter.number }} - Completed: {{ chapterStates[i] ? 'Yes' : 'No' }}</p>
+    </div>
+  </div>-->
+<!-- home-stepper.component.html -->
+
+<!-- home-stepper.component.html -->
+
+<div class="stepper">
+    <div class="step" *ngFor="let chapter of chapters; let i = index" [class.active]="i + 1 === currentChapter" [class.disabled]="!chapterActivationState[i]">
+      <div class="circle">{{ i + 1 }}</div>
+      <div class="label" (click)="navigateToChapter(i + 1)">{{ chapter.name }}</div>
+    </div>
+    <button (click)="goToNextChapter()" [disabled]="!chapterActivationState[currentChapter + 1]">Chapitre suivant</button>
+  </div>
+  
+  
+  
+  

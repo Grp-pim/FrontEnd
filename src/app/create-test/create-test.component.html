@@ -175,7 +175,7 @@
           <th style="width: 30%">Description</th>
           <th style="width: 8%">Difficulty</th>
           <th style="width: 8%">type</th>
-          <th style="width: 8%">Link</th>
+          <!--  <th style="width: 8%">Link</th>> -->
           <th style="width: 8%">Duration</th>
           <!-- <th style="width: 25%">Id</th> -->
           <th style="width: 15%">Created at</th>
@@ -194,9 +194,9 @@
               [value]="test.type"
             ></p-tag>
           </td>
-          <td>
+          <!--<td>
             <a href="{{ test.link }}" target="_blank">Open Link</a>
-          </td>
+          </td>-->
           <td>{{ test.duration }}</td>
           <!-- <td>{{ test._id }}</td> -->
           <td>{{ test.createdAt | date }}</td>
@@ -205,9 +205,9 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-                (click)="visitTest(test._id, test.type)"
+                (click)="previewTestLink(test._id, test.type)"
               >
-                Visit
+                Preview
               </button>
             </div>
           </td>
@@ -216,7 +216,7 @@
               <button
                 type="button"
                 class="btn btn-success mr-2"
-                (click)="navigateToInvitePage()"
+                (click)="InviteCandidatTest(test._id, test.type)"
               >
                 Details
               </button>

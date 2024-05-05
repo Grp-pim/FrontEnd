@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CreateTestComponent implements OnInit {
   currentStep: number = 1;
   tests: any[] = [];
+  testLink: string = ''; // Déclarez la propriété testLink ici
 
   Test = {
     name: '',
@@ -22,7 +23,8 @@ export class CreateTestComponent implements OnInit {
     duration: 0,
   };
   selectedDifficulty: string = '';
-  testType: string = '';
+  testType: string = ''; // Déclarer et initialiser testLink
+
 
   constructor(
     private router: Router,
@@ -91,16 +93,37 @@ export class CreateTestComponent implements OnInit {
     this.Test.duration = selectedDuration;
   }
 
-  visitTest(testId: string, testType: string) {
+  InviteCandidatTest(testId: string, testType: string) {
+    let testLink: string = ''; // Initialisation par défaut
+
     if (testType === 'Code') {
-      const url = `/test/${testId}`;
-     this.router.navigate([url]);
+      testLink = `/test/${testId}`;
     } else if (testType === 'Quiz') {
-      const url = `/quizTest/${testId}`;
-     this.router.navigate([url]);
+      testLink = `/quizTest/${testId}`;
     }
+
+    // Appelez la méthode pour passer le lien vers invite-candidates
+    this.passTestLinkToInvite(testLink);
   }
-  navigateToInvitePage() {
+
+  passTestLinkToInvite(testLink: string) {
+    // Assurez-vous de passer le lien correctement en tant que paramètre de requête
+    this.router.navigate(['/invite-candidates'], { queryParams: { testLink: testLink } });
+  }
+
+  navigateToInvitePage() {// Initialisation par défaut
     this.router.navigate(['/invite-candidates']);
+  }
+  previewTestLink(testId: string, testType: string) {
+    let testLink: string = ''; // Initialisation par défaut
+  
+    if (testType === 'Code') {
+      testLink = `/test/${testId}`;
+    } else if (testType === 'Quiz') {
+      testLink = `/quizTest/${testId}`;
+    }
+  
+    // Ouvrir un nouvel onglet avec le lien de prévisualisation du test
+    window.open(testLink, '_blank');
   }
 }

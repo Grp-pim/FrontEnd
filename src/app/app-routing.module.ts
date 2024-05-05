@@ -42,7 +42,7 @@ const routes: Routes = [
     canActivate: [TestExistsGuard],
   },
   { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
-  { path: 'compilator', title: 'Comp', component: BodyComponent },
+  { path: 'compilator/:chapterNumber', title: 'Comp', component: BodyComponent },
   // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
   { path: 'test', title: 'Test', component: CreateTestComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },

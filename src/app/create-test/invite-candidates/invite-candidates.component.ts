@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+
+
 
 @Component({
   selector: 'app-invite-candidates',
@@ -12,23 +16,32 @@ export class InviteCandidatesComponent implements OnInit {
   candidateEmail: string = '';
   candidateName: string = '';
   testLink: string = '';
-  emailContent: string ;
+  emailContent: string = ''; // Initialisation nécessaire
   modification: any = { subject: '', text: '' };  // Retirer l'initialisation ici
+  editMode: boolean = false;
 
-  constructor(private router: Router, private apiService: ApiService) { 
-    // Initialiser emailContent avec le contenu de votre modèle d'e-mail
-    const mailOptions = {
 
-      subject: 'Lien vers votre test',
-      text: ` \n\nBonjour ${this.candidateName},\n\nVoici le lien vers votre test : ${this.testLink}\n\nCordialement,\nVotre équipe de recrutement`,
-    };
-    this.emailContent = mailOptions.text;
-  }
+  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.testLink = params['testLink'];
+      // Assurez-vous que le lien est correctement récupéré ici
+      console.log('Test link:', this.testLink);
+      // Mettre à jour le contenu de l'e-mail lorsque le composant est initialisé
+      this.updateEmailContent();
+    });
+  }
+
+  // Mettez à jour emailContent avec le contenu de votre modèle d'e-mail
+  updateEmailContent() {
+    this.emailContent = `Bonjour ${this.candidateName},\n\nVoici le lien vers votre test : http://localhost:4200${this.testLink}\n\nCordialement,\nVotre équipe de recrutement`;
   }
   
   inviteCandidates() {
+    // Mettez à jour le contenu de l'e-mail avant d'envoyer l'e-mail
+    this.updateEmailContent();
+
     const candidate = {
       email: this.candidateEmail,
       name: this.candidateName,
@@ -36,11 +49,11 @@ export class InviteCandidatesComponent implements OnInit {
     };
     const candidates = [candidate];
   
-    // Utilisez les valeurs des champs de formulaire pour construire l'objet modification
     const modification = {
       subject: this.modification.subject,
       text: this.modification.text,
     };
+    // Envoyer l'e-mail avec le contenu mis à jour
     this.apiService.sendTestLinkByEmail(candidates, this.emailContent, modification)
       .subscribe(
         () => {
@@ -51,5 +64,12 @@ export class InviteCandidatesComponent implements OnInit {
         }
       );
   }
- 
+
+  previewTestLink(testLink: string) {
+    // Naviguer vers le lien de prévisualisation du test
+    window.open(testLink, '_blank');
+  }
+  edit() {
+    this.editMode = !this.editMode; // Inverse l'état de l'édition
+  }
 }

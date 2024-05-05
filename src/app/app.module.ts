@@ -46,6 +46,11 @@ import { HomeStepperComponent } from './components/home-stepper/home-stepper.com
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
 import { InviteCandidatesComponent } from './create-test/invite-candidates/invite-candidates.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { MatStepperModule } from '@angular/material/stepper'; // Importez le module MatStepperModule
+import { FloatLabelModule } from 'primeng/floatlabel';
+
+
 
 
 
@@ -71,9 +76,11 @@ import { InviteCandidatesComponent } from './create-test/invite-candidates/invit
     MenuModule,
     ContextMenuModule,
     TagModule,
-    // import module  "TDF" && "reactive Form"
+    MatStepperModule,
     FormsModule,
     ReactiveFormsModule,
+    FloatLabelModule,
+    
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
@@ -106,6 +113,7 @@ import { InviteCandidatesComponent } from './create-test/invite-candidates/invit
     EventsComponent,
     CommunityComponent,
     InviteCandidatesComponent,
+    ProgressBarComponent,
   
   ],
 })

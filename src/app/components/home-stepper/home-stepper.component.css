@@ -1,7 +1,7 @@
-#stepperSection{
+/*#stepperSection{
     margin-top: 50px;
     margin-bottom: 50px;
-}
+}*/
 
 /* .timeline-steps {
     display: flex;
@@ -65,7 +65,7 @@
 } */
 
 /* ******************************************************************* */
-
+/*
 .main-timeline {
     position: relative
 }
@@ -313,4 +313,45 @@
     .main-timeline .title {
         margin-bottom: 10px
     }
-}
+}*/
+/* Styles du stepper */
+.stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles de chaque étape */
+  .step {
+    display: flex;
+    align-items: center;
+    margin: 0 10px; /* Espace entre chaque étape */
+  }
+  
+  /* Styles du cercle */
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #007bff; /* Couleur du cercle */
+    color: #fff; /* Couleur du texte à l'intérieur du cercle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Styles de l'étiquette */
+  .label {
+    margin-left: 5px; /* Espace entre le cercle et l'étiquette */
+  }
+  
+  /* Styles pour une étape active */
+  .step.active .circle {
+    background-color: #28a745; /* Couleur du cercle pour une étape active */
+  }
+  
+  /* Styles pour le texte de l'étape active */
+  .step.active .label {
+    font-weight: bold; /* Texte en gras pour une étape active */
+  }
+  
