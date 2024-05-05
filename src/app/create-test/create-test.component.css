@@ -1,14 +1,14 @@
-#createTestSection{
+/* #createTestSection{
     padding-top: 50px;
     margin-bottom: 50px;
-}
+} */
 
 .diffForm{
     display: flex;
     flex-direction: row;
 }
 .container-fluid{
-width: 60%;
+width: 100%;
 }
 .flex.align-items-center span{
     font-size: 25px;

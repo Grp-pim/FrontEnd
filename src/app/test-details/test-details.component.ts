@@ -30,7 +30,7 @@ export class TestDetailsComponent implements OnInit {
   modification: any = { subject: '', text: '' };
   submissions: any[] = [];
   sidebarVisible = false;
-selectedItem : any;
+  selectedItem: any;
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
@@ -52,10 +52,10 @@ selectedItem : any;
     this.getSubmissions();
   }
   //sidebar
-  toggleSidebar(item:any) {
+  toggleSidebar(item: any) {
     this.sidebarVisible = !this.sidebarVisible;
-    this.selectedItem = item
-    console.log("item selected :",this.selectedItem)
+    this.selectedItem = item;
+    console.log('item selected :', this.selectedItem);
   }
   //
   toFrame1() {

@@ -5,7 +5,7 @@
     (click)="toTestList()"
     severity="secondary"
     label=""
-    icon="pi-caret-left"
+    icon="pi pi-chevron-left"
   ></p-button>
   <p-button
     (click)="toFrame1()"
@@ -17,20 +17,20 @@
     (click)="toFrame2()"
     severity="secondary"
     label="Candidates"
-    icon="pi-list-check"
+    icon="pi pi-users"
   ></p-button>
 
   <p-button
     (click)="toFrame3()"
     severity="secondary"
     label="Submission"
-    icon="pi pi-users"
+    icon="pi pi-check-circle"
   ></p-button>
   <p-button
     (click)="saveChanges()"
     severity="secondary"
     label="Save"
-    icon="pi pi-users"
+    icon="pi pi-save"
   ></p-button>
 </p-buttonGroup>
 <ng-container *ngIf="currentFrame === '1'">
@@ -59,7 +59,7 @@
               [value]="quiz.difficulty"
             ></p-tag>
             <p-button
-              icon="pi-info-circle"
+              icon="pi pi-question-circle"
               [rounded]="true"
               [text]="true"
               severity="help"

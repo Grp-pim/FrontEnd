@@ -28,6 +28,8 @@ export class CreateTestComponent implements OnInit {
   selectedLanguage: string = '';
   testType: string = '';
   currentUserId: any;
+  selectedTab: string = 'Dashboard';
+
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -48,17 +50,23 @@ export class CreateTestComponent implements OnInit {
     console.log('Current User ID:', this.currentUserId);
     this.getTestByUser();
   }
-
+  //sidebar
+  changeTab(tabName: string) {
+    this.selectedTab = tabName;
+  }
+  ///
   nextStep() {
-    this.currentStep++;
+    this.currentStep=2;
+    console.log('current step ', this.currentStep);
+
   }
 
   previousStep() {
-    this.currentStep--;
+    this.currentStep=1;
+    console.log('current step ', this.currentStep);
+
   }
-  goToCreateTest() {
-    this.currentStep = 1;
-  }
+
 
   createTest() {
     return this.apiService
@@ -94,7 +102,7 @@ export class CreateTestComponent implements OnInit {
   //     }
   //   );
   // }
-  getTestByUser(){
+  getTestByUser() {
     return this.apiService.getTestByUser(this.currentUserId).subscribe(
       (data) => {
         this.tests = data;
