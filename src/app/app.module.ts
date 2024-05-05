@@ -48,6 +48,7 @@ import { TestDetailsComponent } from './test-details/test-details.component';
 import { PickListModule } from 'primeng/picklist'; // Import PickListModule
 import { ButtonGroupModule } from 'primeng/buttongroup'; // Import ButtonGroupModule
 import { EventsComponent } from './components/events/events.component';
+import { SidebarPreviewComponent } from './test-details/sidebar-preview/sidebar-preview.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -106,6 +107,7 @@ import { EventsComponent } from './components/events/events.component';
     EventsComponent,
     CommunityComponent,
     TestDetailsComponent,
+    SidebarPreviewComponent,
   ],
 })
 export class AppModule {}

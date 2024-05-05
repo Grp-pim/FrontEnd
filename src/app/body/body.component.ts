@@ -16,14 +16,14 @@ export class BodyComponent implements OnInit {
   totalChapter: number = this.chapters.length;
   randomTask: any;
   currentChapter: number = 1;
-  editorOptions = { theme: 'vs-dark', language: 'java' };
+  editorOptions = { theme: 'vs-dark', language: 'javascript' };
   code: string = '';
   errorTry: number = 0;
   showHintButton: boolean = false;
   executionResult: string = '';
   codeExecutionSuccess: boolean = false; // Flag to track code execution success
   nextChapterButtonClicked: boolean = false; // Flag to track if the next chapter button has been clicked
-  hintContent: string = 'aaaa';
+  hintContent: string = '';
   closeModal: any; // Define the type according to your requirement
   loading: boolean = false;
   constructor(

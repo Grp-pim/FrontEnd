@@ -13,13 +13,12 @@
     label="Questions"
     icon="pi-list-check"
   ></p-button>
-    <p-button
+  <p-button
     (click)="toFrame2()"
     severity="secondary"
     label="Candidates"
     icon="pi-list-check"
   ></p-button>
-
 
   <p-button
     (click)="toFrame3()"
@@ -52,14 +51,25 @@
     <!-- Template for source items -->
     <ng-template let-quiz pTemplate="item">
       <div class="flex flex-wrap p-2 align-items-center gap-3">
-        <div class="flex-1 flex flex-column gap-2">
+        <div class="flex-1 d-flex justify-content-between align-items-center">
           <span class="font-bold">{{ quiz?.name }}</span>
-          <p-tag
-            [severity]="getSeverity(quiz.difficulty)"
-            [value]="quiz.difficulty"
-          ></p-tag>
-          <!-- <button pButton type="button" label="Add"></button> -->
+          <div class="d-flex gap-2 align-items-center">
+            <p-tag
+              [severity]="getSeverity(quiz.difficulty)"
+              [value]="quiz.difficulty"
+            ></p-tag>
+            <p-button
+              icon="pi-info-circle"
+              [rounded]="true"
+              [text]="true"
+              severity="help"
+              (click)="toggleSidebar(quiz)"
+            ></p-button>
+          </div>
         </div>
+        <app-sidebar-preview
+         [sidebarVisible]="sidebarVisible" [item]="items" [selectedItem]="selectedItem" (hide)="toggleSidebar(quiz)"
+        ></app-sidebar-preview>
       </div>
     </ng-template>
   </p-pickList>
@@ -122,40 +132,35 @@
 </ng-container>
 <ng-container *ngIf="currentFrame === '3'">
   <div class="card">
-<p-table
-  [value]="submissions"
-  [paginator]="true"
-  [rows]="5"
-  [showCurrentPageReport]="true"
-  [tableStyle]="{ 'min-width': '50rem' }"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-  [rowsPerPageOptions]="[5, 10, 20]"
->
-  <ng-template pTemplate="header">
-    <tr>
-      <th style="width: 25%">Candidates</th>
-      <th style="width: 25%">Email</th>
-      <th style="width: 25%">Score</th>
-      <th style="width: 25%">Last activity</th>
-      <th style="width: 25%">Actions</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-submission>
-    <tr>
-      <td>{{ submission.userId.fullName }}</td>
-      <td>{{ submission.userId.email }}</td>
-      <td>{{ submission.overallScore }}</td>
-      <td>{{ submission.updatedAt }}</td>
-      <td>
-        <button pButton type="button" icon="pi pi-search"></button>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-
-
-
-
+    <p-table
+      [value]="submissions"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 25%">Candidates</th>
+          <th style="width: 25%">Email</th>
+          <th style="width: 25%">Score</th>
+          <th style="width: 25%">Last activity</th>
+          <th style="width: 25%">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-submission>
+        <tr>
+          <td>{{ submission.userId.fullName }}</td>
+          <td>{{ submission.userId.email }}</td>
+          <td>{{ submission.overallScore }}</td>
+          <td>{{ submission.updatedAt }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-search"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </ng-container>

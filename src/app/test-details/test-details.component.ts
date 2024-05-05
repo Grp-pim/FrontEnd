@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-test-details',
@@ -30,7 +29,8 @@ export class TestDetailsComponent implements OnInit {
   emailContent: string;
   modification: any = { subject: '', text: '' };
   submissions: any[] = [];
-
+  sidebarVisible = false;
+selectedItem : any;
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
@@ -48,23 +48,30 @@ export class TestDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
-    // this.getTestById(this.testId);
-      this.getSubmissions();
+    this.getTestById(this.testId);
+    this.getSubmissions();
   }
+  //sidebar
+  toggleSidebar(item:any) {
+    this.sidebarVisible = !this.sidebarVisible;
+    this.selectedItem = item
+    console.log("item selected :",this.selectedItem)
+  }
+  //
   toFrame1() {
     this.currentFrame = '1';
-    console.log('click on frame 1 ');
-    console.log(this.currentFrame);
+    // console.log('click on frame 1 ');
+    // console.log(this.currentFrame);
   }
   toFrame2() {
     this.currentFrame = '2';
-    console.log('click on frame 2 ');
-    console.log(this.currentFrame);
+    // console.log('click on frame 2 ');
+    // console.log(this.currentFrame);
   }
   toFrame3() {
     this.currentFrame = '3';
-    console.log('click on frame 3 ');
-    console.log(this.currentFrame);
+    // console.log('click on frame 3 ');
+    // console.log(this.currentFrame);
   }
   getAllItems() {
     this.apiService.getAllItems().subscribe(
