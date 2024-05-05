@@ -56,17 +56,14 @@ export class CreateTestComponent implements OnInit {
   }
   ///
   nextStep() {
-    this.currentStep=2;
+    this.currentStep = 2;
     console.log('current step ', this.currentStep);
-
   }
 
   previousStep() {
-    this.currentStep=1;
+    this.currentStep = 1;
     console.log('current step ', this.currentStep);
-
   }
-
 
   createTest() {
     return this.apiService
@@ -131,7 +128,9 @@ export class CreateTestComponent implements OnInit {
     }
   }
 
-  toTestDetails(testId: String) {
-    this.router.navigate(['test-details', testId]);
+  toTestDetails(testId: string, testType: string) {
+    this.router.navigate(['test-details', testId], {
+      queryParams: { type: testType },
+    });
   }
 }

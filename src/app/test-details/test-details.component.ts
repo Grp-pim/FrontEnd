@@ -46,6 +46,10 @@ export class TestDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.act.queryParams.subscribe((params) => {
+      const testType = params['type'];
+      // Use the testType as needed
+    });
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
     this.getTestById(this.testId);
@@ -74,15 +78,30 @@ export class TestDetailsComponent implements OnInit {
     // console.log(this.currentFrame);
   }
   getAllItems() {
-    this.apiService.getAllItems().subscribe(
-      (data) => {
-        this.items = data;
-      },
-      (error) => {
-        console.log('Error fetching items:', error);
+    this.act.queryParams.subscribe((params) => {
+      const testType = params['type'];
+      if (testType === 'Quiz') {
+        this.apiService.getAllItems().subscribe(
+          (data) => {
+            this.items = data.quizs;
+          },
+          (error) => {
+            console.log('Error fetching quizs:', error);
+          }
+        );
+      } else {
+        this.apiService.getAllItems().subscribe(
+          (data) => {
+            this.items = data.tasks;
+          },
+          (error) => {
+            console.log('Error fetching tasks:', error);
+          }
+        );
       }
-    );
+    });
   }
+
   getSeverity(difficulty: string): string {
     switch (difficulty) {
       case 'Easy':
@@ -101,13 +120,14 @@ export class TestDetailsComponent implements OnInit {
   getTestById(testId: string): void {
     this.apiService.getTestById(testId).subscribe(
       (data) => {
-        this.currentTest = Array.isArray(data.quiz) ? data.quiz : [];
+        this.currentTest = data.type === 'Quiz' ? data.quiz : data.tasks;
       },
       (error) => {
         console.log('Error fetching test:', error);
       }
     );
   }
+
   saveChanges(): void {
     const updateData = { quiz: this.currentTest };
     this.apiService.updateTest(this.testId, updateData).subscribe(
