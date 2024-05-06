@@ -32,15 +32,48 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  // signup(){
+  //   this.userService.signUp(this.signupForm.value, this.signupForm.value.image).subscribe((response) => {
+  //     console.log("here response from BE", response.msg);
+  //     // Afficher le toast après un ajout réussi
+  //     this.router.navigate(["login"]);
+  //     this.userService.Toast.fire({
+  //       icon: 'success',
+  //       title: 'Account created with success'
+  //     });
+  //   },
+  //   (error) => {
+  //     console.error("Error adding USER:", error);
+  //     this.userService.Toast.fire({
+  //      icon: "error",
+  //      title: "An error was occured while create account"
+  //     });
+  //   }
+  //   );
+  // }
+
+
   signup(){
+    // condition teacher
+    if(this.signupForm.value.role === "Teacher"){
+      this.signupForm.value.status="AWAITING";
+    }
+
     this.userService.signUp(this.signupForm.value, this.signupForm.value.image).subscribe((response) => {
       console.log("here response from BE", response.msg);
-      // Afficher le toast après un ajout réussi
+      if (this.signupForm.value.role === "Teacher") {
+        this.router.navigate([""]);
+        this.userService.Toast.fire({
+          icon: 'info',
+          title: 'Account created with success, wait the acceptation of Admin '
+        });    
+      } else {
       this.router.navigate(["login"]);
       this.userService.Toast.fire({
         icon: 'success',
         title: 'Account created with success'
       });
+      }
     },
     (error) => {
       console.error("Error adding USER:", error);
@@ -67,7 +100,6 @@ export class SignupComponent implements OnInit {
     this.authService.redirectToGoogle()
   }
   
-
   continueWithGitHub(){
     
   }

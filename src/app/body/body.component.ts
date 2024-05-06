@@ -66,46 +66,80 @@ export class BodyComponent implements OnInit {
     });
   }
 
+  // executeUserCode() {
+  //   this.loading = true;
+  //   this.apiService.executeCode(this.code).subscribe({
+  //     next: (response) => {
+  //       this.executionResult = response.success
+  //         ? response.output
+  //         : `Error: ${response.error}`;
+  //       this.sharedService.triggerStartGame(response.success);
+  //       if (response.success) {
+  //         this.loading = false;
+  //         if (response.output.includes("Tests success, Congrats!")) {
+  //           this.codeExecutionSuccess = true;
+  //           this.chapterStates[this.currentChapter - 1] = true;
+  //         } else {
+  //           this.codeExecutionSuccess = false;
+  //           this.showFailedTestsPopup();
+  //         }
+  //       }
+  //     },
+  //     error: (httpErrorResponse) => {
+  //       this.executionResult = `Error: ${httpErrorResponse.error.error}`;
+  //       this.sharedService.triggerStartGame(false);
+  //       this.errorTry++;
+  //       this.loading = false;
+  //       if (this.errorTry >= 2) {
+  //         this.showHintButton = true;
+  //       }
+  //     },
+  //   });
+  // }
+
   executeUserCode() {
-    this.loading = true;
-    this.apiService.executeCode(this.code).subscribe({
-      next: (response) => {
-        this.executionResult = response.success
-          ? response.output
-          : `Error: ${response.error}`;
-        this.sharedService.triggerStartGame(response.success);
-        if (response.success) {
-          this.loading = false;
-          if (response.output.includes("Tests success, Congrats!")) {
-            this.codeExecutionSuccess = true;
-            this.chapterStates[this.currentChapter - 1] = true;
-          } else {
-            this.codeExecutionSuccess = false;
-            this.showFailedTestsPopup();
-          }
-        }
-      },
-      error: (httpErrorResponse) => {
+    // this.loading = true;
+     this.apiService.executeCode(this.code).subscribe({
+       next: (response) => {
+         this.executionResult = response.success
+           ? response.output
+           : `Error: ${response.error}`;
+         this.sharedService.triggerStartGame(response.success);
+         if (response.success) {
+           this.loading = false;
+           if (response.output.includes("Tests success, Congrats!")) {
+             this.codeExecutionSuccess = true;
+             this.chapterStates[this.currentChapter - 1] = true;
+           } else {
+             this.codeExecutionSuccess = false;
+             this.showFailedTestsPopup();
+           }
+         }
+       },
+       error: (httpErrorResponse) => {
         this.executionResult = `Error: ${httpErrorResponse.error.error}`;
-        this.sharedService.triggerStartGame(false);
-        this.errorTry++;
-        this.loading = false;
-        if (this.errorTry >= 2) {
-          this.showHintButton = true;
-        }
-      },
-    });
-  }
-
-  showFailedTestsPopup() {
-    if (confirm("Test failed. Do you want to try again?")) {
-      this.refreshTask();
-    }
-  }
-
-  refreshTask() {
-    this.getRandomTask(this.currentChapter);
-  }
+         this.sharedService.triggerStartGame(false);
+         this.errorTry++;
+         // Vérifier si l'erreur est une erreur de syntaxe (code d'état HTTP 400)
+         if (httpErrorResponse.status !== 400) {
+           // Vérifier si l'erreur est une erreur de compilation Java spécifique
+           if (
+             httpErrorResponse.error.error &&
+             httpErrorResponse.error.error.includes("error: cannot find symbol")
+           ) {
+             this.loading = false; // Désactiver le chargement en cas d'erreur de compilation Java spécifique
+           }
+         }
+         if (this.errorTry >= 2) {
+           this.showHintButton = true;
+         }
+       },
+     });
+   }
+   
+   showFailedTestsPopup() {
+     window.alert("Test failed. Do you want to try again?");
+   }
 
   getRandomTask(currentChapter: number): void {
     this.executionResult = '';

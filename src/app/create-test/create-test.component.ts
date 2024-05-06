@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-create-test',
@@ -27,6 +28,8 @@ export class CreateTestComponent implements OnInit {
   selectedLanguage: string = '';
   testType: string = '';
   currentUserId: any;
+  selectedTab: string = 'Dashboard';
+
   constructor(
     private router: Router,
     private apiService: ApiService,
@@ -47,16 +50,19 @@ export class CreateTestComponent implements OnInit {
     console.log('Current User ID:', this.currentUserId);
     this.getTestByUser();
   }
-
+  //sidebar
+  changeTab(tabName: string) {
+    this.selectedTab = tabName;
+  }
+  ///
   nextStep() {
-    this.currentStep++;
+    this.currentStep = 2;
+    console.log('current step ', this.currentStep);
   }
 
   previousStep() {
-    this.currentStep--;
-  }
-  goToCreateTest() {
     this.currentStep = 1;
+    console.log('current step ', this.currentStep);
   }
 
   createTest() {
@@ -93,7 +99,7 @@ export class CreateTestComponent implements OnInit {
   //     }
   //   );
   // }
-  getTestByUser(){
+  getTestByUser() {
     return this.apiService.getTestByUser(this.currentUserId).subscribe(
       (data) => {
         this.tests = data;
@@ -122,7 +128,9 @@ export class CreateTestComponent implements OnInit {
     }
   }
 
-  toTestDetails(testId: String) {
-    this.router.navigate(['test-details', testId]);
+  toTestDetails(testId: string, testType: string) {
+    this.router.navigate(['test-details', testId], {
+      queryParams: { type: testType },
+    });
   }
 }

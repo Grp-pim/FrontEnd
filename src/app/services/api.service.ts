@@ -47,7 +47,7 @@ export class ApiService {
   // }
 
 
-  // new yesser
+  // ***************************************************** new yesser *********************************
   getRandomTask(currentChapter: number): Observable<any> {
     return this.http
       .get(`${this.url}/api/chapter/${currentChapter}/random`)
@@ -155,7 +155,7 @@ export class ApiService {
       })
     );
   }
-  getSubmissionPerUser(testId: any): Observable<any> {
+  getSubmissionPerTest(testId: any): Observable<any> {
     return this.http.get(`${this.url}/api/test/sub/${testId}`).pipe(
       catchError((error) => {
         console.error('An error occurred', error);

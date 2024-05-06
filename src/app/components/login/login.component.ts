@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.userService.login(this.loginForm.value).subscribe(
       (response) => {
-        console.log("user connected", response);
+        console.log("user connected", response.msg);
         if (response.token){
           sessionStorage.setItem("token", response.token);
           let role = this.decodeToken(response.token).role
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
               title: 'Welcome Student'
             });
           } else if (role == "Teacher"){
-            this.router.navigate(["dashboard/Teacher"]);
+            this.router.navigate(["test"]);
             this.userService.Toast.fire({
               icon: 'success',
               title: 'Welcome Teacher'

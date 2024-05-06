@@ -27,6 +27,10 @@ export class UserService {
     return this.http.post<{msg :any, token: string}>(this.userURL + "/login", user);
   }
 
+  statusTeacherUpdate(staTeach:any) {
+    return this.http.patch<{ isUpdated: boolean }>(this.userURL + "/status", staTeach);
+  }
+
   forgotPassword(email: string) {
     return this.http.post<{ msg: any }>(`${this.userURL}/forgotPassword`, { email: email });
   }
@@ -60,6 +64,14 @@ export class UserService {
   }
 
   // **************************************************************************************
+  getAllUsers(){
+    return this.http.get<{users : any}>(this.userURL + "/getAllUsers");
+  }
+
+  getAdmins(){
+    return this.http.get<{admins : any}>(this.userURL + "/getByRoleAdmins");
+  }
+
   getStudents(){
     return this.http.get<{students : any}>(this.userURL + "/getByRoleStudents");
   }
@@ -69,7 +81,7 @@ export class UserService {
   }
 
   getUserById(userid: any): Observable<any> {
-    return this.http.get(`${this.userURL}/api/user/getUserById/${userid}`).pipe(
+    return this.http.get(`${this.userURL}/getUserById/${userid}`).pipe(
       catchError((error) => {
         console.error('An error occurred', error);
         return throwError('An error occurred; please try again later.');
@@ -77,6 +89,8 @@ export class UserService {
     );
   }
 
+// *************************************** Sweetalert2 ************************************
+  // Alerte success
   Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -87,5 +101,16 @@ export class UserService {
       toast.onmouseleave = Swal.resumeTimer;
     }
   });
+
+  // Alert delete
+  swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+
+
 
 }

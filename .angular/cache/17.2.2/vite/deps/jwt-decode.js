@@ -1,6 +1,6 @@
 import "./chunk-WKYGNSYM.js";
 
-// ../../node_modules/jwt-decode/build/jwt-decode.esm.js
+// node_modules/jwt-decode/build/jwt-decode.esm.js
 function e(e2) {
   this.message = e2;
 }

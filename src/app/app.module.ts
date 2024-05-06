@@ -53,8 +53,16 @@ import { PickListModule } from 'primeng/picklist'; // Import PickListModule
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
 import { GeneralInfoDashboardComponent } from './components/admin-folder/general-info-dashboard/general-info-dashboard.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component'; // Import ButtonGroupModule
-
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { AdminProfComponent } from './components/admin-folder/admin-prof/admin-prof.component';
+import { EventsTableAdminComponent } from './components/admin-folder/events-table-admin/events-table-admin.component';
+import { ClassesTableAdminComponent } from './components/admin-folder/classes-table-admin/classes-table-admin.component';
+import { ChaptersTableAdminComponent } from './components/admin-folder/chapters-table-admin/chapters-table-admin.component';
+import { UsersTableAdminComponent } from './components/admin-folder/users-table-admin/users-table-admin.component';
+import { AddChapterComponent } from './components/admin-folder/add-chapter/add-chapter.component';
+import { AddUserComponent } from './components/admin-folder/add-user/add-user.component';
+import { AddEventComponent } from './components/admin-folder/add-event/add-event.component';
+import { SidebarPreviewComponent } from './test-details/sidebar-preview/sidebar-preview.component';
 
 @NgModule({
   imports: [
@@ -122,6 +130,15 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component'; //
     DashboardComponent,
     GeneralInfoDashboardComponent,
     ProgressBarComponent,
+    AdminProfComponent,
+    EventsTableAdminComponent,
+    ClassesTableAdminComponent,
+    ChaptersTableAdminComponent,
+    UsersTableAdminComponent,
+    AddChapterComponent,
+    AddUserComponent,
+    AddEventComponent,
+    SidebarPreviewComponent,
   ],
 })
 export class AppModule {}
