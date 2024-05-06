@@ -14,6 +14,7 @@ export class ChapterServiceService {
   setCurrentChapter(chapterNumber: number) {
     this.currentChapterSubject.next(chapterNumber);
   }
+  
   setChapters(chapters: any[]) {
     this.chapters = chapters;
   }

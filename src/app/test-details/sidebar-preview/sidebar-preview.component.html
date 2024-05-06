@@ -1,0 +1,6 @@
+<!-- sidebar.component.html -->
+<p-sidebar [(visible)]="sidebarVisible" position="right">
+    <h3>{{ selectedItem?.name }}</h3>
+    <p>Difficulty: {{ selectedItem?.difficulty }}</p>
+    <button (click)="closeSidebar()">Close</button>
+  </p-sidebar>

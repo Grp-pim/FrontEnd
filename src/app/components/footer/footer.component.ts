@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  user: any;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  isLoggedIn() {
+    const jwt = sessionStorage.getItem('token');
+    if (jwt) {
+      this.user = this.decodeToken(jwt);
+    }
+    return !!jwt;
+  }
+
+  decodeToken(token: string): any {
+    return jwt_decode(token);
   }
 
 }

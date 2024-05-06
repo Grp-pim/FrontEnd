@@ -15,36 +15,32 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
-import { InviteCandidatesComponent } from './create-test/invite-candidates/invite-candidates.component';
+import { SelectRoleComponent } from './components/select-role/select-role.component';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'forgotPassword', component: ForgotPwdComponent },
-  { path: 'resetPassword/:token', component: ResetPwdComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'homeStepper', component: HomeStepperComponent },
-  { path: 'events', component: EventsComponent },
-  { path: 'community', component: CommunityComponent },
-  { path: 'invite-candidates', component: InviteCandidatesComponent },
+  { path: '', title: 'home', component: HomeComponent },
+  { path: 'login', title: 'login', component: LoginComponent },
+  { path: 'signup', title: 'signup', component: SignupComponent },
+  { path: 'forgotPassword', title: 'forgot Password', component: ForgotPwdComponent },
+  { path: 'resetPassword/:token', title: 'reset Password', component: ResetPwdComponent },
+  { path: 'profile', title: 'profile', component: ProfileComponent },
+  { path: 'homeStepper', title: 'Map', component: HomeStepperComponent },
+  { path: 'events', title: 'events', component: EventsComponent },
+  { path: 'community', title: 'community', component: CommunityComponent },
+  { path: 'select-role', title: 'select role google', component: SelectRoleComponent },
+  { path: 'dashboard/Teacher', title: 'dashboard Teacher', component: DashboardTeacherComponent },
+  { path: 'dashboard/Admin', title: 'dashboard Admin', component: DashboardComponent },
 
-  {
-    path: 'test/:id',
-    title: 'exam',
-    component: TestPageComponent,
-    canActivate: [TestExistsGuard],
-  },
-  {
-    path: 'quizTest/:id',
-    title: 'exam',
-    component: QuizPageComponent,
-    canActivate: [TestExistsGuard],
-  },
+  { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard] },
+  { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard] },
   { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
-  { path: 'compilator/:chapterNumber', title: 'Comp', component: BodyComponent },
-  // { path: '', redirectTo: '/test', pathMatch: 'full' }, //default
+  // { path: 'compilator', title: 'Comp', component: BodyComponent },
+  { path: 'compilator/:chapterNumber', title: 'compilator', component: BodyComponent },
   { path: 'test', title: 'Test', component: CreateTestComponent },
+  { path: 'test-details/:id', title: 'Test-details', component: TestDetailsComponent },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
 

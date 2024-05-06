@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private authService: AuthServiceService,
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
@@ -30,30 +29,48 @@ export class LoginComponent implements OnInit {
       password:["", Validators.required],
     });
 
-    this.handleGoogleCallback();
   }
 
   login(){
-    this.userService.login(this.loginForm.value).subscribe((response)=>{
-      console.log("user connected", response);
-      if (response.token){
-        sessionStorage.setItem("token", response.token);
-        let role = this.decodeToken(response.token).role
-        if (role == "admin"){
-          this.router.navigate([""]);
-        }else if (role == "student"){
-          this.router.navigate(["homeStepper"]);
-        }else if (role == "teacher"){
-          this.router.navigate(["homeStepper"]);
-        }else{
-          this.router.navigate([""]);
-        }
-      } else {
-        this.errorMsg = "Please check Email && Password"
+    this.userService.login(this.loginForm.value).subscribe(
+      (response) => {
+        console.log("user connected", response.msg);
+        if (response.token){
+          sessionStorage.setItem("token", response.token);
+          let role = this.decodeToken(response.token).role
+          if (role == "Admin"){
+            this.router.navigate(["dashboard/Admin"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Admin'
+            });
+          } else if (role == "Student"){
+            this.router.navigate(["homeStepper"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Student'
+            });
+          } else if (role == "Teacher"){
+            this.router.navigate(["test"]);
+            this.userService.Toast.fire({
+              icon: 'success',
+              title: 'Welcome Teacher'
+            });
+          } else {
+            this.router.navigate([""]);
+          }
+        } 
+      },
+      (error) => {
+        console.error("Error login USER:", error);
+        this.userService.Toast.fire({
+          icon: "error",
+          title: "Please check Email and Password"
+        });
       }
-    }) 
+    ); 
   }
-
+  
   decodeToken(token: string) : any {
     return jwt_decode(token);
   }
@@ -62,22 +79,8 @@ export class LoginComponent implements OnInit {
     this.authService.redirectToGoogle();
   }
 
-  handleGoogleCallback() {
-    const tokenOrCode = this.route.snapshot.queryParams['Code'];
-    if (tokenOrCode) {
-      this.authService.handleGoogleCallback().subscribe(
-        (response) => {
-          console.log('Google authentication successful:', response);
-          this.router.navigate([""]);
-        },
-        (error) => {
-          console.error('Error handling Google callback:', error);
-          this.router.navigate(['/error']);
-        }
-      );
-    } else {
-      console.error('No authorization code found in URL');
-    }
+  continueWithGitHub(){
+    
   }
 
 }

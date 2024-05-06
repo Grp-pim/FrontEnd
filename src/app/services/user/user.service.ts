@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +25,10 @@ export class UserService {
   
   login(user: any){
     return this.http.post<{msg :any, token: string}>(this.userURL + "/login", user);
+  }
+
+  statusTeacherUpdate(staTeach:any) {
+    return this.http.patch<{ isUpdated: boolean }>(this.userURL + "/status", staTeach);
   }
 
   forgotPassword(email: string) {
@@ -58,6 +64,14 @@ export class UserService {
   }
 
   // **************************************************************************************
+  getAllUsers(){
+    return this.http.get<{users : any}>(this.userURL + "/getAllUsers");
+  }
+
+  getAdmins(){
+    return this.http.get<{admins : any}>(this.userURL + "/getByRoleAdmins");
+  }
+
   getStudents(){
     return this.http.get<{students : any}>(this.userURL + "/getByRoleStudents");
   }
@@ -65,5 +79,38 @@ export class UserService {
   getTeachers(){
     return this.http.get<{teachers : any}>(this.userURL + "/getByRoleTeachers");
   }
+
+  getUserById(userid: any): Observable<any> {
+    return this.http.get(`${this.userURL}/getUserById/${userid}`).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
+
+// *************************************** Sweetalert2 ************************************
+  // Alerte success
+  Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  // Alert delete
+  swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+
+
 
 }

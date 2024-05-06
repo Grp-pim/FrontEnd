@@ -1,0 +1,181 @@
+<p-toast></p-toast>
+
+<p-buttonGroup class="buttonGroup">
+  <p-button
+    (click)="toTestList()"
+    severity="secondary"
+    label=""
+    icon="pi pi-chevron-left"
+  ></p-button>
+  <p-button
+    (click)="toFrame1()"
+    severity="secondary"
+    label="Questions"
+    icon="pi-list-check"
+  ></p-button>
+  <p-button
+    (click)="toFrame2()"
+    severity="secondary"
+    label="Candidates"
+    icon="pi pi-users"
+  ></p-button>
+
+  <p-button
+    (click)="toFrame3()"
+    severity="secondary"
+    label="Submission"
+    icon="pi pi-check-circle"
+  ></p-button>
+  <p-button
+    (click)="saveChanges()"
+    severity="secondary"
+    label="Save"
+    icon="pi pi-save"
+  ></p-button>
+</p-buttonGroup>
+<ng-container *ngIf="currentFrame === '1'">
+  <p-pickList
+    [source]="items"
+    [target]="currentTest"
+    sourceHeader="Question bank"
+    targetHeader="Your test"
+    [dragdrop]="true"
+    [responsive]="true"
+    [sourceStyle]="{ height: '20rem' }"
+    [targetStyle]="{ height: '20rem' }"
+    filterBy="name"
+    sourceFilterPlaceholder="Search by name"
+    targetFilterPlaceholder="Search by name"
+    breakpoint="1400px"
+  >
+    <!-- Template for source items -->
+    <ng-template let-quiz pTemplate="item">
+      <div class="flex flex-wrap p-2 align-items-center gap-3">
+        <div class="flex-1 d-flex justify-content-between align-items-center">
+          <span class="font-bold">{{ quiz?.name }}</span>
+          <div class="d-flex gap-2 align-items-center">
+            <p-tag
+              [severity]="getSeverity(quiz.difficulty)"
+              [value]="quiz.difficulty"
+            ></p-tag>
+            <p-button
+              icon="pi pi-question-circle"
+              [rounded]="true"
+              [text]="true"
+              severity="help"
+              (click)="toggleSidebar(quiz)"
+            ></p-button>
+          </div>
+        </div>
+        <app-sidebar-preview
+         [sidebarVisible]="sidebarVisible" [item]="items" [selectedItem]="selectedItem" (hide)="toggleSidebar(quiz)"
+        ></app-sidebar-preview>
+      </div>
+    </ng-template>
+  </p-pickList>
+  <br />
+</ng-container>
+<ng-container *ngIf="currentFrame === '2'">
+  <div class="container">
+    <div class="row">
+      <!-- Colonne de gauche -->
+      <div class="col-md-6">
+        <!-- Form pour le nom d'utilisateur, l'e-mail et le contenu de l'e-mail -->
+        <form class="custom-form">
+          <div class="form-group">
+            <label for="name">Username</label>
+            <p-floatLabel>
+              <input id="name" type="text" pInputText [(ngModel)]="candidateName" name="name"/>
+            </p-floatLabel>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email</label>
+            <p-floatLabel>
+              <input id="email" type="email" pInputText [(ngModel)]="candidateEmail" name="email"/>
+            </p-floatLabel>
+          </div>
+            <!-- Addition email -->
+  <div class="col-md-6">
+    <div class="form-group">
+      <div *ngFor="let email of additionalEmails; let i = index" class="additional-email">
+        <input type="email" [(ngModel)]="additionalEmails[i]" name="additionalEmails{{i}}" pInputText />
+        <button type="button" class="btn btn-danger" (click)="removeEmail(i)">-</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary ml-2" (click)="addEmail()">+</button>
+  </div>
+  
+  <div class="form-group">     <label for="email">Email Content:</label>     <textarea          type="email"         id="emailContent"         name="emailContent"         variant="filled"         rows="5"         cols="100"          pInputTextarea          [(ngModel)]="emailContent" >     </textarea>     </div>
+
+  
+          <!-- Boutons Preview et Invite -->
+          <div class="form-buttons">
+            <button type="button" class="btn btn-primary" (click)="inviteCandidates()">Invite Candidates</button>
+            <button type="button" class="btn btn-primary" (click)="previewTestLink(testLink)">Preview</button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Colonne de droite -->
+      <div class="col-md-6">
+        <!-- Form pour le sujet et le texte -->
+        <form class="custom-form">
+          <div class="form-group" [ngClass]="{ 'disabled': !editMode }">
+            <label for="subject">Subject</label>
+            <p-floatLabel>
+              <input id="subject" type="text" pInputText [(ngModel)]="modification.subject" name="subject" [disabled]="!editMode"/>
+            </p-floatLabel>
+          </div>
+  
+          <div class="form-group" [ngClass]="{ 'disabled': !editMode }">
+            <label for="text">Text</label>
+            <p-floatLabel>
+              <textarea id="text" rows="5" cols="50" pInputTextarea [(ngModel)]="modification.text" name="text" [disabled]="!editMode"></textarea>
+            </p-floatLabel>
+          </div>
+  
+          <!-- Bouton Edit -->
+          <button type="button" class="btn btn-primary" (click)="edit()">
+            {{ editMode ? 'Save' : 'Edit' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</ng-container>
+<ng-container *ngIf="currentFrame === '3'">
+  <div class="card">
+    <p-table
+      [value]="submissions"
+      [paginator]="true"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 20]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 25%">Candidates</th>
+          <th style="width: 25%">Email</th>
+          <th style="width: 25%">Score</th>
+          <th style="width: 25%">Last activity</th>
+          <th style="width: 25%">Actions</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-submission>
+        <tr>
+          <td>{{ submission.userId.fullName }}</td>
+          <td>{{ submission.userId.email }}</td>
+          <td>{{ submission.overallScore }}</td>
+          <td>{{ submission.updatedAt }}</td>
+          <td>
+            <button pButton type="button" icon="pi pi-search"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</ng-container>

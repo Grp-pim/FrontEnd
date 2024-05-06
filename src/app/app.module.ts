@@ -10,7 +10,7 @@ import { GameComponent } from './game/game.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from './hint-modal/hint-modal.component';
 import { SidebarComponent } from './body/sidebar/sidebar.component';
-import { SidebarModule } from 'primeng/sidebar'; // 
+import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CreateTestComponent } from './create-test/create-test.component';
@@ -45,14 +45,25 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeStepperComponent } from './components/home-stepper/home-stepper.component';
 import { EventsComponent } from './components/events/events.component';
 import { CommunityComponent } from './components/community/community.component';
-import { InviteCandidatesComponent } from './create-test/invite-candidates/invite-candidates.component';
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { SelectRoleComponent } from './components/select-role/select-role.component';
+import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { PickListModule } from 'primeng/picklist'; // Import PickListModule
+import { ButtonGroupModule } from 'primeng/buttongroup';
+import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
+import { GeneralInfoDashboardComponent } from './components/admin-folder/general-info-dashboard/general-info-dashboard.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { MatStepperModule } from '@angular/material/stepper'; // Importez le module MatStepperModule
+import { AdminProfComponent } from './components/admin-folder/admin-prof/admin-prof.component';
+import { EventsTableAdminComponent } from './components/admin-folder/events-table-admin/events-table-admin.component';
+import { ClassesTableAdminComponent } from './components/admin-folder/classes-table-admin/classes-table-admin.component';
+import { ChaptersTableAdminComponent } from './components/admin-folder/chapters-table-admin/chapters-table-admin.component';
+import { UsersTableAdminComponent } from './components/admin-folder/users-table-admin/users-table-admin.component';
+import { AddChapterComponent } from './components/admin-folder/add-chapter/add-chapter.component';
+import { AddUserComponent } from './components/admin-folder/add-user/add-user.component';
+import { AddEventComponent } from './components/admin-folder/add-event/add-event.component';
+import { SidebarPreviewComponent } from './test-details/sidebar-preview/sidebar-preview.component';
 import { FloatLabelModule } from 'primeng/floatlabel';
-
-
-
-
 
 
 @NgModule({
@@ -76,13 +87,17 @@ import { FloatLabelModule } from 'primeng/floatlabel';
     MenuModule,
     ContextMenuModule,
     TagModule,
-    MatStepperModule,
+    // import module  "TDF" && "reactive Form"
     FormsModule,
     ReactiveFormsModule,
+    ButtonGroupModule,
+    PickListModule,
     FloatLabelModule,
-    
   ],
-  providers: [provideClientHydration()],
+  providers: [
+    provideClientHydration(),
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
+  ],
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
@@ -112,9 +127,21 @@ import { FloatLabelModule } from 'primeng/floatlabel';
     HomeStepperComponent,
     EventsComponent,
     CommunityComponent,
-    InviteCandidatesComponent,
+    SelectRoleComponent,
+    DashboardTeacherComponent,
+    TestDetailsComponent,
+    DashboardComponent,
+    GeneralInfoDashboardComponent,
     ProgressBarComponent,
-  
+    AdminProfComponent,
+    EventsTableAdminComponent,
+    ClassesTableAdminComponent,
+    ChaptersTableAdminComponent,
+    UsersTableAdminComponent,
+    AddChapterComponent,
+    AddUserComponent,
+    AddEventComponent,
+    SidebarPreviewComponent,
   ],
 })
 export class AppModule {}

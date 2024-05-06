@@ -3,7 +3,6 @@ import { ChapterServiceService } from '../../shared/chapter-service.service';
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-home-stepper',
   templateUrl: './home-stepper.component.html',
@@ -36,4 +35,3 @@ export class HomeStepperComponent implements OnInit {
     }
   }
 }
-  

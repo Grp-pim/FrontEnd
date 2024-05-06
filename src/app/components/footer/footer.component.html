@@ -1,137 +1,64 @@
-<footer class="bg-dark-gradient footer">
-    <div class="footer-top">
+<footer class="bg-dark footer" *ngIf="(isLoggedIn() && user.role !== 'Admin') || !isLoggedIn()">
+    <div class="footer-top py-8">
         <div class="container">
-            <div class="footer-border-bottom pb-6 mb-5">
-                <div class="row">
-                    <div class="col-lg-4 col-xl-3">
-                        <h4 class="text-white">
-                            Sign up to Get Latest Updates
-                        </h4>
-                    </div>
-                    <div class="col-lg-4 col-xl-6">
-                        <form class="d-flex flex-row mb-2 p-1 bg-white input-group">
-                            <input type="email" class="form-control rounded-0 border-0" placeholder="you@yoursite.com">
-                            <button class="btn btn-secondary rounded-0 flex-shrink-0" type="submit">Subscribe</button>
-                        </form>
-                    </div>
-                    <div class="col-lg-4 col-xl-3">
-                        <div class="text-lg-end text-white">
-                            <span class="h6">Call Us On</span><br>
-                            <span class="h3">+216-26-018-778</span>
+            <div class="row gy-5">
+                <div class="col-lg-8 pe-xxl-10">
+                    <div class="row gy-5">
+                        <div class="col-6 col-lg-4">
+                            <h5 class="text-white footer-title-01">A propos</h5>
+                            <ul class="list-unstyled footer-link-01 m-0">
+                                <li><a class="text-white text-opacity-75" href="#">About Us</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Blog</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Our ingredients</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Our resellers</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <h5 class="text-white footer-title-01">About</h5>
+                            <ul class="list-unstyled footer-link-01 m-0">
+                                <li><a class="text-white text-opacity-75" href="#">Customer Service</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Privacy Policy</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Cookie Policy</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Terms &amp; Conditions</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Terms of Use</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-lg-4">
+                            <h5 class="text-white footer-title-01">Need Help?</h5>
+                            <ul class="list-unstyled footer-link-01 m-0">
+                                <li><a class="text-white text-opacity-75" href="#">Contact Us</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">FAQs</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Offers &amp; Kits</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Get the app</a></li>
+                                <li><a class="text-white text-opacity-75" href="#">Store locator</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 col-lg-3 my-4">
-                    <div class="mb-4">
-                        <img src="static/img/logo-light.svg" title="" alt="">
-                    </div>
-                    <div class="text-white-65 mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</div>
-                    <div class="nav footer-socila-icon">
-                        <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#">
-                        <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#">
-                        <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-2 my-4">
-                    <h5 class="text-white h6 mb-4">Customer</h5>
-                    <ul class="list-unstyled white-link footer-links">
-                        <li>
-                            <a href="#">Get Corpo</a>
-                        </li>
-                        <li>
-                            <a href="#">Documentation</a>
-                        </li>
-                        <li>
-                            <a href="#">Help center</a>
-                        </li>
-                        <li>
-                            <a href="#">Pricing</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact us</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-2 my-4">
-                    <h5 class="text-white h6 mb-4">Product</h5>
-                    <ul class="list-unstyled white-link footer-links">
-                        <li>
-                            <a href="#">Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="#">Blog</a>
-                        </li>
-                        <li>
-                            <a href="#">Join our team</a>
-                        </li>
-                        <li>
-                            <a href="#">Elements</a>
-                        </li>
-                        <li>
-                            <a href="#">Products</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-2 my-4">
-                    <h5 class="text-white h6 mb-4">Company</h5>
-                    <ul class="list-unstyled white-link footer-links">
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Careers</a>
-                        </li>
-                        <li>
-                            <a href="#">Legal &amp; Security</a>
-                        </li>
-                        <li>
-                            <a href="#">Terms of use</a>
-                        </li>
-                        <li>
-                            <a href="#">We're hiring!</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-sm-6 col-lg-3 my-4">
-                    <h5 class="text-white h6 mb-4">Company</h5>
-                    <div class="white-link">
-                        <div class="d-flex pb-3">
-                            <div class="avatar avatar-lg rounded">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="">
-                            </div>
-                            <div class="col ps-3">
-                                <small class="text-white-65">29 March 2021</small>
-                                <h6 class="font-w-500 h6 m-0"><a class="text-white" href="#">Markdown Language Sample Blog Post Styling</a></h6>
-                            </div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="avatar avatar-lg rounded">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="">
-                            </div>
-                            <div class="col ps-3">
-                                <small class="text-white-65">29 March 2021</small>
-                                <h6 class="font-w-500 h6 m-0"><a class="text-white" href="#">Markdown Language Sample Blog Post Styling</a></h6>
-                            </div>
-                        </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white footer-title-01 fs-5">Subscribe to our newsletter and get 15% off your next order.</h5>
+                    <div>
+                        <form class="d-flex flex-row mb-2 p-1 bg-white input-group"><input type="email" class="form-control rounded border-0" placeholder="Your Email"> <button class="btn btn-secondary flex-shrink-0" type="submit">Subscribe</button></form>
+                        <p class="fs-sm text-white text-opacity-75">I agree to receive Absolution newsletters</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-bottom footer-border-top light py-3">
-        <div class="container text-center">
-            <p class="m-0">© 2024 copyright <a routerLink="" class="text-reset text-white">VesperrGaming</a>. All rights reserved.</p>
+    <div class="footer-bottom small py-3 border-top border-white border-opacity-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start py-1">
+                    <p class="m-0 text-white text-opacity-75">© 2024 copyright by <a class="text-reset" routerLink="">CodinGame</a>. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end py-1">
+                    <ul class="nav justify-content-center justify-content-md-end list-unstyled footer-link-01 m-0">
+                        <li class="p-0 mx-3 ms-md-0 me-md-3"><a href="#" class="text-white text-opacity-75">Privace &amp; Policy</a></li>
+                        <li class="p-0 mx-3 ms-md-0 me-md-3"><a href="#" class="text-white text-opacity-75">Faq's</a></li>
+                        <li class="p-0 mx-3 ms-md-0 me-md-3"><a href="#" class="text-white text-opacity-75">Get a Quote</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </footer>

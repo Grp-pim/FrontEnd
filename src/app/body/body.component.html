@@ -1,9 +1,4 @@
-<app-progress-bar 
-  [totalChapter]="5" 
-  [currentChapterNumber]="currentChapter"
-  (nextChapter)="fetchNextChapterTask()"
-  (previousChapter)="fetchPreviousChapterTask()">
-</app-progress-bar>
+
 <div class="container-fluid dark-theme">
   <ng-container *ngIf="loading">
     <ngx-spinner
