@@ -272,11 +272,11 @@
               <i class="bi bi-circle"></i><span>Add Event</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a (click)="changeTab('Add Class')">
               <i class="bi bi-circle"></i><span>Add Class</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <!-- End Forms Nav -->
@@ -301,11 +301,11 @@
               <i class="bi bi-circle"></i><span>Events Tables</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a (click)="changeTab('Classes Tables')">
               <i class="bi bi-circle"></i><span>Classes Tables</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </li>
       <!-- End Tables Nav -->
@@ -413,9 +413,9 @@
       <app-add-event></app-add-event> 
     </div>
 
-    <div *ngIf="selectedTab === 'Add Class'">
+    <!-- <div *ngIf="selectedTab === 'Add Class'">
       
-    </div>
+    </div> -->
 
     <!-- TABLES -->
     <div *ngIf="selectedTab === 'Users Tables'">
@@ -431,9 +431,9 @@
       <app-events></app-events>
     </div>
 
-    <div *ngIf="selectedTab === 'Classes Tables'">
+    <!-- <div *ngIf="selectedTab === 'Classes Tables'">
       <app-classes-table-admin></app-classes-table-admin>
-    </div>
+    </div> -->
 
     
 

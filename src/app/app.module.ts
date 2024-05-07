@@ -63,6 +63,7 @@ import { AddChapterComponent } from './components/admin-folder/add-chapter/add-c
 import { AddUserComponent } from './components/admin-folder/add-user/add-user.component';
 import { AddEventComponent } from './components/admin-folder/add-event/add-event.component';
 import { SidebarPreviewComponent } from './test-details/sidebar-preview/sidebar-preview.component';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @NgModule({
   imports: [
@@ -90,6 +91,7 @@ import { SidebarPreviewComponent } from './test-details/sidebar-preview/sidebar-
     ReactiveFormsModule,
     ButtonGroupModule,
     PickListModule,
+    FloatLabelModule,
   ],
   providers: [
     provideClientHydration(),

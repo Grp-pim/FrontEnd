@@ -36,7 +36,7 @@ export class UserService {
   }
 
   resetPassword(token: string, newPassword: string) {
-    return this.http.post<{ msg: any }>(`${this.userURL}/resetPassword/${token}`, { password: newPassword });
+    return this.http.patch<{ msg: any }>(`${this.userURL}/resetPassword/${token}`, { password: newPassword });
   }
 
   getUserProfile(userId: string) {

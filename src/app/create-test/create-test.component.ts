@@ -16,7 +16,7 @@ export class CreateTestComponent implements OnInit {
   ingredient!: string;
   currentStep: number = 1;
   tests: any[] = [];
-
+  testLink: string = ''; // Déclarez la propriété testLink ici
   Test = {
     name: '',
     description: '',
@@ -118,19 +118,24 @@ export class CreateTestComponent implements OnInit {
     this.Test.duration = selectedDuration;
   }
 
-  visitTest(testId: string, testType: string) {
+  previewTestLink(testId: string, testType: string): string {
+    let testLink: string = ''; // Initialisation par défaut
+  
     if (testType === 'Code') {
-      const url = `/test/${testId}`;
-      this.router.navigate([url]);
+      testLink = `/test/${testId}`;
     } else if (testType === 'Quiz') {
-      const url = `/quizTest/${testId}`;
-      this.router.navigate([url]);
+      testLink = `/quizTest/${testId}`;
     }
-  }
 
-  toTestDetails(testId: string, testType: string) {
-    this.router.navigate(['test-details', testId], {
-      queryParams: { type: testType },
-    });
-  }
+    return testLink;
+}
+
+
+toTestDetails(testId: string, testType: string) {
+  const testLink = this.previewTestLink(testId, testType);
+  this.router.navigate(['test-details', testId], {
+    queryParams: { type: testType, testLink: testLink }, // Passer le lien vers le test comme paramètre
+  });
+}
+
 }

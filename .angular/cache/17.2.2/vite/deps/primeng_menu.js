@@ -1,9 +1,4 @@
 import {
-  RouterLink,
-  RouterLinkActive,
-  RouterModule
-} from "./chunk-GZJ2SBPX.js";
-import {
   Tooltip,
   TooltipModule
 } from "./chunk-LTE55LSA.js";
@@ -14,6 +9,11 @@ import {
   RippleModule
 } from "./chunk-IPPXAKQ7.js";
 import {
+  RouterLink,
+  RouterLinkActive,
+  RouterModule
+} from "./chunk-GZJ2SBPX.js";
+import {
   OverlayService,
   PrimeNGConfig,
   PrimeTemplate,
@@ -21,15 +21,15 @@ import {
   zindexutils
 } from "./chunk-VWXGUDFG.js";
 import {
-  DomSanitizer
-} from "./chunk-GGSASQTS.js";
-import "./chunk-NJIPK5FP.js";
-import {
   animate,
   style,
   transition,
   trigger
 } from "./chunk-OC2L62MR.js";
+import {
+  DomSanitizer
+} from "./chunk-GGSASQTS.js";
+import "./chunk-NJIPK5FP.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -99,8 +99,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-BLR2DKIM.js";
-import "./chunk-SG3BCSKH.js";
 import "./chunk-SAVXX6OM.js";
+import "./chunk-SG3BCSKH.js";
 import "./chunk-PQ7O3X3G.js";
 import "./chunk-WKYGNSYM.js";
 

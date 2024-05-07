@@ -26,21 +26,26 @@ export class ForgotPwdComponent implements OnInit {
   }
 
   forgot(){
-    if (this.forgotPwdForm.invalid) {
-      this.errorMsg = "Please enter a valid email.";
-      return;
-    }
     const email = this.forgotPwdForm.value.email;
     this.userService.forgotPassword(email).subscribe((response) => {
       console.log(response);
       if (response.msg === 'Password reset email sent') {
-        this.router.navigate(['/login']);
-      } else {
-        this.errorMsg = 'Something went wrong. Please try again later.';
+        this.router.navigate(['']);
+        this.userService.Toast.fire({
+          icon: 'success',
+          title: 'Password reset email sent'
+        });
       }
-    }, (error) => {
+    }, 
+    (error) => {
       console.error(error);
-      this.errorMsg = 'Something went wrong. Please try again later.';
+      this.forgotPwdForm = this.formBuilder.group({
+        email:["", Validators.required]
+      })
+      this.userService.Toast.fire({
+        icon: "error",
+        title: "Something went wrong. Please try again later."
+       });
     });
   }
 

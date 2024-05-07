@@ -16,6 +16,8 @@ export class TestDetailsComponent implements OnInit {
   changeTab(tabName: string) {
     this.selectedTab = tabName;
   }
+
+  tests: any[] = [];
   currentFrame: any = '1';
   items: any[] = [];
   testId: any;
@@ -23,15 +25,17 @@ export class TestDetailsComponent implements OnInit {
   sub: any;
   userData: any[] = []; // Initialize userData as an empty array
   //yeser
-
   candidateEmail: string = '';
   candidateName: string = '';
   testLink: string = '';
-  emailContent: string;
+  emailContent: string = ''; // Initialisation ici
   modification: any = { subject: '', text: '' };
+  editMode: boolean = false;
   submissions: any[] = [];
   sidebarVisible = false;
   selectedItem: any;
+  additionalEmails: string[] = [];
+
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
@@ -47,15 +51,23 @@ export class TestDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.act.queryParams.subscribe((params) => {
-      const testType = params['type'];
-      // Use the testType as needed
+    this.act.queryParams.subscribe(params => {
+        const testType = params['type'];
+        // Utilisez testType selon vos besoins
+
+        this.testLink = params['testLink'];
+        // Assurez-vous que le lien est correctement récupéré ici
+        console.log('Test link:', this.testLink);
+        // Mettre à jour le contenu de l'e-mail lorsque le composant est initialisé
+        this.updateEmailContent();
     });
+
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
     this.getTestById(this.testId);
     this.getSubmissions();
   }
+
   //sidebar
   toggleSidebar(item: any) {
     this.sidebarVisible = !this.sidebarVisible;
@@ -144,9 +156,72 @@ export class TestDetailsComponent implements OnInit {
       }
     );
   }
-  //yeser
+   //////////////////////////////////////////////////yeser
+   addEmail() {
+    this.additionalEmails.push('');
+  }
+  
+  removeEmail(index: number) {
+    // Implémentez le code pour supprimer l'e-mail à l'index spécifié
+    // Par exemple :
+    this.additionalEmails.splice(index, 1);
+  }
+  InviteCandidatTest(testId: string, testType: string) {
+    if (testType === 'Code') {
+      this.testLink = `/test/${testId}`;
+    } else if (testType === 'Quiz') {
+      this.testLink = `/quizTest/${testId}`;
+    }
+  }
 
-  // end yeseer
+updateEmailContent() {
+    // Assurez-vous que testLink est défini correctement en fonction du type de test
+    const testLink = this.testLink ? `http://localhost:4200${this.testLink}` : '';
+
+    this.emailContent = `Bonjour ${this.candidateName},\n\nVoici le lien vers votre test : ${testLink}\n\nCordialement,\nVotre équipe de recrutement`;
+}
+
+inviteCandidates() {
+  // Mettez à jour le contenu de l'e-mail avant d'envoyer l'e-mail
+  this.updateEmailContent();
+
+  const candidate = {
+    email: this.candidateEmail,
+    additionalEmails: this.additionalEmails, // Ajoutez les adresses e-mail supplémentaires ici
+    name: this.candidateName,
+    testLink: this.testLink
+  };
+  const candidates = [candidate];
+
+  const modification = {
+    subject: this.modification.subject,
+    text: this.modification.text,
+  };
+
+  // Envoyer l'e-mail avec le contenu mis à jour
+  this.apiService.sendTestLinkByEmail(candidates, this.emailContent, modification)
+  .subscribe(
+      () => {
+          console.log('Invitation sent successfully.');
+      },
+      (error) => {
+          console.error('Error sending invitation:', error);
+      }
+  );
+}
+
+
+previewTestLink(testLink: string) {
+    // Naviguer vers le lien de prévisualisation du test
+    window.open(testLink, '_blank');
+}
+
+edit() {
+    this.editMode = !this.editMode; // Inverse l'état de l'édition
+}
+
+  //////////////////////////////////// end yeseer
+
   getUserData(submissions: any[]) {
     const userIds = submissions.map((submission) => submission.userId);
     userIds.forEach((userId) => {

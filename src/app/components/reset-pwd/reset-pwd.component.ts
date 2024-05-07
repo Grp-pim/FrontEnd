@@ -27,10 +27,10 @@ export class ResetPwdComponent implements OnInit {
   }
 
   reset() {
-    if (this.resetPwdForm.invalid) {
-      this.errorMsg = "Please enter a valid password (6-12 characters)";
-      return;
-    }
+    // if (this.resetPwdForm.invalid) {
+    //   this.errorMsg = "Please enter a valid password (6-12 characters)";
+    //   return;
+    // }
     const token = this.route.snapshot.paramMap.get('token');
     if (!token) {
       console.error('No token found in URL');
@@ -43,13 +43,24 @@ export class ResetPwdComponent implements OnInit {
         console.log(response);
         if (response.msg === 'Password reset successful') {
           this.router.navigate(['login']);
+          this.userService.Toast.fire({
+            icon: 'success',
+            title: 'Password reset successful'
+          });
         } else {
           this.errorMsg = 'Something went wrong. Please try again later.';
         }
       },
       (error) => {
         console.error(error);
-        this.errorMsg = 'Something went wrong. Please try again later.';
+        // reload form
+        this.resetPwdForm = this.formBuilder.group({
+          password: ["", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]]
+        });
+        this.userService.Toast.fire({
+          icon: "error",
+          title: "Something went wrong. Please try again later."
+         });
       }
     );
   }

@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./body.component.css'],
 })
 export class BodyComponent implements OnInit {
+
   chapters: any[] = [];
   previousChapter: number = 0;
   totalChapter: number = this.chapters.length;
@@ -41,7 +42,7 @@ export class BodyComponent implements OnInit {
   @Output() previousChapters: EventEmitter<void> = new EventEmitter<void>();
   @Output() chaptersChange: EventEmitter<any[]> = new EventEmitter<any[]>();
   @Output() currentChapterChange: EventEmitter<number> = new EventEmitter<number>();
-  @Output() chapterActivationState: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() chapterActivationState: EventEmitter<boolean[]> = new EventEmitter<boolean[]>();
 
 
   constructor(
@@ -61,41 +62,10 @@ export class BodyComponent implements OnInit {
     this.spinner.show();
     this.previousChapter = this.currentChapter;
     this.chapterStates = Array(this.chapters.length).fill(false);
-        this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       this.currentChapter = +params['chapterNumber'];
     });
   }
-
-  // executeUserCode() {
-  //   this.loading = true;
-  //   this.apiService.executeCode(this.code).subscribe({
-  //     next: (response) => {
-  //       this.executionResult = response.success
-  //         ? response.output
-  //         : `Error: ${response.error}`;
-  //       this.sharedService.triggerStartGame(response.success);
-  //       if (response.success) {
-  //         this.loading = false;
-  //         if (response.output.includes("Tests success, Congrats!")) {
-  //           this.codeExecutionSuccess = true;
-  //           this.chapterStates[this.currentChapter - 1] = true;
-  //         } else {
-  //           this.codeExecutionSuccess = false;
-  //           this.showFailedTestsPopup();
-  //         }
-  //       }
-  //     },
-  //     error: (httpErrorResponse) => {
-  //       this.executionResult = `Error: ${httpErrorResponse.error.error}`;
-  //       this.sharedService.triggerStartGame(false);
-  //       this.errorTry++;
-  //       this.loading = false;
-  //       if (this.errorTry >= 2) {
-  //         this.showHintButton = true;
-  //       }
-  //     },
-  //   });
-  // }
 
   executeUserCode() {
     // this.loading = true;
@@ -168,26 +138,26 @@ export class BodyComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }
-
- fetchNextChapterTask() {
-  if (this.codeExecutionSuccess) {
-    this.disableNextButton = false;
-    this.disablePreviousButton = false;
-    this.nextChapterButtonClicked = true;
-    this.previousChapter = this.currentChapter;
-    this.codeExecutionSuccess = false;
-    this.chapterStates[this.currentChapter - 1] = true;
-    this.nextChapter.emit();
-    this.chapterService.setCurrentChapter(this.currentChapter + 1);
-    this.currentChapter++;
-    this.getRandomTask(this.currentChapter);
-    this.isNextChapterActive = true;
-  } else {
-    this.disableNextButton = true;
-    this.disablePreviousButton = false;
-    this.nextChapterButtonClicked = false;
+  fetchNextChapterTask() {
+    if (this.codeExecutionSuccess && this.chapterStates[this.currentChapter - 1]) {
+      this.disableNextButton = false;
+      this.disablePreviousButton = false;
+      this.nextChapterButtonClicked = true;
+      this.previousChapter = this.currentChapter;
+      this.codeExecutionSuccess = false;
+      this.chapterStates[this.currentChapter - 1] = true;
+      this.nextChapter.emit();
+      this.chapterService.setCurrentChapter(this.currentChapter + 1);
+      this.currentChapter++;
+      this.getRandomTask(this.currentChapter);
+      this.isNextChapterActive = true;
+    } else {
+      this.disableNextButton = true;
+      this.disablePreviousButton = false;
+      this.nextChapterButtonClicked = false;
+    }
   }
-}
+  
 
 fetchPreviousChapterTask() {
   if (this.currentChapter > 1) {
@@ -219,11 +189,19 @@ getAllChapters() {
 emitChapterData() {
   this.chaptersChange.emit(this.chapters);
   this.currentChapterChange.emit(this.currentChapter);
+  this.chapterActivationState.emit(this.chapterStates); // Émettre l'état d'activation des chapitres
 }
 
-  // Méthode pour vérifier si un chapitre est actif
-  isChapterActive(chapterNumber: number): boolean {
-    // Vérifie si le chapitre est actif dans votre logique actuelle
-    return this.currentChapter === chapterNumber && this.isNextChapterActive;
-  }
+// Méthode pour vérifier si un chapitre est actif
+isChapterActive(chapterNumber: number): boolean {
+  // Vérifie si le chapitre est actif dans votre logique actuelle
+  return this.currentChapter === chapterNumber && this.isNextChapterActive;
+}
+ // Méthode pour naviguer vers un chapitre depuis le HomeStepperComponent
+ navigateToChapter(chapterNumber: number): void {
+  this.router.navigate(['/compilator/', chapterNumber]);
+} 
+
+
+  
 }

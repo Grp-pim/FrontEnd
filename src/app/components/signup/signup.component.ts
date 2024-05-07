@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../../services/Oauth_google/auth-service.service';
 import { UserService } from '../../services/user/user.service';
 
@@ -22,6 +22,10 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.form();
+  }
+
+  form(){
     this.signupForm = this.formBuilder.group({
       fullName:["", [Validators.required, Validators.minLength(3)]],
       email:["", [Validators.required, Validators.email]],
@@ -77,6 +81,7 @@ export class SignupComponent implements OnInit {
     },
     (error) => {
       console.error("Error adding USER:", error);
+      this.form();
       this.userService.Toast.fire({
        icon: "error",
        title: "An error was occured while create account"
@@ -101,7 +106,7 @@ export class SignupComponent implements OnInit {
   }
   
   continueWithGitHub(){
-    
+    this.authService.redirectToGitHub();
   }
 
   

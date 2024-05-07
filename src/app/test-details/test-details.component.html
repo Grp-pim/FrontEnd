@@ -76,7 +76,74 @@
   <br />
 </ng-container>
 <ng-container *ngIf="currentFrame === '2'">
- 
+  <div class="container">
+    <div class="row">
+      <!-- Colonne de gauche -->
+      <div class="col-md-6">
+        <!-- Form pour le nom d'utilisateur, l'e-mail et le contenu de l'e-mail -->
+        <form class="custom-form">
+          <div class="form-group">
+            <label for="name">Username</label>
+            <p-floatLabel>
+              <input id="name" type="text" pInputText [(ngModel)]="candidateName" name="name"/>
+            </p-floatLabel>
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email</label>
+            <p-floatLabel>
+              <input id="email" type="email" pInputText [(ngModel)]="candidateEmail" name="email"/>
+            </p-floatLabel>
+          </div>
+            <!-- Addition email -->
+  <div class="col-md-6">
+    <div class="form-group">
+      <div *ngFor="let email of additionalEmails; let i = index" class="additional-email">
+        <input type="email" [(ngModel)]="additionalEmails[i]" name="additionalEmails{{i}}" pInputText />
+        <button type="button" class="btn btn-danger" (click)="removeEmail(i)">-</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary ml-2" (click)="addEmail()">+</button>
+  </div>
+  
+  <div class="form-group">     <label for="email">Email Content:</label>     <textarea          type="email"         id="emailContent"         name="emailContent"         variant="filled"         rows="5"         cols="100"          pInputTextarea          [(ngModel)]="emailContent" >     </textarea>     </div>
+
+  
+          <!-- Boutons Preview et Invite -->
+          <div class="form-buttons">
+            <button type="button" class="btn btn-primary" (click)="inviteCandidates()">Invite Candidates</button>
+            <button type="button" class="btn btn-primary" (click)="previewTestLink(testLink)">Preview</button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Colonne de droite -->
+      <div class="col-md-6">
+        <!-- Form pour le sujet et le texte -->
+        <form class="custom-form">
+          <div class="form-group" [ngClass]="{ 'disabled': !editMode }">
+            <label for="subject">Subject</label>
+            <p-floatLabel>
+              <input id="subject" type="text" pInputText [(ngModel)]="modification.subject" name="subject" [disabled]="!editMode"/>
+            </p-floatLabel>
+          </div>
+  
+          <div class="form-group" [ngClass]="{ 'disabled': !editMode }">
+            <label for="text">Text</label>
+            <p-floatLabel>
+              <textarea id="text" rows="5" cols="50" pInputTextarea [(ngModel)]="modification.text" name="text" [disabled]="!editMode"></textarea>
+            </p-floatLabel>
+          </div>
+  
+          <!-- Bouton Edit -->
+          <button type="button" class="btn btn-primary" (click)="edit()">
+            {{ editMode ? 'Save' : 'Edit' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
 </ng-container>
 <ng-container *ngIf="currentFrame === '3'">
   <div class="card">

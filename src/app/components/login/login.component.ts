@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { AuthServiceService } from '../../services/Oauth_google/auth-service.service';
 import { UserService } from '../../services/user/user.service';
@@ -24,11 +24,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.form();
+  }
+
+  form(){
     this.loginForm = this.formBuilder.group({
       email:["", Validators.required],
       password:["", Validators.required],
     });
-
   }
 
   login(){
@@ -63,6 +66,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.error("Error login USER:", error);
+        this.form();
         this.userService.Toast.fire({
           icon: "error",
           title: "Please check Email and Password"
@@ -80,7 +84,7 @@ export class LoginComponent implements OnInit {
   }
 
   continueWithGitHub(){
-    
+    this.authService.redirectToGitHub();
   }
 
 }

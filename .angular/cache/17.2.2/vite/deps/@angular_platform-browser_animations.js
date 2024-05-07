@@ -1,9 +1,4 @@
 import {
-  BrowserModule,
-  DomRendererFactory2
-} from "./chunk-GGSASQTS.js";
-import "./chunk-NJIPK5FP.js";
-import {
   AUTO_STYLE,
   AnimationGroupPlayer,
   AnimationMetadataType,
@@ -12,6 +7,11 @@ import {
   style,
   ɵPRE_STYLE
 } from "./chunk-OC2L62MR.js";
+import {
+  BrowserModule,
+  DomRendererFactory2
+} from "./chunk-GGSASQTS.js";
+import "./chunk-NJIPK5FP.js";
 import {
   DOCUMENT
 } from "./chunk-EXAQFT7B.js";
@@ -32,8 +32,8 @@ import {
   ɵɵdefineNgModule,
   ɵɵinject
 } from "./chunk-BLR2DKIM.js";
-import "./chunk-SG3BCSKH.js";
 import "./chunk-SAVXX6OM.js";
+import "./chunk-SG3BCSKH.js";
 import "./chunk-PQ7O3X3G.js";
 import {
   __objRest,
