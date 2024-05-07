@@ -31,6 +31,7 @@ export class TestDetailsComponent implements OnInit {
   submissions: any[] = [];
   sidebarVisible = false;
   selectedItem: any;
+  testType:any;
   constructor(
     private apiService: ApiService,
     private act: ActivatedRoute,
@@ -47,8 +48,7 @@ export class TestDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.act.queryParams.subscribe((params) => {
-      const testType = params['type'];
-      // Use the testType as needed
+      this.testType = params['type'];
     });
     this.testId = this.act.snapshot.paramMap.get('id');
     this.getAllItems();
@@ -129,7 +129,12 @@ export class TestDetailsComponent implements OnInit {
   }
 
   saveChanges(): void {
-    const updateData = { quiz: this.currentTest };
+ let updateData;
+ if (this.testType === 'Quiz') {
+   updateData = { quiz: this.currentTest };
+ } else {
+   updateData = { tasks: this.currentTest };
+ }
     this.apiService.updateTest(this.testId, updateData).subscribe(
       (data) => {
         this.messageService.add({

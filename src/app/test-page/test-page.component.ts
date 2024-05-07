@@ -65,6 +65,10 @@ export class TestPageComponent implements OnInit {
           this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
         }
         this.loading = false;
+        localStorage.setItem(
+          'taskResponse',
+          this.executionResult[this.currentTaskIndex]
+        );
       },
       error: (httpErrorResponse) => {
         this.executionResult = `Error: ${httpErrorResponse.error.error}`;
@@ -126,7 +130,7 @@ export class TestPageComponent implements OnInit {
   getAllbyId() {
     this.apiService.getTestById(this.id).subscribe(
       (data) => {
-        this.test = data; 
+        this.test = data;
         console.log(this.test);
       },
       (error) => {
@@ -157,4 +161,5 @@ export class TestPageComponent implements OnInit {
       }, 1000);
     }
   }
+  submitTest() {}
 }

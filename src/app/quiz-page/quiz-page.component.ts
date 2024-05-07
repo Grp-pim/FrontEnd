@@ -141,6 +141,7 @@ export class QuizPageComponent implements OnInit {
             }
           );
         }
+        this.clearData();
       },
       (error: any) => {
         console.log(error);
