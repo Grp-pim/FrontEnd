@@ -1,10 +1,11 @@
+import { SharedService } from './../shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service'; // Adjust the path as needed
-import { SharedService } from '../shared/shared.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HintModalComponent } from '../hint-modal/hint-modal.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 
 @Component({
   selector: 'app-test-page',
@@ -17,6 +18,10 @@ export class TestPageComponent implements OnInit {
   id: any;
   currentTaskIndex: number = 0;
   code: string = '';
+  totalTask : number = 4;
+  // selectedOption: any[] = [];
+  // Initialize selectedOption array with false values
+  selectedOption: boolean[] = Array.from({ length: this.totalTask }, () => false);
   //
   chapters: any[] = [];
   totalChapter: number = this.chapters.length;
@@ -32,13 +37,16 @@ export class TestPageComponent implements OnInit {
   closeModal: any; // Define the type according to your requirement
   loading: boolean = false;
   loadingMessage: string = 'Executing...';
+
   constructor(
     private apiService: ApiService,
     private sharedService: SharedService,
     private router: Router,
     private modalService: NgbModal,
     private spinner: NgxSpinnerService,
-    private act: ActivatedRoute
+    private act: ActivatedRoute,
+    private localStore: LocalStorageService,
+    private SharedService: SharedService
   ) {}
   ngOnInit(): void {
     // this.getAllChapters();
@@ -48,6 +56,11 @@ export class TestPageComponent implements OnInit {
     this.id = this.act.snapshot.paramMap.get('id');
     this.getAllbyId();
     this.code = this.test.tasks[this.currentTaskIndex].initialCode;
+    // local storage
+    const storedData = localStorage.getItem('taskResponses');
+    if (storedData) {
+      this.selectedOption = JSON.parse(storedData);
+    }
   }
 
   // Method to execute code
@@ -60,21 +73,20 @@ export class TestPageComponent implements OnInit {
           : `Error: ${response.error}`;
         // Trigger game start with autoPlay based on success
         this.sharedService.triggerStartGame(response.success);
+        this.updateSelectedOption(this.currentTaskIndex, true);
         if (response.success) {
           this.codeExecutionSuccess = true;
           this.nextChapterButtonClicked = false; // Reset the flag only when execution is successful
         }
         this.loading = false;
-        localStorage.setItem(
-          'taskResponse',
-          this.executionResult[this.currentTaskIndex]
-        );
+        // Save taskResponse to localStorage
       },
       error: (httpErrorResponse) => {
-        this.executionResult = `Error: ${httpErrorResponse.error.error}`;
+        this.executionResult = `Error : ${httpErrorResponse.error.error}`;
         // Trigger game start without autoPlay in case of HTTP error
         this.sharedService.triggerStartGame(false);
         this.loading = false;
+        this.updateSelectedOption(this.currentTaskIndex, false);
       },
     });
   }
@@ -161,5 +173,48 @@ export class TestPageComponent implements OnInit {
       }, 1000);
     }
   }
-  submitTest() {}
+  // Method to update selectedOption and save to localStorage
+  updateSelectedOption(questionIndex: any, status: any) {
+    this.selectedOption[questionIndex] = status;
+    this.saveData();
+  }
+  saveData() {
+    localStorage.setItem('taskResponses', JSON.stringify(this.selectedOption));
+  }
+  clearData() {
+    localStorage.removeItem('taskResponses');
+  }
+  submitTest() {
+    // Retrieve selected options from local storage
+    const taskResponses = JSON.parse(
+      localStorage.getItem('taskResponses') || '{}'
+    );
+
+    // Get the token from sessionStorage
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      console.error('Token not found in sessionStorage');
+      return;
+    }
+
+    // Decode the token to get the user ID
+    const decodedToken = this.SharedService.decodeToken(token);
+    const studentId = decodedToken._id;
+    const sub = {
+      userId: studentId,
+      testId: this.id,
+      userChoices: taskResponses,
+      overallScore: 11,
+    };
+
+    this.apiService.createSubmission(sub).subscribe(
+      (response: any) => {
+        console.log(response);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+    this.clearData();
+  }
 }
