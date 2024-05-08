@@ -1,0 +1,13 @@
+.modal-body {
+  display: flex;
+  justify-content: center;
+ 
+}
+.text-center img {
+  margin: 0;
+  padding: 0;
+}
+.message {
+  margin-top: 10px;
+  display: block;
+}

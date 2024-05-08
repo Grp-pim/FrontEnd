@@ -145,4 +145,12 @@ export class ApiService {
       })
     );
   }
+  getSubmission(testId: any, userId: any): Observable<any> {
+    return this.http.get(`${this.url}/api/test/sub/${testId}/${userId}`).pipe(
+      catchError((error) => {
+        console.error('An error occurred', error);
+        return throwError('An error occurred; please try again later.');
+      })
+    );
+  }
 }
