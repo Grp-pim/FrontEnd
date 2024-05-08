@@ -33,6 +33,10 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
+  isGitHubLoggedIn() {
+
+  }
+
   decodeToken(token: string): any {
     return jwt_decode(token);
   }

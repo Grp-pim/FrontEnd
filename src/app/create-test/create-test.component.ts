@@ -120,15 +120,15 @@ export class CreateTestComponent implements OnInit {
 
   previewTestLink(testId: string, testType: string): string {
     let testLink: string = ''; // Initialisation par défaut
-  
-    if (testType === 'Code') {
-      testLink = `/test/${testId}`;
-    } else if (testType === 'Quiz') {
-      testLink = `/quizTest/${testId}`;
-    }
-
+     if (testType === 'Code') {
+       const url = `/test/${testId}`;
+       this.router.navigate([url]);
+     } else if (testType === 'Quiz') {
+       const url = `/quizTest/${testId}`;
+       this.router.navigate([url]);
+     }
     return testLink;
-}
+  }
 
 
 toTestDetails(testId: string, testType: string) {

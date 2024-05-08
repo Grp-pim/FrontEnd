@@ -16,6 +16,7 @@ export class TestDetailsComponent implements OnInit {
   changeTab(tabName: string) {
     this.selectedTab = tabName;
   }
+  testType: any
 
   tests: any[] = [];
   currentFrame: any = '1';
@@ -52,7 +53,7 @@ export class TestDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.act.queryParams.subscribe(params => {
-        const testType = params['type'];
+         this.testType = params['type'];
         // Utilisez testType selon vos besoins
 
         this.testLink = params['testLink'];
@@ -128,8 +129,9 @@ export class TestDetailsComponent implements OnInit {
     }
   }
   toTestList() {
-    this.router.navigate(['test']);
+    this.router.navigate(['dashboard/Teacher']);
   }
+  
   getTestById(testId: string): void {
     this.apiService.getTestById(testId).subscribe(
       (data) => {
@@ -142,19 +144,24 @@ export class TestDetailsComponent implements OnInit {
   }
 
   saveChanges(): void {
-    const updateData = { quiz: this.currentTest };
-    this.apiService.updateTest(this.testId, updateData).subscribe(
-      (data) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Your test has been updated.',
-        });
-      },
-      (error) => {
-        console.log('Error updating Test:', error);
-      }
-    );
+    let updateData;
+    if (this.testType === 'Quiz') {
+      updateData = { quiz: this.currentTest };
+    } else {
+      updateData = { tasks: this.currentTest };
+    }
+       this.apiService.updateTest(this.testId, updateData).subscribe(
+         (data) => {
+           this.messageService.add({
+             severity: 'success',
+             summary: 'Success',
+             detail: 'Your test has been updated.',
+           });
+         },
+         (error) => {
+           console.log('Error updating Test:', error);
+         }
+       );
   }
    //////////////////////////////////////////////////yeser
    addEmail() {

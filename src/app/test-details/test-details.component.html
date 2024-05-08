@@ -33,6 +33,7 @@
     icon="pi pi-save"
   ></p-button>
 </p-buttonGroup>
+
 <ng-container *ngIf="currentFrame === '1'">
   <p-pickList
     [source]="items"
@@ -75,6 +76,7 @@
   </p-pickList>
   <br />
 </ng-container>
+
 <ng-container *ngIf="currentFrame === '2'">
   <div class="container">
     <div class="row">
@@ -145,6 +147,7 @@
   </div>
   
 </ng-container>
+
 <ng-container *ngIf="currentFrame === '3'">
   <div class="card">
     <p-table

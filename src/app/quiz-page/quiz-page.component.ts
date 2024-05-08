@@ -23,6 +23,8 @@ export class QuizPageComponent implements OnInit {
   overallScore: number = 0;
   testStartTime: number = 0;
   remainingTime: number = 0;
+  studentId: any;
+  testStatus: any = true;
 
   constructor(
     private apiService: ApiService,
@@ -42,14 +44,15 @@ export class QuizPageComponent implements OnInit {
     if (storedData) {
       this.selectedOption = JSON.parse(storedData);
     }
-
     // Set the start time of the test
     this.testStartTime = Date.now();
-
-    // Call the calculateRemainingTime function every second
-    // setInterval(() => {
-    //   this.calculateRemainingTime();
-    // }, 1000); // 1000 milliseconds = 1 second
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      console.error('Token not found in sessionStorage');
+      return;
+    }
+    const decodedToken = this.decodeToken(token);
+    const studentId = decodedToken._id;
   }
 
   // Method to update selectedOption and save to localStorage
@@ -98,7 +101,6 @@ export class QuizPageComponent implements OnInit {
   }
 
   submitQuiz() {
-    // Retrieve selected options from local storage
     const quizResponses = JSON.parse(
       localStorage.getItem('quizResponses') || '{}'
     );
@@ -114,26 +116,39 @@ export class QuizPageComponent implements OnInit {
     const decodedToken = this.decodeToken(token);
     const studentId = decodedToken._id;
 
-    // Call the API service to compare the quiz and create the submission
-    this.apiService.compareQuiz(this.id, quizResponses).subscribe(
-      (response: any) => {
-        // Handle response from backend
-        if (response) {
-          // Update the overall score
-          this.overallScore = response.overallScore;
-          this.openModal();
-
-          // Create the submission object
-          const sub = {
-            userId: studentId,
-            testId: this.id,
-            userChoices: quizResponses,
-          };
-
-          // Call the API service to create the submission
-          this.apiService.createSubmission(sub).subscribe(
+    this.apiService.getSubmission(this.id, decodedToken._id).subscribe(
+      (data: any) => {
+        if (data && data.length > 0) {
+          console.log('sub already exist !!');
+        } else {
+          this.apiService.compareQuiz(this.id, quizResponses).subscribe(
             (response: any) => {
-              console.log(response);
+              // Handle response from backend
+              if (response) {
+                // Update the overall score
+                this.overallScore = response.overallScore;
+
+                this.openModal();
+
+                // Create the submission object
+                const sub = {
+                  userId: studentId,
+                  testId: this.id,
+                  userChoices: quizResponses,
+                  overallScore: this.overallScore,
+                };
+
+                // Call the API service to create the submission
+                this.apiService.createSubmission(sub).subscribe(
+                  (response: any) => {
+                    console.log(response);
+                  },
+                  (error: any) => {
+                    console.log(error);
+                  }
+                );
+              }
+              this.clearData();
             },
             (error: any) => {
               console.log(error);
@@ -141,16 +156,18 @@ export class QuizPageComponent implements OnInit {
           );
         }
       },
-      (error: any) => {
-        console.log(error);
-      }
+      (error: any) => {}
     );
+    // Retrieve selected options from local storage
+
+    // Call the API service to compare the quiz and create the submission
   }
 
   openModal() {
     // Open the modal
     const modalRef = this.modalService.open(ModalResultComponent);
     modalRef.componentInstance.overallScore = this.overallScore;
+
     console.log(this.overallScore);
   }
   // when time over it logout

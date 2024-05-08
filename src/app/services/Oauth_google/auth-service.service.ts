@@ -17,8 +17,8 @@ export class AuthServiceService {
   }
   
   // Méthode pour gérer la réponse de Google après l'authentification réussie
-  handleGoogleCallback(): Observable<any> {
-    return this.http.get<any>(`${this.GoogleURL}/auth/google/callback`);
+  handleGoogleCallback(code: string): Observable<any> {
+    return this.http.get<any>(`/api/user/auth/google/callback?code=${code}`);
   }
 
   // ************************************  GITHUB **************************
@@ -26,8 +26,8 @@ export class AuthServiceService {
     window.location.href =`${this.GoogleURL}/auth/github`;
   }
   
-  handleGitHubCallback(): Observable<any> {
-    return this.http.get<any>(`${this.GoogleURL}/auth/github/callback`);
+  handleGitHubCallback(code: string): Observable<any> {
+    return this.http.get<any>(`/api/user/auth/github/callback?code=${code}`);
   }
 
   // ***************************************************************************

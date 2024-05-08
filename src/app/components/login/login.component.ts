@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
               title: 'Welcome Student'
             });
           } else if (role == "Teacher"){
-            this.router.navigate(["test"]);
+            this.router.navigate(["dashboard/Teacher"]);
             this.userService.Toast.fire({
               icon: 'success',
               title: 'Welcome Teacher'
