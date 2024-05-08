@@ -2,71 +2,24 @@
 <section id="stepperSection">
     <main>
         <div class="container">
-            <h3 class="card-title">Timeline : Quest Map</h3>
+            <h1 class="display-5 fw-bold card-title" style="color : #f2bb13;">Quest Map</h1>
             <div class="row">
                 <div class="col-md-12">
                     <div class="main-timeline2">
-                        
-                        <!-- cercle de stepper -->
                         <div class="timeline"
                             *ngFor="let chapter of chapters; let i = index"
                             [ngStyle]="{ color: i < currentChapter ? '#000000' : '#C0C0C0', cursor: chapterActivationState[i] ? 'pointer' : 'not-allowed' }"
                             [class.active]="i + 1 === currentChapter"
-                            (click)="i < currentChapter ? navigateToCompilator(i + 1) : null"
+                            (click)="i < currentChapter ? navigateToCompilator(i + 1) : null" [ngClass]="{ 'notactive': i >= currentChapter }"
                         >
-                            <a class="timeline-content">
-                                <span class="year">{{ i + 1 }}</span>
-                                <div class="inner-content">
-                                    <h3 class="title">{{ chapter.name }}</h3>
-                                    <p class="description">
-                                        {{ chapter.description }} 
-                                    </p>
-                                </div>
-                            </a>
+                            <div class="timeline-content">
+                                <div class="year">{{ i + 1 }}</div>
+                                <div class="inner-content">   <h3 class="title">{{ chapter.name }}</h3></div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </main>
 </section>
-
-
-<!-- **************************************** -->
-
-<!-- <div class="timeline">
-    <a href="#" class="timeline-content">
-        <span class="year">2</span>
-        <div class="inner-content">
-            <h3 class="title">Web Developer</h3>
-            <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex odio, rhoncus sit amet tincidunt eu, suscipit a orci. In suscipit quam eget dui auctor.
-            </p>
-        </div>
-    </a>
-</div>
-
-<div class="timeline">
-    <a href="#" class="timeline-content">
-        <span class="year">3</span>
-        <div class="inner-content">
-            <h3 class="title">Web Designer</h3>
-            <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex odio, rhoncus sit amet tincidunt eu, suscipit a orci. In suscipit quam eget dui auctor.
-            </p>
-        </div>
-    </a>
-</div>
-
-<div class="timeline">
-    <a href="#" class="timeline-content">
-        <span class="year">4</span>
-        <div class="inner-content">
-            <h3 class="title">Web Developer</h3>
-            <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ex odio, rhoncus sit amet tincidunt eu, suscipit a orci. In suscipit quam eget dui auctor.
-            </p>
-        </div>
-    </a>
-</div> -->

@@ -19,6 +19,7 @@ import { SelectRoleComponent } from './components/select-role/select-role.compon
 import { DashboardTeacherComponent } from './components/dashboard-teacher/dashboard-teacher.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { DashboardComponent } from './components/admin-folder/dashboard/dashboard.component';
+import { RoleGuardGuard } from './services/role_guard/role-guard.guard';
 
 const routes: Routes = [
   { path: '', title: 'home', component: HomeComponent },
@@ -26,21 +27,21 @@ const routes: Routes = [
   { path: 'signup', title: 'signup', component: SignupComponent },
   { path: 'forgotPassword', title: 'forgot Password', component: ForgotPwdComponent },
   { path: 'resetPassword/:token', title: 'reset Password', component: ResetPwdComponent },
-  { path: 'profile', title: 'profile', component: ProfileComponent },
-  { path: 'homeStepper', title: 'Map', component: HomeStepperComponent },
-  { path: 'events', title: 'events', component: EventsComponent },
-  { path: 'community', title: 'community', component: CommunityComponent },
+  { path: 'profile', title: 'profile', component: ProfileComponent, canActivate: [RoleGuardGuard], data: { role: ['Admin', 'Student', 'Teacher'] } },
+  { path: 'homeStepper', title: 'Map', component: HomeStepperComponent, canActivate: [RoleGuardGuard], data: { role: 'Student' }  },
+  { path: 'events', title: 'events', component: EventsComponent, canActivate: [RoleGuardGuard], data: { role: ['Admin', 'Student', 'Teacher'] } },
+  { path: 'community', title: 'community', component: CommunityComponent, canActivate: [RoleGuardGuard], data: { role: ['Admin', 'Student', 'Teacher'] } },
   { path: 'select-role', title: 'select role google', component: SelectRoleComponent },
-  { path: 'dashboard/Teacher', title: 'dashboard Teacher', component: DashboardTeacherComponent },
-  { path: 'dashboard/Admin', title: 'dashboard Admin', component: DashboardComponent },
+  { path: 'dashboard/Teacher', title: 'dashboard Teacher', component: DashboardTeacherComponent, canActivate: [RoleGuardGuard], data: { role: 'Teacher' } },
+  { path: 'dashboard/Admin', title: 'dashboard Admin', component: DashboardComponent, canActivate: [RoleGuardGuard], data: { role: 'Admin' } },
 
-  { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard] },
-  { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard] },
-  { path: 'quiz', title: 'Quiz', component: QuizPageComponent },
+  { path: 'test/:id', title: 'exam', component: TestPageComponent, canActivate: [TestExistsGuard, RoleGuardGuard], data: { role: ['Student', 'Teacher'] } },
+  { path: 'quizTest/:id', title: 'exam', component: QuizPageComponent, canActivate: [TestExistsGuard, RoleGuardGuard], data: { role: ['Student', 'Teacher'] } },
+  { path: 'quiz', title: 'Quiz', component: QuizPageComponent, canActivate: [RoleGuardGuard], data: { role: ['Student', 'Teacher'] } },
   // { path: 'compilator', title: 'Comp', component: BodyComponent },
-  { path: 'compilator/:chapterNumber', title: 'compilator', component: BodyComponent },
-  { path: 'test', title: 'Test', component: CreateTestComponent },
-  { path: 'test-details/:id', title: 'Test-details', component: TestDetailsComponent },
+  { path: 'compilator/:chapterNumber', title: 'compilator', component: BodyComponent, canActivate: [RoleGuardGuard], data: { role: 'Student' } },
+  { path: 'test', title: 'Test', component: CreateTestComponent, canActivate: [RoleGuardGuard], data: { role: 'Teacher' } },
+  { path: 'test-details/:id', title: 'Test-details', component: TestDetailsComponent, canActivate: [RoleGuardGuard], data: { role: 'Teacher' } },
   { path: '**', title: 'notFound', component: NotfoundComponent },
 ];
 

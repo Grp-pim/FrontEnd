@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
               title: 'Welcome Admin'
             });
           } else if (role == "Student"){
-            this.router.navigate(["homeStepper"]);
+            this.router.navigate([""]);
             this.userService.Toast.fire({
               icon: 'success',
               title: 'Welcome Student'
