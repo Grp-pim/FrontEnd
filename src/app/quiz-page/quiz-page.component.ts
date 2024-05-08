@@ -24,6 +24,7 @@ export class QuizPageComponent implements OnInit {
   testStartTime: number = 0;
   remainingTime: number = 0;
   studentId: any;
+  testStatus: any = true;
 
   constructor(
     private apiService: ApiService,
@@ -119,7 +120,6 @@ export class QuizPageComponent implements OnInit {
       (data: any) => {
         if (data && data.length > 0) {
           console.log('sub already exist !!');
-          
         } else {
           this.apiService.compareQuiz(this.id, quizResponses).subscribe(
             (response: any) => {
@@ -127,6 +127,7 @@ export class QuizPageComponent implements OnInit {
               if (response) {
                 // Update the overall score
                 this.overallScore = response.overallScore;
+
                 this.openModal();
 
                 // Create the submission object
@@ -166,6 +167,7 @@ export class QuizPageComponent implements OnInit {
     // Open the modal
     const modalRef = this.modalService.open(ModalResultComponent);
     modalRef.componentInstance.overallScore = this.overallScore;
+
     console.log(this.overallScore);
   }
   // when time over it logout
