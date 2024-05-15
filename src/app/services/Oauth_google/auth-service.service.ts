@@ -20,14 +20,15 @@ export class AuthServiceService {
   handleGoogleCallback(code: string): Observable<any> {
     return this.http.get<any>(`/api/user/auth/google/callback?code=${code}`);
   }
+  
+  handleGitHubCallback(code: string): Observable<any> {
+    return this.http.get<any>(`/api/user/auth/github/callback?code=${code}`);
+  }
+
 
   // ************************************  GITHUB **************************
   redirectToGitHub(): void {
     window.location.href =`${this.GoogleURL}/auth/github`;
-  }
-  
-  handleGitHubCallback(code: string): Observable<any> {
-    return this.http.get<any>(`/api/user/auth/github/callback?code=${code}`);
   }
 
   // ***************************************************************************
